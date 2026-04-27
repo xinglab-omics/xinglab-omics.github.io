@@ -1,46 +1,129 @@
 # Xing Lab Website
 
-Xing Lab at Fudan University, focused on mass spectrometry and metabolomics.
+Next.js website for Xing Lab at Fudan University. The site is built around editable content files in `lib/content/`, with layout and visual components in `app/` and `components/`.
 
-## Development
+## Quick Start
+
+Install dependencies:
 
 ```bash
 npm install
+```
+
+Run the local development server:
+
+```bash
 npm run dev
 ```
-Open http://localhost:3000 to view the site.
 
+Open:
+
+```text
+http://localhost:3000
+```
+
+Useful checks:
+
+```bash
+npm run typecheck
+npm run build
+```
+
+## Where To Edit
+
+Most day-to-day website updates are in:
+
+```text
+lib/content/
+```
+
+For detailed content instructions, see:
+
+```text
+lib/content/README.md
+```
+
+Common non-content files:
+
+| File | Use |
+| --- | --- |
+| `app/globals.css` | Main theme colors, including `--color-paper`, `--color-fudan`, and background color options |
+| `app/page.tsx` | Homepage section order and major layout |
+| `components/HeroVisual.tsx` | Hero SVG/network illustration, hero icons, node colors, and artwork position |
+| `components/HeroScrollAnimation.tsx` | Scroll-driven hero animation settings |
+| `components/FeaturedPapersRail.tsx` | Homepage featured paper carousel layout |
+| `components/NewsTicker.tsx` | Homepage latest-news ticker layout |
+
+## Image Folders
+
+Put images under `public/images/`, organized by use:
+
+```text
+public/images/branding/   site logo and brand assets
+public/images/hero/       hero SVG/image assets and reusable visual assets
+public/images/papers/     featured paper figures
+public/images/profiles/   profile and team photos
+public/images/news/       news-specific images
+```
+
+When referencing an image in content, start the path at `/images/...`.
+
+Example:
+
+```ts
+image: "/images/papers/2026_conjugate.png"
+```
+
+Do not include `public` in the path.
 
 ## Quick Update Recipes
 
-### New Paper
+### Add A Publication
 
-1. Add the paper to `publications.ts`.
-2. Set `highlighted: true` if it should appear in highlighted publications.
-3. Update `home.ts` if it should be the homepage spotlight.
-4. Add a news item in `news.ts` if desired.
+1. Edit `lib/content/publications.ts`.
+2. Add the publication object near the top if it is recent.
+3. Set `highlighted: true` only if it should appear in the highlighted publications section.
+4. Add a news item in `lib/content/news.ts` if the publication should appear as news.
 
-### New Person
+### Add A Featured Lab Paper On The Homepage
 
-1. Add the person to `team.ts`.
-2. Add photo to `public/images/` if available.
-3. Use one of the allowed `group` values.
-4. Publications will automatically bold this person's name when the author string matches exactly.
+1. Add the figure to `public/images/papers/`.
+2. Make sure the paper exists in `lib/content/publications.ts`.
+3. Add `{ title, image }` to `featuredPapers` in `lib/content/home.ts`.
 
-### New Alumni
+All entries in `featuredPapers` are shown in the homepage carousel, in order. The title must match the publication title.
 
-1. Move or add the person in `team.ts`.
+### Add A Person
+
+1. Edit `lib/content/team.ts`.
+2. Add a member object with an allowed `group`.
+3. Add a photo to `public/images/profiles/` if available.
+4. Use the same name spelling in publications if you want the site to bold that person's name automatically.
+
+### Add Alumni
+
+1. Edit the member in `lib/content/team.ts`.
 2. Set `group: "Alumni"`.
-3. Alumni section appears automatically.
+3. The alumni section appears automatically when at least one alumni member exists.
 
-### New News Post
+### Add News
 
-1. Add item to `news.ts`.
-2. Use a unique `slug`.
-3. Add optional image to `public/images/`.
-4. The homepage news ticker links to the news item automatically.
+1. Edit `lib/content/news.ts`.
+2. Add a unique `slug`.
+3. Use date format `YYYY-MM-DD`.
+4. Add an optional image to `public/images/news/` or reuse an existing image path.
 
-## Content Updates
+The homepage news ticker links to the matching item on `/news`.
 
-For a more detailed guide on updating content, see [lib/content/README.md](lib/content/README.md) for how to update papers,
-people, news, the PI profile, alumni, research directions, and contact text.
+### Update Theme Colors
+
+Edit `app/globals.css`, especially:
+
+```css
+--color-paper
+--color-fudan
+--color-sage
+--color-line
+```
+
+The background options comment near the top of `globals.css` lists several possible `--color-paper` values.

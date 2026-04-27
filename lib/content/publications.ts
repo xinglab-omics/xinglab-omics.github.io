@@ -27,7 +27,7 @@ export const publications: Publication[] = [
     title: "Pan-repository analysis reveals a drug-activating function of microbial bile acid conjugation",
     authors:
       "Vincent Charron-Lamoureux, Patricia Kelly, Simone Zuffa, Abubaker Patan, Marta Sala-Climent, Corinn Walker, Haoqi Nina Zhao, Shipei Xing, Harsha Gouda, Julius Agongo, Erin R. Reilly, Lina Sallam, Selene F. H. Shore, Subhomitra Ghoshal, Anika K. Harpavat, Marudhu Pandiyan Murugesan, Swara Yadav, James Versalovic, Vlad Orlovsky, Yasin El Abiead, Kine Eide Kvitne, Janet G. Markle, Grant J. Norton, Gregory T. Walker, Michael H. Lee, Zhewen Hu, Marvic Carrillo Terrazas, David M. Zong, Amir Zarrinpar, Manuela Raffatellu, Anthony Martin, Loryn Chin, Suzanne Devkota, Antonio Gonzalez, Gail Ackermann, Lucas Patel, Yuhan Weng, Rob Knight, Richard K. Russell, Richard Hansen, Vaios Svolos, Konstantinos Gkikas, Nicholas J. W. Rattray, Dionicio Siegel, Karsten Zengler, Maribeth R. Nicholson, Hiutung Chu, Andrew D. Patterson, Monica Guma, Richard Kellermayer, Melinda A. Engevik, Thomas D. Horvath, Konstantinos Gerasimidis, Pieter C. Dorrestein",
-    venue: "bioRxiv; in revision at Nature",
+    venue: "bioRxiv, in revision at Nature",
     year: 2026,
     url: "https://www.biorxiv.org/content/10.64898/2026.03.03.709330v1",
     correspondingAuthors: ["Vincent Charron-Lamoureux", "Pieter C. Dorrestein"],
@@ -38,7 +38,7 @@ export const publications: Publication[] = [
     title: "Navigating the conjugated metabolome",
     authors:
       "Shipei Xing, Abubaker Patan, Julius Agongo, Harsha Gouda, Vincent Charron-Lamoureux, Yasin El Abiead, Zhewen Hu, Haoqi Nina Zhao, Ipsita Mohanty, Jasmine Zemlin, Wilhan Donizete Gonçalves Nunes, Lindsey A. Burnett, Mingxun Wang, Dionicio Siegel, Pieter C. Dorrestein",
-    venue: "bioRxiv; in revision at Nature",
+    venue: "bioRxiv, in revision at Nature",
     year: 2026,
     url: "https://www.biorxiv.org/content/10.64898/2026.02.06.704496v1",
     correspondingAuthors: ["Shipei Xing", "Pieter C. Dorrestein"],
@@ -49,7 +49,7 @@ export const publications: Publication[] = [
     title: "A searchable metadata network graph for microbiome metabolomics",
     authors:
       "Vincent Charron-Lamoureux, Shipei Xing, Abubaker Patan, Corinn Walker, Ricardo-Almada Monter, Yasin El Abiead, Haoqi Nina Zhao, Lucas Patel, Yuhan Weng, Antonio Gonzalez, Gail Ackermann, Victoria Deleray, Vishant Gandhi, Ipsita Mohanty, Andres Mauricio Caraballo-Rodriguez, Kine Eide Kvitne, Simone Zuffa, Annabelle Norman, Anthony Martin, Loryn Chin, Rocio Paz-Gonzalez, Marta Sala-Climent, Nadia Suryawinata, Jasmine Zemlin, Harsha Gouda, Zhewen Hu, Grant Norton, Prajit Rajkumar, Anthony J. A. Molina, Jaclyn Bergstrom, Monae Pinner, Sadie Giddings, Allegra T. Aron, Liang Liang, Samira Dahesh, Santosh Lamichhane, Erin R. Reilly, Victor Nizet, Anna Skrip, April L. Lukowski, Selene F. H. Shore, Subhomitra Ghoshal, Melinda A. Engevik, Thomas D. Horvath, Simone Renwick, Julius Agongo, Maria L. Marco, Sarkis K. Mazmanian, Mingxun Wang, Heejung Yang, Daniel McDonald, Monica Guma, Evi Stegmann, Naybel Hernandez Perez, Paolo Stincone, Eric Kemen, Abzer Kelminal Pakkir Shah, Lars Bode, Daniel Petras, Dionicio Siegel, Manuela Raffatellu, Andrew D. Patterson, Suzanne Devkota, Adrian Jinich, Rob Knight, Karsten Zengler, Pieter C. Dorrestein",
-    venue: "bioRxiv; in revision at Nature",
+    venue: "bioRxiv, in revision at Nature",
     year: 2026,
     url: "https://www.biorxiv.org/content/10.64898/2026.02.04.703849v1",
     correspondingAuthors: ["Pieter C. Dorrestein"],
@@ -71,7 +71,7 @@ export const publications: Publication[] = [
     title: "Community Curation of Microbial Metabolites Enables Biological Insights of Metabolomics Data",
     authors:
       "Helena Mannochio-Russo, Wilhan D. Gonçalves Nunes, Shipei Xing, Fernanda de Oliveira, Andrés Mauricio Caraballo-Rodríguez, Paulo Wender Portal Gomes, Vincent Charron-Lamoureux, Julius Agongo, Nicole E. Avalon, Tammy Bui, Lucia Cancelada, Marc G. Chevrette, Andrés Cumsille, Moysés B. de Araújo, Marilyn De Graeve, Victoria Deleray, Mohamed S. Donia, Mutsawashe B. Dzveta, Yasin El Abiead, Ronald J. Ellis, Donald Franklin Jr, Neha Garg, Harsha Gouda, Claude Y. Hamany Djande, Anastasia Hiskia, Benjamin N. Ho, Chambers C. Hughes, Sunghoon Hwang, Sofia Iliakopoulou, Jennifer E. Iudicello, Alan K. Jarmusch, Triantafyllos Kaloudis, Irina Koester, Robert Konkel, Hector H. F. Koolen, Kine Eide Kvitne, Sabina Leanti La Rosa, Anny Lam, Santosh Lamichhane, Motseoa Lephatsi, Scott Letendre, Sarolt Magyari, Hanna Mazur-Marzec, Daniel McDonald, Ipsita Mohanty, Mónica Monge-Loría, David J. Moore, Thiago André Moura Veiga, Musiwalo S. Mulaudzi, Lerato Nephali, Griffith Nguyen, Martin Orságh, Abubaker Patan, Tomáš Pluskal, Phillip B. Pope, Lívia Soman de Medeiros, Paolo Stincone, Andrej Tekel, Sydney Thomas, Ralph R. Torres, Shirley M. Tsunoda, Fidele Tugizimana, Martijn van Faassen, Felipe Vasquez-Castro, Giovanni A. Vitale, Berenike C. Wagner, Crystal X. Wang, Sevasti-Kiriaki Zervou, Haoqi Nina Zhao, Simone Zuffa, Daniel Petras, Laura-Isobel McCall, Rob Knight, Mingxun Wang, Pieter C. Dorrestein",
-    venue: "bioRxiv",
+    venue: "bioRxiv, in revision at Nature Microbiology",
     year: 2026,
     url: "https://pubs.acs.org/doi/full/10.1021/acs.analchem.5c05677",
     coFirstAuthors: ["Helena Mannochio-Russo", "Wilhan D. Gonçalves Nunes"],
@@ -186,7 +186,7 @@ export const publications: Publication[] = [
     title: "Bridging Complexity and Accessibility in Metabolomics with MetaboApps",
     authors:
       "Helena Mannochio-Russo, Wilhan D. Gonçalves Nunes, Haoqi Nina Zhao, Kine Eide Kvitne, Shipei Xing, Harsha Gouda, Julius Agongo, Ipsita Mohanty, Vincent Charron-Lamoureux, Prajit Rajkumar, Abzer K. Pakkir Shah, Axel Walter, Rithi Krishnaraj, Yasin El Abiead, Patrick C. Ferreira, Simone Zuffa, Abubaker Patan, Andrés Mauricio Caraballo-Rodríguez, Wout Bittremieux, Daniel Petras, Mingxun Wang, Pieter C. Dorrestein",
-    venue: "chemRxiv; in revision",
+    venue: "chemRxiv, just accepted at Nature Methods",
     year: 2025,
     url: "https://chemrxiv.org/doi/full/10.26434/chemrxiv-2025-3nq29",
     correspondingAuthors: ["Pieter C. Dorrestein"],
@@ -296,7 +296,7 @@ export const publications: Publication[] = [
     title: "Structural annotation of full-scan MS data: A unified solution for LC-MS and MS imaging analyses",
     authors:
       "Shipei Xing, Vincent Charron-Lamoureux, Mans Ekelof, Yasin El Abiead, Huaxu Yu, Oliver Fiehn, Todor Alexandrov, Pieter C. Dorrestein",
-    venue: "bioRxiv; in revision at Nature Communications",
+    venue: "bioRxiv, in revision at Nature Communications",
     year: 2024,
     url: "https://doi.org/10.1101/2024.10.14.618269",
     correspondingAuthors: ["Pieter C. Dorrestein"],

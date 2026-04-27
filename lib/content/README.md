@@ -1,48 +1,113 @@
 # Website Content Editing Guide
 
-Most website text and updateable information lives in this folder: `lib/content/`.
-The page components in `app/` read from these files and handle layout/styling.
+Most editable website content lives in `lib/content/`. Page files in `app/` and reusable components in `components/` read this content and handle the layout, styling, and interaction.
 
-After editing content, run:
+After editing content, run the local site:
 
 ```bash
 npm run dev
 ```
 
-Open http://localhost:3000 to view the site.
+Then open:
+
+```text
+http://localhost:3000
+```
+
+For a production check, run:
+
+```bash
+npm run build
+```
 
 ## File Map
 
 | File | What It Controls |
 | --- | --- |
-| `home.ts` | Homepage paper spotlight figure and selected spotlight paper |
-| `profile.ts` | Shipei Xing profile page content |
-| `team.ts` | Team/member cards |
-| `publications.ts` | Publication list |
-| `news.ts` | News page and homepage news ticker |
-| `research.ts` | Research direction cards/pages |
-| `contact.ts` | Join Us page, contact email, application instructions |
+| `home.ts` | Homepage featured lab papers carousel |
+| `profile.ts` | Shipei Xing profile page and PI data reused by the team page |
+| `team.ts` | Team/member cards, alumni, and open positions card |
+| `publications.ts` | Publication list and highlighted publication flags |
+| `news.ts` | News page and homepage latest-news ticker |
+| `research.ts` | Research direction intro text and research direction content |
+| `contact.ts` | Join Us page, contact email, and application instructions |
 | `navigation.ts` | Header navigation labels and links |
 | `types.ts` | Shared TypeScript data shapes; edit only when the data structure changes |
 | `../content.ts` | Barrel export so app files can import from `@/lib/content` |
 
-## Images
+## Image Paths
 
-Put website images in:
+Website images live in `public/images/`.
 
 ```text
-public/images/
+public/images/branding/   site logo and brand assets
+public/images/hero/       hero SVG/image assets and reusable visual assets
+public/images/papers/     featured paper figures
+public/images/profiles/   profile and team photos
+public/images/news/       news-specific images
 ```
 
-Then reference them from content files with paths like:
+Reference images from content files with paths that begin at `/images/...`.
 
 ```ts
-image: "/images/example.png"
+image: "/images/papers/2026_conjugate.png"
 ```
 
-Do not include `public` in the image path.
+Do not include `public` in the path.
 
-## Add Or Update A Publication
+Current examples:
+
+```text
+/images/branding/fudan.png
+/images/hero/LCMS.svg
+/images/hero/tomatidine.svg
+/images/hero/tomatidine-PEA.svg
+/images/papers/2026_conjugate.png
+/images/papers/2023_buddy.png
+/images/profiles/shipei-xing-profile.png
+```
+
+## Homepage Featured Lab Papers
+
+Edit:
+
+```text
+lib/content/home.ts
+```
+
+The homepage carousel is controlled by `featuredPapers`:
+
+```ts
+const featuredPapers = [
+  {
+    title: "Navigating the conjugated metabolome",
+    image: "/images/papers/2026_conjugate.png"
+  },
+  {
+    title: "BUDDY: molecular formula discovery via bottom-up MS/MS interrogation",
+    image: "/images/papers/2023_buddy.png"
+  }
+];
+```
+
+How it works:
+
+- Every entry in `featuredPapers` is shown on the homepage.
+- The order in `featuredPapers` is the display order.
+- The dots under the carousel are generated automatically.
+- The paper title must match a title in `publications.ts`.
+- The carousel pulls journal, year, author list, author labels, and link from the matching publication.
+- You do not need to add `alt` text here; the component generates figure alt text from the paper title.
+
+To add another featured paper:
+
+1. Add the publication to `publications.ts` if it is not already there.
+2. Add the figure image to `public/images/papers/`.
+3. Add a `{ title, image }` entry to `featuredPapers`.
+
+Important: if the title does not match a publication title, the current mapping falls back to the first publication. Exact title matching keeps the homepage correct.
+
+## Publications
 
 Edit:
 
@@ -50,14 +115,14 @@ Edit:
 lib/content/publications.ts
 ```
 
-Add a new publication object near the top of the `publications` array if it is recent:
+Add a publication object:
 
 ```ts
 {
   title: "Paper title here",
   authors: "Author One, Author Two, Author Three",
   venue: "Journal Name",
-  year: 20xx,
+  year: 2026,
   url: "https://doi.org/10.xxxx/example",
   coFirstAuthors: ["Author One", "Author Two"],
   correspondingAuthors: ["Author Three"],
@@ -66,54 +131,25 @@ Add a new publication object near the top of the `publications` array if it is r
 }
 ```
 
+Fields:
+
+- `title`: paper title. This is also used by `home.ts` to match featured lab papers.
+- `authors`: one comma-separated string.
+- `venue`: journal, preprint server, or status text.
+- `year`: publication year as a number.
+- `url`: optional link. DOI links should be full URLs, such as `https://doi.org/...`.
+- `coFirstAuthors`: optional author names that receive a co-first marker.
+- `correspondingAuthors`: optional author names that receive a corresponding-author marker.
+- `preprint`: set `true` to show the preprint label.
+- `highlighted`: set `true` to include the paper in the highlighted publications section on `/publications`.
+
 Notes:
 
-- Use `url` for the publication link. DOI links should be written as full URLs, for example `https://doi.org/10.xxxx/example`.
-- `preprint: true` shows a preprint label.
-- `highlighted: true` makes the paper appear in the highlighted publications section.
-- `coFirstAuthors` and `correspondingAuthors` are optional arrays.
-- Lab member names are bolded automatically on the Publications page and homepage spotlight if their names match entries in `team.ts`.
+- Keep recent papers near the top if you want them to appear first.
+- Lab member names are bolded when the author string includes a name from `team.ts`.
+- The highlighted publications section has a custom priority list in `app/publications/page.tsx`. New highlighted papers still show, but edit that priority list if you need a specific highlighted order.
 
-## Update The Homepage Paper Spotlight
-
-Edit:
-
-```text
-lib/content/home.ts
-```
-
-The current spotlight uses:
-
-```ts
-publication: publications[0]
-```
-
-This means it uses the first publication in `publications.ts`.
-
-To spotlight a different paper, either reorder `publications.ts`, or select it explicitly:
-
-```ts
-publication: publications.find((paper) => paper.title === "Paper title here") ?? publications[0]
-```
-
-To update the figure:
-
-1. Add the image file to `public/images/`.
-2. Update `figure.image`.
-3. Update `figure.alt`.
-
-Example:
-
-```ts
-figure: {
-  image: "/images/spotlight_paper.png",
-  alt: "Representative figure for the latest paper spotlight."
-}
-```
-
-The spotlight figure can be a PNG or SVG. The homepage layout fits the whole image inside the figure area.
-
-## Add A New Team Member
+## Team Members
 
 Edit:
 
@@ -121,7 +157,7 @@ Edit:
 lib/content/team.ts
 ```
 
-Add a new object to the `members` array:
+Add a member object:
 
 ```ts
 {
@@ -131,7 +167,7 @@ Add a new object to the `members` array:
   group: "Graduate Students",
   bio: "Short research description.",
   email: "first.last@example.com",
-  image: "/images/person-photo.png",
+  image: "/images/profiles/person-photo.png",
   links: [
     { label: "Google Scholar", href: "https://scholar.google.com/" },
     { label: "GitHub", href: "https://github.com/" }
@@ -147,13 +183,14 @@ Allowed `group` values are defined in `types.ts`:
 
 Notes:
 
-- `chineseName`, `image`, and `links` are optional.
+- `chineseName`, `email`, `image`, and `links` are optional.
 - If no image is provided, the site shows initials.
-- Email is shown as its own line on team cards.
-- To add a profile photo, put it in `public/images/` and use `image: "/images/file-name.png"`.
+- Team profile links are limited to the first 4 links on the team page.
+- The PI card is generated from `profile.ts` and inserted into `team.ts`.
 - The "Open Positions" card is also in `team.ts`; edit or remove it there.
+- Publications and homepage featured papers automatically bold names that match non-open-position members.
 
-## Add Alumni
+## Alumni
 
 Edit:
 
@@ -167,22 +204,44 @@ Set a member's group to:
 group: "Alumni"
 ```
 
+The Alumni section is hidden when empty. It appears automatically once at least one member has `group: "Alumni"`.
+
+## PI Profile
+
+Edit:
+
+```text
+lib/content/profile.ts
+```
+
+This controls `/shipei-xing` and also feeds the PI entry on `/team`.
+
+Common fields:
+
+- `name`, `chineseName`, `title`, `current`, `email`, `image`
+- `links`: profile links shown near the email
+- `experience`: appointment entries
+- `education`: education entries
+- `honors`: honors and awards
+- `service`: service entries
+
+For `experience` and `education`, each entry can include `detailLinks`. The page links matching text inside `detail`.
+
 Example:
 
 ```ts
 {
-  name: "First Last",
-  role: "Former Research Assistant",
-  group: "Alumni",
-  bio: "Current position or short note.",
-  email: "first.last@example.com"
+  period: "2023.8 - Present",
+  title: "Postdoctoral Scholar",
+  institution: "University of California, San Diego",
+  detail: "Supervisor: Pieter C. Dorrestein",
+  detailLinks: [
+    { label: "Pieter C. Dorrestein", href: "https://dorresteinlab.ucsd.edu" }
+  ]
 }
 ```
 
-The Alumni section is hidden when empty. It appears automatically once at least one member has `group: "Alumni"`.
-
-
-## Add A News Item
+## News
 
 Edit:
 
@@ -190,7 +249,7 @@ Edit:
 lib/content/news.ts
 ```
 
-Add a new item to `newsItems`:
+Add a news item:
 
 ```ts
 {
@@ -200,7 +259,7 @@ Add a new item to `newsItems`:
   summary: "One or two sentence summary.",
   category: "Publication",
   link: "/publications",
-  image: "/images/news-image.png",
+  image: "/images/news/news-image.png",
   imageAlt: "Short image description.",
   imageVariant: "side"
 }
@@ -218,8 +277,112 @@ Notes:
 - Use date format `YYYY-MM-DD`.
 - `link`, `image`, `imageAlt`, and `imageVariant` are optional.
 - `imageVariant` can be `"wide"` or `"side"`.
-- Homepage latest news links back to the matching item on the News page.
+- If `imageAlt` is omitted, the news title is used as the image alt text.
+- The homepage latest-news ticker cycles through `newsItems` in array order.
 
+## Research Directions
+
+Edit:
+
+```text
+lib/content/research.ts
+```
+
+The homepage and research page use:
+
+- `researchDirectionsIntro`: intro text for the research directions section.
+- `researchAreas`: the list of research direction objects.
+
+Each research area has this shape:
+
+```ts
+{
+  slug: "public-metabolomics-data-mining",
+  title: "Data Mining of Public Metabolomics Repositories",
+  shortDescription: "Short text for the homepage card.",
+  longDescription: "Longer text for the research page.",
+  methods: ["repository-scale reanalysis", "metadata harmonization"],
+  questions: ["Question one?", "Question two?"],
+  image: "/images/hero/example.png"
+}
+```
+
+Notes:
+
+- `slug` is used as the section id on `/research`.
+- `shortDescription` appears on the homepage.
+- `longDescription`, `methods`, and `questions` appear on `/research`.
+- `image` is part of the data shape, even though the current research page layout does not display it.
+
+## Contact And Join Us
+
+Edit:
+
+```text
+lib/content/contact.ts
+```
+
+This controls `/contact`.
+
+Main fields:
+
+- `institution`
+- `address`
+- `email`
+- `joinText`
+- `applicationSections`
+
+Each application section has:
+
+```ts
+{
+  title: "Postdoctoral Researchers",
+  description: "Short instruction text.",
+  materials: [
+    "Required or optional material.",
+    "Another material."
+  ]
+}
+```
+
+## Navigation
+
+Edit:
+
+```text
+lib/content/navigation.ts
+```
+
+Each item has:
+
+```ts
+{ label: "RESEARCH", href: "/research" }
+```
+
+Use internal paths that match routes under `app/`, such as `/research`, `/team`, `/publications`, `/news`, and `/contact`.
+
+## Types
+
+Edit only when the data structure needs to change:
+
+```text
+lib/content/types.ts
+```
+
+If you add a new required field to a type, update every content object that uses that type and the page/component that renders it.
+
+## What Is Not In `lib/content/`
+
+Some visual and layout settings are outside content files:
+
+| File | What To Edit There |
+| --- | --- |
+| `app/globals.css` | Theme colors, especially `--color-paper`, `--color-fudan`, `--color-sage`, and `--color-line` |
+| `app/page.tsx` | Homepage section order, hero text, hero tags, and major section spacing |
+| `components/HeroVisual.tsx` | Hero SVG artwork, node colors, icons, labels, module hover behavior, and artwork offset |
+| `components/HeroScrollAnimation.tsx` | Hero scroll animation direction, distance, scale, opacity, blur, and rotation |
+| `components/FeaturedPapersRail.tsx` | Featured papers carousel layout and controls |
+| `components/NewsTicker.tsx` | Latest-news ticker timing and layout |
 
 ## Common Checks
 

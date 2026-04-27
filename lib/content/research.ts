@@ -21,7 +21,7 @@ export const researchAreas: ResearchArea[] = [
       "How can public metabolomics data be reused for new biological and environmental questions?",
       "Which computational strategies make repository-scale discovery reliable and interpretable?"
     ],
-    image: "/images/xing-lab-informatics-hero-v4.png"
+    image: "/images/hero/xing-lab-informatics-hero-v4.png"
   },
   {
     slug: "mass-spectrometry-informatics",
@@ -40,7 +40,7 @@ export const researchAreas: ResearchArea[] = [
       "How can algorithms extract more confident structural information from mass spectra?",
       "How can informatics improve unknown metabolite annotation at scale?"
     ],
-    image: "/images/xing-lab-informatics-hero-v2.png"
+    image: "/images/hero/xing-lab-informatics-hero-v2.png"
   },
   {
     slug: "microbial-xenobiotic-metabolism",
@@ -59,6 +59,6 @@ export const researchAreas: ResearchArea[] = [
       "Which microbial transformations shape exposure, activity, and molecular fate?",
       "How can metabolomics reveal previously hidden xenobiotic products?"
     ],
-    image: "/images/xing-lab-informatics-hero-v2.png"
+    image: "/images/hero/xing-lab-informatics-hero-v2.png"
   }
 ];

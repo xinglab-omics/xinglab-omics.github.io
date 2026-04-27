@@ -51,7 +51,7 @@ export function NewsTicker({ items }: NewsTickerProps) {
 
   return (
     <section
-      className="border-y border-line bg-white"
+      className="border-b border-line bg-white"
       aria-label="Latest news"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}

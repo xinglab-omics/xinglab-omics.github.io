@@ -1,64 +1,50 @@
-import { ArrowRight, ArrowUpRight } from "lucide-react";
-import Image from "next/image";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { FeaturedPapersRail } from "@/components/FeaturedPapersRail";
+import { HeroScrollAnimation } from "@/components/HeroScrollAnimation";
 import { HeroVisual } from "@/components/HeroVisual";
 import { NewsTicker } from "@/components/NewsTicker";
 import { ResearchHighlightCard } from "@/components/ResearchHighlightCard";
-import { members, newsItems, paperSpotlight, researchAreas, researchDirectionsIntro } from "@/lib/content";
-import type { Publication } from "@/lib/content";
+import { featuredPaperSpotlights, members, newsItems, researchAreas, researchDirectionsIntro } from "@/lib/content";
 
 const heroTags = ["Mass spectrometry", "Metabolomics & Exposomics", "Bioinformatics", "Data mining", "Machine learning"];
-const latestPaper = paperSpotlight.publication;
-const labMemberNames = new Set(
-  members
-    .filter((member) => member.name !== "Open Positions")
-    .map((member) => member.name)
-);
-
-function publicationHref(publication: typeof latestPaper) {
-  if (publication.url) {
-    return publication.url;
-  }
-
-  return "/publications";
-}
-
-function authorLabels(publication: Publication, author: string) {
-  const labels = [];
-
-  if (publication.coFirstAuthors?.some((name) => author.includes(name))) {
-    labels.push("†");
-  }
-
-  if (publication.correspondingAuthors?.some((name) => author.includes(name))) {
-    labels.push("*");
-  }
-
-  return labels.join("");
-}
-
-function renderSpotlightAuthors(publication: Publication) {
-  return publication.authors.split(", ").map((author, index) => {
-    const labels = authorLabels(publication, author);
-    const isLabMember = Array.from(labMemberNames).some((name) => author.includes(name));
-
-    return (
-      <span key={`${publication.title}-${author}-${index}`}>
-        {index > 0 ? ", " : null}
-        <span className={isLabMember ? "font-semibold text-ink" : undefined}>{author}</span>
-        {labels ? <span className="ml-0.5 font-semibold text-fudan">{labels}</span> : null}
-      </span>
-    );
-  });
-}
+const labMemberNames = members
+  .filter((member) => member.name !== "Open Positions")
+  .map((member) => member.name);
 
 export default function HomePage() {
   return (
     <>
-      <section className="relative isolate min-h-[60svh] overflow-hidden border-b border-line">
-        <HeroVisual />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(247,246,242,0.94)_0%,rgba(247,246,242,0.84)_34%,rgba(247,246,242,0.32)_72%)]" />
-        <div className="relative mx-auto flex min-h-[60svh] max-w-7xl items-center px-5 pb-16 pt-10 sm:px-8">
+      <section
+        className="relative isolate min-h-[62svh] overflow-hidden border-b border-line lg:min-h-[64svh]"
+        data-hero-scroll
+      >
+        <HeroScrollAnimation />
+        <div
+          className="absolute inset-0 origin-center will-change-transform"
+          style={{
+            filter: "blur(var(--hero-art-blur, 0px))",
+            opacity: "var(--hero-art-opacity, 1)",
+            transform:
+              "translate3d(var(--hero-art-x, 0px), var(--hero-art-y, 0px), 0) scale(var(--hero-art-scale, 1)) rotate(var(--hero-art-rotate, 0deg))"
+          }}
+        >
+          <HeroVisual />
+        </div>
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(90deg, color-mix(in srgb, var(--color-paper) 94%, transparent) 0%, color-mix(in srgb, var(--color-paper) 84%, transparent) 34%, color-mix(in srgb, var(--color-paper) 32%, transparent) 72%)"
+          }}
+        />
+        <div
+          className="pointer-events-none relative mx-auto flex min-h-[62svh] max-w-7xl items-center px-5 pb-14 pt-10 will-change-transform sm:px-8 lg:min-h-[64svh]"
+          style={{
+            opacity: "var(--hero-copy-opacity, 1)",
+            transform: "translate3d(0, var(--hero-copy-y, 0px), 0)"
+          }}
+        >
           <div className="max-w-3xl">
             <h1 className="space-y-3 text-3xl font-semibold tracking-normal text-ink sm:text-4xl lg:text-5xl">
               <span className="block whitespace-nowrap">Metabolomics &</span>
@@ -68,7 +54,7 @@ export default function HomePage() {
               </span>
             </h1>
             <p className="mt-8 max-w-lg text-sm leading-6 text-muted">
-              We aim to map the full landscape of small molecules in our human bodies and understand how food, microbes, and the environment shape them.
+              We aim to map the full landscape of small molecules in our bodies, and understand how food, microbes, and the environment shape them.
             </p>
             <p lang="zh-Hans" className="font-cjk mt-3 max-w-2xl text-sm leading-4 text-muted sm:whitespace-nowrap">
               我们致力于解析人体内小分子的完整图谱，并理解食物、微生物与环境如何塑造它们。
@@ -87,49 +73,7 @@ export default function HomePage() {
 
       <NewsTicker items={newsItems} />
 
-      <section className="mx-auto max-w-7xl px-5 py-3 sm:px-8">
-        <article className="grid gap-7 rounded-lg border border-line bg-white p-5 shadow-sm sm:p-6 lg:grid-cols-[minmax(380px,1.1fr)_minmax(0,1.2fr)]">
-          <div className="flex flex-col justify-center">
-            <div className="flex items-start justify-between gap-4">
-              <p className="text-sm font-semibold uppercase tracking-normal text-fudan">Latest Paper Spotlight</p>
-              <a
-                href={publicationHref(latestPaper)}
-                className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-line bg-paper px-3 py-1.5 text-xs font-semibold text-ink transition hover:border-fudan hover:text-fudan"
-              >
-                Read paper
-                <ArrowUpRight aria-hidden="true" size={14} />
-              </a>
-            </div>
-            <h2 className="mt-3 text-2xl font-semibold tracking-normal text-ink">{latestPaper.title}</h2>
-            <p className="mt-3 text-sm font-semibold text-muted">
-              {latestPaper.venue}, {latestPaper.year}
-            </p>
-            <p className="mt-4 text-xs leading-6 text-muted">
-              {renderSpotlightAuthors(latestPaper)}
-            </p>
-            <Link
-              href="/publications"
-              className="mt-5 inline-flex w-fit items-center gap-1.5 rounded-full border border-line bg-paper px-3 py-1.5 text-xs font-semibold text-ink transition hover:border-fudan hover:text-fudan"
-            >
-              View all publications
-              <ArrowRight aria-hidden="true" size={14} />
-            </Link>
-          </div>
-          <figure
-            className="relative h-64 overflow-hidden rounded-md bg-white lg:h-auto lg:min-h-72 lg:self-stretch"
-            aria-label={paperSpotlight.figure.alt}
-          >
-            <Image
-              src={paperSpotlight.figure.image}
-              alt={paperSpotlight.figure.alt}
-              fill
-              loading="eager"
-              sizes="(min-width: 1024px) 45vw, 100vw"
-              className="object-contain"
-            />
-          </figure>
-        </article>
-      </section>
+      <FeaturedPapersRail labMemberNames={labMemberNames} spotlights={featuredPaperSpotlights} />
 
       <section className="mx-auto max-w-7xl px-5 py-3 sm:px-8">
         <article
@@ -138,7 +82,7 @@ export default function HomePage() {
           <div>
             <p className="text-sm font-semibold uppercase tracking-normal text-fudan">Now Recruiting</p>
             <p className="mt-2 text-sm leading-6 text-muted">
-              We welcome postdocs, research assistants, and motivated graduate and undergraduate students.
+              We welcome motivated students and researchers from all backgrounds to join us in exploring the metabolome and xenobiotic metabolism. Applicants with diverse experiences, perspectives, and skill sets are encouraged to apply.
             </p>
           </div>
           <Link

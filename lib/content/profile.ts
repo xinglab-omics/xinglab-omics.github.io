@@ -7,7 +7,7 @@ export const piProfile = {
   current:
     "The Xing Lab develops computational mass spectrometry approaches to discover molecules, mine public metabolomics data, and understand xenobiotic metabolism.",
   email: "philipxsp@hotmail.com",
-  image: "/images/shipei-xing-profile.png",
+  image: "/images/profiles/shipei-xing-profile.png",
   links: [
     {
       label: "Google Scholar",

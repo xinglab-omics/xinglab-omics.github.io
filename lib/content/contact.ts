@@ -16,7 +16,7 @@ export const contactInfo: ContactInfo = {
         "Include contact information for 2-3 references.",
         "Attach your curriculum vitae.",
         "Attach up to 3 representative papers or manuscripts, if available.",
-        "Attach any other materials you consider important, if applicable."
+        "(Optional) Attach any other materials you consider important."
       ]
     },
     {
@@ -26,8 +26,8 @@ export const contactInfo: ContactInfo = {
       materials: [
         "In your email, briefly describe your current program, research interests, motivation, and why you are interested in our lab.",
         "Attach your curriculum vitae.",
-        "Attach academic transcripts and English test scores, if available.",
-        "Attach representative materials such as papers, thesis work, posters, code repositories, or project reports, if available."
+        "(Optional) Attach academic transcripts and English test scores, if available.",
+        "(Optional) Attach representative materials such as papers, thesis work, posters, code repositories, or project reports, if available."
       ]
     },
     {
@@ -36,9 +36,9 @@ export const contactInfo: ContactInfo = {
         "Undergraduate students interested in research training, thesis projects, or internships are welcome to contact the lab.",
       materials: [
         "In your email, briefly describe your current year and major, research interests, and expected availability.",
-        "Attach your curriculum vitae or resume, if available.",
-        "Attach academic transcripts and English test scores, if available.",
-        "Attach representative materials such as posters, code repositories, course projects, or research reports, if available."
+        "Attach your curriculum vitae, if available.",
+        "(Optional) Attach academic transcripts and English test scores, if available.",
+        "(Optional) Attach representative materials such as posters, code repositories, course projects, or research reports, if available."
       ]
     },
     {
@@ -48,7 +48,7 @@ export const contactInfo: ContactInfo = {
       materials: [
         "In your email, briefly describe your background, relevant skills, research interests, expected start date and availability.",
         "Attach your curriculum vitae.",
-        "Attach representative materials such as papers, thesis work, posters, code repositories, or project reports, if available."
+        "(Optional) Attach representative materials such as papers, thesis work, posters, code repositories, or project reports, if available."
       ]
     },
   ]

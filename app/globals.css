@@ -2,12 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Background options for --color-paper:
+   #f7f6f2 warm paper, #fbfaf7 porcelain, #f6f8f7 lab mist,
+   #f3f7f4 pale sage, #f4f8fb cool blue, #f7f7f4 soft neutral
+*/
+
 :root {
   color-scheme: light;
-  --color-paper: #f7f6f2;
+  --color-paper: #f6f8f7;
   --color-ink: #20201d;
   --color-muted: #686862;
-  --color-line: #dedbd2;
+  --color-line: color-mix(in srgb, var(--color-paper) 84%, var(--color-sage));
   --color-fudan: #8f1d22;
   --color-sage: #58766c;
   --shadow-soft: 0 16px 40px rgba(32, 32, 29, 0.08);

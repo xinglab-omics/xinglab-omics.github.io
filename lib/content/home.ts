@@ -1,15 +1,20 @@
 import { publications } from "./publications";
 import type { PaperSpotlight } from "./types";
 
-const spotlightPublicationTitle = "Navigating the conjugated metabolome";
-const spotlightPublication =
-  publications.find((publication) => publication.title.toLowerCase() === spotlightPublicationTitle.toLowerCase()) ??
-  publications[0];
-
-export const paperSpotlight: PaperSpotlight = {
-  publication: spotlightPublication,
-  figure: {
-    image: "/images/spotlight_paper.png",
-    alt: "Representative figure for the latest paper spotlight."
+const featuredPapers = [
+  {
+    title: "Navigating the conjugated metabolome",
+    image: "/images/papers/2026_conjugate.png"
+  },
+  {
+    title: "BUDDY: molecular formula discovery via bottom-up MS/MS interrogation",
+    image: "/images/papers/2023_buddy.png"
   }
-};
+];
+
+export const featuredPaperSpotlights: PaperSpotlight[] = featuredPapers.map((featuredPaper) => ({
+  publication:
+    publications.find((publication) => publication.title.toLowerCase() === featuredPaper.title.toLowerCase()) ??
+    publications[0],
+  image: featuredPaper.image
+}));

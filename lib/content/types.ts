@@ -54,10 +54,7 @@ export type Publication = {
 
 export type PaperSpotlight = {
   publication: Publication;
-  figure: {
-    image: string;
-    alt: string;
-  };
+  image: string;
 };
 
 export type NewsItem = {
