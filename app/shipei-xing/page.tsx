@@ -4,19 +4,63 @@ import { PersonAvatar } from "@/components/PersonAvatar";
 import { piProfile } from "@/lib/content";
 import type { ProfileEntry } from "@/lib/content";
 
+function renderLinkedText(text: string, links: ProfileEntry["detailLinks"] = []) {
+  if (links.length === 0) {
+    return text;
+  }
+
+  const content = [];
+  let cursor = 0;
+
+  links.forEach((link) => {
+    const index = text.indexOf(link.label, cursor);
+
+    if (index === -1) {
+      return;
+    }
+
+    if (index > cursor) {
+      content.push(text.slice(cursor, index));
+    }
+
+    content.push(
+      <a key={`${link.href}-${index}`} href={link.href} className="font-semibold text-fudan transition hover:text-ink">
+        {link.label}
+      </a>
+    );
+    cursor = index + link.label.length;
+  });
+
+  if (cursor < text.length) {
+    content.push(text.slice(cursor));
+  }
+
+  return content;
+}
+
 function renderEntryDetails(entry: ProfileEntry) {
-  return [entry.institution, entry.detail].filter(Boolean).join(". ");
+  if (!entry.detail) {
+    return entry.institution;
+  }
+
+  return (
+    <>
+      <span className="block">{entry.institution}</span>
+      <span className="block">{renderLinkedText(entry.detail, entry.detailLinks)}</span>
+    </>
+  );
 }
 
 function renderServiceItem(item: string) {
-  const reviewerPrefix = "Reviewer: ";
+  const servicePrefixes = ["Reviewer: ", "Editorial Board Member: "];
+  const prefix = servicePrefixes.find((servicePrefix) => item.startsWith(servicePrefix));
 
-  if (!item.startsWith(reviewerPrefix)) {
+  if (!prefix) {
     return item;
   }
 
   const journals = item
-    .slice(reviewerPrefix.length)
+    .slice(prefix.length)
     .replace(", and ", ", ")
     .split(", ")
     .map((journal) => journal.trim())
@@ -24,10 +68,10 @@ function renderServiceItem(item: string) {
 
   return (
     <>
-      Reviewer:
-      <span className="ml-3">
+      <span className="block">{prefix.trim()}</span>
+      <span className="mt-1 block pl-4">
         {journals.map((journal, index) => (
-          <span key={journal}>
+          <span key={journal} className="inline-block whitespace-nowrap">
             {journal}
             {index < journals.length - 1 ? <span className="mx-3 text-line">|</span> : null}
           </span>
@@ -94,7 +138,7 @@ export default function ShipeiXingPage() {
           <div className="mt-5 grid gap-4">
             {experienceAndEducation.map((entry) => (
               <article key={`${entry.period}-${entry.institution}`} className="border-l-2 border-fudan pl-4">
-                <p className="text-sm font-semibold text-fudan">
+                <p className="text-sm font-semibold text-ink">
                   {entry.period}
                   <span className="mx-2 text-line">|</span>
                   <span className="text-ink">{entry.title}</span>
@@ -106,12 +150,19 @@ export default function ShipeiXingPage() {
         </section>
 
         <section className="rounded-lg border border-line bg-white p-6 shadow-sm sm:p-8">
-          <h2 className="text-2xl font-semibold tracking-normal text-ink">Selected Honors</h2>
+          <h2 className="text-2xl font-semibold tracking-normal text-ink">Selected Honors & Awards</h2>
           <ul className="mt-5 grid gap-3 text-sm leading-6 text-muted">
-            {piProfile.honors.slice(0, 6).map((honor) => (
-              <li key={honor} className="flex gap-2">
-                <span className="mt-2 size-1.5 shrink-0 rounded-full bg-fudan" />
-                <span>{honor}</span>
+            {piProfile.honors.map((honor) => (
+              <li key={`${honor.year}-${honor.title}`} className="grid grid-cols-[4rem_minmax(0,1fr)] gap-3">
+                <span className="font-semibold tabular-nums text-fudan">{honor.year}</span>
+                <span className={honor.highlight ? "font-semibold text-ink" : undefined}>
+                  <span className="block">{honor.title}</span>
+                  {honor.chineseTitle ? (
+                    <span lang="zh-Hans" className="font-cjk mt-1 block">
+                      {honor.chineseTitle}
+                    </span>
+                  ) : null}
+                </span>
               </li>
             ))}
           </ul>

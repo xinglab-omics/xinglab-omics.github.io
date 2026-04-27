@@ -1,7 +1,8 @@
 export type ResearchArea = {
   slug: string;
   title: string;
-  summary: string;
+  shortDescription: string;
+  longDescription: string;
   methods: string[];
   questions: string[];
   image: string;
@@ -13,11 +14,19 @@ export type ProfileEntry = {
   institution: string;
   location?: string;
   detail?: string;
+  detailLinks?: ProfileLink[];
 };
 
 export type ProfileLink = {
   label: string;
   href: string;
+};
+
+export type ProfileHonor = {
+  year: string;
+  title: string;
+  chineseTitle?: string;
+  highlight?: boolean;
 };
 
 export type Member = {
@@ -36,7 +45,6 @@ export type Publication = {
   authors: string;
   venue: string;
   year: number;
-  doi?: string;
   url?: string;
   coFirstAuthors?: string[];
   correspondingAuthors?: string[];

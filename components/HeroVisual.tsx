@@ -87,7 +87,7 @@ export function HeroVisual() {
 
       {/* Data mining database icon */}
       <g opacity="0.90">
-        <g transform="translate(1035 135)">
+        <g transform="translate(1035 140)">
           <g transform="scale(0.35 0.40)">
             <path
               d="M10 18v18c0 7.7 21.5 14 48 14s48-6.3 48-14V18c0 7.7-21.5 14-48 14S10 25.7 10 18Z"
@@ -107,7 +107,7 @@ export function HeroVisual() {
       </g>
 
       <g opacity="0.90">
-        <g transform="translate(995 135)">
+        <g transform="translate(995 140)">
           <g transform="scale(0.35 0.40)">
             <path
               d="M10 18v18c0 7.7 21.5 14 48 14s48-6.3 48-14V18c0 7.7-21.5 14-48 14S10 25.7 10 18Z"
@@ -127,7 +127,7 @@ export function HeroVisual() {
       </g>
 
       <g opacity="0.90">
-        <g transform="translate(1015 150)">
+        <g transform="translate(1015 156)">
           <g transform="scale(0.35 0.40)">
             <path
               d="M10 18v18c0 7.7 21.5 14 48 14s48-6.3 48-14V18c0 7.7-21.5 14-48 14S10 25.7 10 18Z"
@@ -152,7 +152,7 @@ export function HeroVisual() {
           fontSize="10"
           fill="#000000"
           fontFamily="ui-sans-serif,system-ui,sans-serif"
-          letterSpacing="0.08em"
+          letterSpacing="0"
           textAnchor="middle"
         >
           <tspan x="1038" dy="0">Repository-scale</tspan>
@@ -192,7 +192,7 @@ export function HeroVisual() {
         x="1208" y="275"
         fontSize="10" fill="#000000"
         fontFamily="ui-sans-serif,system-ui,sans-serif"
-        letterSpacing="0.08em" textAnchor="middle"
+        letterSpacing="0" textAnchor="middle"
       >
         LC-MS/MS
       </text>
@@ -240,7 +240,7 @@ export function HeroVisual() {
         x={specX + 2 * stepX} y={specY + 10}
         fontSize="10" fill="#000000"
         fontFamily="ui-sans-serif,system-ui,sans-serif"
-        letterSpacing="0.08em" textAnchor="middle"
+        letterSpacing="0" textAnchor="middle"
       >
         MS/MS spectra
       </text>

@@ -58,7 +58,7 @@ Add a new publication object near the top of the `publications` array if it is r
   authors: "Author One, Author Two, Author Three",
   venue: "Journal Name",
   year: 20xx,
-  doi: "10.xxxx/example",
+  url: "https://doi.org/10.xxxx/example",
   coFirstAuthors: ["Author One", "Author Two"],
   correspondingAuthors: ["Author Three"],
   preprint: false,
@@ -68,7 +68,7 @@ Add a new publication object near the top of the `publications` array if it is r
 
 Notes:
 
-- Use either `doi` or `url`. If both exist, the page prefers the DOI link where implemented.
+- Use `url` for the publication link. DOI links should be written as full URLs, for example `https://doi.org/10.xxxx/example`.
 - `preprint: true` shows a preprint label.
 - `highlighted: true` makes the paper appear in the highlighted publications section.
 - `coFirstAuthors` and `correspondingAuthors` are optional arrays.

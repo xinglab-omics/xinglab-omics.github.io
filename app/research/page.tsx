@@ -1,16 +1,20 @@
 import { PageIntro } from "@/components/PageIntro";
-import { researchAreas } from "@/lib/content";
+import { researchAreas, researchDirectionsIntro } from "@/lib/content";
 
 export default function ResearchPage() {
   return (
     <>
       <PageIntro
         eyebrow="Research"
-        title="Mass spectrometry informatics for molecular discovery"
-        description="The lab is organized around three connected directions: mining public metabolomics repositories, building mass spectrometry informatics methods, and studying microbial metabolism of xenobiotics."
+        title="Metabolomics & Xenobiotic Metabolism"
+        description="We aim to map the small molecules in our bodies and understand how food, microbes, and the environment shape them."
       />
 
       <section className="grid gap-4 px-5 py-10 sm:px-8 lg:py-14">
+        <div className="mx-auto w-full max-w-7xl">
+          <p className="text-base leading-8 text-muted">{researchDirectionsIntro}</p>
+        </div>
+
         {researchAreas.map((area, index) => (
           <article
             key={area.slug}
@@ -23,7 +27,7 @@ export default function ResearchPage() {
                 <h2 className="mt-3 text-3xl font-semibold tracking-normal text-ink sm:text-4xl">
                   {area.title}
                 </h2>
-                <p className="mt-4 text-base leading-8 text-muted">{area.summary}</p>
+                <p className="mt-4 text-base leading-8 text-muted">{area.longDescription}</p>
               </div>
 
               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-1">

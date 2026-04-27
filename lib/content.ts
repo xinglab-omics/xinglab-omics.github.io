@@ -11,7 +11,7 @@ export type {
 
 export { navigation } from "./content/navigation";
 export { piProfile } from "./content/profile";
-export { researchAreas } from "./content/research";
+export { researchAreas, researchDirectionsIntro } from "./content/research";
 export { members } from "./content/team";
 export { publications } from "./content/publications";
 export { paperSpotlight } from "./content/home";

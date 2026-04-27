@@ -63,10 +63,6 @@ function publicationHref(publication: Publication) {
     return publication.url;
   }
 
-  if (publication.doi) {
-    return `https://doi.org/${publication.doi}`;
-  }
-
   return `#${publicationId(publication)}`;
 }
 
@@ -120,11 +116,11 @@ export default function PublicationsPage() {
     <>
       <PageIntro
         eyebrow="Publications"
-        title="Selected publications"
+        title="All publications"
         description={
           googleScholarLink ? (
             <>
-              For full publication list, please go to{" "}
+              For citation metrics and profile updates, please see{" "}
               <a href={googleScholarLink.href} className="font-semibold text-fudan transition hover:text-ink">
                 Shipei Xing&apos;s Google Scholar
               </a>
@@ -201,57 +197,53 @@ export default function PublicationsPage() {
             </section>
           ) : null}
 
-          <div className="mb-5 flex items-center gap-4">
-            <div className="h-px flex-1 bg-line" />
-            <h2 className="text-sm font-semibold uppercase tracking-normal text-muted">Selected publications</h2>
-            <div className="h-px flex-1 bg-line" />
-          </div>
-
           {publications.length > 0 ? (
-            <div className="grid gap-4">
-              {publications.map((publication) => {
-                const isFirstInYear = firstPublicationByYear.get(publication.year) === publication.title;
+            <section className="scroll-mt-28 rounded-lg border border-line bg-white p-5 shadow-sm">
+              <h2 className="text-xl font-semibold tracking-normal text-ink">All publications</h2>
+              <ol className="mt-4 divide-y divide-line">
+                {publications.map((publication, index) => {
+                  const isFirstInYear = firstPublicationByYear.get(publication.year) === publication.title;
+                  const publicationNumber = publications.length - index;
 
-                return (
-                  <div
-                    key={`${publication.year}-${publication.title}`}
-                    id={isFirstInYear ? `year-${publication.year}` : undefined}
-                    className="scroll-mt-28"
-                  >
-                    <article
-                      id={publicationId(publication)}
-                      className="scroll-mt-28 rounded-lg border border-line bg-white p-5 shadow-sm"
+                  return (
+                    <li
+                      key={`${publication.year}-${publication.title}`}
+                      id={isFirstInYear ? `year-${publication.year}` : undefined}
+                      className="grid scroll-mt-28 grid-cols-[2.75rem_minmax(0,1fr)] gap-3 py-4 first:pt-0 last:pb-0"
                     >
-                      <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-                        <div>
-                          <h2 className="text-sm leading-5 text-fudan">
-                            {publication.url || publication.doi ? (
-                              <a href={publicationHref(publication)} className="transition hover:text-ink">
-                                {publication.title}
-                              </a>
-                            ) : (
-                              publication.title
-                            )}
-                          </h2>
-                          <p className="mt-1.5 text-sm leading-5 text-muted">{renderAuthors(publication)}</p>
-                          <p className="mt-1 text-sm leading-5 text-muted">{renderVenue(publication)}</p>
+                      <span className="text-sm font-semibold tabular-nums text-fudan">{publicationNumber}.</span>
+                      <article id={publicationId(publication)} className="scroll-mt-28">
+                        <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                          <div>
+                            <h2 className="text-sm leading-5 text-fudan">
+                            {publication.url ? (
+                                <a href={publicationHref(publication)} className="transition hover:text-ink">
+                                  {publication.title}
+                                </a>
+                              ) : (
+                                publication.title
+                              )}
+                            </h2>
+                            <p className="mt-1.5 text-sm leading-5 text-muted">{renderAuthors(publication)}</p>
+                            <p className="mt-1 text-sm leading-5 text-muted">{renderVenue(publication)}</p>
+                          </div>
+                          {isPreprint(publication) ? (
+                            <span className="w-fit shrink-0 rounded-full bg-paper px-3 py-1 text-xs font-semibold text-fudan">
+                              Preprint
+                            </span>
+                          ) : null}
                         </div>
-                        {isPreprint(publication) ? (
-                          <span className="w-fit shrink-0 rounded-full bg-paper px-3 py-1 text-xs font-semibold text-fudan">
-                            Preprint
-                          </span>
-                        ) : null}
-                      </div>
-                    </article>
-                  </div>
-                );
-              })}
-            </div>
+                      </article>
+                    </li>
+                  );
+                })}
+              </ol>
+            </section>
           ) : (
             <div className="rounded-lg border border-line bg-white p-8 text-center shadow-sm">
               <h2 className="text-2xl font-semibold tracking-normal text-ink">Publications coming soon</h2>
               <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-muted">
-                This page is ready for journal articles, preprints, and selected work once the lab record is added.
+                This page is ready for journal articles and preprints once the publication record is added.
               </p>
             </div>
           )}

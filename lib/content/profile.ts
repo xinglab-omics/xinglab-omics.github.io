@@ -1,4 +1,4 @@
-import type { ProfileEntry } from "./types";
+import type { ProfileEntry, ProfileHonor } from "./types";
 
 export const piProfile = {
   name: "Shipei Xing",
@@ -27,31 +27,62 @@ export const piProfile = {
       period: "2023.8 - Present",
       title: "Postdoctoral Scholar",
       institution: "University of California, San Diego",
-      detail: "Supervisor: Pieter C. Dorrestein"
+      detail: "Supervisor: Pieter C. Dorrestein (Founder of the GNPS ecosystem & Molecular networking)",
+      detailLinks: [
+        { label: "Pieter C. Dorrestein", href: "https://dorresteinlab.ucsd.edu" },
+        { label: "GNPS ecosystem", href: "https://gnps.ucsd.edu" }
+      ]
     }
   ] satisfies ProfileEntry[],
   education: [
     {
       period: "2019.1 - 2023.4",
       title: "PhD in Chemistry",
-      institution: "University of British Columbia",
-      detail: "Supervisor: Tao Huan"
+      institution: "The University of British Columbia",
+      detail: "Supervisor: Tao Huan",
+      detailLinks: [{ label: "Tao Huan", href: "https://huan.chem.ubc.ca/" }]
     },
     {
       period: "2014.9 - 2018.6",
       title: "BSc in Chemistry, Chu Kochen Honors College",
-      institution: "Zhejiang University"
+      institution: "Zhejiang University",
+      detail: "Supervisor: Zhan Lu, Feihe Huang"
     }
   ] satisfies ProfileEntry[],
   honors: [
-    "Canadian Society of Mass Spectrometry Lake Louise Travel Award, 2022",
-    "Affiliated Fellowship, University of British Columbia, 2022-2023",
-    "Pei-Huang Tung and Tan-Wen Tung Graduate Fellowship, University of British Columbia, 2022",
-    "Gladys Estella Laird Research Fellowship, University of British Columbia, 2022",
-    "Outstanding Thesis Award, Zhejiang University, 2018"
-  ],
+    {
+      year: "2025",
+      title: "Excellent Young Scientists Fund (Overseas), National Natural Science Foundation of China",
+      chineseTitle: "国家高层次青年人才（海外），国家自然科学基金委员会",
+      highlight: true
+    },
+    {
+      year: "2022",
+      title: "Canadian Society of Mass Spectrometry Lake Louise Travel Award (sponsored by Thermo)"
+    },
+    {
+      year: "2022",
+      title: "Pei-Huang Tung and Tan-Wen Tung Graduate Fellowship, University of British Columbia"
+    },
+    {
+      year: "2022",
+      title: "Gladys Estella Laird Research Fellowship, University of British Columbia"
+    },
+    {
+      year: "2022",
+      title: "C L Wang Memorial Scholarship, University of British Columbia"
+    },
+    {
+      year: "2021",
+      title: "Sandra Morris and Richard Tillyer Scholarship in Chemistry, University of British Columbia"
+    },
+    {
+      year: "2018",
+      title: "Outstanding Thesis Award, Zhejiang University"
+    }
+  ] satisfies ProfileHonor[],
   service: [
-    "Reviewer: Nature, Cell, Nature Microbiology, Nature Machine Intelligence, Nature Communications, Analytical Chemistry, BMC Bioinformatics, and Journal of Cheminformatics",
+    "Reviewer: Nature, Cell, Nature Machine Intelligence, Nature Microbiology, Nature Communications, Analytical Chemistry, Environmental Pollution, BMC Bioinformatics, Analytica Chimica Acta, Journal of Cheminformatics, etc.",
     "Editorial Board Member: BMC Chemistry"
   ]
 };
