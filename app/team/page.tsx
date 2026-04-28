@@ -109,9 +109,9 @@ export default function MembersPage() {
               <section key={group}>
                 <h2 className="text-2xl font-semibold tracking-normal text-ink">{group}</h2>
                 <div className="mt-5 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-                  {groupMembers.map((member) => (
+                  {groupMembers.map((member, index) => (
                     <article
-                      key={member.name}
+                      key={`${member.group}-${member.name}-${index}`}
                       className="flex min-h-72 flex-col rounded-lg border border-line bg-white p-6 shadow-sm"
                     >
                       <div className="flex items-center gap-4">

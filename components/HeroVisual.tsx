@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { CSSProperties, PointerEvent } from "react";
+import { withBasePath } from "@/lib/site-paths";
 
 const nodes = [
   // Cluster A: fudan red
@@ -310,7 +311,7 @@ export function HeroVisual() {
       >
         <rect x="700" y="410" width="335" height="128" rx="10" fill="transparent" />
       <g opacity="0.99">
-        <image href="/images/hero/tomatidine.svg" x="730" y="430" width="100" />
+        <image href={withBasePath("/images/hero/tomatidine.svg")} x="730" y="430" width="100" />
         <line
           x1="830"
           y1="460"
@@ -331,7 +332,7 @@ export function HeroVisual() {
           strokeLinecap="round"
           markerEnd="url(#hero-reaction-arrow)"
         />
-        <image href="/images/hero/tomatidine-PEA.svg" x="880" y="433" width="135" />
+        <image href={withBasePath("/images/hero/tomatidine-PEA.svg")} x="880" y="433" width="135" />
       </g>
       <text
         x="885"
@@ -353,7 +354,7 @@ export function HeroVisual() {
         onPointerLeave={handleModuleLeave}
       >
         <rect x="1126" y="148" width="178" height="140" rx="10" fill="transparent" />
-        <image href="/images/hero/LCMS.svg" x="1140" y="170" width="140" opacity="1.0" />
+        <image href={withBasePath("/images/hero/LCMS.svg")} x="1140" y="170" width="140" opacity="1.0" />
         <text
           x="1208" y="280"
           fontSize="10" fill="#000000"

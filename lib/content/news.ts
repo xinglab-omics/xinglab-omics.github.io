@@ -9,8 +9,8 @@ export const newsItems: NewsItem[] = [
       "The lab will build computational mass spectrometry workflows for public metabolomics data mining, molecular annotation, and microbial xenobiotic metabolism.",
     category: "Lab",
     link: "/research",
-    image: "/images/hero/xing-lab-informatics-hero-v4.png",
-    imageAlt: "Mass spectrometry informatics workspace.",
+    image: "/images/hero/LCMS.svg",
+    imageAlt: "LC-MS/MS instrument illustration.",
     imageVariant: "wide"
   },
   {
@@ -21,8 +21,8 @@ export const newsItems: NewsItem[] = [
       "Prospective lab members interested in metabolomics, bioinformatics, computational chemistry, and data science are encouraged to get in touch.",
     category: "Opening",
     link: "/contact",
-    image: "/images/hero/xing-lab-hero.png",
-    imageAlt: "Analytical chemistry laboratory with mass spectrometry instrumentation.",
+    image: "/images/hero/tomatidine.svg",
+    imageAlt: "Tomatidine molecule illustration.",
     imageVariant: "side"
   },
   {

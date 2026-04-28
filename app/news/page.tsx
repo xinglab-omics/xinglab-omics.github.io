@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { PageIntro } from "@/components/PageIntro";
 import { newsItems } from "@/lib/content";
+import { withBasePath } from "@/lib/site-paths";
 
 function formatDate(date: string) {
   return new Intl.DateTimeFormat("en", {
@@ -36,7 +37,7 @@ export default function NewsPage() {
                 {image && item.imageVariant !== "side" ? (
                   <div className="relative aspect-[16/7] border-b border-line">
                     <Image
-                      src={image}
+                      src={withBasePath(image)}
                       alt={item.imageAlt ?? item.title}
                       fill
                       sizes="(min-width: 1024px) 896px, 100vw"
@@ -48,7 +49,7 @@ export default function NewsPage() {
                 {hasSideImage && image ? (
                   <div className="relative min-h-56 border-b border-line md:border-b-0 md:border-r">
                     <Image
-                      src={image}
+                      src={withBasePath(image)}
                       alt={item.imageAlt ?? item.title}
                       fill
                       sizes="(min-width: 768px) 220px, 100vw"
@@ -70,7 +71,7 @@ export default function NewsPage() {
                   <p className="mt-4 text-sm leading-7 text-muted">{item.summary}</p>
                   {item.link ? (
                     <a
-                      href={item.link}
+                      href={withBasePath(item.link)}
                       className="mt-4 inline-flex text-sm font-semibold text-fudan transition hover:text-ink"
                     >
                       Read more

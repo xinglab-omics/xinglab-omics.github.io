@@ -6,6 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { navigation } from "@/lib/content";
+import { withBasePath, withoutBasePath } from "@/lib/site-paths";
 
 function isActivePath(pathname: string, href: string) {
   if (href === "/") {
@@ -16,7 +17,7 @@ function isActivePath(pathname: string, href: string) {
 }
 
 export function SiteHeader() {
-  const pathname = usePathname();
+  const pathname = withoutBasePath(usePathname());
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -28,7 +29,7 @@ export function SiteHeader() {
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 sm:px-8">
         <Link href="/" className="flex min-w-0 items-center gap-3" aria-label="Xing Lab home">
           <Image
-            src="/images/branding/fudan.png"
+            src={withBasePath("/images/branding/fudan.png")}
             alt="Fudan University"
             width={56}
             height={56}

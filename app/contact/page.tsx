@@ -10,7 +10,7 @@ export default function ContactPage() {
       <PageIntro
         eyebrow="Join Us"
         title="Connect with Xing Lab"
-        description="We welcome conversations with motivated students and researchers interested in mass spectrometry and/or metabolomics."
+        description="We welcome conversations with motivated students and researchers from diverse backgrounds."
       />
 
       <section className="mx-auto grid max-w-5xl gap-12 px-5 py-8 sm:px-8 lg:py-8">

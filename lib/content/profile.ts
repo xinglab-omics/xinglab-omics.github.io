@@ -53,7 +53,7 @@ export const piProfile = {
     {
       year: "2025",
       title: "Excellent Young Scientists Fund (Overseas), National Natural Science Foundation of China",
-      chineseTitle: "国家高层次青年人才（海外），国家自然科学基金委员会",
+      chineseTitle: "国家优秀青年科学基金项目（海外），国家自然科学基金委员会",
       highlight: true
     },
     {

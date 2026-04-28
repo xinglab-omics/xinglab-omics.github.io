@@ -38,7 +38,7 @@ export function NewsTicker({ items }: NewsTickerProps) {
 
     const timer = window.setInterval(() => {
       setActiveIndex((current) => (current + 1) % items.length);
-    }, 4800);
+    }, 4000);
 
     return () => window.clearInterval(timer);
   }, [items.length, paused, reduceMotion]);

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { withBasePath } from "@/lib/site-paths";
 
 type PersonAvatarProps = {
   name: string;
@@ -30,7 +31,7 @@ export function PersonAvatar({ name, image, size = "md" }: PersonAvatarProps) {
     >
       {image ? (
         <Image
-          src={image}
+          src={withBasePath(image)}
           alt={`${name} profile photo`}
           fill
           sizes={size === "xl" ? "128px" : size === "lg" ? "96px" : "64px"}

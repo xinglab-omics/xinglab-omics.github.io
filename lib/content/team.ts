@@ -12,95 +12,46 @@ export const members: Member[] = [
     image: piProfile.image
   },
   {
-    name: "Lin Chen",
-    chineseName: "陈琳",
+    name: "FIRST LAST",
     role: "Postdoctoral Researcher",
     group: "Postdocs",
-    bio:
-      "Placeholder profile for a postdoc working on repository-scale metabolomics data mining and reusable informatics workflows.",
-    email: "lin.chen@example.com",
-    links: [
-      { label: "Google Scholar", href: "https://scholar.google.com/" },
-      { label: "ORCID", href: "https://orcid.org/" }
-    ]
+    bio: "Profile details will be added after confirmation."
   },
   {
-    name: "Maya Zhang",
-    chineseName: "张雅",
+    name: "FIRST LAST",
     role: "Postdoctoral Researcher",
     group: "Postdocs",
-    bio:
-      "Placeholder profile for a postdoc developing AI-assisted MS/MS annotation and molecular network interpretation methods.",
-    email: "maya.zhang@example.com",
-    links: [
-      { label: "Google Scholar", href: "https://scholar.google.com/" },
-      { label: "GitHub", href: "https://github.com/" }
-    ]
+    bio: "Profile details will be added after confirmation."
   },
   {
-    name: "Aaron Liu",
-    chineseName: "刘安然",
+    name: "FIRST LAST",
     role: "Postdoctoral Researcher",
     group: "Postdocs",
-    bio:
-      "Placeholder profile for a postdoc studying microbial transformation of xenobiotics through computational metabolomics.",
-    email: "aaron.liu@example.com",
-    links: [
-      { label: "Google Scholar", href: "https://scholar.google.com/" },
-      { label: "ORCID", href: "https://orcid.org/" }
-    ]
+    bio: "Profile details will be added after confirmation."
   },
   {
-    name: "Yue Wang",
-    chineseName: "王悦",
+    name: "FIRST LAST",
     role: "PhD Student",
     group: "Graduate Students",
-    bio:
-      "Placeholder profile for a graduate student interested in public metabolomics data mining and biological metadata curation.",
-    email: "yue.wang@example.com",
-    links: [
-      { label: "Google Scholar", href: "https://scholar.google.com/" },
-      { label: "GitHub", href: "https://github.com/" }
-    ]
+    bio: "Profile details will be added after confirmation."
   },
   {
-    name: "Ke Li",
-    chineseName: "李可",
+    name: "FIRST LAST",
     role: "PhD Student",
     group: "Graduate Students",
-    bio:
-      "Placeholder profile for a graduate student building scalable tools for spectral search, molecular formula discovery, and annotation confidence.",
-    email: "ke.li@example.com",
-    links: [
-      { label: "Google Scholar", href: "https://scholar.google.com/" },
-      { label: "ORCID", href: "https://orcid.org/" }
-    ]
+    bio: "Profile details will be added after confirmation."
   },
   {
-    name: "Minghao Chen",
-    chineseName: "陈明浩",
+    name: "FIRST LAST",
     role: "Master Student",
     group: "Graduate Students",
-    bio:
-      "Placeholder profile for a graduate student exploring AI models for MS/MS spectra, molecule structures, and metabolomics pattern recognition.",
-    email: "minghao.chen@example.com",
-    links: [
-      { label: "Google Scholar", href: "https://scholar.google.com/" },
-      { label: "GitHub", href: "https://github.com/" }
-    ]
+    bio: "Profile details will be added after confirmation."
   },
   {
-    name: "Rui Zhao",
-    chineseName: "赵睿",
+    name: "FIRST LAST",
     role: "Master Student",
     group: "Graduate Students",
-    bio:
-      "Placeholder profile for a graduate student studying microbial xenobiotic metabolism with mass spectrometry informatics.",
-    email: "rui.zhao@example.com",
-    links: [
-      { label: "Google Scholar", href: "https://scholar.google.com/" },
-      { label: "ORCID", href: "https://orcid.org/" }
-    ]
+    bio: "Profile details will be added after confirmation."
   },
   {
     name: "Open Positions",
