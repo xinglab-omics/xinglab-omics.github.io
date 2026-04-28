@@ -31,6 +31,16 @@ npm run typecheck
 npm run build
 ```
 
+## Publishing
+
+This repository is configured for GitHub Pages at:
+
+```text
+https://philipbear.github.io/xinglab/
+```
+
+The GitHub Actions workflow in `.github/workflows/pages.yml` builds and deploys the static Next.js export. Pushing to `main` will update the Pages site after the workflow finishes.
+
 ## Where To Edit
 
 Most day-to-day website updates are in:
@@ -65,6 +75,7 @@ public/images/branding/   site logo and brand assets
 public/images/hero/       hero SVG/image assets and reusable visual assets
 public/images/papers/     featured paper figures
 public/images/profiles/   profile and team photos
+public/images/research/   research section illustrations
 public/images/news/       news-specific images
 ```
 

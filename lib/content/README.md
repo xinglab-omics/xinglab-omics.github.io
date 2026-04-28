@@ -44,6 +44,7 @@ public/images/branding/   site logo and brand assets
 public/images/hero/       hero SVG/image assets and reusable visual assets
 public/images/papers/     featured paper figures
 public/images/profiles/   profile and team photos
+public/images/research/   research section illustrations
 public/images/news/       news-specific images
 ```
 
@@ -65,6 +66,7 @@ Current examples:
 /images/papers/2026_conjugate.png
 /images/papers/2023_buddy.png
 /images/profiles/shipei-xing-profile.png
+/images/research/apple-metabolism-illustration-v2.png
 ```
 
 ## Homepage Featured Lab Papers
@@ -218,7 +220,7 @@ This controls `/shipei-xing` and also feeds the PI entry on `/team`.
 
 Common fields:
 
-- `name`, `chineseName`, `title`, `current`, `email`, `image`
+- `name`, `chineseName`, `title`, `email`, `image`
 - `links`: profile links shown near the email
 - `experience`: appointment entries
 - `education`: education entries
@@ -290,6 +292,7 @@ lib/content/research.ts
 
 The homepage and research page use:
 
+- `researchDirectionsQuestion`: larger opening question shown above the research intro.
 - `researchDirectionsIntro`: intro text for the research directions section.
 - `researchAreas`: the list of research direction objects.
 
@@ -309,6 +312,7 @@ Each research area has this shape:
 
 Notes:
 
+- The opening research question and intro are rendered by `components/ResearchIntroPanel.tsx`.
 - `slug` is used as the section id on `/research`.
 - `shortDescription` appears on the homepage.
 - `longDescription`, `methods`, and `questions` appear on `/research`.

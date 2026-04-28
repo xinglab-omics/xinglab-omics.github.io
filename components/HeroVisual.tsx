@@ -54,9 +54,9 @@ const fileHeights: [number[], string, number][] = [
 ];
 
 // Base position of the front (fi=2) spectrum panel
-const specX = 1100, specY = 435, specW = 110, specH = 60;
+const specX = 1100, specY = 435, specW = 95, specH = 55;
 // Per-step offset: each step "back" shifts right and up
-const stepX = 18, stepY = -13;
+const stepX = 12, stepY = -10;
 const dataMiningX = 995, dataMiningY = 148;
 const dataMiningIconScale = 0.80;
 const databaseScaleX = 0.35 * dataMiningIconScale;
@@ -411,7 +411,7 @@ export function HeroVisual() {
 
       {/* Label above the backmost panel */}
       <text
-        x={specX + 2 * stepX} y={specY + 8}
+        x={specX + 2 * stepX + 8} y={specY + 8}
         fontSize="10" fill="#000000"
         fontFamily="ui-sans-serif,system-ui,sans-serif"
         letterSpacing="0" textAnchor="middle"
