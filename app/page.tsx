@@ -5,7 +5,15 @@ import { HeroScrollAnimation } from "@/components/HeroScrollAnimation";
 import { HeroVisual } from "@/components/HeroVisual";
 import { NewsTicker } from "@/components/NewsTicker";
 import { ResearchHighlightCard } from "@/components/ResearchHighlightCard";
-import { featuredPaperSpotlights, members, newsItems, researchAreas, researchDirectionsIntro } from "@/lib/content";
+import { ResearchIntroPanel } from "@/components/ResearchIntroPanel";
+import {
+  featuredPaperSpotlights,
+  members,
+  newsItems,
+  researchAreas,
+  researchDirectionsIntro,
+  researchDirectionsQuestion
+} from "@/lib/content";
 
 const heroTags = ["Mass spectrometry", "Metabolomics & Exposomics", "Bioinformatics", "Data mining", "Machine learning"];
 const labMemberNames = members
@@ -97,18 +105,12 @@ export default function HomePage() {
 
       <section className="mx-auto max-w-7xl px-5 pb-12 pt-3 sm:px-8 lg:pb-14">
         <div className="rounded-lg border border-line bg-white p-5 shadow-sm sm:p-6">
-          <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-            <div className="w-full">
-              <p className="text-sm font-semibold uppercase tracking-normal text-fudan">Research directions</p>
-              <p className="mt-4 w-full text-base leading-7 text-muted">{researchDirectionsIntro}</p>
-            </div>
-            <Link
-              href="/research"
-              className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-line bg-paper px-3 py-1.5 text-xs font-semibold text-ink transition hover:border-fudan hover:text-fudan focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fudan"
-            >
-              Explore more
-              <ArrowRight aria-hidden="true" size={14} />
-            </Link>
+          <div className="mb-7">
+            <ResearchIntroPanel
+              intro={researchDirectionsIntro}
+              question={researchDirectionsQuestion}
+              showExploreLink
+            />
           </div>
 
           <div className="grid gap-7 md:grid-cols-3">

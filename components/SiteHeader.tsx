@@ -74,28 +74,35 @@ export function SiteHeader() {
         </button>
       </div>
 
-      {isOpen ? (
-        <nav className="border-t border-line bg-paper px-5 py-4 lg:hidden" aria-label="Mobile navigation">
-          <div className="mx-auto grid max-w-7xl gap-2">
-            {navigation.map((item) => {
-              const active = isActivePath(pathname, item.href);
+      <nav
+        className={`absolute left-0 right-0 top-full origin-top border-t border-line bg-paper px-5 py-4 shadow-sm transition duration-200 ease-out lg:hidden ${
+          isOpen
+            ? "pointer-events-auto translate-y-0 scale-y-100 opacity-100"
+            : "pointer-events-none -translate-y-2 scale-y-95 opacity-0"
+        }`}
+        aria-hidden={!isOpen}
+        aria-label="Mobile navigation"
+      >
+        <div className="mx-auto grid max-w-7xl gap-2">
+          {navigation.map((item) => {
+            const active = isActivePath(pathname, item.href);
 
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={`rounded-md px-3 py-3 text-sm font-semibold tracking-normal ${
-                    active ? "bg-fudan text-white" : "bg-white text-ink"
-                  }`}
-                  aria-current={active ? "page" : undefined}
-                >
-                  {item.label}
-                </Link>
-              );
-            })}
-          </div>
-        </nav>
-      ) : null}
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                tabIndex={isOpen ? undefined : -1}
+                className={`rounded-md px-3 py-3 text-sm font-semibold tracking-normal transition ${
+                  active ? "bg-fudan text-white" : "bg-white text-ink hover:text-fudan"
+                }`}
+                aria-current={active ? "page" : undefined}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
+        </div>
+      </nav>
     </header>
   );
 }

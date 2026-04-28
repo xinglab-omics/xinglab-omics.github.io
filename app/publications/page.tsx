@@ -130,10 +130,10 @@ export default function PublicationsPage() {
         }
       />
 
-      <section className="mx-auto grid max-w-7xl gap-8 px-5 py-10 sm:px-8 lg:grid-cols-[120px_1fr] lg:py-12">
-        <aside className="lg:sticky lg:top-28 lg:h-fit">
+      <section className="mx-auto grid max-w-7xl gap-8 px-5 py-10 sm:px-8 lg:grid-cols-[120px_minmax(0,1fr)] lg:py-12">
+        <aside className="min-w-0 lg:sticky lg:top-28 lg:h-fit">
           <p className="text-xs font-semibold uppercase tracking-normal text-muted">Jump to</p>
-          <nav className="mt-3 flex gap-2 overflow-x-auto pb-1 lg:grid lg:gap-2 lg:overflow-visible lg:pb-0">
+          <nav className="mt-3 flex min-w-0 flex-wrap gap-2 lg:grid lg:gap-2">
             {highlightedPublications.length > 0 ? (
               <a
                 href="#highlighted"
@@ -154,14 +154,14 @@ export default function PublicationsPage() {
           </nav>
         </aside>
 
-        <div>
-          <p className="mb-4 rounded-lg border border-line bg-white px-4 py-3 text-sm text-muted shadow-sm">
-            <span className="font-semibold text-ink">Labels:</span>{" "}
+        <div className="min-w-0">
+          <p className="mb-4 flex flex-wrap items-baseline gap-x-4 gap-y-1 rounded-lg border border-line bg-white px-4 py-3 text-sm text-muted shadow-sm">
+            <span className="font-semibold text-ink">Labels:</span>
             <span className="inline-flex items-baseline gap-1.5">
               <span className="font-semibold text-fudan">†</span>
               <span>co-first authors</span>
             </span>
-            <span className="mx-4 text-line">|</span>
+            <span className="text-line">|</span>
             <span className="inline-flex items-baseline gap-1.5">
               <span className="font-semibold text-fudan">*</span>
               <span>corresponding author</span>
@@ -171,25 +171,25 @@ export default function PublicationsPage() {
           {highlightedPublications.length > 0 ? (
             <section
               id="highlighted"
-              className="mb-8 scroll-mt-28 rounded-lg border border-line bg-white p-5 shadow-sm"
+              className="mb-8 scroll-mt-28 overflow-hidden rounded-lg border border-line bg-white p-5 shadow-sm"
             >
               <h2 className="text-xl font-semibold tracking-normal text-ink">Highlighted papers</h2>
               <ol className="mt-4 divide-y divide-line">
                 {highlightedPublications.map((publication, index) => (
                   <li
                     key={`highlighted-${publication.title}`}
-                    className="grid grid-cols-[2rem_1fr] items-baseline gap-2 py-3 first:pt-0 last:pb-0"
+                    className="grid grid-cols-[1.75rem_minmax(0,1fr)] items-baseline gap-2 py-3 first:pt-0 last:pb-0 sm:grid-cols-[2rem_minmax(0,1fr)]"
                   >
                     <span className="text-sm font-semibold tabular-nums text-fudan">{index + 1}.</span>
-                    <div>
+                    <div className="min-w-0">
                       <a
                         href={publicationHref(publication)}
-                        className="text-sm leading-5 text-fudan transition hover:text-ink"
+                        className="break-words text-sm leading-5 text-fudan transition hover:text-ink"
                       >
                         {publication.title}
                       </a>
-                      <p className="mt-1.5 text-sm leading-5 text-muted">{renderAuthors(publication)}</p>
-                      <p className="mt-1 text-sm leading-5 text-muted">{renderVenue(publication)}</p>
+                      <p className="mt-1.5 break-words text-sm leading-5 text-muted">{renderAuthors(publication)}</p>
+                      <p className="mt-1 break-words text-sm leading-5 text-muted">{renderVenue(publication)}</p>
                     </div>
                   </li>
                 ))}
@@ -198,7 +198,7 @@ export default function PublicationsPage() {
           ) : null}
 
           {publications.length > 0 ? (
-            <section className="scroll-mt-28 rounded-lg border border-line bg-white p-5 shadow-sm">
+            <section className="scroll-mt-28 overflow-hidden rounded-lg border border-line bg-white p-5 shadow-sm">
               <h2 className="text-xl font-semibold tracking-normal text-ink">All publications</h2>
               <ol className="mt-4 divide-y divide-line">
                 {publications.map((publication, index) => {
@@ -212,11 +212,11 @@ export default function PublicationsPage() {
                       className="grid scroll-mt-28 grid-cols-[2.75rem_minmax(0,1fr)] gap-3 py-4 first:pt-0 last:pb-0"
                     >
                       <span className="text-sm font-semibold tabular-nums text-fudan">{publicationNumber}.</span>
-                      <article id={publicationId(publication)} className="scroll-mt-28">
+                      <article id={publicationId(publication)} className="min-w-0 scroll-mt-28">
                         <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-                          <div>
-                            <h2 className="text-sm leading-5 text-fudan">
-                            {publication.url ? (
+                          <div className="min-w-0">
+                            <h2 className="break-words text-sm leading-5 text-fudan">
+                              {publication.url ? (
                                 <a href={publicationHref(publication)} className="transition hover:text-ink">
                                   {publication.title}
                                 </a>
@@ -224,8 +224,8 @@ export default function PublicationsPage() {
                                 publication.title
                               )}
                             </h2>
-                            <p className="mt-1.5 text-sm leading-5 text-muted">{renderAuthors(publication)}</p>
-                            <p className="mt-1 text-sm leading-5 text-muted">{renderVenue(publication)}</p>
+                            <p className="mt-1.5 break-words text-sm leading-5 text-muted">{renderAuthors(publication)}</p>
+                            <p className="mt-1 break-words text-sm leading-5 text-muted">{renderVenue(publication)}</p>
                           </div>
                           {isPreprint(publication) ? (
                             <span className="w-fit shrink-0 rounded-full bg-paper px-3 py-1 text-xs font-semibold text-fudan">

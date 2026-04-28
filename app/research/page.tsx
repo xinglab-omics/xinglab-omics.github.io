@@ -1,5 +1,6 @@
 import { PageIntro } from "@/components/PageIntro";
-import { researchAreas, researchDirectionsIntro } from "@/lib/content";
+import { ResearchIntroPanel } from "@/components/ResearchIntroPanel";
+import { researchAreas, researchDirectionsIntro, researchDirectionsQuestion } from "@/lib/content";
 
 export default function ResearchPage() {
   return (
@@ -12,7 +13,7 @@ export default function ResearchPage() {
 
       <section className="grid gap-4 px-5 py-10 sm:px-8 lg:py-14">
         <div className="mx-auto w-full max-w-7xl">
-          <p className="text-base leading-8 text-muted">{researchDirectionsIntro}</p>
+          <ResearchIntroPanel intro={researchDirectionsIntro} question={researchDirectionsQuestion} />
         </div>
 
         {researchAreas.map((area, index) => (

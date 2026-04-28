@@ -4,6 +4,16 @@ import { PersonAvatar } from "@/components/PersonAvatar";
 import { piProfile } from "@/lib/content";
 import type { ProfileEntry } from "@/lib/content";
 
+const subtleDetailLinkLabels = new Set(["Tao Huan", "Zhan Lu", "Feihe Huang"]);
+
+function detailLinkClassName(label: string) {
+  if (subtleDetailLinkLabels.has(label)) {
+    return "font-medium text-muted underline decoration-line underline-offset-2 transition hover:text-fudan";
+  }
+
+  return "font-semibold text-fudan underline decoration-fudan/40 underline-offset-2 transition hover:text-ink";
+}
+
 function renderLinkedText(text: string, links: ProfileEntry["detailLinks"] = []) {
   if (links.length === 0) {
     return text;
@@ -24,7 +34,7 @@ function renderLinkedText(text: string, links: ProfileEntry["detailLinks"] = [])
     }
 
     content.push(
-      <a key={`${link.href}-${index}`} href={link.href} className="font-semibold text-fudan transition hover:text-ink">
+      <a key={`${link.href}-${index}`} href={link.href} className={detailLinkClassName(link.label)}>
         {link.label}
       </a>
     );
@@ -128,7 +138,6 @@ export default function ShipeiXingPage() {
                   </a>
                 ))}
               </div>
-              <p className="mt-5 text-sm leading-7 text-muted">{piProfile.current}</p>
             </div>
           </div>
         </section>

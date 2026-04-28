@@ -14,11 +14,7 @@ export function PageIntro({ eyebrow, title, description }: PageIntroProps) {
         <h1 className="mt-3 max-w-4xl text-3xl font-semibold tracking-normal text-ink sm:text-4xl">
           {title}
         </h1>
-        {description ? (
-          <p className="mt-4 max-w-full overflow-hidden text-ellipsis whitespace-nowrap text-base leading-7 text-muted">
-            {description}
-          </p>
-        ) : null}
+        {description ? <p className="mt-4 max-w-5xl text-base leading-7 text-muted">{description}</p> : null}
       </div>
     </section>
   );

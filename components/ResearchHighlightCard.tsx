@@ -12,10 +12,10 @@ export function ResearchHighlightCard({ area, index }: ResearchHighlightCardProp
         <span className="text-sm font-semibold text-fudan">0{index + 1}</span>
         <span className="h-px flex-1 bg-line" />
       </div>
-      <h3 className="mt-6 text-2xl font-semibold tracking-normal text-ink">
+      <h3 className="mt-0 flex text-2xl font-semibold tracking-normal text-ink md:min-h-20 md:items-center">
         {area.title}
       </h3>
-      <p className="mt-4 flex-1 text-sm leading-7 text-muted">{area.shortDescription}</p>
+      <p className="mt-1 flex-1 text-sm leading-7 text-muted">{area.shortDescription}</p>
     </article>
   );
 }

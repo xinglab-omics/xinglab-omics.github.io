@@ -3,9 +3,7 @@ import type { ProfileEntry, ProfileHonor } from "./types";
 export const piProfile = {
   name: "Shipei Xing",
   chineseName: "邢世沛",
-  title: "Principal Investigator",
-  current:
-    "The Xing Lab develops computational mass spectrometry approaches to discover molecules, mine public metabolomics data, and understand xenobiotic metabolism.",
+  title: "Assistant Professor - Department of Environmental Science & Engineering, Fudan University",
   email: "philipxsp@hotmail.com",
   image: "/images/profiles/shipei-xing-profile.png",
   links: [
@@ -46,7 +44,11 @@ export const piProfile = {
       period: "2014.9 - 2018.6",
       title: "BSc in Chemistry, Chu Kochen Honors College",
       institution: "Zhejiang University",
-      detail: "Supervisor: Zhan Lu, Feihe Huang"
+      detail: "Supervisor: Zhan Lu, Feihe Huang",
+      detailLinks: [
+        { label: "Zhan Lu", href: "https://person.zju.edu.cn/lu" },
+        { label: "Feihe Huang", href: "https://person.zju.edu.cn/feihehuang" }
+      ]
     }
   ] satisfies ProfileEntry[],
   honors: [

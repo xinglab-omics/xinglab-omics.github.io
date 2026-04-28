@@ -2,6 +2,8 @@
 
 Next.js website for Xing Lab at Fudan University. The site is built around editable content files in `lib/content/`, with layout and visual components in `app/` and `components/`.
 
+Live site: https://philipbear.github.io/xinglab/
+
 ## Quick Start
 
 Install dependencies:
