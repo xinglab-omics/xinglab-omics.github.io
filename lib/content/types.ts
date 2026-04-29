@@ -3,8 +3,7 @@ export type ResearchArea = {
   title: string;
   shortDescription: string;
   longDescription: string;
-  methods: string[];
-  questions: string[];
+  relatedPublicationTitles?: string[];
   image: string;
 };
 
@@ -33,7 +32,7 @@ export type Member = {
   name: string;
   chineseName?: string;
   role: string;
-  group: "Principal Investigator" | "Postdocs" | "Graduate Students" | "Researchers" | "Alumni";
+  group: "Principal Investigator" | "Postdocs" | "Graduate Students" | "Undergraduate Students" | "Researchers" | "Alumni";
   bio: string;
   email?: string;
   image?: string;
@@ -58,14 +57,12 @@ export type PaperSpotlight = {
 };
 
 export type NewsItem = {
-  slug: string;
   title: string;
   date: string;
   summary: string;
   category: "Lab" | "Publication" | "Opening" | "Conference" | "Award";
   link?: string;
   image?: string;
-  imageAlt?: string;
   imageVariant?: "wide" | "side";
 };
 

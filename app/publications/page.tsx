@@ -2,7 +2,6 @@ import { PageIntro } from "@/components/PageIntro";
 import { members, piProfile, publications, type Publication } from "@/lib/content";
 
 const publicationYears = Array.from(new Set(publications.map((publication) => publication.year)));
-const firstPublicationByYear = new Map<number, string>();
 const publicationOrder = new Map(publications.map((publication, index) => [publication.title, index]));
 const googleScholarLink = piProfile.links.find((link) => link.label === "Google Scholar");
 const labMemberNames = new Set(
@@ -40,12 +39,6 @@ const highlightedPublications = publications
 
     return (publicationOrder.get(a.title) ?? 0) - (publicationOrder.get(b.title) ?? 0);
   });
-
-publications.forEach((publication) => {
-  if (!firstPublicationByYear.has(publication.year)) {
-    firstPublicationByYear.set(publication.year, publication.title);
-  }
-});
 
 function isPreprint(publication: Publication) {
   return publication.preprint;
@@ -200,44 +193,63 @@ export default function PublicationsPage() {
           {publications.length > 0 ? (
             <section className="scroll-mt-28 overflow-hidden rounded-lg border border-line bg-white p-5 shadow-sm">
               <h2 className="text-xl font-semibold tracking-normal text-ink">All publications</h2>
-              <ol className="mt-4 divide-y divide-line">
-                {publications.map((publication, index) => {
-                  const isFirstInYear = firstPublicationByYear.get(publication.year) === publication.title;
-                  const publicationNumber = publications.length - index;
+              <div className="mt-4 space-y-6">
+                {publicationYears.map((year) => {
+                  const yearPublications = publications.filter((publication) => publication.year === year);
 
                   return (
-                    <li
-                      key={`${publication.year}-${publication.title}`}
-                      id={isFirstInYear ? `year-${publication.year}` : undefined}
-                      className="grid scroll-mt-28 grid-cols-[2.75rem_minmax(0,1fr)] gap-3 py-4 first:pt-0 last:pb-0"
-                    >
-                      <span className="text-sm font-semibold tabular-nums text-fudan">{publicationNumber}.</span>
-                      <article id={publicationId(publication)} className="min-w-0 scroll-mt-28">
-                        <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-                          <div className="min-w-0">
-                            <h2 className="break-words text-sm leading-5 text-fudan">
-                              {publication.url ? (
-                                <a href={publicationHref(publication)} className="transition hover:text-ink">
-                                  {publication.title}
-                                </a>
-                              ) : (
-                                publication.title
-                              )}
-                            </h2>
-                            <p className="mt-1.5 break-words text-sm leading-5 text-muted">{renderAuthors(publication)}</p>
-                            <p className="mt-1 break-words text-sm leading-5 text-muted">{renderVenue(publication)}</p>
-                          </div>
-                          {isPreprint(publication) ? (
-                            <span className="w-fit shrink-0 rounded-full bg-paper px-3 py-1 text-xs font-semibold text-fudan">
-                              Preprint
-                            </span>
-                          ) : null}
-                        </div>
-                      </article>
-                    </li>
+                    <section key={year} id={`year-${year}`} className="scroll-mt-28">
+                      <div className="flex items-center gap-3">
+                        <h3 className="text-sm font-semibold tabular-nums text-ink">{year}</h3>
+                        <span className="h-px flex-1 bg-sage/50" />
+                      </div>
+                      <ol className="mt-2 divide-y divide-line">
+                        {yearPublications.map((publication) => {
+                          const publicationIndex = publicationOrder.get(publication.title) ?? 0;
+                          const publicationNumber = publications.length - publicationIndex;
+
+                          return (
+                            <li
+                              key={`${publication.year}-${publication.title}`}
+                              className="grid grid-cols-[2.75rem_minmax(0,1fr)] gap-3 py-4 first:pt-2 last:pb-0"
+                            >
+                              <span className="text-sm font-semibold tabular-nums text-fudan">
+                                {publicationNumber}.
+                              </span>
+                              <article id={publicationId(publication)} className="min-w-0 scroll-mt-28">
+                                <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                                  <div className="min-w-0">
+                                    <h2 className="break-words text-sm leading-5 text-fudan">
+                                      {publication.url ? (
+                                        <a href={publicationHref(publication)} className="transition hover:text-ink">
+                                          {publication.title}
+                                        </a>
+                                      ) : (
+                                        publication.title
+                                      )}
+                                    </h2>
+                                    <p className="mt-1.5 break-words text-sm leading-5 text-muted">
+                                      {renderAuthors(publication)}
+                                    </p>
+                                    <p className="mt-1 break-words text-sm leading-5 text-muted">
+                                      {renderVenue(publication)}
+                                    </p>
+                                  </div>
+                                  {isPreprint(publication) ? (
+                                    <span className="w-fit shrink-0 rounded-full bg-paper px-3 py-1 text-xs font-semibold text-fudan">
+                                      Preprint
+                                    </span>
+                                  ) : null}
+                                </div>
+                              </article>
+                            </li>
+                          );
+                        })}
+                      </ol>
+                    </section>
                   );
                 })}
-              </ol>
+              </div>
             </section>
           ) : (
             <div className="rounded-lg border border-line bg-white p-8 text-center shadow-sm">

@@ -16,6 +16,7 @@ import {
 } from "@/lib/content";
 
 const heroTags = ["Mass spectrometry", "Metabolomics & Exposomics", "Bioinformatics", "Data mining", "Machine learning"];
+const latestNewsItems = newsItems.slice(0, 4);
 const labMemberNames = members
   .filter((member) => member.name !== "Open Positions")
   .map((member) => member.name);
@@ -79,7 +80,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <NewsTicker items={newsItems} />
+      <NewsTicker items={latestNewsItems} />
 
       <FeaturedPapersRail labMemberNames={labMemberNames} spotlights={featuredPaperSpotlights} />
 

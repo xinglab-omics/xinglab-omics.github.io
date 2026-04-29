@@ -1,11 +1,12 @@
+import { piProfile } from "./profile";
 import type { ContactInfo } from "./types";
 
 export const contactInfo: ContactInfo = {
   institution: "Department of Environmental Science & Engineering, Fudan University",
   address: "Shanghai, China",
-  email: "philipxsp@hotmail.com",
+  email: piProfile.email,
   joinText:
-    "Please directly email me at philipxsp@hotmail.com with a brief introduction, the opportunity you are interested in, and how your interests connect to our work. Attach supporting files as needed; PDFs are preferred.",
+    `Please directly email me at ${piProfile.email} with a brief introduction, the opportunity you are interested in, and how your interests connect to our work. Use the email subject format "Xing Lab application - [Opportunity] - [Your Name]"; for example, "Xing Lab application - PhD student - Daxing Pai 派大星". Attach supporting files as needed; PDFs are preferred.`,
   applicationSections: [
     {
       title: "Postdoctoral Researchers",
@@ -22,7 +23,7 @@ export const contactInfo: ContactInfo = {
     {
       title: "Graduate Students",
       description:
-        "Prospective graduate students should follow the official Fudan University admissions process and are welcome to contact the lab in advance.",
+        "Prospective master's and PhD students should follow the official Fudan University admissions process and are welcome to contact the lab in advance.",
       materials: [
         "In your email, briefly describe your current program, research interests, motivation, and why you are interested in our lab.",
         "Attach your curriculum vitae.",

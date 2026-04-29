@@ -3,7 +3,7 @@ import { PageIntro } from "@/components/PageIntro";
 import { PersonAvatar } from "@/components/PersonAvatar";
 import { members } from "@/lib/content";
 
-const groups = ["Postdocs", "Graduate Students", "Researchers", "Alumni"] as const;
+const groups = ["Postdocs", "Graduate Students", "Undergraduate Students", "Alumni"] as const;
 
 function ProfileLinks({
   links,
@@ -69,7 +69,7 @@ export default function MembersPage() {
         description="We aim to build a diverse group of researchers working across mass spectrometry, metabolomics/exposomics, computation, and biochemistry."
       />
 
-      <section className="mx-auto max-w-7xl px-5 py-12 sm:px-8 lg:py-16">
+      <section className="mx-auto max-w-7xl px-5 pb-12 pt-8 sm:px-8 lg:pb-16 lg:pt-10">
         <div className="grid gap-12">
           {members
             .filter((member) => member.group === "Principal Investigator")
@@ -87,7 +87,6 @@ export default function MembersPage() {
                         </span>
                       ) : null}
                     </h3>
-                    <p className="mt-2 text-sm font-medium text-muted">{member.role}</p>
                     {member.bio ? (
                       <p className="mt-4 max-w-3xl text-sm leading-7 text-muted">{member.bio}</p>
                     ) : null}

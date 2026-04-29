@@ -64,19 +64,19 @@ export const piProfile = {
     },
     {
       year: "2022",
-      title: "Pei-Huang Tung and Tan-Wen Tung Graduate Fellowship, University of British Columbia"
+      title: "Pei-Huang Tung and Tan-Wen Tung Graduate Fellowship, UBC"
     },
     {
       year: "2022",
-      title: "Gladys Estella Laird Research Fellowship, University of British Columbia"
+      title: "Gladys Estella Laird Research Fellowship, UBC"
     },
     {
       year: "2022",
-      title: "C L Wang Memorial Scholarship, University of British Columbia"
+      title: "C L Wang Memorial Scholarship, UBC"
     },
     {
       year: "2021",
-      title: "Sandra Morris and Richard Tillyer Scholarship in Chemistry, University of British Columbia"
+      title: "Sandra Morris and Richard Tillyer Scholarship in Chemistry, UBC"
     },
     {
       year: "2018",

@@ -66,7 +66,10 @@ Current examples:
 /images/papers/2026_conjugate.png
 /images/papers/2023_buddy.png
 /images/profiles/shipei-xing-profile.png
-/images/research/apple-metabolism-illustration-v2.png
+/images/research/apple-metabolism-illustration.png
+/images/research/public-metabolomics-data-mining.png
+/images/research/mass-spectrometry-informatics.png
+/images/research/microbial-xenobiotic-metabolism.png
 ```
 
 ## Homepage Featured Lab Papers
@@ -255,14 +258,12 @@ Add a news item:
 
 ```ts
 {
-  slug: "short-url-friendly-title",
   title: "News title",
   date: "2026-04-26",
   summary: "One or two sentence summary.",
   category: "Publication",
   link: "/publications",
   image: "/images/news/news-image.png",
-  imageAlt: "Short image description.",
   imageVariant: "side"
 }
 ```
@@ -275,11 +276,11 @@ Allowed categories:
 
 Notes:
 
-- `slug` creates the anchor link on the News page, for example `/news#short-url-friendly-title`.
-- Use date format `YYYY-MM-DD`.
-- `link`, `image`, `imageAlt`, and `imageVariant` are optional.
+- News anchor links are generated automatically from the date and title.
+- Use date format `YYYY-MM-DD` or `YYYY-MM` for month-only news.
+- `link`, `image`, and `imageVariant` are optional.
 - `imageVariant` can be `"wide"` or `"side"`.
-- If `imageAlt` is omitted, the news title is used as the image alt text.
+- News images use the news title as the image alt text.
 - The homepage latest-news ticker cycles through `newsItems` in array order.
 
 ## Research Directions
@@ -304,9 +305,8 @@ Each research area has this shape:
   title: "Data Mining of Public Metabolomics Repositories",
   shortDescription: "Short text for the homepage card.",
   longDescription: "Longer text for the research page.",
-  methods: ["repository-scale reanalysis", "metadata harmonization"],
-  questions: ["Question one?", "Question two?"],
-  image: "/images/hero/example.png"
+  relatedPublicationTitles: ["Exact publication title from publications.ts"],
+  image: "/images/research/example.png"
 }
 ```
 
@@ -315,8 +315,9 @@ Notes:
 - The opening research question and intro are rendered by `components/ResearchIntroPanel.tsx`.
 - `slug` is used as the section id on `/research`.
 - `shortDescription` appears on the homepage.
-- `longDescription`, `methods`, and `questions` appear on `/research`.
-- `image` is part of the data shape, even though the current research page layout does not display it.
+- `longDescription` appears on `/research`.
+- `relatedPublicationTitles` appears as linked papers on `/research`; each title must exactly match a title in `publications.ts`.
+- `image` appears as the background illustration for each research direction on `/research`.
 
 ## Contact And Join Us
 
@@ -335,6 +336,8 @@ Main fields:
 - `email`
 - `joinText`
 - `applicationSections`
+
+Use `joinText` for general application instructions, including the requested email subject format.
 
 Each application section has:
 

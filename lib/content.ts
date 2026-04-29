@@ -15,5 +15,5 @@ export { researchAreas, researchDirectionsIntro, researchDirectionsQuestion } fr
 export { members } from "./content/team";
 export { publications } from "./content/publications";
 export { featuredPaperSpotlights } from "./content/home";
-export { newsItems } from "./content/news";
+export { newsItemId, newsItems } from "./content/news";
 export { contactInfo } from "./content/contact";
