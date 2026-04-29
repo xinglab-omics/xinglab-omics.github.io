@@ -1,9 +1,9 @@
 import type { ResearchArea } from "./types";
 
-export const researchDirectionsQuestion = "What molecular changes occur in your body after you eat an apple?";
+export const researchDirectionsQuestion = "What happens to the molecules in an apple after you eat it?";
 
 export const researchDirectionsIntro =
-  "To answer this question, our lab links open-data mining, computational innovation, and experimental metabolomics to annotate and discover small molecules, with a focus on understanding xenobiotic metabolism. Together, these directions turn complex mass spectrometry data into reusable biochemical insight.";
+  "To answer this question, our lab links computational innovation, open-data mining, and experimental metabolomics to annotate and discover small molecules, with a focus on understanding xenobiotic metabolism. Together, these directions turn complex mass spectrometry data into reusable biochemical insight.";
 
 export const researchAreas: ResearchArea[] = [
   {
@@ -22,7 +22,7 @@ export const researchAreas: ResearchArea[] = [
   },
   {
     slug: "public-metabolomics-data-mining",
-    title: "Data Mining of Public Metabolomics Repositories",
+    title: "Repository-Scale Public Data Mining",
     shortDescription:
       "We turn public metabolomics repositories into reusable discovery resources by reanalyzing spectra, and linking them to new biological and environmental questions.",
     longDescription:
