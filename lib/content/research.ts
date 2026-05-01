@@ -27,7 +27,10 @@ export const researchAreas: ResearchArea[] = [
       "We turn public metabolomics repositories into reusable discovery resources by reanalyzing spectra, and linking them to new biological and environmental questions.",
     longDescription:
       "Public metabolomics repositories contain thousands of experiments, millions of data files, and billions of mass spectra that can answer questions beyond their original designs. We develop workflows for repository-scale reanalysis, spectral search, and library propagation so open MS data can reveal recurring molecular signatures, exposure patterns, and unknown chemistry.",
-    relatedPublicationTitles: ["Navigating the conjugated metabolome"],
+    relatedPublicationTitles: [
+      "Navigating the conjugated metabolome",
+      "Charting the Undiscovered Metabolome with Synthetic Multiplexing"
+    ],
     image: "/images/research/public-metabolomics-data-mining.png"
   },
   {
