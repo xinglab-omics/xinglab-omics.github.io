@@ -37,6 +37,7 @@ export type Member = {
   email?: string;
   image?: string;
   links?: ProfileLink[];
+  isOpenPosition?: boolean;
 };
 
 export type Publication = {

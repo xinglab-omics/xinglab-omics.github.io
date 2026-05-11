@@ -327,7 +327,7 @@ Edit:
 lib/content/contact.ts
 ```
 
-This controls `/contact`.
+This controls `/contact` and `/contact/zh`.
 
 Main fields:
 
@@ -338,6 +338,7 @@ Main fields:
 - `applicationSections`
 
 Use `joinText` for general application instructions, including the requested email subject format.
+Use `contactInfoZh` for the Chinese version of the same page.
 
 Each application section has:
 
@@ -360,13 +361,25 @@ Edit:
 lib/content/navigation.ts
 ```
 
-Each item has:
+Link items use:
 
 ```ts
 { label: "RESEARCH", href: "/research" }
 ```
 
-Use internal paths that match routes under `app/`, such as `/research`, `/team`, `/publications`, `/news`, and `/contact`.
+Items may also include child links for the header dropdown:
+
+```ts
+{
+  label: "LAB GUIDE",
+  children: [
+    { label: "LAB LIFE", href: "/guide/lab-life" },
+    { label: "RESEARCH PRACTICE", href: "/guide/research-practice" }
+  ]
+}
+```
+
+Use internal paths that match routes under `app/`, such as `/research`, `/team`, `/guide/lab-life`, `/guide/research-practice`, `/publications`, `/news`, and `/contact`.
 
 ## Types
 

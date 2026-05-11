@@ -47,8 +47,8 @@ export default function ResearchPage() {
           const figureOnLeft =
             area.slug === "mass-spectrometry-informatics" || area.slug === "microbial-xenobiotic-metabolism";
           const gradient = figureOnLeft
-            ? "linear-gradient(270deg, rgba(255,255,255,0.99) 0%, rgba(255,255,255,0.95) 48%, rgba(255,255,255,0.74) 72%, rgba(255,255,255,0.18) 100%)"
-            : "linear-gradient(90deg, rgba(255,255,255,0.99) 0%, rgba(255,255,255,0.95) 48%, rgba(255,255,255,0.74) 72%, rgba(255,255,255,0.18) 100%)";
+            ? "linear-gradient(270deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.99) 52%, rgba(255,255,255,0.78) 72%, rgba(255,255,255,0.24) 100%)"
+            : "linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.99) 52%, rgba(255,255,255,0.78) 72%, rgba(255,255,255,0.24) 100%)";
           const labelPosition = figureOnLeft ? "left-4" : "right-4";
 
           return (

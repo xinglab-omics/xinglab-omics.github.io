@@ -24,30 +24,33 @@ export const members: Member[] = [
   //   ]
   // },
   {
-    name: "Open Positions",
-    role: "Postdoctoral Researchers",
+    name: "Postdoctoral Researchers",
+    role: "Open Position",
     group: "Postdocs",
     bio:
-      "We welcome postdoctoral researchers interested in metabolomics, bioinformatics, microbiology, AI or data science.",
+      "We welcome postdocs with backgrounds in metabolomics/exposomics, bioinformatics, microbiology, AI, or data science.",
     email: piProfile.email,
-    links: [{ label: "Join Us", href: "/contact" }]
+    links: [{ label: "Learn more", href: "/contact" }],
+    isOpenPosition: true
   },
   {
-    name: "Open Positions",
-    role: "Master's and PhD Students",
+    name: "Master's & PhD Students",
+    role: "Open Position",
     group: "Graduate Students",
     bio:
       "We welcome graduate students who want to develop computational or experimental approaches for metabolomics and xenobiotic metabolism.",
     email: piProfile.email,
-    links: [{ label: "Join Us", href: "/contact" }]
+    links: [{ label: "Learn more", href: "/contact" }],
+    isOpenPosition: true
   },
   {
-    name: "Open Positions",
-    role: "Undergraduate Researchers",
+    name: "Undergraduate Researchers",
+    role: "Open Position",
     group: "Undergraduate Students",
     bio:
-      "We welcome all motivated undergraduate students who are curious about science.",
+      "We welcome motivated undergraduates who are curious about science, regardless of prior research experience. We are especially interested in students who can commit to sustained, continuous research over multiple semesters.",
     email: piProfile.email,
-    links: [{ label: "Join Us", href: "/contact" }]
+    links: [{ label: "Learn more", href: "/contact" }],
+    isOpenPosition: true
   }
 ];

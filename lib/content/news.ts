@@ -21,12 +21,12 @@ export function newsItemId(item: Pick<NewsItem, "date" | "title">) {
 export const newsItems: NewsItem[] = [
   {
     title: "Openings for students and postdocs",
-    date: "2026-04-24",
+    date: "2026-05-10",
     summary:
       "Prospective lab members interested in metabolomics, bioinformatics, computational chemistry, and data science are encouraged to get in touch.",
     category: "Opening",
     link: "/contact",
-    image: "/images/hero/tomatidine.svg",
+    image: "/images/news/20260510.png",
     imageVariant: "side"
   },
   {
@@ -36,7 +36,7 @@ export const newsItems: NewsItem[] = [
       "The new Xing Lab website is now live, with information about our research directions, publications, team, and opportunities to join the lab.",
     category: "Lab",
     // link: "/",
-    image: "/images/news/website-launch.png",
+    image: "/images/news/20260426.png",
     imageVariant: "wide"
   },
   {

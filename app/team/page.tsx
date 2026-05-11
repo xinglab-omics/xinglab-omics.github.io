@@ -61,17 +61,20 @@ function EmailLine({ email, centered = false }: { email?: string; centered?: boo
 }
 
 export default function MembersPage() {
+  const openPositions = members.filter((m) => m.isOpenPosition);
+  const realMembers = members.filter((m) => !m.isOpenPosition);
+
   return (
     <>
       <PageIntro
-        eyebrow="Team"
-        title="People in the lab"
-        description="We aim to build a diverse group of researchers working across mass spectrometry, metabolomics/exposomics, computation, and biochemistry."
+        eyebrow="Our Team"
+        title="All Members"
+        description="We aim to build a diverse group of researchers working across metabolomics/exposomics, computation, and biochemistry."
       />
 
       <section className="mx-auto max-w-7xl px-5 pb-12 pt-8 sm:px-8 lg:pb-16 lg:pt-10">
         <div className="grid gap-12">
-          {members
+          {realMembers
             .filter((member) => member.group === "Principal Investigator")
             .map((member) => (
               <section key={member.name}>
@@ -98,7 +101,7 @@ export default function MembersPage() {
             ))}
 
           {groups.map((group) => {
-            const groupMembers = members.filter((member) => member.group === group);
+            const groupMembers = realMembers.filter((member) => member.group === group);
 
             if (groupMembers.length === 0) {
               return null;
@@ -136,6 +139,30 @@ export default function MembersPage() {
               </section>
             );
           })}
+
+          {openPositions.length > 0 && (
+            <section>
+              <h2 className="text-2xl font-semibold tracking-normal text-ink">Now Recruiting</h2>
+              <p className="mt-2 text-sm leading-7 text-muted">
+                We are actively looking for researchers to join the lab. If our work interests you, reach out — we&apos;d love to talk.
+              </p>
+              <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                {openPositions.map((position, index) => (
+                  <article
+                    key={`open-${index}`}
+                    className="flex flex-col rounded-lg border border-line bg-paper p-6"
+                  >
+                    <p className="text-xs font-semibold uppercase tracking-widest text-fudan">
+                      {position.role}
+                    </p>
+                    <h3 className="mt-2 text-base font-semibold text-ink">{position.name}</h3>
+                    <p className="mt-3 flex-1 text-sm leading-7 text-muted">{position.bio}</p>
+                    <ProfileLinks links={position.links} />
+                  </article>
+                ))}
+              </div>
+            </section>
+          )}
         </div>
       </section>
     </>

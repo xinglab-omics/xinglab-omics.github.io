@@ -114,7 +114,7 @@ export default function HomePage() {
             />
           </div>
 
-          <div className="grid gap-7 md:grid-cols-3">
+          <div className="grid gap-5 md:grid-cols-3">
             {researchAreas.map((area, index) => (
               <ResearchHighlightCard key={area.slug} area={area} index={index} />
             ))}

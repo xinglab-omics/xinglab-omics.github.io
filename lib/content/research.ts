@@ -1,6 +1,6 @@
 import type { ResearchArea } from "./types";
 
-export const researchDirectionsQuestion = "What happens to the molecules in an apple once they're inside you?";
+export const researchDirectionsQuestion = "When you eat an apple, which molecules become you, which fuel you, which feed your microbes, and which leave you?";
 
 export const researchDirectionsIntro =
   "To answer this question, our lab links computational innovation, open-data mining, and experimental metabolomics to annotate and discover small molecules, with a focus on understanding xenobiotic metabolism. Together, these directions turn complex mass spectrometry data into reusable biochemical insight.";
