@@ -57,6 +57,18 @@ export const publications: Publication[] = [
     highlighted: false
   },
   {
+    title: "Charting the undiscovered metabolome with synthetic multiplexing implicates ibuprofen-carnitine in myotoxicity",
+    authors:
+      "Abubaker Patan, Shipei Xing, Vincent Charron-Lamoureux, Zhewen Hu, Victoria Deleray, Julius Agongo, Jasmine Zemlin, Harsha Gouda, Prajit Rajkumar, Yasin El Abiead, Aubreyana E. McMaugh, Hannah Heath, Helena Mannochio-Russo, Ipsita Mohanty, Laila Abolfathi, Ricardo Almada-Monter, Jia Yang, Carlynda Lee, Daniel Leanos, Noah Weimann, Wataru Tsuda, Sadie Giddings, Tammy Bui, Eric Ding, Kine Eide Kvitne, Haoqi Nina Zhao, Simone Zuffa, Paulo Wender Portal Gomes, Vivian Nguyen, Aileen Andrade, Maria A Pawlowski, Ashley C Ferland, Elisabeth Orozco, Wilhan Donizete Gonçalves Nunes, Andrés M. Caraballo-Rodríguez, Lurian Caetano David, Kathleen M. Giacomini, Adrian Jinich, Jeremy Carver, Nuno Bandeira, Mingxun Wang, Lindsey A. Burnett, Dionicio Siegel, Pieter C. Dorrestein",
+    venue: "bioRxiv",
+    year: 2026,
+    url: "https://doi.org/10.1101/2025.11.18.689170",
+    coFirstAuthors: ["Abubaker Patan", "Shipei Xing", "Vincent Charron-Lamoureux"],
+    correspondingAuthors: ["Lindsey A. Burnett", "Dionicio Siegel", "Pieter C. Dorrestein"],
+    preprint: true,
+    highlighted: true
+  },
+  {
     title: "MS/MS Mass Spectrometry Filtering Tree for Bile Acid Regio-and Stereoisomer Annotation",
     authors:
       "Ipsita Mohanty, Shipei Xing, Vanessa Castillo, Julius Agongo, Abubaker Patan, Yasin El Abiead, Helena Mannochio-Russo, Wilhan D. Gonçalves Nunes, Jasmine Zemlin, Itzhak Mizrahi, Dionicio Siegel, Mingxun Wang, Lee R. Hagey, Pieter C. Dorrestein",
@@ -158,18 +170,6 @@ export const publications: Publication[] = [
     correspondingAuthors: ["Pieter C. Dorrestein"],
     preprint: false,
     highlighted: false
-  },
-  {
-    title: "Charting the Undiscovered Metabolome with Synthetic Multiplexing",
-    authors:
-      "Abubaker Patan, Shipei Xing, Vincent Charron-Lamoureux, Zhewen Hu, Victoria Deleray, Julius Agongo, Yasin El Abiead, Helena Mannochio-Russo, Ipsita Mohanty, Harsha Gouda, Jasmine Zemlin, Prajit Rajkumar, Carlynda Lee, Daniel Leanos, Noah Weimann, Wataru Tsuda, Sadie Giddings, Tammy Bui, Kine Eide Kvitne, Haoqi Nina Zhao, Simone Zuffa, Vivian Nguyen, Aileen Andrade, Wilhan D. Goncalves Nunes, Andres M. Caraballo-Rodriguez, Lurian Caetano David, Jeremy Carver, Nuno Bandeira, Mingxun Wang, Lindsey Burnett, Dionicio Siegel, Pieter C. Dorrestein",
-    venue: "bioRxiv",
-    year: 2025,
-    url: "https://doi.org/10.1101/2025.11.18.689170",
-    coFirstAuthors: ["Abubaker Patan", "Shipei Xing", "Vincent Charron-Lamoureux"],
-    correspondingAuthors: ["Pieter C. Dorrestein"],
-    preprint: true,
-    highlighted: true
   },
   {
     title: "Learning molecular fingerprints of foods to decode dietary intake",

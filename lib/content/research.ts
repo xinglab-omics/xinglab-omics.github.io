@@ -29,7 +29,7 @@ export const researchAreas: ResearchArea[] = [
       "Public metabolomics repositories contain thousands of experiments, millions of data files, and billions of mass spectra that can answer questions beyond their original designs. We develop workflows for repository-scale reanalysis, spectral search, and library propagation so open MS data can reveal recurring molecular signatures, exposure patterns, and unknown chemistry.",
     relatedPublicationTitles: [
       "Navigating the conjugated metabolome",
-      "Charting the Undiscovered Metabolome with Synthetic Multiplexing"
+      "Charting the undiscovered metabolome with synthetic multiplexing implicates ibuprofen-carnitine in myotoxicity"
     ],
     image: "/images/research/public-metabolomics-data-mining.png"
   },
@@ -42,7 +42,7 @@ export const researchAreas: ResearchArea[] = [
       "Microbes transform dietary compounds, drugs, pollutants, and other xenobiotics into products that can alter exposure, activity, and biological response. Yet we still know little about the full scope of xenobiotic metabolism: a single molecule can give rise to tens or hundreds of derivatized metabolites, and mapping these products is the starting point for downstream studies of mechanism, function, and health impact.",
     relatedPublicationTitles: [
       "Navigating the conjugated metabolome",
-      "Charting the Undiscovered Metabolome with Synthetic Multiplexing"
+      "Charting the undiscovered metabolome with synthetic multiplexing implicates ibuprofen-carnitine in myotoxicity"
     ],
     image: "/images/research/microbial-xenobiotic-metabolism.png"
   }

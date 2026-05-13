@@ -12,7 +12,7 @@ const labMemberNames = new Set(
 const highlightedPublicationOrder = new Map([
   ["BUDDY: molecular formula discovery via bottom-up MS/MS interrogation", 0],
   ["Navigating the conjugated metabolome", 1],
-  ["Charting the undiscovered metabolome with synthetic multiplexing", 2],
+  ["Charting the undiscovered metabolome with synthetic multiplexing implicates ibuprofen-carnitine in myotoxicity", 2],
   ["Structural annotation of full-scan MS data: A unified solution for LC-MS and MS imaging analyses", 3]
 ]);
 const highlightedPublications = publications
