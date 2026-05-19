@@ -346,7 +346,7 @@ export const guideContent: GuideContent = {
         {
           title: "Figure assembly",
           bullets: [
-            "Use a tool that supports vector editing, such as PowerPoint, Adobe Illustrator, or Inkscape. I personally use PowerPoint for figure assembly.",
+            "Use a tool that supports vector editing, such as Adobe Illustrator, Inkscape or PowerPoint.",
             "Save vector formats whenever possible, such as SVG, unless the journal requires a specific format.",
             "If a vector file becomes too large or impractical (for example, with large UMAP plots), export a raster image such as PNG or JPEG at no less than 600 DPI.",
             "When assembling multipanel figures, export plots at the intended final figure or poster size to avoid awkward resizing later.",
