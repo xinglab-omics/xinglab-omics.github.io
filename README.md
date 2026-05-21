@@ -2,7 +2,7 @@
 
 Next.js website for Xing Lab at Fudan University. The site is built around editable content files in `lib/content/`, with layout and visual components in `app/` and `components/`.
 
-Live site: https://philipbear.github.io/xinglab/
+Live site: https://xinglab-omics.github.io/
 
 ## Quick Start
 
@@ -36,7 +36,7 @@ npm run build
 This repository is configured for GitHub Pages at:
 
 ```text
-https://philipbear.github.io/xinglab/
+https://xinglab-omics.github.io/
 ```
 
 The GitHub Actions workflow in `.github/workflows/pages.yml` builds and deploys the static Next.js export. Pushing to `main` will update the Pages site after the workflow finishes.
