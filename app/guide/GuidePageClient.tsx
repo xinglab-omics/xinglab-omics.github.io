@@ -4,11 +4,12 @@ import { guideContent, type GuideContent, type GuideSection, type GuideTextPart 
 import { withBasePath } from "@/lib/site-paths";
 
 function sectionNumber(index: number, sectionId: string, firstSectionId?: string) {
-  if (sectionId === "acknowledgment" && index === 0) {
+  if ((sectionId === "acknowledgment" || sectionId === "translation-note") && index === 0) {
     return "0";
   }
 
-  const offset = firstSectionId === "acknowledgment" ? 0 : 1;
+  const hasZeroPreface = firstSectionId === "acknowledgment" || firstSectionId === "translation-note";
+  const offset = hasZeroPreface ? 0 : 1;
   return String(index + offset).padStart(2, "0");
 }
 

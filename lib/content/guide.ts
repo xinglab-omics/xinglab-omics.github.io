@@ -480,18 +480,23 @@ export const guideContent: GuideContent = {
       ],
       blocks: [
         {
-          title: "Key Papers and Tool Papers",
-          body: "Core papers and method/tool papers that define important ideas, workflows, and resources for the lab.",
+          title: "Key Research and Tool Papers",
+          body: "Core research papers and method/tool papers that define important ideas, workflows, and resources for the lab.",
           bullets: [
             [
+              { text: "Key research papers:", strong: true },
+              " ",
               { label: "Bile acid paper", href: "https://www.cell.com/cell/fulltext/S0092-8674(24)00185-5" },
               "  |  ",
               { label: "N-acyl lipid paper", href: "https://www.cell.com/cell/fulltext/S0092-8674(25)00565-3" },
               "  |  ",
               { label: "Reverse metabolomics", href: "https://www.nature.com/articles/s41586-023-06906-8" },
               "  |  ",
-              { label: "LLM-assisted molecular discovery", href: "https://www.nature.com/articles/s41586-025-09969-x" },
-              "  |  ",
+              { label: "LLM-assisted metabolite discovery", href: "https://www.nature.com/articles/s41586-025-09969-x" }
+            ],
+            [
+              { text: "Tool papers:", strong: true },
+              " ",
               { label: "MZmine", href: "https://www.nature.com/articles/s41587-023-01690-2" },
               "  |  ",
               { label: "USI", href: "https://www.biorxiv.org/content/10.1101/2020.05.09.086066v2" },
@@ -1087,18 +1092,23 @@ const readingListSectionZh: GuideSection = {
   ],
   blocks: [
     {
-      title: "关键论文和工具论文",
-      body: "这些论文定义了实验室常用的重要概念、工作流和资源。",
+      title: "关键研究论文和工具论文",
+      body: "这些研究论文和工具论文定义了实验室常用的重要概念、工作流和资源。",
       bullets: [
         [
+          { text: "关键研究论文：", strong: true },
+          " ",
           { label: "Bile acid paper", href: "https://www.cell.com/cell/fulltext/S0092-8674(24)00185-5" },
           "  |  ",
           { label: "N-acyl lipid paper", href: "https://www.cell.com/cell/fulltext/S0092-8674(25)00565-3" },
           "  |  ",
           { label: "Reverse metabolomics", href: "https://www.nature.com/articles/s41586-023-06906-8" },
           "  |  ",
-          { label: "LLM-assisted molecular discovery", href: "https://www.nature.com/articles/s41586-025-09969-x" },
-          "  |  ",
+          { label: "LLM-assisted metabolite discovery", href: "https://www.nature.com/articles/s41586-025-09969-x" }
+        ],
+        [
+          { text: "工具论文：", strong: true },
+          " ",
           { label: "MZmine", href: "https://www.nature.com/articles/s41587-023-01690-2" },
           "  |  ",
           { label: "USI", href: "https://www.biorxiv.org/content/10.1101/2020.05.09.086066v2" },

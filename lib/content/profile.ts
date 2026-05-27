@@ -22,7 +22,7 @@ export const piProfile = {
   ],
   experience: [
     {
-      period: "2023.8 - Present",
+      period: "2023.8 - 2026.7",
       title: "Postdoctoral Scholar",
       institution: "University of California, San Diego",
       detail: "Supervisor: Pieter C. Dorrestein (Founder of the GNPS ecosystem & Molecular networking)",
