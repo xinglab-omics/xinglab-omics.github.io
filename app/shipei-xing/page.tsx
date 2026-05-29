@@ -140,6 +140,9 @@ export default function ShipeiXingPage() {
               </div>
             </div>
           </div>
+          {piProfile.bio ? (
+            <p className="mt-6 text-sm leading-6 text-muted">{piProfile.bio}</p>
+          ) : null}
         </section>
 
         <section className="rounded-lg border border-line bg-white p-6 shadow-sm sm:p-8">

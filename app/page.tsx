@@ -55,7 +55,7 @@ export default function HomePage() {
           }}
         >
           <div className="max-w-3xl">
-            <h1 className="space-y-3 text-3xl font-semibold tracking-normal text-ink sm:text-4xl lg:text-5xl">
+            <h1 className="-mt-6 space-y-3 text-3xl font-semibold tracking-normal text-ink sm:text-4xl lg:text-5xl">
               <span className="block whitespace-nowrap">Metabolomics &</span>
               <span className="block whitespace-nowrap">Xenobiotic Metabolism</span>
               <span lang="zh-Hans" className="font-cjk block text-3xl font-normal text-muted sm:text-3xl lg:text-3xl">
@@ -68,7 +68,7 @@ export default function HomePage() {
             <p lang="zh-Hans" className="font-cjk mt-3 max-w-2xl text-sm leading-4 text-muted sm:whitespace-nowrap">
               我们致力于解析人体内小分子的完整图谱，并理解食物、微生物与环境如何塑造它们。
             </p>
-            <p className="mt-12 flex max-w-xl flex-wrap items-center gap-x-4 gap-y-2 text-sm font-semibold uppercase tracking-normal text-fudan">
+            <p className="mt-20 flex max-w-xl flex-wrap items-center gap-x-4 gap-y-2 text-sm font-semibold uppercase tracking-normal text-fudan">
               {heroTags.map((tag, index) => (
                 <span key={tag} className="inline-flex items-center gap-4">
                   <span>{tag}</span>
