@@ -30,6 +30,10 @@ export function SiteHeader() {
   const [isOpen, setIsOpen] = useState(false);
   const [openDesktopMenu, setOpenDesktopMenu] = useState<string | null>(null);
 
+  function closeMobileMenuAfterClick() {
+    window.setTimeout(() => setIsOpen(false), 0);
+  }
+
   useEffect(() => {
     setIsOpen(false);
     setOpenDesktopMenu(null);
@@ -40,8 +44,8 @@ export function SiteHeader() {
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 sm:px-8">
         <Link href="/" className="flex min-w-0 items-center gap-3" aria-label="Xing Lab home">
           <Image
-            src={withBasePath("/images/branding/fudan.png")}
-            alt="Fudan University"
+            src={withBasePath("/images/branding/xing-lab-mark.svg")}
+            alt="Xing Lab"
             width={56}
             height={56}
             priority
@@ -181,7 +185,7 @@ export function SiteHeader() {
                       active ? "bg-fudan text-white" : "bg-white text-ink hover:text-fudan"
                     }`}
                     aria-current={itemActive ? "page" : undefined}
-                    onClick={() => setIsOpen(false)}
+                    onClick={closeMobileMenuAfterClick}
                   >
                     {item.label}
                   </Link>
@@ -212,7 +216,7 @@ export function SiteHeader() {
                             childActive ? "bg-fudan text-white" : "bg-white text-ink hover:text-fudan"
                           }`}
                           aria-current={childActive ? "page" : undefined}
-                          onClick={() => setIsOpen(false)}
+                          onClick={closeMobileMenuAfterClick}
                         >
                           {child.label}
                         </Link>
