@@ -109,7 +109,7 @@ export default function PublicationsPage() {
     <>
       <PageIntro
         eyebrow="Publications"
-        title="All publications"
+        title="All Publications"
         description={
           googleScholarLink ? (
             <>

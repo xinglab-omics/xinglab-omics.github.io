@@ -13,13 +13,13 @@ const nodes = [
   { x: 848, y: 400, r: 11, fill: "#ad464b" },
   { x: 892, y: 162, r: 12, fill: "#ad464b" },
   { x: 1022, y: 335, r: 17, fill: "#ad464b" },
-  // Cluster B: sage green
-  { x: 1102, y: 290, r: 15, fill: "#78958c" },
-  { x: 1182, y: 232, r: 11, fill: "#78958c" },
-  { x: 1162, y: 372, r: 13, fill: "#78958c" },
-  { x: 1082, y: 443, r: 10, fill: "#78958c" },
-  { x: 1233, y: 311, r: 9,  fill: "#78958c" },
-  { x: 1122, y: 168, r: 10, fill: "#78958c" },
+  // Cluster B: muted blue
+  { x: 1102, y: 290, r: 15, fill: "#587eab" },
+  { x: 1182, y: 232, r: 11, fill: "#587eab" },
+  { x: 1162, y: 372, r: 13, fill: "#587eab" },
+  { x: 1082, y: 443, r: 10, fill: "#587eab" },
+  { x: 1233, y: 311, r: 9,  fill: "#587eab" },
+  { x: 1122, y: 168, r: 10, fill: "#587eab" },
   // Cluster C: muted gray
   { x: 700,  y: 332, r: 11, fill: "#7a7872" },
   { x: 650,  y: 245, r: 9,  fill: "#7a7872" },

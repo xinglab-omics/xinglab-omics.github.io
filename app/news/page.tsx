@@ -22,7 +22,7 @@ export default function NewsPage() {
     <>
       <PageIntro
         eyebrow="News"
-        title="Lab updates"
+        title="Lab Updates"
         description="News from the lab, including openings, publications, conferences, awards, and activities."
       />
 
