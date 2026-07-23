@@ -44,12 +44,12 @@ export function SiteHeader() {
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 sm:px-8">
         <Link href="/" className="flex min-w-0 items-center gap-3" aria-label="Xing Lab home">
           <Image
-            src={withBasePath("/images/branding/fudan.png")}
-            alt="Fudan University"
-            width={56}
-            height={56}
+            src={withBasePath("/images/branding/xing-lab-mark.svg")}
+            alt="Xing Lab mark"
+            width={72}
+            height={62}
             priority
-            className="size-12 shrink-0 object-contain sm:size-14"
+            className="h-12 w-14 shrink-0 object-contain sm:h-14 sm:w-16"
           />
           <span className="flex min-w-0 flex-col">
             <span className="text-lg font-semibold tracking-normal text-ink">Xing Lab</span>
