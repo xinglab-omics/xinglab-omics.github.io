@@ -14,8 +14,8 @@ export const contactInfo: ContactInfo = {
         "In your email, please cover the points below and attach the relevant supporting files.",
       materials: [
         "Briefly describe your research interests, proposed postdoctoral direction, and future career development plan.",
-        "Include contact information for 2-3 references.",
-        "Attach your curriculum vitae.",
+        "Attach 2-3 reference letters.",
+        "Attach your personal CV.",
         "Attach up to 3 representative papers or manuscripts, if available.",
         "(Optional) Attach any other materials you consider important."
       ]
@@ -26,7 +26,7 @@ export const contactInfo: ContactInfo = {
         "Prospective master's and PhD students should follow the official Fudan University admissions process and are welcome to contact the lab in advance.",
       materials: [
         "In your email, briefly describe your current program, research interests, and why you are interested in our lab.",
-        "Attach your curriculum vitae.",
+        "Attach your personal CV.",
         "(Optional) Attach academic transcripts and English test scores, if available.",
         "(Optional) Attach representative materials such as papers, thesis work, posters, code repositories, or project reports, if available."
       ]
@@ -37,7 +37,7 @@ export const contactInfo: ContactInfo = {
         "Undergraduate students interested in research training, thesis projects, or internships are welcome to contact the lab. We are especially interested in students who can make a sustained, continuous research commitment over multiple semesters.",
       materials: [
         "In your email, briefly describe your current year and major, research interests, expected availability, and whether you can participate continuously over the longer term.",
-        "Attach your curriculum vitae, if available.",
+        "Attach your personal CV, if available.",
         "(Optional) Attach academic transcripts and English test scores, if available.",
         "(Optional) Attach representative materials such as posters, code repositories, course projects, or research reports, if available."
       ]
@@ -48,7 +48,7 @@ export const contactInfo: ContactInfo = {
         "Research assistant applicants should send a concise email and attach supporting files as needed.",
       materials: [
         "In your email, briefly describe your background, relevant skills, research interests, expected start date and availability.",
-        "Attach your curriculum vitae.",
+        "Attach your personal CV.",
         "(Optional) Attach representative materials such as papers, thesis work, posters, code repositories, or project reports, if available."
       ]
     },
@@ -67,7 +67,7 @@ export const contactInfoZh: ContactInfo = {
       description: "请在邮件中说明以下内容，并附上相关支持材料。",
       materials: [
         "简要说明你的研究兴趣、拟开展的博士后研究方向，以及未来职业发展计划。",
-        "提供 2-3 位推荐人的联系方式。",
+        "提供 2-3 封推荐信。",
         "附上个人简历。",
         "如有代表性论文或手稿，可附上最多 3 篇。",
         "（可选）附上你认为重要的其他材料。"

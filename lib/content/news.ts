@@ -21,12 +21,12 @@ export function newsItemId(item: Pick<NewsItem, "date" | "title">) {
 export const newsItems: NewsItem[] = [
   {
     title: "Openings for students and postdocs",
-    date: "2026-05-10",
+    date: "2026-07-24",
     summary:
       "Prospective lab members interested in metabolomics, bioinformatics, computational chemistry, and data science are encouraged to get in touch.",
     category: "Opening",
     link: "/contact",
-    image: "/images/news/20260510.png",
+    image: "/images/news/20260724.png",
     imageVariant: "side"
   },
   {

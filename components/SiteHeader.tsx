@@ -4,7 +4,7 @@ import { ChevronDown, Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { navigation } from "@/lib/content";
 import type { NavigationItem } from "@/lib/content/navigation";
 import { withBasePath, withoutBasePath } from "@/lib/site-paths";
@@ -29,15 +29,43 @@ export function SiteHeader() {
   const pathname = withoutBasePath(usePathname());
   const [isOpen, setIsOpen] = useState(false);
   const [openDesktopMenu, setOpenDesktopMenu] = useState<string | null>(null);
+  const desktopMenuCloseTimer = useRef<number | null>(null);
 
   function closeMobileMenuAfterClick() {
     window.setTimeout(() => setIsOpen(false), 0);
   }
 
+  function clearDesktopMenuCloseTimer() {
+    if (desktopMenuCloseTimer.current) {
+      window.clearTimeout(desktopMenuCloseTimer.current);
+      desktopMenuCloseTimer.current = null;
+    }
+  }
+
+  function showDesktopMenu(menuKey: string) {
+    clearDesktopMenuCloseTimer();
+    setOpenDesktopMenu(menuKey);
+  }
+
+  function closeDesktopMenu() {
+    clearDesktopMenuCloseTimer();
+    setOpenDesktopMenu(null);
+  }
+
+  function closeDesktopMenuAfterPointerExit() {
+    clearDesktopMenuCloseTimer();
+    desktopMenuCloseTimer.current = window.setTimeout(() => {
+      setOpenDesktopMenu(null);
+      desktopMenuCloseTimer.current = null;
+    }, 180);
+  }
+
   useEffect(() => {
     setIsOpen(false);
-    setOpenDesktopMenu(null);
+    closeDesktopMenu();
   }, [pathname]);
+
+  useEffect(() => clearDesktopMenuCloseTimer, []);
 
   return (
     <header className="sticky top-0 z-50 border-b border-line/80 bg-paper/94 backdrop-blur">
@@ -74,14 +102,14 @@ export function SiteHeader() {
               <div
                 key={menuKey}
                 className="relative"
-                onMouseEnter={() => childLinks.length > 0 && setOpenDesktopMenu(menuKey)}
-                onMouseLeave={() => setOpenDesktopMenu(null)}
-                onFocus={() => childLinks.length > 0 && setOpenDesktopMenu(menuKey)}
+                onMouseEnter={() => childLinks.length > 0 && showDesktopMenu(menuKey)}
+                onMouseLeave={closeDesktopMenuAfterPointerExit}
+                onFocus={() => childLinks.length > 0 && showDesktopMenu(menuKey)}
                 onBlur={(event) => {
                   const nextFocusedElement = event.relatedTarget;
 
                   if (!(nextFocusedElement instanceof Node) || !event.currentTarget.contains(nextFocusedElement)) {
-                    setOpenDesktopMenu(null);
+                    closeDesktopMenu();
                   }
                 }}
               >
@@ -92,7 +120,7 @@ export function SiteHeader() {
                     aria-current={itemActive ? "page" : undefined}
                     aria-haspopup={childLinks.length > 0 ? "menu" : undefined}
                     aria-expanded={childLinks.length > 0 ? isDropdownOpen : undefined}
-                    onClick={() => setOpenDesktopMenu(null)}
+                    onClick={closeDesktopMenu}
                   >
                     {item.label}
                     {childLinks.length > 0 ? <ChevronDown aria-hidden="true" size={13} /> : null}
@@ -103,7 +131,7 @@ export function SiteHeader() {
                     className={triggerClassName}
                     aria-haspopup={childLinks.length > 0 ? "menu" : undefined}
                     aria-expanded={childLinks.length > 0 ? isDropdownOpen : undefined}
-                    onClick={() => setOpenDesktopMenu(menuKey)}
+                    onClick={() => showDesktopMenu(menuKey)}
                   >
                     {item.label}
                     {childLinks.length > 0 ? <ChevronDown aria-hidden="true" size={13} /> : null}
@@ -133,7 +161,7 @@ export function SiteHeader() {
                             }`}
                             aria-current={childActive ? "page" : undefined}
                             onClick={(event) => {
-                              setOpenDesktopMenu(null);
+                              closeDesktopMenu();
                               event.currentTarget.blur();
                             }}
                           >

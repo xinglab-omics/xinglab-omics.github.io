@@ -2,6 +2,17 @@ import type { Publication } from "./types";
 
 export const publications: Publication[] = [
   {
+    title: "Alkamines reveal a hidden layer of steroid and drug metabolism",
+    authors:
+      "Julius Agongo, Subhaskar R Panga, Shipei Xing, Vincent Charron-Lamoureux, Harsha Gouda, Yasin El Abiead, Megan R Nelson, Abubaker Patan, Marvic Carrillo Terrazas, Kine Eide Kvitne, Jeong In Seo, Prajit Rajkumar, Sadie Giddings, Helena Mannochio-Russo, Jasmine Zemlin, Ipsita Mohanty, Marta Sala-Climent, Zhewen Hu, Victoria Delaray, Simpa K Yeboah, Haoqi Nina Zhao, Andrés M Caraballo-Rodríguez, Claire E Williams, Candace L Williams, Wilhan D Gonçalves Nunes, Kathleen Dorrestein, Jennifer Cao, Isabelle Shepherd, Rachel Bock, Nathaniel Roethler, Adrian Jinich, Lindsey A Burnett, Jeremy Carver, Robert N Devine, Christopher K Arnatt, Iain A Murray, Rob Knight, Monica Guma, Lee R Hagey, Gary Perdew, Nuno Bandeira, Mingxun Wang, Hiutung Chu, Dionicio Siegel, Pieter C. Dorrestein",
+    venue: "bioRxiv",
+    year: 2026,
+    url: "https://www.biorxiv.org/content/10.64898/2026.05.13.724743v1",
+    correspondingAuthors: ["Pieter C. Dorrestein"],
+    preprint: true,
+    highlighted: false
+  },
+  {
     title: "FlashMRM: An Automated Platform for MRM Method Generation and Iterative Optimization Based on High-Resolution Spectra",
     authors:
       "Zecang You, Ao Guo, Changzhi Shi, Jiahu Deng, Jingzhi Yao, Jia Tu, Junjie Yang, Shipei Xing, Mingliang Fang",

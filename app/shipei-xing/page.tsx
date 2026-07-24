@@ -3,6 +3,7 @@ import { PageIntro } from "@/components/PageIntro";
 import { PersonAvatar } from "@/components/PersonAvatar";
 import { piProfile } from "@/lib/content";
 import type { ProfileEntry } from "@/lib/content";
+import type { ProfileHonor } from "@/lib/content/types";
 
 const subtleDetailLinkLabels = new Set(["Tao Huan", "Zhan Lu", "Feihe Huang"]);
 
@@ -97,6 +98,7 @@ export default function ShipeiXingPage() {
     item,
     content: renderServiceItem(item)
   }));
+  const honors: ProfileHonor[] = piProfile.honors;
 
   return (
     <>
@@ -164,7 +166,7 @@ export default function ShipeiXingPage() {
         <section className="rounded-lg border border-line bg-white p-6 shadow-sm sm:p-8">
           <h2 className="text-2xl font-semibold tracking-normal text-ink">Selected Honors & Awards</h2>
           <ul className="mt-5 grid gap-3 text-sm leading-6 text-muted">
-            {piProfile.honors.map((honor) => (
+            {honors.map((honor) => (
               <li key={`${honor.year}-${honor.title}`} className="grid grid-cols-[4rem_minmax(0,1fr)] gap-3">
                 <span className="font-semibold tabular-nums text-fudan">{honor.year}</span>
                 <span className={honor.highlight ? "font-semibold text-ink" : undefined}>

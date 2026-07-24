@@ -23,6 +23,11 @@ export const piProfile = {
   ],
   experience: [
     {
+      period: "2026.8 - Present",
+      title: "Assistant Professor",
+      institution: "Department of Environmental Science & Engineering, Fudan University"
+    },
+    {
       period: "2023.8 - 2026.7",
       title: "Postdoctoral Scholar",
       institution: "University of California, San Diego",
@@ -57,7 +62,7 @@ export const piProfile = {
       year: "2025",
       title: "Excellent Young Scientists Fund (Overseas), National Natural Science Foundation of China",
       chineseTitle: "国家优秀青年科学基金项目（海外），国家自然科学基金委员会",
-      highlight: true
+      // highlight: true
     },
     {
       year: "2022",
@@ -86,6 +91,6 @@ export const piProfile = {
   ] satisfies ProfileHonor[],
   service: [
     "Reviewer: Nature, Cell, Nature Machine Intelligence, Nature Microbiology, Nature Communications, Analytical Chemistry, Environmental Pollution, BMC Bioinformatics, Analytica Chimica Acta, Journal of Cheminformatics, etc.",
-    "Editorial Board Member: BMC Chemistry"
+    // "Editorial Board Member: BMC Chemistry"
   ]
 };
