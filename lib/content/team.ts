@@ -64,5 +64,15 @@ export const members: Member[] = [
     email: "25300740025@m.fudan.edu.cn",
     image: "/images/profiles/Ruize_Tang.jpg",
     joinedDate: "September 2026"
+  },
+  {
+    name: "Kehan Zhang",
+    chineseName: "章轲涵",
+    group: "Undergraduate Students",
+    bio:
+      "Kehan Zhang is an undergraduate student in the School of Life Sciences at Fudan University, majoring in Biological Sciences (2025 cohort).",
+    email: "25340700031@m.fudan.edu.cn",
+    image: "/images/profiles/Kehan_Zhang.png",
+    joinedDate: "September 2026"
   }
 ];
