@@ -76,11 +76,11 @@ export const members: Member[] = [
     joinedDate: "September 2026"
   },
   {
-    name: "PengYu Xing",
+    name: "Pengyu Xing",
     chineseName: "邢蓬宇",
     group: "Undergraduate Students",
     bio:
-      "PengYu Xing is an undergraduate student majoring in Environmental Science and Engineering at Fudan University.",
+      "Pengyu Xing is an undergraduate student majoring in Environmental Science and Engineering at Fudan University.",
     email: "26300740003@m.fudan.edu.cn",
     image: "/images/profiles/Pengyu_Xing.jpg",
     joinedDate: "October 2026"
