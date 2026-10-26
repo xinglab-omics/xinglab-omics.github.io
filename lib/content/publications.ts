@@ -59,7 +59,7 @@ export const publications: Publication[] = [
   {
     title: "Navigating the conjugated metabolome",
     authors:
-      "Shipei Xing, Abubaker Patan, Julius Agongo, Harsha Gouda, Vincent Charron-Lamoureux, Yasin El Abiead, Zhewen Hu, Haoqi Nina Zhao, Ipsita Mohanty, Jasmine Zemlin, Wilhan Donizete Gonçalves Nunes, Lindsey A. Burnett, Mingxun Wang, Dionicio Siegel, Pieter C. Dorrestein",
+      "Shipei Xing, Abubaker Patan, Julius Agongo, Harsha Gouda, Vincent Charron-Lamoureux, Yasin El Abiead, Jeong In Seo, Zhewen Hu, Haoqi Nina Zhao, Ipsita Mohanty, Jasmine Zemlin, Wilhan Donizete Gonçalves Nunes, Lindsey A. Burnett, Mingxun Wang, Dionicio Siegel, Pieter C. Dorrestein",
     venue: "bioRxiv, in revision at Nature",
     year: 2026,
     url: "https://www.biorxiv.org/content/10.64898/2026.02.06.704496v1",
@@ -307,7 +307,7 @@ export const publications: Publication[] = [
     title: "Structural annotation of full-scan MS data: A unified solution for LC-MS and MS imaging analyses",
     authors:
       "Shipei Xing, Vincent Charron-Lamoureux, Mans Ekelof, Yasin El Abiead, Huaxu Yu, Oliver Fiehn, Todor Alexandrov, Pieter C. Dorrestein",
-    venue: "bioRxiv, in revision at Nature Communications",
+    venue: "bioRxiv",
     year: 2024,
     url: "https://doi.org/10.1101/2024.10.14.618269",
     correspondingAuthors: ["Pieter C. Dorrestein"],
