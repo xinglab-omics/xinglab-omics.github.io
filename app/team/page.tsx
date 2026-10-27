@@ -1,11 +1,17 @@
 import { ArrowRight, CalendarDays, Mail } from "lucide-react";
 import Link from "next/link";
+import { FavoriteMolecule } from "@/components/FavoriteMolecule";
+import { HometownMap, type Traveler } from "@/components/HometownMap";
 import { PageIntro } from "@/components/PageIntro";
 import { PersonAvatar } from "@/components/PersonAvatar";
 import { ProfileLinkIcon } from "@/components/ProfileLinkIcon";
 import { members, type Member, type ProfileEntry, type ProfileLink } from "@/lib/content";
 
 const groups = ["Postdocs", "PhD Students", "Master's Students", "Undergraduate Students", "Alumni"] as const;
+
+const travelers: Traveler[] = members.flatMap(({ name, chineseName, image, hometown }) =>
+  hometown ? [{ name, chineseName, image, hometown }] : []
+);
 
 function MemberContactLinks({
   email,
@@ -99,13 +105,18 @@ function MemberProfile({ member, compact = false }: { member: Member; compact?: 
           ) : null}
         </h3>
         {member.role ? <p className="mt-2 text-sm font-medium leading-6 text-muted">{member.role}</p> : null}
-        {member.joinedDate ? (
-          <p className="mt-2 inline-flex items-center gap-1.5 text-xs font-medium tracking-wide text-muted">
-            <CalendarDays aria-hidden="true" size={14} className="text-fudan" />
-            Joined {member.joinedDate}
-          </p>
+        {member.joinedLabel || member.joinedDate || member.favoriteMolecule ? (
+          <div className="mt-2 flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 sm:justify-start">
+            {member.joinedLabel || member.joinedDate ? (
+              <p className="inline-flex items-center gap-1.5 text-xs font-medium tracking-wide text-muted">
+                <CalendarDays aria-hidden="true" size={14} className="text-fudan" />
+                {member.joinedLabel ?? `Joined ${member.joinedDate}`}
+              </p>
+            ) : null}
+            {member.favoriteMolecule ? <FavoriteMolecule molecule={member.favoriteMolecule} owner={member.name} /> : null}
+          </div>
         ) : null}
-        {member.bio ? <p className="mt-4 text-sm leading-7 text-muted">{member.bio}</p> : null}
+        {member.bio ? <p className="mt-3 text-sm leading-6 text-muted">{member.bio}</p> : null}
         <MemberContactLinks
           email={member.email}
           links={member.links}
@@ -175,6 +186,13 @@ export default function MembersPage() {
               </section>
             );
           })}
+
+          <section>
+            <h2 className="text-2xl font-semibold tracking-normal text-ink">Where We Come From</h2>
+            <div className="mt-5 rounded-xl border border-line bg-white p-4 shadow-sm sm:p-7">
+              <HometownMap travelers={travelers} />
+            </div>
+          </section>
         </div>
       </section>
     </>

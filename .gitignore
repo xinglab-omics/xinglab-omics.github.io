@@ -40,3 +40,7 @@ yarn-error.log*
 next-env.d.ts
 
 _random/
+_ideas/
+
+# Python bytecode (scripts/)
+__pycache__/

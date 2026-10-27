@@ -3,6 +3,7 @@ import Link from "next/link";
 import { FeaturedPapersRail } from "@/components/FeaturedPapersRail";
 import { HeroScrollAnimation } from "@/components/HeroScrollAnimation";
 import { HeroVisual } from "@/components/HeroVisual";
+import { MoleculeQuiz } from "@/components/MoleculeQuiz";
 import { NewsTicker } from "@/components/NewsTicker";
 import { ResearchHighlightCard } from "@/components/ResearchHighlightCard";
 import { ResearchIntroPanel } from "@/components/ResearchIntroPanel";
@@ -10,6 +11,7 @@ import {
   featuredPaperSpotlights,
   members,
   newsItems,
+  quizQuestions,
   researchAreas,
   researchDirectionsIntro,
   researchDirectionsQuestion
@@ -104,7 +106,7 @@ export default function HomePage() {
         </article>
       </section>
 
-      <section className="mx-auto max-w-7xl px-5 pb-12 pt-3 sm:px-8 lg:pb-14">
+      <section className="mx-auto max-w-7xl px-5 pb-2 pt-3 sm:px-8">
         <div className="rounded-lg border border-line bg-white p-5 shadow-sm sm:p-6">
           <div className="mb-7">
             <ResearchIntroPanel
@@ -121,6 +123,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <MoleculeQuiz questions={quizQuestions} />
     </>
   );
 }

@@ -44,10 +44,25 @@ export type Member = {
   email?: string;
   image?: string;
   joinedDate?: string;
+  joinedLabel?: string;
   links?: ProfileLink[];
   careerSummary?: ProfileEntry[];
   profileHref?: string;
   isOpenPosition?: boolean;
+  favoriteMolecule?: FavoriteMolecule;
+  hometown?: Hometown;
+};
+
+export type FavoriteMolecule = {
+  name: string;
+  structure: string;
+};
+
+export type Hometown = {
+  city: string;
+  cityZh: string;
+  lat: number;
+  lon: number;
 };
 
 export type Publication = {
@@ -65,6 +80,35 @@ export type Publication = {
 export type PaperSpotlight = {
   publication: Publication;
   image: string;
+};
+
+export type QuizOption = {
+  name: string;
+  nameZh: string;
+  structure?: string;
+};
+
+export type QuizImage = {
+  src: string;
+  alt: string;
+  credit?: { text: string; url: string };
+};
+
+export type QuizQuestion = {
+  question: string;
+  questionZh: string;
+  image: QuizImage;
+  options: QuizOption[];
+  answer: string;
+  explanation: string;
+  citation: {
+    authors: string;
+    title: string;
+    venue: string;
+    year: number;
+    url: string;
+  };
+  fromLab?: boolean;
 };
 
 export type NewsItem = {

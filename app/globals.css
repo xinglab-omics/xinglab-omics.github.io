@@ -60,6 +60,59 @@ a {
   background: color-mix(in srgb, var(--color-fudan) 16%, transparent);
 }
 
+@keyframes critter-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.critter {
+  animation: critter-bob 2.8s ease-in-out infinite;
+}
+
+.critter:hover {
+  animation-duration: 0.5s;
+}
+
+/* Member photos as round pins on the Tianditu map (components/HometownMap.tsx). The map
+   positions the anchor with a transform, so only the photo inside it may scale. */
+.hometown-pin-anchor {
+  cursor: pointer;
+}
+
+.hometown-pin-anchor:hover,
+.hometown-pin-anchor.is-active {
+  z-index: 10;
+}
+
+.hometown-pin {
+  display: block;
+  border: 2px solid #fff;
+  border-radius: 9999px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.28);
+  width: 40px;
+  height: 40px;
+  max-width: none;
+  object-fit: cover;
+  transition: scale 0.15s ease, border-color 0.15s ease;
+}
+
+.hometown-pin.is-fudan {
+  border-color: var(--color-fudan);
+}
+
+.hometown-pin-anchor:hover .hometown-pin,
+.hometown-pin-anchor.is-active .hometown-pin {
+  border-color: var(--color-fudan);
+  scale: 1.15;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

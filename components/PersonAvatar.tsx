@@ -4,10 +4,11 @@ import { withBasePath } from "@/lib/site-paths";
 type PersonAvatarProps = {
   name: string;
   image?: string;
-  size?: "sm" | "md" | "lg" | "xl";
+  size?: "xs" | "sm" | "md" | "lg" | "xl";
 };
 
 const sizeClasses = {
+  xs: "size-7 text-[10px] sm:size-9 sm:text-xs",
   sm: "size-14 text-base",
   md: "size-16 text-lg",
   lg: "size-24 text-3xl",
@@ -34,7 +35,7 @@ export function PersonAvatar({ name, image, size = "md" }: PersonAvatarProps) {
           src={withBasePath(image)}
           alt={`${name} profile photo`}
           fill
-          sizes={size === "xl" ? "128px" : size === "lg" ? "96px" : "64px"}
+          sizes={size === "xl" ? "128px" : size === "lg" ? "96px" : size === "xs" ? "36px" : "64px"}
           className="object-cover"
         />
       ) : (
