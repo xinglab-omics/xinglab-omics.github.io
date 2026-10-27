@@ -259,7 +259,7 @@ The map needs a Tianditu browser key (浏览器端 Key). Without one, the sectio
 - The key ends up in the page's JavaScript (that is how browser keys work), so restrict it to the site's domain in the Tianditu console.
 - Team profile links are limited to the first 4 links on the team page.
 - The PI card is generated from `profile.ts` and inserted into `team.ts`.
-- The "Open Positions" card is also in `team.ts`; edit or remove it there.
+- A recruiting card is a member entry with `isOpenPosition: true` (currently "Join us as a PhD student" in the PhD Students group). It shows a dashed empty seat, the `role` as a badge, the `bio` if there is one, and its first link as a button. Remove it once that group has real members, or add one to another group the same way. Open positions are skipped when bolding lab members' names in publications.
 - Publications and homepage featured papers automatically bold names that match non-open-position members.
 
 ## Molecule Structures

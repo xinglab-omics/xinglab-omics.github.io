@@ -1,4 +1,4 @@
-import { ArrowRight, CalendarDays, Mail } from "lucide-react";
+import { ArrowRight, CalendarDays, Mail, UserPlus } from "lucide-react";
 import Link from "next/link";
 import { FavoriteMolecule } from "@/components/FavoriteMolecule";
 import { HometownMap, type Traveler } from "@/components/HometownMap";
@@ -78,6 +78,40 @@ function CareerSummary({ entries }: { entries?: ProfileEntry[] }) {
         </article>
       ))}
     </div>
+  );
+}
+
+// A reserved seat in a group that is still recruiting (isOpenPosition in team.ts).
+function OpenPosition({ member }: { member: Member }) {
+  const link = member.links?.[0];
+
+  return (
+    <article className="grid gap-7 sm:grid-cols-[8rem_minmax(0,1fr)] sm:gap-8">
+      <div className="flex justify-center sm:justify-start">
+        <div className="flex size-32 items-center justify-center rounded-full border-2 border-dashed border-[color-mix(in_srgb,var(--color-fudan)_35%,var(--color-line))] bg-white text-fudan">
+          <UserPlus aria-hidden="true" size={36} strokeWidth={1.75} />
+        </div>
+      </div>
+      <div className="flex min-w-0 flex-col items-center text-center sm:items-start sm:text-left">
+        <h3 className="text-2xl font-semibold tracking-normal text-ink">{member.name}</h3>
+        {member.role ? (
+          <p className="mt-2 inline-flex items-center gap-1.5 rounded-full bg-[color-mix(in_srgb,var(--color-fudan)_9%,white)] px-2.5 py-1 text-xs font-semibold text-fudan">
+            <span className="size-1.5 animate-pulse rounded-full bg-fudan" aria-hidden="true" />
+            {member.role}
+          </p>
+        ) : null}
+        {member.bio ? <p className="mt-3 text-sm leading-6 text-muted">{member.bio}</p> : null}
+        {link ? (
+          <Link
+            href={link.href}
+            className="mt-4 inline-flex shrink-0 items-center gap-1.5 rounded-full border border-fudan bg-fudan px-3 py-1.5 text-xs font-semibold text-white transition hover:bg-[color-mix(in_srgb,var(--color-fudan)_85%,black)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fudan"
+          >
+            {link.label}
+            <ArrowRight aria-hidden="true" size={14} />
+          </Link>
+        ) : null}
+      </div>
+    </article>
   );
 }
 
@@ -175,13 +209,17 @@ export default function MembersPage() {
               <section key={group}>
                 <h2 className="text-2xl font-semibold tracking-normal text-ink">{group}</h2>
                 <div className={`mt-5 grid gap-10 ${isStudentGroup ? "lg:grid-cols-2" : ""}`}>
-                  {groupMembers.map((member, index) => (
-                    <MemberProfile
-                      key={`${member.group}-${member.name}-${index}`}
-                      member={member}
-                      compact={isStudentGroup}
-                    />
-                  ))}
+                  {groupMembers.map((member, index) =>
+                    member.isOpenPosition ? (
+                      <OpenPosition key={`${member.group}-${member.name}-${index}`} member={member} />
+                    ) : (
+                      <MemberProfile
+                        key={`${member.group}-${member.name}-${index}`}
+                        member={member}
+                        compact={isStudentGroup}
+                      />
+                    )
+                  )}
                 </div>
               </section>
             );

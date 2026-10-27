@@ -39,6 +39,14 @@ export const members: Member[] = [
     hometown: { city: "Dalian", cityZh: "大连", lat: 38.914, lon: 121.615 }
   },
   {
+    name: "Join us as a PhD student",
+    role: "We're recruiting",
+    group: "PhD Students",
+    bio: "",
+    links: [{ label: "How to apply", href: "/contact" }],
+    isOpenPosition: true
+  },
+  {
     name: "Yinjie Yu",
     chineseName: "余胤杰",
     group: "Master's Students",

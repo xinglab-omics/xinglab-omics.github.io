@@ -6,7 +6,7 @@ const publicationOrder = new Map(publications.map((publication, index) => [publi
 const googleScholarLink = piProfile.links.find((link) => link.label === "Google Scholar");
 const labMemberNames = new Set(
   members
-    .filter((member) => member.name !== "Open Positions")
+    .filter((member) => !member.isOpenPosition)
     .map((member) => member.name)
 );
 const highlightedPublicationOrder = new Map([
