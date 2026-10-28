@@ -58,7 +58,7 @@ export function FavoriteMolecule({ molecule, owner }: FavoriteMoleculeProps) {
 
       <span
         aria-hidden="true"
-        className="pointer-events-none invisible absolute left-1/2 top-full z-30 mt-2 w-64 -translate-x-1/2 translate-y-1 overflow-hidden rounded-2xl bg-white opacity-0 shadow-soft ring-1 ring-line transition duration-200 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 sm:left-0 sm:translate-x-0"
+        className="pointer-events-none invisible absolute left-1/2 top-full z-30 mt-2 w-64 -translate-x-1/2 translate-y-1 overflow-hidden rounded-2xl bg-white opacity-0 shadow-soft ring-1 ring-line transition duration-200 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 sm:left-auto sm:right-0 sm:translate-x-0"
       >
         <span className="flex items-center gap-1.5 px-4 pb-2 pt-3 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted">
           <Heart size={11} className="fill-fudan text-fudan" />

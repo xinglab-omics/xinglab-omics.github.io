@@ -117,7 +117,7 @@ export function MoleculeQuiz({ questions }: MoleculeQuizProps) {
   };
 
   return (
-    <section id="molecule-quiz" className="scroll-mt-24 pt-2">
+    <section id="molecule-quiz" className="scroll-mt-24 pt-6">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <MoleculeCritters />
       </div>
@@ -134,13 +134,13 @@ export function MoleculeQuiz({ questions }: MoleculeQuizProps) {
         <div className="mx-auto max-w-7xl px-5 pb-10 pt-5 sm:px-8 sm:pt-6 lg:pb-12">
           <div className="flex flex-wrap items-end justify-between gap-x-6 gap-y-4">
             <div>
-              <p className="inline-flex items-center gap-1.5 rounded-full border border-fudan bg-white px-2.5 py-1 text-xs font-semibold uppercase tracking-normal text-fudan">
-                <Sparkles aria-hidden="true" size={13} />
-                Quiz time
-              </p>
-              <h2 className="mt-3 text-2xl font-semibold tracking-normal text-ink sm:text-3xl">
-                Guess the Molecule
-              </h2>
+              <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+                <p className="inline-flex items-center gap-1.5 rounded-full border border-fudan bg-white px-2.5 py-1 text-xs font-semibold uppercase tracking-normal text-fudan">
+                  <Sparkles aria-hidden="true" size={13} />
+                  Quiz time
+                </p>
+                <h2 className="text-2xl font-semibold tracking-normal text-ink sm:text-3xl">Guess the Molecule</h2>
+              </div>
               <p className="mt-2 text-sm leading-6 text-muted">
                 Each question is a real finding from the scientific literature. Can you pick the molecule behind it?
               </p>

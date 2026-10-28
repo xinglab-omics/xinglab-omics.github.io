@@ -33,9 +33,6 @@ jobs:
 
       - name: Build static site
         run: npm run build
-        env:
-          # Tianditu browser key for the team page map (Settings > Secrets and variables > Actions > Variables).
-          NEXT_PUBLIC_TIANDITU_KEY: ${{ vars.TIANDITU_KEY }}
 
       - name: Disable Jekyll processing
         run: touch out/.nojekyll

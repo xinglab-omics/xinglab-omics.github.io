@@ -8,7 +8,7 @@ type PersonAvatarProps = {
 };
 
 const sizeClasses = {
-  xs: "size-7 text-[10px] sm:size-9 sm:text-xs",
+  xs: "size-9 text-xs",
   sm: "size-14 text-base",
   md: "size-16 text-lg",
   lg: "size-24 text-3xl",

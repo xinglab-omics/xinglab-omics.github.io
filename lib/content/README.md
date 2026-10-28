@@ -27,7 +27,7 @@ npm run build
 | `home.ts` | Homepage featured lab papers carousel |
 | `quiz.ts` | Homepage "Guess the Molecule" quiz questions |
 | `profile.ts` | Shipei Xing profile page and PI data reused by the team page |
-| `team.ts` | Team/member cards, favorite molecules, hometowns (team page map), alumni, and open positions card |
+| `team.ts` | Team/member cards, favorite molecules, hometowns (team page flight-path plot), alumni, and open positions card |
 | `structures.ts` | `structure("<slug>")` helper for molecule structure images |
 | `publications.ts` | Publication list and highlighted publication flags |
 | `news.ts` | News page and homepage latest-news ticker |
@@ -246,20 +246,10 @@ Notes:
 - `joinedLabel` replaces the "Joined {joinedDate}" line, for example `"Incoming Master's Student (September 2027)"`.
 - If no image is provided, the site shows initials. Crop photos to a square around the head and shoulders; the avatar is a circle.
 - `favoriteMolecule` shows the molecule's name next to the joined date; hovering shows its structure and clicking opens it large. Use the plain name without an abbreviation in parentheses. Add the structure first (see [Molecule Structures](#molecule-structures)).
-- `hometown` puts the member's photo on the "Where We Come From" map at the bottom of the team page, at the city's `lat` and `lon` (decimal degrees, north and east positive). The list next to the map shows each straight-line distance to Fudan; hometowns within 30 km show as "Local". Pins that would overlap are fanned out automatically.
-
-### Team Map Key (天地图)
-
-The map uses Tianditu (天地图), the national map service, through its WebGL API (TMap GL, vector map, sharp on high-DPI screens), so the base map carries an approved 审图号. Tianditu draws its logo with the 审图号 in the map's corner; don't hide or cover it. A published map of China with borders must come from an approved source like this rather than be drawn by us.
-
-The map needs a Tianditu browser key (浏览器端 Key). Without one, the section shows only the list.
-
-- Local preview: create `.env.local` in the project root with `NEXT_PUBLIC_TIANDITU_KEY=your-key`, then restart `npm run dev`. The file is gitignored.
-- Deployed site: on GitHub, open the repository's Settings > Secrets and variables > Actions > Variables, and add a variable named `TIANDITU_KEY` with the key. The Pages workflow passes it into the build; push or re-run the workflow to apply it.
-- The key ends up in the page's JavaScript (that is how browser keys work), so restrict it to the site's domain in the Tianditu console.
+- `hometown` adds the member to the "Where We Come From" section at the bottom of the team page. `lat` and `lon` (decimal degrees, north and east positive) are only used to work out the straight-line distance to Fudan, which places each member on a km ruler (Fudan at 0) and sets the size of their dotted flight path to Fudan. Hometowns within 30 km show as "Local"; under 100 km get no arc. The plot is `components/HometownFlights.tsx`. No map is drawn, on purpose: a published map of China with borders needs an approved base map (审图号).
 - Team profile links are limited to the first 4 links on the team page.
 - The PI card is generated from `profile.ts` and inserted into `team.ts`.
-- A recruiting card is a member entry with `isOpenPosition: true` (currently "Join us as a PhD student" in the PhD Students group). It shows a dashed empty seat, the `role` as a badge, the `bio` if there is one, and its first link as a button. Remove it once that group has real members, or add one to another group the same way. Open positions are skipped when bolding lab members' names in publications.
+- A recruiting card is a member entry with `isOpenPosition: true` (currently "Join us" in the PhD Students group, whose section is titled "Postdocs & PhD Students" through `groupTitles` in `app/team/page.tsx`). It shows a dashed empty seat, the `role` as a badge, the `bio` if there is one, and its first link as a button. Remove it once that group has real members, or add one to another group the same way. Open positions are skipped when bolding lab members' names in publications.
 - Publications and homepage featured papers automatically bold names that match non-open-position members.
 
 ## Molecule Structures

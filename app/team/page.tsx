@@ -1,13 +1,16 @@
 import { ArrowRight, CalendarDays, Mail, UserPlus } from "lucide-react";
 import Link from "next/link";
 import { FavoriteMolecule } from "@/components/FavoriteMolecule";
-import { HometownMap, type Traveler } from "@/components/HometownMap";
+import { HometownFlights } from "@/components/HometownFlights";
 import { PageIntro } from "@/components/PageIntro";
 import { PersonAvatar } from "@/components/PersonAvatar";
 import { ProfileLinkIcon } from "@/components/ProfileLinkIcon";
 import { members, type Member, type ProfileEntry, type ProfileLink } from "@/lib/content";
+import type { Traveler } from "@/lib/hometowns";
 
 const groups = ["Postdocs", "PhD Students", "Master's Students", "Undergraduate Students", "Alumni"] as const;
+// Section titles that differ from the group name: the PhD section's open position also covers postdocs.
+const groupTitles: Partial<Record<(typeof groups)[number], string>> = { "PhD Students": "Postdocs & PhD Students" };
 
 const travelers: Traveler[] = members.flatMap(({ name, chineseName, image, hometown }) =>
   hometown ? [{ name, chineseName, image, hometown }] : []
@@ -207,7 +210,7 @@ export default function MembersPage() {
 
             return (
               <section key={group}>
-                <h2 className="text-2xl font-semibold tracking-normal text-ink">{group}</h2>
+                <h2 className="text-2xl font-semibold tracking-normal text-ink">{groupTitles[group] ?? group}</h2>
                 <div className={`mt-5 grid gap-10 ${isStudentGroup ? "lg:grid-cols-2" : ""}`}>
                   {groupMembers.map((member, index) =>
                     member.isOpenPosition ? (
@@ -225,10 +228,11 @@ export default function MembersPage() {
             );
           })}
 
-          <section>
+          {/* min-w-0: wide charts scroll inside their own box instead of widening the page. */}
+          <section className="min-w-0">
             <h2 className="text-2xl font-semibold tracking-normal text-ink">Where We Come From</h2>
-            <div className="mt-5 rounded-xl border border-line bg-white p-4 shadow-sm sm:p-7">
-              <HometownMap travelers={travelers} />
+            <div className="mt-6">
+              <HometownFlights travelers={travelers} />
             </div>
           </section>
         </div>
