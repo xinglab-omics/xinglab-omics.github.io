@@ -9,8 +9,6 @@ import { members, type Member, type ProfileEntry, type ProfileLink } from "@/lib
 import type { Traveler } from "@/lib/hometowns";
 
 const groups = ["Postdocs", "PhD Students", "Master's Students", "Undergraduate Students", "Alumni"] as const;
-// Section titles that differ from the group name: the PhD section's open position also covers postdocs.
-const groupTitles: Partial<Record<(typeof groups)[number], string>> = { "PhD Students": "Postdocs & PhD Students" };
 
 const travelers: Traveler[] = members.flatMap(({ name, chineseName, image, hometown }) =>
   hometown ? [{ name, chineseName, image, hometown }] : []
@@ -210,7 +208,7 @@ export default function MembersPage() {
 
             return (
               <section key={group}>
-                <h2 className="text-2xl font-semibold tracking-normal text-ink">{groupTitles[group] ?? group}</h2>
+                <h2 className="text-2xl font-semibold tracking-normal text-ink">{group}</h2>
                 <div className={`mt-5 grid gap-10 ${isStudentGroup ? "lg:grid-cols-2" : ""}`}>
                   {groupMembers.map((member, index) =>
                     member.isOpenPosition ? (

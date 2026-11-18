@@ -249,7 +249,7 @@ Notes:
 - `hometown` adds the member to the "Where We Come From" section at the bottom of the team page. `lat` and `lon` (decimal degrees, north and east positive) are only used to work out the straight-line distance to Fudan, which places each member on a km ruler (Fudan at 0) and sets the size of their dotted flight path to Fudan. Hometowns within 30 km show as "Local"; under 100 km get no arc. The plot is `components/HometownFlights.tsx`. No map is drawn, on purpose: a published map of China with borders needs an approved base map (审图号).
 - Team profile links are limited to the first 4 links on the team page.
 - The PI card is generated from `profile.ts` and inserted into `team.ts`.
-- A recruiting card is a member entry with `isOpenPosition: true` (currently "Join us" in the PhD Students group, whose section is titled "Postdocs & PhD Students" through `groupTitles` in `app/team/page.tsx`). It shows a dashed empty seat, the `role` as a badge, the `bio` if there is one, and its first link as a button. Remove it once that group has real members, or add one to another group the same way. Open positions are skipped when bolding lab members' names in publications.
+- A recruiting card is a member entry with `isOpenPosition: true`. The current "Join us" card appears under Postdocs. It shows a dashed empty seat, the `role` as a badge, the `bio` if there is one, and its first link as a button. Keep it in the group while recruiting for that position. Open positions are skipped when bolding lab members' names in publications.
 - Publications and homepage featured papers automatically bold names that match non-open-position members.
 
 ## Molecule Structures

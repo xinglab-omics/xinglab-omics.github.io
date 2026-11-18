@@ -41,10 +41,21 @@ export const members: Member[] = [
   {
     name: "Join us",
     role: "We're recruiting",
-    group: "PhD Students",
+    group: "Postdocs",
     bio: "",
     links: [{ label: "How to apply", href: "/contact" }],
     isOpenPosition: true
+  },
+  {
+    name: "Shaohong Xu",
+    chineseName: "徐劭鸿",
+    group: "PhD Students",
+    bio:
+      "Shaohong received his bachelor's degree from China Pharmaceutical University. A fan of detective novels, he hopes to uncover clues in mass spectrometry data.",
+    email: "shxu25@m.fudan.edu.cn",
+    image: "/images/profiles/Shaohong_Xu.jpg",
+    favoriteMolecule: { name: "Quercetin", structure: structure("quercetin") },
+    hometown: { city: "Handan", cityZh: "邯郸", lat: 36.61, lon: 114.488 }
   },
   {
     name: "Yinjie Yu",
