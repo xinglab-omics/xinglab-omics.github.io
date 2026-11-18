@@ -114,6 +114,7 @@ export type QuizQuestion = {
 export type NewsItem = {
   title: string;
   date: string;
+  dateLabel?: string;
   summary: string;
   category: "Lab" | "Publication" | "Opening" | "Conference" | "Award";
   link?: string;

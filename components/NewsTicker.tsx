@@ -69,7 +69,7 @@ export function NewsTicker({ items }: NewsTickerProps) {
       <div className="mx-auto grid min-h-[220px] max-w-7xl gap-4 overflow-hidden px-5 py-5 sm:px-8 lg:min-h-[116px] lg:grid-cols-[160px_minmax(0,1fr)_auto] lg:items-center">
         <div>
           <p className="text-xs font-semibold uppercase tracking-normal text-fudan">Latest News</p>
-          <p className="mt-1 text-xs text-muted">{formatDate(item.date)}</p>
+          <p className="mt-1 text-xs text-muted">{item.dateLabel ?? formatDate(item.date)}</p>
         </div>
 
         <div className="flex min-h-20 min-w-0 flex-col justify-center overflow-hidden lg:min-h-16">

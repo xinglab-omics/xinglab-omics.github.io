@@ -67,7 +67,7 @@ export default function NewsPage() {
                       <h2 className="mt-2 text-2xl font-semibold tracking-normal text-ink">{item.title}</h2>
                     </div>
                     <time className="text-sm text-muted" dateTime={item.date}>
-                      {formatDate(item.date)}
+                      {item.dateLabel ?? formatDate(item.date)}
                     </time>
                   </div>
                   <p className="mt-4 text-sm leading-7 text-muted">{item.summary}</p>
