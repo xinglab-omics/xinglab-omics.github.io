@@ -54,6 +54,7 @@ export const members: Member[] = [
       "Shaohong received his bachelor's degree from China Pharmaceutical University. A fan of detective novels, he hopes to uncover clues in mass spectrometry data.",
     email: "shxu25@m.fudan.edu.cn",
     image: "/images/profiles/Shaohong_Xu.jpg",
+    joinedDate: "November 2026",
     favoriteMolecule: { name: "Quercetin", structure: structure("quercetin") },
     hometown: { city: "Handan", cityZh: "邯郸", lat: 36.61, lon: 114.488 }
   },

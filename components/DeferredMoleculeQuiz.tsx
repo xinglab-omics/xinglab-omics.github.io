@@ -34,15 +34,26 @@ export function DeferredMoleculeQuiz({ question, questionZh }: { question: strin
   }, []);
 
   return (
-    <section id="molecule-quiz" ref={section} className="scroll-mt-24 pt-6">
-      {Game ? <Game /> : (
-        <div className="mx-auto min-h-[45rem] max-w-7xl px-5 pt-16 sm:px-8 lg:min-h-[30rem]">
-          <QuizHeading />
-          <h3 className="mt-6 text-lg font-semibold text-ink">{question}</h3>
-          <p lang="zh-Hans" className="font-cjk mt-1 text-base text-muted">{questionZh}</p>
-          {failed && <button className="mt-4 font-semibold text-fudan" onClick={loadQuiz}>Retry loading quiz</button>}
-        </div>
-      )}
+    <section
+      id="molecule-quiz"
+      ref={section}
+      className="mt-3 scroll-mt-24 border-t-2 border-sage"
+      style={{
+        backgroundColor: "color-mix(in srgb, var(--color-sage) 12%, var(--color-paper))",
+        backgroundImage: "radial-gradient(color-mix(in srgb, var(--color-sage) 28%, transparent) 1px, transparent 1px)",
+        backgroundSize: "18px 18px"
+      }}
+    >
+      <div className="mx-auto max-w-7xl px-5 pb-10 pt-4 sm:px-8 sm:pt-5 lg:pb-12">
+        {Game ? <Game /> : (
+          <div className="min-h-[45rem] lg:min-h-[30rem]">
+            <QuizHeading />
+            <h3 className="mt-6 text-lg font-semibold text-ink">{question}</h3>
+            <p lang="zh-Hans" className="font-cjk mt-1 text-base text-muted">{questionZh}</p>
+            {failed && <button className="mt-4 font-semibold text-fudan" onClick={loadQuiz}>Retry loading quiz</button>}
+          </div>
+        )}
+      </div>
     </section>
   );
 }

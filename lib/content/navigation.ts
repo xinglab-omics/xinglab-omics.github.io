@@ -19,6 +19,7 @@ export const navigation: NavigationItem[] = [
   { label: "NEWS", href: "/news" },
   {
     label: "LAB GUIDE",
+    href: "/guide/lab-life",
     children: [
       { label: "LAB LIFE", href: "/guide/lab-life" },
       { label: "RESEARCH PRACTICE", href: "/guide/research-practice" }

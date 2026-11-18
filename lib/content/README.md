@@ -443,6 +443,7 @@ Items may also include child links for the header dropdown:
 ```ts
 {
   label: "LAB GUIDE",
+  href: "/guide/lab-life",
   children: [
     { label: "LAB LIFE", href: "/guide/lab-life" },
     { label: "RESEARCH PRACTICE", href: "/guide/research-practice" }

@@ -87,25 +87,6 @@ a {
   background: color-mix(in srgb, var(--color-fudan) 16%, transparent);
 }
 
-@keyframes critter-bob {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-4px);
-  }
-}
-
-.critter {
-  animation: critter-bob 2.8s ease-in-out infinite;
-}
-
-.critter:hover {
-  animation-duration: 0.5s;
-}
-
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
