@@ -1,8 +1,7 @@
-import type { Metadata } from "next";
 import { labLifeGuideContent } from "@/lib/content/guide";
-import { GuidePageClient } from "../GuidePageClient";
+import { GuidePageClient } from "@/app/guide/GuidePageClient";
 
-export const metadata: Metadata = {
+LabLifeGuidePage.metadata = {
   title: "Lab Life | Xing Lab Guide",
   description:
     "Xing Lab expectations, communication norms, meeting routines, well-being, collaboration, and authorship."
@@ -11,3 +10,5 @@ export const metadata: Metadata = {
 export default function LabLifeGuidePage() {
   return <GuidePageClient content={labLifeGuideContent} />;
 }
+
+export const config = { runtime: "nodejs", unstable_runtimeJS: false };

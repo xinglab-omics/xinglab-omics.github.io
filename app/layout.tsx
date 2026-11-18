@@ -1,13 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { SiteFooter } from "@/components/SiteFooter";
-import { SiteHeader } from "@/components/SiteHeader";
+import { AppSiteHeader } from "@/components/AppSiteHeader";
+import { siteMetadata } from "@/lib/site-metadata";
 
-export const metadata: Metadata = {
-  title: "Xing Lab @ Fudan",
-  description:
-    "Xing Lab at Fudan University studies mass spectrometry, metabolomics, and biological discovery."
-};
+export const metadata: Metadata = siteMetadata;
 
 export default function RootLayout({
   children
@@ -17,7 +14,7 @@ export default function RootLayout({
   return (
     <html lang="en" data-scroll-behavior="smooth">
       <body className="min-h-screen bg-paper text-ink antialiased">
-        <SiteHeader />
+        <AppSiteHeader />
         <main>{children}</main>
         <SiteFooter />
       </body>

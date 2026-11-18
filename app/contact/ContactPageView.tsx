@@ -48,12 +48,9 @@ export function ContactPageView({ content, copy }: ContactPageViewProps) {
               <section key={section.title} className="rounded-md border border-line bg-white p-5">
                 <h3 className="text-base font-semibold text-ink">{section.title}</h3>
                 <p className="mt-2 text-sm leading-6 text-muted">{section.description}</p>
-                <ul className="mt-4 grid gap-3 text-sm leading-6 text-muted">
+                <ul className="mt-4 grid list-disc gap-3 pl-5 text-sm leading-6 text-muted marker:text-fudan">
                   {section.materials.map((material) => (
-                    <li key={material} className="flex gap-3">
-                      <span className="mt-2 size-1.5 shrink-0 rounded-full bg-fudan" />
-                      <span>{material}</span>
-                    </li>
+                    <li key={material}>{material}</li>
                   ))}
                 </ul>
               </section>

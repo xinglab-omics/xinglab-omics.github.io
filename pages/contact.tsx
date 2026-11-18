@@ -1,8 +1,7 @@
-import type { Metadata } from "next";
 import { contactInfo } from "@/lib/content";
-import { ContactPageView } from "./ContactPageView";
+import { ContactPageView } from "@/app/contact/ContactPageView";
 
-export const metadata: Metadata = {
+ContactPage.metadata = {
   title: "Join Us | Xing Lab",
   description:
     "Apply to Xing Lab as a postdoctoral researcher, graduate student, undergraduate student, or research assistant."
@@ -26,3 +25,5 @@ export default function ContactPage() {
     />
   );
 }
+
+export const config = { runtime: "nodejs", unstable_runtimeJS: false };

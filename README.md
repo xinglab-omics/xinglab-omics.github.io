@@ -1,6 +1,6 @@
 # Xing Lab Website
 
-Next.js website for Xing Lab at Fudan University. The site is built around editable content files in `lib/content/`, with layout and visual components in `app/` and `components/`.
+Next.js website for Xing Lab at Fudan University. The site is built around editable content files in `lib/content/`, with page views in `app/` and `pages/`, and shared visual components in `components/`.
 
 Live site: https://xing-lab.org/
 
@@ -40,6 +40,8 @@ https://xing-lab.org/
 ```
 
 The GitHub Actions workflow in `.github/workflows/pages.yml` builds and deploys the static Next.js export. Pushing to `main` will update the Pages site after the workflow finishes.
+
+The homepage uses the App Router for its interactive quiz and graphics. The informational routes in `pages/` use the Pages Router’s static export with `unstable_runtimeJS: false`. Their shared header and any page interactions use native HTML and small browser scripts. If a page needs React event handlers or effects, remove that page’s `unstable_runtimeJS: false` setting and verify it in a production build.
 
 ## Where To Edit
 

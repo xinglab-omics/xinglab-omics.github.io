@@ -1,4 +1,4 @@
-import { BookOpen, ChevronRight, FileText } from "lucide-react";
+import { BookOpen, FileText } from "lucide-react";
 import { LanguageToggle } from "@/components/LanguageToggle";
 import { guideContent, type GuideContent, type GuideSection, type GuideTextPart } from "@/lib/content/guide";
 import { withBasePath } from "@/lib/site-paths";
@@ -57,13 +57,10 @@ function GuideList({ items }: { items?: GuideText[] }) {
   }
 
   return (
-    <ul className="mt-5 grid gap-3 text-sm leading-7 text-muted">
+    <ul className="guide-bullets mt-5 grid gap-3 text-sm leading-7 text-muted">
       {items.map((item, index) => (
-        <li key={typeof item === "string" ? item : `guide-list-${index}`} className="flex gap-3">
-          <ChevronRight aria-hidden="true" className="mt-1.5 size-3.5 shrink-0 text-fudan" />
-          <span>
-            <GuideTextInline value={item} keyPrefix={`guide-list-${index}`} />
-          </span>
+        <li key={index}>
+          <GuideTextInline value={item} keyPrefix={`guide-list-${index}`} />
         </li>
       ))}
     </ul>

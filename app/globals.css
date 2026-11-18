@@ -2,6 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .publication-list > li {
+    @apply grid grid-cols-[2.75rem_minmax(0,1fr)] gap-3 py-4 first:pt-2 last:pb-0;
+  }
+
+  .publication-list article {
+    @apply flex min-w-0 scroll-mt-28 flex-col gap-3 sm:flex-row sm:items-start sm:justify-between;
+  }
+
+  .guide-bullets > li {
+    position: relative;
+    padding-inline-start: 1.625rem;
+  }
+
+  .guide-bullets > li::before {
+    content: "";
+    position: absolute;
+    inset-inline-start: 0.25rem;
+    top: 0.63rem;
+    width: 0.34rem;
+    height: 0.34rem;
+    border: solid var(--color-fudan);
+    border-width: 1.5px 1.5px 0 0;
+    transform: rotate(45deg);
+  }
+}
+
 /* Background options for --color-paper:
    #f7f6f2 warm paper, #fbfaf7 porcelain, #f6f8f7 lab mist,
    #f3f7f4 pale sage, #f4f8fb cool blue, #f7f7f4 soft neutral

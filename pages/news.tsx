@@ -52,7 +52,7 @@ export default function NewsPage() {
                       alt={item.title}
                       loading={loading}
                       fetchPriority={fetchPriority}
-                      sizes="(min-width: 1024px) 960px, calc(100vw - 40px)"
+                      sizes="(min-width: 1024px) 958px, (min-width: 640px) calc(100vw - 66px), calc(100vw - 42px)"
                       className="h-auto w-full"
                     />
                   </div>
@@ -65,7 +65,7 @@ export default function NewsPage() {
                       alt={item.title}
                       loading={loading}
                       fetchPriority={fetchPriority}
-                      sizes="(min-width: 768px) 220px, calc(100vw - 40px)"
+                      sizes="(min-width: 768px) 219px, (min-width: 640px) calc(100vw - 66px), calc(100vw - 42px)"
                       className="h-auto w-full md:h-full md:object-contain"
                     />
                   </div>
@@ -99,3 +99,5 @@ export default function NewsPage() {
     </>
   );
 }
+
+export const config = { runtime: "nodejs", unstable_runtimeJS: false };

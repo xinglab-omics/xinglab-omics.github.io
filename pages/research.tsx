@@ -39,7 +39,7 @@ export default function ResearchPage() {
 
       <section className="grid gap-4 px-5 py-10 sm:px-8 lg:py-14">
         <div className="mx-auto w-full max-w-7xl">
-          <ResearchIntroPanel intro={researchDirectionsIntro} question={researchDirectionsQuestion} />
+          <ResearchIntroPanel intro={researchDirectionsIntro} question={researchDirectionsQuestion} priority />
         </div>
 
         {researchAreas.map((area, index) => {
@@ -60,7 +60,7 @@ export default function ResearchPage() {
               <SiteImage
                 src={area.image}
                 alt={`Scientific illustration for ${area.title}.`}
-                sizes="(min-width: 1280px) 1152px, 100vw"
+                sizes="(min-width: 1088px) 1024px, (min-width: 640px) calc(100vw - 66px), calc(100vw - 42px)"
                 className="absolute inset-0 h-full w-full object-contain"
                 style={{ objectPosition: figureOnLeft ? "left center" : "right center" }}
               />
@@ -108,3 +108,5 @@ export default function ResearchPage() {
     </>
   );
 }
+
+export const config = { runtime: "nodejs", unstable_runtimeJS: false };

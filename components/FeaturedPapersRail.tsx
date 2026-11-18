@@ -51,6 +51,45 @@ function renderAuthors(publication: Publication, labMemberNames: string[]) {
   });
 }
 
+// Browsers may fetch every lazy image in a horizontal carousel on first load.
+// Keep later figures available to non-scripted browsers and fetch them as they come into view.
+function PaperFigure({ spotlight, first }: { spotlight: PaperSpotlight; first: boolean }) {
+  const frame = useRef<HTMLElement>(null);
+  const [visible, setVisible] = useState(first);
+
+  useEffect(() => {
+    if (first || !frame.current) return;
+    if (!("IntersectionObserver" in window)) {
+      setVisible(true);
+      return;
+    }
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setVisible(true);
+        observer.disconnect();
+      }
+    }, { rootMargin: "300px 0px" });
+    observer.observe(frame.current);
+    return () => observer.disconnect();
+  }, [first]);
+
+  const description = `Representative figure for ${spotlight.publication.title}`;
+  const image = (
+    <SiteImage
+      src={spotlight.image}
+      alt={description}
+      fetchPriority="low"
+      sizes="(min-width: 1280px) 700px, (min-width: 1024px) 56vw, 92vw"
+      className="absolute inset-0 h-full w-full object-contain"
+    />
+  );
+  return (
+    <figure ref={frame} className="relative h-64 overflow-hidden rounded-md bg-paper lg:h-72" aria-label={description}>
+      {visible ? image : <noscript>{image}</noscript>}
+    </figure>
+  );
+}
+
 export function FeaturedPapersRail({ labMemberNames, spotlights }: FeaturedPapersRailProps) {
   const railRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -155,19 +194,7 @@ export function FeaturedPapersRail({ labMemberNames, spotlights }: FeaturedPaper
                       <ArrowUpRight aria-hidden="true" size={14} />
                     </a>
                   </div>
-                  <figure
-                    className="relative h-64 overflow-hidden rounded-md bg-paper lg:h-72"
-                    aria-label={`Representative figure for ${publication.title}`}
-                  >
-                    <SiteImage
-                      src={spotlight.image}
-                      alt={`Representative figure for ${publication.title}`}
-                      loading="lazy"
-                      fetchPriority="low"
-                      sizes="(min-width: 1280px) 700px, (min-width: 1024px) 56vw, 92vw"
-                      className="absolute inset-0 h-full w-full object-contain"
-                    />
-                  </figure>
+                  <PaperFigure spotlight={spotlight} first={index === 0} />
                 </div>
               </article>
             );

@@ -1,16 +1,24 @@
-"use client";
-
 import { SiteImage } from "@/components/SiteImage";
 import { ChevronDown, Menu, X } from "lucide-react";
-import { usePathname } from "next/navigation";
-import { useEffect, useRef } from "react";
 import { navigation, type NavigationItem } from "@/lib/content/navigation";
-import { staticPageHref, withBasePath, withoutBasePath } from "@/lib/site-paths";
+import { staticPageHref, withBasePath } from "@/lib/site-paths";
 
 // Native page links can be used while React is still downloading.
 const navigationFeedback = `{
   const status = document.getElementById("page-navigation-status");
   const header = status.closest("header");
+  function closeMenus(event) {
+    if (event.type === "keydown" && event.key !== "Escape") return;
+    for (const menu of header.querySelectorAll("details[open]")) {
+      if (event.type === "pointerdown" && menu.contains(event.target)) continue;
+      if (event.type === "keydown" && menu.contains(document.activeElement)) {
+        menu.querySelector("summary")?.focus();
+      }
+      menu.open = false;
+    }
+  }
+  document.addEventListener("pointerdown", closeMenus);
+  document.addEventListener("keydown", closeMenus);
   let timeout;
   function clear() {
     clearTimeout(timeout);
@@ -63,32 +71,9 @@ function ChildLinks({ items, pathname, mobile = false }: {
   ));
 }
 
-export function SiteHeader() {
-  const pathname = withoutBasePath(usePathname());
-  const header = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    function closeMenus(event: PointerEvent | KeyboardEvent) {
-      if (event instanceof KeyboardEvent && event.key !== "Escape") return;
-      const menus = header.current?.querySelectorAll<HTMLDetailsElement>("details[open]");
-      menus?.forEach((menu) => {
-        if (event instanceof PointerEvent && event.target instanceof Node && menu.contains(event.target)) return;
-        if (event instanceof KeyboardEvent && menu.contains(document.activeElement)) {
-          menu.querySelector("summary")?.focus();
-        }
-        menu.open = false;
-      });
-    }
-    document.addEventListener("pointerdown", closeMenus);
-    document.addEventListener("keydown", closeMenus);
-    return () => {
-      document.removeEventListener("pointerdown", closeMenus);
-      document.removeEventListener("keydown", closeMenus);
-    };
-  }, []);
-
+export function SiteHeader({ pathname }: { pathname: string }) {
   return (
-    <header ref={header} className="sticky top-0 z-50 border-b border-line/80 bg-paper/94 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-line/80 bg-paper/94 backdrop-blur">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 sm:px-8">
         <a href={staticPageHref("/")} className="flex min-w-0 items-center gap-2 sm:gap-3" aria-label="Xing Lab home">
           <span className="flex shrink-0 items-center gap-1 sm:gap-1.5">

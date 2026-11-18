@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, type ReactNode } from "react";
 import { PageIntro } from "@/components/PageIntro";
 import { members, piProfile, publications, type Publication } from "@/lib/content";
 
@@ -37,10 +37,6 @@ const highlightedPublications = publications
     return (publicationOrder.get(a.title) ?? 0) - (publicationOrder.get(b.title) ?? 0);
   });
 
-function isPreprint(publication: Publication) {
-  return publication.preprint;
-}
-
 function publicationId(publication: Publication) {
   return `publication-${publication.title
     .toLowerCase()
@@ -75,20 +71,27 @@ function renderAuthorLabels(publication: Publication, author: string) {
 }
 
 function renderAuthors(publication: Publication) {
-  return publication.authors.split(", ").map((author, index) => {
+  const parts: ReactNode[] = [];
+  let plainText = "";
+  for (const [index, author] of publication.authors.split(", ").entries()) {
     const isLabMember = labMemberNames.some((name) => author.includes(name));
     const labels = renderAuthorLabels(publication, author);
-    const separator = index > 0 ? ", " : "";
+    if (index > 0) plainText += ", ";
 
-    if (!isLabMember && !labels) return separator + author;
-    return (
+    if (!isLabMember && !labels) {
+      plainText += author;
+      continue;
+    }
+    parts.push(
       <Fragment key={index}>
-        {separator}
+        {plainText}
         {isLabMember ? <span className="font-semibold text-ink">{author}</span> : author}
         {labels}
       </Fragment>
     );
-  });
+    plainText = "";
+  }
+  return [...parts, plainText];
 }
 
 function renderVenue(publication: Publication) {
@@ -203,44 +206,31 @@ export default function PublicationsPage() {
                         <h3 className="text-sm font-semibold tabular-nums text-ink">{year}</h3>
                         <span className="h-px flex-1 bg-sage/50" />
                       </div>
-                      <ol className="mt-2 divide-y divide-line">
+                      <ol className="publication-list mt-2 divide-y divide-line break-words text-sm leading-5 text-muted">
                         {yearPublications.map((publication) => {
                           const publicationIndex = publicationOrder.get(publication.title) ?? 0;
                           const publicationNumber = publications.length - publicationIndex;
 
                           return (
-                            <li
-                              key={`${publication.year}-${publication.title}`}
-                              className="grid grid-cols-[2.75rem_minmax(0,1fr)] gap-3 py-4 first:pt-2 last:pb-0"
-                            >
-                              <span className="text-sm font-semibold tabular-nums text-fudan">
-                                {publicationNumber}.
-                              </span>
-                              <article id={publicationId(publication)} className="min-w-0 scroll-mt-28">
-                                <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-                                  <div className="min-w-0">
-                                    <h2 className="break-words text-sm leading-5 text-fudan">
-                                      {publication.url ? (
-                                        <a href={publicationHref(publication)} className="transition hover:text-ink">
-                                          {publication.title}
-                                        </a>
-                                      ) : (
-                                        publication.title
-                                      )}
-                                    </h2>
-                                    <p className="mt-1.5 break-words text-sm leading-5 text-muted">
-                                      {renderAuthors(publication)}
-                                    </p>
-                                    <p className="mt-1 break-words text-sm leading-5 text-muted">
-                                      {renderVenue(publication)}
-                                    </p>
-                                  </div>
-                                  {isPreprint(publication) ? (
-                                    <span className="w-fit shrink-0 rounded-full bg-paper px-3 py-1 text-xs font-semibold text-fudan">
-                                      Preprint
-                                    </span>
-                                  ) : null}
+                            <li key={publication.title}>
+                              <span className="font-semibold tabular-nums text-fudan">{`${publicationNumber}.`}</span>
+                              <article id={publicationId(publication)}>
+                                <div className="min-w-0">
+                                  <h4 className="text-fudan">
+                                    {publication.url ? (
+                                      <a href={publicationHref(publication)} className="transition hover:text-ink">
+                                        {publication.title}
+                                      </a>
+                                    ) : publication.title}
+                                  </h4>
+                                  <p className="mt-1.5">{renderAuthors(publication)}</p>
+                                  <p className="mt-1">{renderVenue(publication)}</p>
                                 </div>
+                                {publication.preprint ? (
+                                  <span className="w-fit shrink-0 rounded-full bg-paper px-3 py-1 text-xs font-semibold text-fudan">
+                                    Preprint
+                                  </span>
+                                ) : null}
                               </article>
                             </li>
                           );
@@ -264,3 +254,5 @@ export default function PublicationsPage() {
     </>
   );
 }
+
+export const config = { runtime: "nodejs", unstable_runtimeJS: false };

@@ -6,15 +6,18 @@ type ResearchIntroPanelProps = {
   intro: string;
   question: string;
   showExploreLink?: boolean;
+  priority?: boolean;
 };
 
-export function ResearchIntroPanel({ intro, question, showExploreLink = false }: ResearchIntroPanelProps) {
+export function ResearchIntroPanel({ intro, question, showExploreLink = false, priority = false }: ResearchIntroPanelProps) {
   return (
     <div className="relative min-h-[330px] overflow-hidden rounded-md bg-paper">
       <SiteImage
         src="/images/research/apple-metabolism-illustration.png"
         alt="Scientific illustration of apple-derived molecules moving through digestion and microbial metabolism."
-        sizes="(min-width: 1280px) 1152px, 100vw"
+        loading={priority ? "eager" : "lazy"}
+        fetchPriority={priority ? "high" : undefined}
+        sizes="(min-width: 768px) 660px, (min-width: 640px) calc(100vw - 64px), calc(100vw - 40px)"
         className="absolute inset-0 h-full w-full object-contain object-right"
       />
       <div

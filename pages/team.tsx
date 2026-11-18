@@ -1,18 +1,12 @@
 import { ArrowRight, CalendarDays, Mail, UserPlus } from "lucide-react";
-import { FavoriteMolecule } from "@/components/FavoriteMolecule";
-import { HometownFlights } from "@/components/HometownFlights";
+import { FavoriteMolecule, MoleculeDialog } from "@/components/FavoriteMolecule";
 import { PageIntro } from "@/components/PageIntro";
 import { PersonAvatar } from "@/components/PersonAvatar";
 import { ProfileLinkIcon } from "@/components/ProfileLinkIcon";
 import { members, type Member, type ProfileEntry, type ProfileLink } from "@/lib/content";
-import type { Traveler } from "@/lib/hometowns";
 import { staticPageHref } from "@/lib/site-paths";
 
 const groups = ["Postdocs", "PhD Students", "Master's Students", "Undergraduate Students", "Alumni"] as const;
-
-const travelers: Traveler[] = members.flatMap(({ name, chineseName, image, hometown }) =>
-  hometown ? [{ name, chineseName, image, hometown }] : []
-);
 
 function MemberContactLinks({
   email,
@@ -222,15 +216,11 @@ export default function MembersPage() {
             );
           })}
 
-          {/* min-w-0: wide charts scroll inside their own box instead of widening the page. */}
-          <section className="min-w-0">
-            <h2 className="text-2xl font-semibold tracking-normal text-ink">Where We Come From</h2>
-            <div className="mt-6">
-              <HometownFlights travelers={travelers} />
-            </div>
-          </section>
+          <MoleculeDialog />
         </div>
       </section>
     </>
   );
 }
+
+export const config = { runtime: "nodejs", unstable_runtimeJS: false };

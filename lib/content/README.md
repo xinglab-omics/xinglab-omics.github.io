@@ -1,6 +1,6 @@
 # Website Content Editing Guide
 
-Most editable website content lives in `lib/content/`. Page files in `app/` and reusable components in `components/` read this content and handle the layout, styling, and interaction.
+Most editable website content lives in `lib/content/`. Page files in `app/` and `pages/` and reusable components in `components/` read this content and handle the layout, styling, and interaction.
 
 After editing content, run the local site:
 
@@ -27,7 +27,7 @@ npm run build
 | `home.ts` | Homepage featured lab papers carousel |
 | `quiz.ts` | Homepage "Guess the Molecule" quiz questions |
 | `profile.ts` | Shipei Xing profile page and PI data reused by the team page |
-| `team.ts` | Team/member cards, favorite molecules, hometowns (team page flight-path plot), alumni, and open positions card |
+| `team.ts` | Team/member cards, favorite molecules, alumni, and open positions card |
 | `structures.ts` | `structure("<slug>")` helper for molecule structure images |
 | `publications.ts` | Publication list and highlighted publication flags |
 | `news.ts` | News page and homepage latest-news ticker |
@@ -39,7 +39,7 @@ npm run build
 
 ## Image Paths
 
-Website images live in `public/images/`. Keep the original filenames in content entries. When you run `npm run dev` or `npm run build`, the site generates WebP sizes for portraits, branding, news, papers, research illustrations, and quiz photos. Restart the dev server after adding or replacing an image to refresh its sizes.
+Website images live in `public/images/`. Keep the original filenames in content entries. When you run `npm run dev` or `npm run build`, the site generates responsive PNGs for logos and WebP images for photos and illustrations. Portraits, news, papers, and research illustrations also get AVIF versions. The browser selects the supported format and size. Restart the dev server after adding or replacing an image to refresh its sizes.
 
 ```text
 public/images/branding/   site logo and brand assets
@@ -203,7 +203,7 @@ Notes:
 
 - Keep recent papers near the top if you want them to appear first.
 - Lab member names are bolded when the author string includes a name from `team.ts`.
-- The highlighted publications section has a custom priority list in `app/publications/page.tsx`. New highlighted papers still show, but edit that priority list if you need a specific highlighted order.
+- The highlighted publications section has a custom priority list in `pages/publications.tsx`. New highlighted papers still show, but edit that priority list if you need a specific highlighted order.
 
 ## Team Members
 
@@ -229,8 +229,7 @@ Add a member object:
     { label: "Google Scholar", href: "https://scholar.google.com/" },
     { label: "GitHub", href: "https://github.com/" }
   ],
-  favoriteMolecule: { name: "Dopamine", structure: structure("dopamine") },
-  hometown: { city: "Shanghai", cityZh: "上海", lat: 31.23, lon: 121.474 }
+  favoriteMolecule: { name: "Dopamine", structure: structure("dopamine") }
 }
 ```
 
@@ -246,7 +245,6 @@ Notes:
 - `joinedLabel` replaces the "Joined {joinedDate}" line, for example `"Incoming Master's Student (September 2027)"`.
 - If no image is provided, the site shows initials. Crop photos to a square around the head and shoulders; the avatar is a circle.
 - `favoriteMolecule` shows the molecule's name next to the joined date; hovering shows its structure and clicking opens it large. Use the plain name without an abbreviation in parentheses. Add the structure first (see [Molecule Structures](#molecule-structures)).
-- `hometown` adds the member to the "Where We Come From" section at the bottom of the team page. `lat` and `lon` (decimal degrees, north and east positive) are only used to work out the straight-line distance to Fudan, which places each member on a km ruler (Fudan at 0) and sets the size of their dotted flight path to Fudan. Hometowns within 30 km show as "Local"; under 100 km get no arc. The plot is `components/HometownFlights.tsx`. No map is drawn, on purpose: a published map of China with borders needs an approved base map (审图号).
 - Team profile links are limited to the first 4 links on the team page.
 - The PI card is generated from `profile.ts` and inserted into `team.ts`.
 - A recruiting card is a member entry with `isOpenPosition: true`. The current "Join us" card appears under Postdocs. It shows a dashed empty seat, the `role` as a badge, the `bio` if there is one, and its first link as a button. Keep it in the group while recruiting for that position. Open positions are skipped when bolding lab members' names in publications.
@@ -452,7 +450,7 @@ Items may also include child links for the header dropdown:
 }
 ```
 
-Use internal paths that match routes under `app/`, such as `/research`, `/team`, `/guide/lab-life`, `/guide/research-practice`, `/publications`, `/news`, and `/contact`.
+Use internal paths that match routes under `app/` or `pages/`, such as `/research`, `/team`, `/guide/lab-life`, `/guide/research-practice`, `/publications`, `/news`, and `/contact`.
 
 ## Types
 

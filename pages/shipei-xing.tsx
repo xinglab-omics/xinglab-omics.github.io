@@ -198,3 +198,5 @@ export default function ShipeiXingPage() {
     </>
   );
 }
+
+export const config = { runtime: "nodejs", unstable_runtimeJS: false };

@@ -1,8 +1,7 @@
-import type { Metadata } from "next";
 import { contactInfoZh } from "@/lib/content";
-import { ContactPageView } from "../ContactPageView";
+import { ContactPageView } from "@/app/contact/ContactPageView";
 
-export const metadata: Metadata = {
+ContactZhPage.metadata = {
   title: "加入我们 | Xing Lab",
   description: "Xing Lab 博士后、研究生、本科生和科研助理申请说明。"
 };
@@ -25,3 +24,5 @@ export default function ContactZhPage() {
     />
   );
 }
+
+export const config = { runtime: "nodejs", unstable_runtimeJS: false };

@@ -1,8 +1,7 @@
-import type { Metadata } from "next";
 import { labLifeGuideContentZh } from "@/lib/content/guide";
-import { GuidePageClient } from "../../GuidePageClient";
+import { GuidePageClient } from "@/app/guide/GuidePageClient";
 
-export const metadata: Metadata = {
+LabLifeGuideZhPage.metadata = {
   title: "实验室生活 | Xing Lab Guide",
   description: "Xing Lab 关于实验室生活、沟通、会议、身心健康、合作与作者署名的中文指南。"
 };
@@ -10,3 +9,5 @@ export const metadata: Metadata = {
 export default function LabLifeGuideZhPage() {
   return <GuidePageClient content={labLifeGuideContentZh} />;
 }
+
+export const config = { runtime: "nodejs", unstable_runtimeJS: false };
