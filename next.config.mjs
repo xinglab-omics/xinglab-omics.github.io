@@ -6,8 +6,11 @@ const nextConfig = {
   trailingSlash: true,
   basePath,
   assetPrefix: basePath ? `${basePath}/` : undefined,
-  // Send the small Tailwind stylesheet with the document on high-latency first visits.
-  experimental: { inlineCss: true },
+  experimental: {
+    inlineCss: true, // App Router
+    // Next's Pages Router loads the Critters API, provided by the maintained Beasties fork.
+    optimizeCss: { inlineThreshold: 48 * 1024 }
+  },
   images: {
     unoptimized: true,
     formats: ["image/avif", "image/webp"]

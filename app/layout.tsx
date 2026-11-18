@@ -3,8 +3,12 @@ import "./globals.css";
 import { SiteFooter } from "@/components/SiteFooter";
 import { AppSiteHeader } from "@/components/AppSiteHeader";
 import { siteMetadata } from "@/lib/site-metadata";
+import { labMarkSrc } from "@/lib/site-paths";
 
-export const metadata: Metadata = siteMetadata;
+export const metadata: Metadata = {
+  ...siteMetadata,
+  icons: { icon: { url: labMarkSrc, type: "image/svg+xml", sizes: "any" } }
+};
 
 export default function RootLayout({
   children

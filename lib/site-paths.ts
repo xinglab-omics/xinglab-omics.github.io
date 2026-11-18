@@ -12,6 +12,8 @@ export function withBasePath(path: string) {
   return `${basePath}${path}`;
 }
 
+export const labMarkSrc = withBasePath("/images/branding/xing-lab-mark.svg");
+
 // Exported pages are directories. Request their canonical URL in a single round trip.
 export function staticPageHref(href: string) {
   if (!href.startsWith("/") || href.startsWith("//")) {

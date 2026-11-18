@@ -1,7 +1,7 @@
 import { SiteImage } from "@/components/SiteImage";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { navigation, type NavigationItem } from "@/lib/content/navigation";
-import { staticPageHref, withBasePath } from "@/lib/site-paths";
+import { labMarkSrc, staticPageHref } from "@/lib/site-paths";
 
 // Native page links can be used while React is still downloading.
 const navigationFeedback = `{
@@ -78,7 +78,7 @@ export function SiteHeader({ pathname }: { pathname: string }) {
         <a href={staticPageHref("/")} className="flex min-w-0 items-center gap-2 sm:gap-3" aria-label="Xing Lab home">
           <span className="flex shrink-0 items-center gap-1 sm:gap-1.5">
             <img
-              src={withBasePath("/images/branding/xing-lab-mark.svg")}
+              src={labMarkSrc}
               alt="Xing Lab mark"
               width={72}
               height={62}
