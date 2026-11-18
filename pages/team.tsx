@@ -1,4 +1,7 @@
 import { ArrowRight, CalendarDays, Mail, UserPlus } from "lucide-react";
+import { readFile } from "node:fs/promises";
+import path from "node:path";
+import { optimize } from "svgo";
 import { FavoriteMolecule, MoleculeDialog } from "@/components/FavoriteMolecule";
 import { PageIntro } from "@/components/PageIntro";
 import { PersonAvatar } from "@/components/PersonAvatar";
@@ -7,6 +10,20 @@ import { members, type Member, type ProfileEntry, type ProfileLink } from "@/lib
 import { staticPageHref } from "@/lib/site-paths";
 
 const groups = ["Postdocs", "PhD Students", "Master's Students", "Undergraduate Students", "Alumni"] as const;
+
+type MoleculePreviews = Record<string, string>;
+
+// Embed only the structures used on this page so the first hover needs no network request.
+export async function getStaticProps() {
+  const previews: MoleculePreviews = {};
+  for (const member of members) {
+    const src = member.favoriteMolecule?.structure;
+    if (!src?.startsWith("/images/molecules/") || !src.endsWith(".svg") || previews[src]) continue;
+    const svg = await readFile(path.join(process.cwd(), "public", src), "utf8");
+    previews[src] = "data:image/svg+xml," + encodeURIComponent(optimize(svg).data);
+  }
+  return { props: { previews } };
+}
 
 function MemberContactLinks({
   email,
@@ -106,7 +123,7 @@ function OpenPosition({ member }: { member: Member }) {
   );
 }
 
-function MemberProfile({ member, compact = false }: { member: Member; compact?: boolean }) {
+function MemberProfile({ member, previews, compact = false }: { member: Member; previews: MoleculePreviews; compact?: boolean }) {
   return (
     <article
       className={`grid gap-7 sm:grid-cols-[8rem_minmax(0,1fr)] sm:gap-8 ${
@@ -138,7 +155,9 @@ function MemberProfile({ member, compact = false }: { member: Member; compact?: 
                 {member.joinedLabel ?? `Joined ${member.joinedDate}`}
               </p>
             ) : null}
-            {member.favoriteMolecule ? <FavoriteMolecule molecule={member.favoriteMolecule} owner={member.name} /> : null}
+            {member.favoriteMolecule && (
+              <FavoriteMolecule molecule={member.favoriteMolecule} owner={member.name} preview={previews[member.favoriteMolecule.structure]} />
+            )}
           </div>
         ) : null}
         {member.bio ? <p className="mt-3 text-sm leading-6 text-muted">{member.bio}</p> : null}
@@ -166,7 +185,7 @@ function MemberProfile({ member, compact = false }: { member: Member; compact?: 
   );
 }
 
-export default function MembersPage() {
+export default function MembersPage({ previews }: { previews: MoleculePreviews }) {
   return (
     <>
       <PageIntro
@@ -183,7 +202,7 @@ export default function MembersPage() {
               <section key={member.name}>
                 <h2 className="text-2xl font-semibold tracking-normal text-ink">Principal Investigator</h2>
                 <div className="mx-auto mt-5 w-full max-w-5xl">
-                  <MemberProfile member={member} />
+                  <MemberProfile member={member} previews={previews} />
                 </div>
               </section>
             ))}
@@ -207,6 +226,7 @@ export default function MembersPage() {
                       <MemberProfile
                         key={`${member.group}-${member.name}-${index}`}
                         member={member}
+                        previews={previews}
                         compact={isStudentGroup}
                       />
                     )

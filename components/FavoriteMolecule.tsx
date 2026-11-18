@@ -32,10 +32,11 @@ function MoleculeIcon({ className }: { className?: string }) {
 type FavoriteMoleculeProps = {
   molecule: FavoriteMoleculeData;
   owner: string;
+  preview?: string;
 };
 
 // One line on the profile; the structure shows in a hover card, and a click opens it large.
-export function FavoriteMolecule({ molecule, owner }: FavoriteMoleculeProps) {
+export function FavoriteMolecule({ molecule, owner, preview }: FavoriteMoleculeProps) {
   const structureSrc = withBasePath(molecule.structure);
 
   return (
@@ -46,21 +47,21 @@ export function FavoriteMolecule({ molecule, owner }: FavoriteMoleculeProps) {
         data-owner={owner}
         aria-haspopup="dialog"
         aria-label={`Favorite molecule: ${molecule.name}. Open its structure`}
-        className="inline-flex cursor-zoom-in items-center gap-1.5 whitespace-nowrap rounded-full bg-[color-mix(in_srgb,var(--color-sage)_13%,white)] px-2.5 py-1 text-xs font-medium tracking-wide text-ink transition hover:bg-[color-mix(in_srgb,var(--color-fudan)_9%,white)] hover:text-fudan focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fudan"
+        className="peer inline-flex cursor-zoom-in items-center gap-1.5 whitespace-nowrap rounded-full bg-[color-mix(in_srgb,var(--color-sage)_13%,white)] px-2.5 py-1 text-xs font-medium tracking-wide text-ink transition hover:bg-[color-mix(in_srgb,var(--color-fudan)_9%,white)] hover:text-fudan focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fudan"
       >
         <MoleculeIcon />
         {molecule.name}
       </a>
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute left-1/2 top-full z-30 mt-2 hidden w-64 -translate-x-1/2 overflow-hidden rounded-2xl bg-white shadow-soft ring-1 ring-line group-focus-within:block group-hover:block sm:left-auto sm:right-0 sm:translate-x-0"
+        className="pointer-events-none absolute left-1/2 top-full z-30 mt-2 hidden w-64 -translate-x-1/2 overflow-hidden rounded-2xl bg-white shadow-soft ring-1 ring-line peer-focus-visible:block [@media(hover:hover)]:group-hover:block sm:left-auto sm:right-0 sm:translate-x-0"
       >
         <span className="flex items-center gap-1.5 px-4 pb-2 pt-3 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted">
           <Heart size={11} className="fill-fudan text-fudan" />
           Favorite molecule
         </span>
         <span className="flex h-32 items-center justify-center px-4 py-3" style={dotGrid}>
-          <img src={structureSrc} loading="lazy" alt="" width={320} height={220} className="h-auto max-h-full w-auto max-w-full" />
+          <img src={preview ?? structureSrc} loading={preview ? "eager" : "lazy"} alt="" width={320} height={220} className="h-auto max-h-full w-auto max-w-full" />
         </span>
         <span className="block px-4 py-2 text-[11px] text-muted">Click to enlarge</span>
       </span>
@@ -75,7 +76,7 @@ const openStructure = `{
     if (!link || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || !dialog.showModal) return;
     event.preventDefault();
     const image = dialog.querySelector("img");
-    image.src = link.href;
+    image.src = link.parentElement.querySelector("img").src;
     image.alt = "Structure of " + link.dataset.molecule;
     dialog.querySelector("[data-owner-label]").textContent = link.dataset.owner + "'s favorite molecule";
     dialog.querySelector("[data-molecule-label]").textContent = link.dataset.molecule;
