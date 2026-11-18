@@ -11,6 +11,8 @@
 # next.js
 /.next/
 /out/
+/public/image-variants/
+/lib/image-manifest.json
 
 # production
 /build

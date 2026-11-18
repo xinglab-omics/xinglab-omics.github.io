@@ -39,7 +39,7 @@ npm run build
 
 ## Image Paths
 
-Website images live in `public/images/`.
+Website images live in `public/images/`. Keep the original filenames in content entries. When you run `npm run dev` or `npm run build`, the site generates WebP sizes for portraits, branding, news, papers, research illustrations, and quiz photos. Restart the dev server after adding or replacing an image to refresh its sizes.
 
 ```text
 public/images/branding/   site logo and brand assets

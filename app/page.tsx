@@ -1,15 +1,16 @@
+import { staticPageHref } from "@/lib/site-paths";
 import { ArrowRight } from "lucide-react";
-import Link from "next/link";
 import { FeaturedPapersRail } from "@/components/FeaturedPapersRail";
 import { HeroScrollAnimation } from "@/components/HeroScrollAnimation";
 import { HeroVisual } from "@/components/HeroVisual";
-import { MoleculeQuiz } from "@/components/MoleculeQuiz";
+import { DeferredMoleculeQuiz } from "@/components/DeferredMoleculeQuiz";
 import { NewsTicker } from "@/components/NewsTicker";
 import { ResearchHighlightCard } from "@/components/ResearchHighlightCard";
 import { ResearchIntroPanel } from "@/components/ResearchIntroPanel";
 import {
   featuredPaperSpotlights,
   members,
+  newsItemId,
   newsItems,
   quizQuestions,
   researchAreas,
@@ -18,7 +19,14 @@ import {
 } from "@/lib/content";
 
 const heroTags = ["Mass spectrometry", "Metabolomics & Exposomics", "Bioinformatics", "Data mining", "Machine learning"];
-const latestNewsItems = newsItems.slice(0, 4);
+const latestNewsItems = newsItems.slice(0, 4).map((item) => {
+  const monthOnly = item.date.length === 7;
+  const date = new Date(monthOnly ? `${item.date}-01T00:00:00Z` : `${item.date}T00:00:00Z`);
+  const dateLabel = item.dateLabel ?? date.toLocaleDateString("en", {
+    month: "short", day: monthOnly ? undefined : "numeric", year: "numeric", timeZone: "UTC"
+  });
+  return { title: item.title, summary: item.summary, dateLabel, href: staticPageHref(`/news#${newsItemId(item)}`) };
+});
 const labMemberNames = members
   .filter((member) => !member.isOpenPosition)
   .map((member) => member.name);
@@ -96,13 +104,13 @@ export default function HomePage() {
               We welcome motivated students and researchers from all backgrounds to join us in exploring the metabolome and xenobiotic metabolism. Applicants with diverse experiences, perspectives, and skill sets are encouraged to apply.
             </p>
           </div>
-          <Link
-            href="/contact"
+          <a
+            href={staticPageHref("/contact")}
             className="mt-3 inline-flex shrink-0 items-center gap-1.5 rounded-full border border-line bg-paper px-3 py-1.5 text-xs font-semibold text-ink transition hover:border-fudan hover:text-fudan focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fudan sm:mt-0"
           >
             View opportunities
             <ArrowRight aria-hidden="true" size={14} />
-          </Link>
+          </a>
         </article>
       </section>
 
@@ -124,7 +132,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <MoleculeQuiz questions={quizQuestions} />
+      <DeferredMoleculeQuiz question={quizQuestions[0].question} questionZh={quizQuestions[0].questionZh} />
     </>
   );
 }

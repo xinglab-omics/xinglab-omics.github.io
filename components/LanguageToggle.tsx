@@ -1,4 +1,4 @@
-import { withBasePath } from "@/lib/site-paths";
+import { staticPageHref } from "@/lib/site-paths";
 
 type LanguageToggleProps = {
   isChinese: boolean;
@@ -8,7 +8,7 @@ type LanguageToggleProps = {
 export function LanguageToggle({ isChinese, href }: LanguageToggleProps) {
   return (
     <a
-      href={withBasePath(href)}
+      href={staticPageHref(href)}
       aria-label={isChinese ? "Switch to English" : "切换到中文"}
       className="inline-grid grid-cols-2 rounded-full border border-line bg-paper p-1 text-xs font-semibold text-muted transition hover:border-fudan"
     >

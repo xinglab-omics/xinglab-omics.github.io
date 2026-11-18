@@ -2,8 +2,8 @@
 
 import { useEffect, useRef, useState, type RefObject } from "react";
 
-// True once the element has scrolled (mostly) into view; used to start draw-in animations.
-export function useInView<T extends Element>(threshold = 0.3) {
+// Mount the chart shortly before it scrolls into view and pause it offscreen.
+export function useInView<T extends Element>() {
   const ref = useRef<T>(null);
   const [inView, setInView] = useState(false);
 
@@ -15,18 +15,13 @@ export function useInView<T extends Element>(threshold = 0.3) {
     }
 
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true);
-          observer.disconnect();
-        }
-      },
-      { threshold }
+      ([entry]) => setInView(entry.isIntersecting),
+      { rootMargin: "200px 0px" }
     );
     observer.observe(node);
 
     return () => observer.disconnect();
-  }, [threshold]);
+  }, []);
 
   return { ref, inView };
 }

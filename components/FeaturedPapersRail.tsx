@@ -1,11 +1,11 @@
 "use client";
 
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { SiteImage } from "@/components/SiteImage";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { useAutoAdvance } from "@/lib/use-auto-advance";
 import type { PaperSpotlight, Publication } from "@/lib/content";
-import { withBasePath } from "@/lib/site-paths";
+import { staticPageHref, withBasePath } from "@/lib/site-paths";
 
 type FeaturedPapersRailProps = {
   labMemberNames: string[];
@@ -19,7 +19,7 @@ function publicationHref(publication: Publication) {
     return publication.url;
   }
 
-  return "/publications";
+  return staticPageHref("/publications");
 }
 
 function authorLabels(publication: Publication, author: string) {
@@ -77,30 +77,14 @@ export function FeaturedPapersRail({ labMemberNames, spotlights }: FeaturedPaper
     };
   }, [spotlights.length]);
 
-  useEffect(() => {
-    if (!hasMultiplePapers || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      return;
-    }
-
-    const autoRoll = window.setInterval(() => {
-      const rail = railRef.current;
-
-      if (!rail) {
-        return;
-      }
-
+  const nextPaper = useCallback(() => {
+    const rail = railRef.current;
+    if (rail) {
       const nextIndex = (activeIndex + 1) % spotlights.length;
-
-      rail.scrollTo({
-        left: nextIndex * rail.clientWidth,
-        behavior: "smooth"
-      });
-    }, AUTO_ROLL_INTERVAL_MS);
-
-    return () => {
-      window.clearInterval(autoRoll);
-    };
-  }, [activeIndex, hasMultiplePapers, spotlights.length]);
+      rail.scrollTo({ left: nextIndex * rail.clientWidth, behavior: "smooth" });
+    }
+  }, [activeIndex, spotlights.length]);
+  useAutoAdvance(railRef, hasMultiplePapers, AUTO_ROLL_INTERVAL_MS, nextPaper);
 
   if (spotlights.length === 0) {
     return null;
@@ -130,13 +114,13 @@ export function FeaturedPapersRail({ labMemberNames, spotlights }: FeaturedPaper
         <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-sm font-semibold uppercase tracking-normal text-fudan">Featured Lab Papers</p>
           <div className="flex items-center gap-2">
-            <Link
-              href="/publications"
+            <a
+              href={staticPageHref("/publications")}
               className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-line bg-paper px-3 py-1.5 text-xs font-semibold text-ink transition hover:border-fudan hover:text-fudan"
             >
               View all publications
               <ArrowRight aria-hidden="true" size={14} />
-            </Link>
+            </a>
           </div>
         </div>
 
@@ -175,13 +159,13 @@ export function FeaturedPapersRail({ labMemberNames, spotlights }: FeaturedPaper
                     className="relative h-64 overflow-hidden rounded-md bg-paper lg:h-72"
                     aria-label={`Representative figure for ${publication.title}`}
                   >
-                    <Image
-                      src={withBasePath(spotlight.image)}
+                    <SiteImage
+                      src={spotlight.image}
                       alt={`Representative figure for ${publication.title}`}
-                      fill
-                      loading={index === 0 ? "eager" : "lazy"}
-                      sizes="(min-width: 1280px) 46vw, (min-width: 1024px) 52vw, 88vw"
-                      className="object-contain"
+                      loading="lazy"
+                      fetchPriority="low"
+                      sizes="(min-width: 1280px) 700px, (min-width: 1024px) 56vw, 92vw"
+                      className="absolute inset-0 h-full w-full object-contain"
                     />
                   </figure>
                 </div>

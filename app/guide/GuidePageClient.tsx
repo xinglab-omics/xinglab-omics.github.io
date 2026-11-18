@@ -18,7 +18,7 @@ type GuideText = string | GuideTextPart[];
 function renderTextParts(parts: GuideTextPart[], keyPrefix: string) {
   return parts.map((part, index) => {
     if (typeof part === "string") {
-      return <span key={`${keyPrefix}-text-${index}`}>{part}</span>;
+      return part;
     }
 
     if ("strong" in part) {

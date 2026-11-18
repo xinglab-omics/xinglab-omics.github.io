@@ -85,7 +85,7 @@ function moduleStyle(active: boolean, muted: boolean, reduceMotion: boolean): CS
   };
 }
 
-function svgPointFromEvent(event: PointerEvent<SVGSVGElement>, svg: SVGSVGElement) {
+function svgPointFromClient(clientX: number, clientY: number, svg: SVGSVGElement) {
   const rect = svg.getBoundingClientRect();
   const scale = Math.max(rect.width / viewBoxWidth, rect.height / viewBoxHeight);
   const renderedWidth = viewBoxWidth * scale;
@@ -94,13 +94,15 @@ function svgPointFromEvent(event: PointerEvent<SVGSVGElement>, svg: SVGSVGElemen
   const offsetY = (rect.height - renderedHeight) / 2;
 
   return {
-    x: (event.clientX - rect.left - offsetX) / scale - heroVisualOffsetX,
-    y: (event.clientY - rect.top - offsetY) / scale - networkOffsetY
+    x: (clientX - rect.left - offsetX) / scale - heroVisualOffsetX,
+    y: (clientY - rect.top - offsetY) / scale - networkOffsetY
   };
 }
 
 export function HeroVisual() {
   const svgRef = useRef<SVGSVGElement>(null);
+  const pointerFrame = useRef(0);
+  const clientPoint = useRef({ x: 0, y: 0 });
   const [pointer, setPointer] = useState<{ x: number; y: number } | null>(null);
   const [hoveredModule, setHoveredModule] = useState<HeroModule | null>(null);
   const [reduceMotion, setReduceMotion] = useState(false);
@@ -112,7 +114,10 @@ export function HeroVisual() {
     updateMotionPreference();
     mediaQuery.addEventListener("change", updateMotionPreference);
 
-    return () => mediaQuery.removeEventListener("change", updateMotionPreference);
+    return () => {
+      mediaQuery.removeEventListener("change", updateMotionPreference);
+      window.cancelAnimationFrame(pointerFrame.current);
+    };
   }, []);
 
   const reactiveNodes = useMemo<NodePosition[]>(() => {
@@ -143,10 +148,20 @@ export function HeroVisual() {
       return;
     }
 
-    setPointer(svgPointFromEvent(event, svgRef.current));
+    clientPoint.current = { x: event.clientX, y: event.clientY };
+    if (pointerFrame.current) return;
+    pointerFrame.current = window.requestAnimationFrame(() => {
+      pointerFrame.current = 0;
+      if (!svgRef.current) return;
+      const point = svgPointFromClient(clientPoint.current.x, clientPoint.current.y, svgRef.current);
+      const nearNetwork = nodes.some((node) => Math.hypot(node.x - point.x, node.y - point.y) < nodeReactionRadius);
+      setPointer(nearNetwork ? point : null);
+    });
   };
 
   const handlePointerLeave = () => {
+    window.cancelAnimationFrame(pointerFrame.current);
+    pointerFrame.current = 0;
     setPointer(null);
     setHoveredModule(null);
   };

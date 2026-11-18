@@ -1,18 +1,18 @@
-import Image from "next/image";
-import { withBasePath } from "@/lib/site-paths";
+import { SiteImage } from "@/components/SiteImage";
 
 type PersonAvatarProps = {
   name: string;
   image?: string;
+  priority?: boolean;
   size?: "xs" | "sm" | "md" | "lg" | "xl";
 };
 
-const sizeClasses = {
-  xs: "size-9 text-xs",
-  sm: "size-14 text-base",
-  md: "size-16 text-lg",
-  lg: "size-24 text-3xl",
-  xl: "size-32 text-4xl"
+const avatarSizes = {
+  xs: { classes: "size-9 text-xs", width: 36 },
+  sm: { classes: "size-14 text-base", width: 56 },
+  md: { classes: "size-16 text-lg", width: 64 },
+  lg: { classes: "size-24 text-3xl", width: 96 },
+  xl: { classes: "size-32 text-4xl", width: 128 }
 };
 
 export function getInitials(name: string) {
@@ -25,18 +25,20 @@ export function getInitials(name: string) {
     .toUpperCase();
 }
 
-export function PersonAvatar({ name, image, size = "md" }: PersonAvatarProps) {
+export function PersonAvatar({ name, image, priority = false, size = "md" }: PersonAvatarProps) {
+  const avatar = avatarSizes[size];
   return (
     <div
-      className={`relative flex shrink-0 items-center justify-center overflow-hidden rounded-full border border-line bg-paper font-semibold text-fudan ${sizeClasses[size]}`}
+      className={`relative flex shrink-0 items-center justify-center overflow-hidden rounded-full border border-line bg-paper font-semibold text-fudan ${avatar.classes}`}
     >
       {image ? (
-        <Image
-          src={withBasePath(image)}
+        <SiteImage
+          src={image}
           alt={`${name} profile photo`}
-          fill
-          sizes={size === "xl" ? "128px" : size === "lg" ? "96px" : size === "xs" ? "36px" : "64px"}
-          className="object-cover"
+          loading={priority ? "eager" : "lazy"}
+          fetchPriority={priority ? "high" : undefined}
+          sizes={`${avatar.width}px`}
+          className="absolute inset-0 h-full w-full object-cover"
         />
       ) : (
         <span>{getInitials(name)}</span>

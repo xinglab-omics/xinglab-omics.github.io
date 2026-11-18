@@ -1,5 +1,4 @@
 import { ArrowRight, CalendarDays, Mail, UserPlus } from "lucide-react";
-import Link from "next/link";
 import { FavoriteMolecule } from "@/components/FavoriteMolecule";
 import { HometownFlights } from "@/components/HometownFlights";
 import { PageIntro } from "@/components/PageIntro";
@@ -7,6 +6,7 @@ import { PersonAvatar } from "@/components/PersonAvatar";
 import { ProfileLinkIcon } from "@/components/ProfileLinkIcon";
 import { members, type Member, type ProfileEntry, type ProfileLink } from "@/lib/content";
 import type { Traveler } from "@/lib/hometowns";
+import { staticPageHref } from "@/lib/site-paths";
 
 const groups = ["Postdocs", "PhD Students", "Master's Students", "Undergraduate Students", "Alumni"] as const;
 
@@ -48,12 +48,8 @@ function MemberContactLinks({
           </>
         );
 
-        return isInternal ? (
-          <Link key={link.href} href={link.href} className={linkClassName}>
-            {linkContent}
-          </Link>
-        ) : (
-          <a key={link.href} href={link.href} className={linkClassName}>
+        return (
+          <a key={link.href} href={staticPageHref(link.href)} className={linkClassName}>
             {linkContent}
           </a>
         );
@@ -103,13 +99,13 @@ function OpenPosition({ member }: { member: Member }) {
         ) : null}
         {member.bio ? <p className="mt-3 text-sm leading-6 text-muted">{member.bio}</p> : null}
         {link ? (
-          <Link
-            href={link.href}
+          <a
+            href={staticPageHref(link.href)}
             className="mt-4 inline-flex shrink-0 items-center gap-1.5 rounded-full border border-fudan bg-fudan px-3 py-1.5 text-xs font-semibold text-white transition hover:bg-[color-mix(in_srgb,var(--color-fudan)_85%,black)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fudan"
           >
             {link.label}
             <ArrowRight aria-hidden="true" size={14} />
-          </Link>
+          </a>
         ) : null}
       </div>
     </article>
@@ -124,7 +120,7 @@ function MemberProfile({ member, compact = false }: { member: Member; compact?: 
       }`}
     >
       <div className="flex justify-center sm:justify-start">
-        <PersonAvatar name={member.name} image={member.image} size="xl" />
+        <PersonAvatar name={member.name} image={member.image} size="xl" priority={member.group === "Principal Investigator"} />
       </div>
       <div
         className={`flex min-w-0 flex-col items-center text-center sm:items-start sm:text-left ${
@@ -158,13 +154,13 @@ function MemberProfile({ member, compact = false }: { member: Member; compact?: 
           className="justify-center sm:justify-start"
         />
         {member.profileHref ? (
-          <Link
-            href={member.profileHref}
+          <a
+            href={staticPageHref(member.profileHref)}
             className="mt-5 inline-flex shrink-0 items-center gap-1.5 rounded-full border border-line bg-paper px-3 py-1.5 text-xs font-semibold text-ink transition hover:border-fudan hover:text-fudan focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fudan"
           >
             View full profile
             <ArrowRight aria-hidden="true" size={15} />
-          </Link>
+          </a>
         ) : null}
       </div>
       {member.careerSummary?.length ? (

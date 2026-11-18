@@ -15,25 +15,16 @@ export function HeroScrollAnimation() {
 
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     let frame = 0;
+    let previousProgress = 0;
+    let start = 0;
+    let range = 1;
 
     const update = () => {
       frame = 0;
 
-      if (reduceMotion.matches) {
-        hero.style.setProperty("--hero-art-x", "0px");
-        hero.style.setProperty("--hero-art-y", "0px");
-        hero.style.setProperty("--hero-art-scale", "1");
-        hero.style.setProperty("--hero-art-opacity", "1");
-        hero.style.setProperty("--hero-art-blur", "0px");
-        hero.style.setProperty("--hero-art-rotate", "0deg");
-        hero.style.setProperty("--hero-copy-y", "0px");
-        hero.style.setProperty("--hero-copy-opacity", "1");
-        return;
-      }
-
-      const start = Math.max(hero.offsetTop - 84, 0);
-      const range = Math.min(window.innerHeight * 0.24, 190);
-      const progress = Math.min(Math.max((window.scrollY - start) / range, 0), 1);
+      const progress = reduceMotion.matches ? 0 : Math.min(Math.max((window.scrollY - start) / range, 0), 1);
+      if (previousProgress === progress) return;
+      previousProgress = progress;
       const eased = progress * progress * (3 - 2 * progress);
 
       hero.style.setProperty("--hero-art-x", `${eased * heroArtMoveX}px`);
@@ -54,9 +45,15 @@ export function HeroScrollAnimation() {
       frame = window.requestAnimationFrame(update);
     };
 
-    update();
+    const measure = () => {
+      start = Math.max(hero.offsetTop - 84, 0);
+      range = Math.max(1, Math.min(window.innerHeight * 0.24, 190));
+      requestUpdate();
+    };
+
+    measure();
     window.addEventListener("scroll", requestUpdate, { passive: true });
-    window.addEventListener("resize", requestUpdate);
+    window.addEventListener("resize", measure);
     reduceMotion.addEventListener("change", requestUpdate);
 
     return () => {
@@ -65,7 +62,7 @@ export function HeroScrollAnimation() {
       }
 
       window.removeEventListener("scroll", requestUpdate);
-      window.removeEventListener("resize", requestUpdate);
+      window.removeEventListener("resize", measure);
       reduceMotion.removeEventListener("change", requestUpdate);
     };
   }, []);

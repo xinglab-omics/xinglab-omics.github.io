@@ -111,7 +111,7 @@ export default function ShipeiXingPage() {
       <section className="mx-auto grid max-w-5xl gap-6 px-5 py-10 sm:px-8 lg:py-12">
         <section className="rounded-lg border border-line bg-white p-6 shadow-sm sm:p-8">
           <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
-            <PersonAvatar name={piProfile.name} image={piProfile.image} size="xl" />
+            <PersonAvatar name={piProfile.name} image={piProfile.image} size="xl" priority />
             <div className="min-w-0">
               <h2 className="text-3xl font-semibold tracking-normal text-ink">
                 {piProfile.name}

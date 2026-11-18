@@ -89,3 +89,11 @@ a {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Desktop users can preview a submenu by hovering. Summary remains a native
+   toggle for keyboard, touch and browsers without ::details-content. */
+@media (hover: hover) {
+  .desktop-nav-item:hover > details::details-content {
+    content-visibility: visible;
+  }
+}

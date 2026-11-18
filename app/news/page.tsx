@@ -1,6 +1,7 @@
+import { SiteImage } from "@/components/SiteImage";
 import { PageIntro } from "@/components/PageIntro";
 import { newsItemId, newsItems } from "@/lib/content";
-import { withBasePath } from "@/lib/site-paths";
+import { staticPageHref } from "@/lib/site-paths";
 
 function formatDate(date: string) {
   if (/^\d{4}-\d{2}$/.test(date)) {
@@ -42,9 +43,10 @@ export default function NewsPage() {
               >
                 {image && item.imageVariant !== "side" ? (
                   <div className="border-b border-line">
-                    <img
-                      src={withBasePath(image)}
+                    <SiteImage
+                      src={image}
                       alt={item.title}
+                      sizes="(min-width: 1024px) 960px, calc(100vw - 40px)"
                       className="h-auto w-full"
                     />
                   </div>
@@ -52,9 +54,10 @@ export default function NewsPage() {
 
                 {hasSideImage && image ? (
                   <div className="min-h-56 border-b border-line md:border-b-0 md:border-r">
-                    <img
-                      src={withBasePath(image)}
+                    <SiteImage
+                      src={image}
                       alt={item.title}
+                      sizes="(min-width: 768px) 220px, calc(100vw - 40px)"
                       className="h-auto w-full md:h-full md:object-contain"
                     />
                   </div>
@@ -73,7 +76,7 @@ export default function NewsPage() {
                   <p className="mt-4 text-sm leading-7 text-muted">{item.summary}</p>
                   {item.link ? (
                     <a
-                      href={withBasePath(item.link)}
+                      href={staticPageHref(item.link)}
                       className="mt-4 inline-flex text-sm font-semibold text-fudan transition hover:text-ink"
                     >
                       Read more

@@ -1,14 +1,11 @@
+import { Fragment } from "react";
 import { PageIntro } from "@/components/PageIntro";
 import { members, piProfile, publications, type Publication } from "@/lib/content";
 
 const publicationYears = Array.from(new Set(publications.map((publication) => publication.year)));
 const publicationOrder = new Map(publications.map((publication, index) => [publication.title, index]));
 const googleScholarLink = piProfile.links.find((link) => link.label === "Google Scholar");
-const labMemberNames = new Set(
-  members
-    .filter((member) => !member.isOpenPosition)
-    .map((member) => member.name)
-);
+const labMemberNames = members.filter((member) => !member.isOpenPosition).map((member) => member.name);
 const highlightedPublicationOrder = new Map([
   ["BUDDY: molecular formula discovery via bottom-up MS/MS interrogation", 0],
   ["Navigating the conjugated metabolome", 1],
@@ -79,14 +76,17 @@ function renderAuthorLabels(publication: Publication, author: string) {
 
 function renderAuthors(publication: Publication) {
   return publication.authors.split(", ").map((author, index) => {
-    const isLabMember = Array.from(labMemberNames).some((name) => author.includes(name));
+    const isLabMember = labMemberNames.some((name) => author.includes(name));
+    const labels = renderAuthorLabels(publication, author);
+    const separator = index > 0 ? ", " : "";
 
+    if (!isLabMember && !labels) return separator + author;
     return (
-      <span key={`${publication.title}-${author}-${index}`}>
-        {index > 0 ? ", " : null}
-        <span className={isLabMember ? "font-semibold text-ink" : undefined}>{author}</span>
-        {renderAuthorLabels(publication, author)}
-      </span>
+      <Fragment key={index}>
+        {separator}
+        {isLabMember ? <span className="font-semibold text-ink">{author}</span> : author}
+        {labels}
+      </Fragment>
     );
   });
 }

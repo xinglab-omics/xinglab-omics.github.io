@@ -1,16 +1,13 @@
 "use client";
 
-import { ArrowRight, ArrowUpRight, Check, RotateCcw, Sparkles, X } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
+import { ArrowRight, ArrowUpRight, Check, RotateCcw, X } from "lucide-react";
+import { SiteImage } from "@/components/SiteImage";
 import { useRef, useState } from "react";
+import { QuizHeading } from "@/components/QuizHeading";
+import { quizQuestions as questions } from "@/lib/content/quiz";
 import { MoleculeCritters } from "@/components/MoleculeCritters";
 import type { QuizQuestion } from "@/lib/content";
-import { withBasePath } from "@/lib/site-paths";
-
-type MoleculeQuizProps = {
-  questions: QuizQuestion[];
-};
+import { staticPageHref, withBasePath } from "@/lib/site-paths";
 
 const optionLetters = ["A", "B", "C", "D", "E", "F"];
 
@@ -66,7 +63,7 @@ function optionClassName(option: string, question: QuizQuestion, selected: strin
   return "cursor-default border-line bg-white opacity-55";
 }
 
-export function MoleculeQuiz({ questions }: MoleculeQuizProps) {
+export default function MoleculeQuiz() {
   const headingRef = useRef<HTMLHeadingElement>(null);
   const nextButtonRef = useRef<HTMLButtonElement>(null);
   const [order, setOrder] = useState(() => questions.map((_, index) => index));
@@ -117,7 +114,7 @@ export function MoleculeQuiz({ questions }: MoleculeQuizProps) {
   };
 
   return (
-    <section id="molecule-quiz" className="scroll-mt-24 pt-6">
+    <>
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <MoleculeCritters />
       </div>
@@ -133,18 +130,7 @@ export function MoleculeQuiz({ questions }: MoleculeQuizProps) {
       >
         <div className="mx-auto max-w-7xl px-5 pb-10 pt-5 sm:px-8 sm:pt-6 lg:pb-12">
           <div className="flex flex-wrap items-end justify-between gap-x-6 gap-y-4">
-            <div>
-              <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-                <p className="inline-flex items-center gap-1.5 rounded-full border border-fudan bg-white px-2.5 py-1 text-xs font-semibold uppercase tracking-normal text-fudan">
-                  <Sparkles aria-hidden="true" size={13} />
-                  Quiz time
-                </p>
-                <h2 className="text-2xl font-semibold tracking-normal text-ink sm:text-3xl">Guess the Molecule</h2>
-              </div>
-              <p className="mt-2 text-sm leading-6 text-muted">
-                Each question is a real finding from the scientific literature. Can you pick the molecule behind it?
-              </p>
-            </div>
+            <QuizHeading />
             <div className="flex gap-2 text-xs font-semibold text-muted">
               <span className="rounded-full border border-line bg-white px-3 py-1.5">
                 {finished ? questions.length : position + 1} / {questions.length}
@@ -198,10 +184,10 @@ export function MoleculeQuiz({ questions }: MoleculeQuizProps) {
                     Play again
                     <RotateCcw aria-hidden="true" size={14} />
                   </button>
-                  <Link href="/team" className={pillClassName}>
+                  <a href={staticPageHref("/team")} className={pillClassName}>
                     Meet the team
                     <ArrowRight aria-hidden="true" size={14} />
-                  </Link>
+                  </a>
                 </div>
               </div>
             ) : (
@@ -209,13 +195,12 @@ export function MoleculeQuiz({ questions }: MoleculeQuizProps) {
                 {/* Phone: stacked. Tablet: photo beside the question, choices below. Desktop: photo beside both. */}
                 <div className="mt-4 grid gap-4 md:grid-cols-[12rem_minmax(0,1fr)] lg:gap-x-6 xl:grid-cols-[15rem_minmax(0,1fr)]">
                   <figure className="relative aspect-[2/1] overflow-hidden rounded-lg bg-paper md:aspect-auto md:min-h-32 xl:row-span-2">
-                    <Image
+                    <SiteImage
                       key={question.image.src}
-                      src={withBasePath(question.image.src)}
+                      src={question.image.src}
                       alt={question.image.alt}
-                      fill
                       sizes="(min-width: 1280px) 240px, (min-width: 768px) 192px, 100vw"
-                      className="object-cover"
+                      className="absolute inset-0 h-full w-full object-cover"
                     />
                     {question.image.credit ? (
                       <figcaption className="absolute bottom-0 right-0 rounded-tl-md bg-black/45 px-1.5 py-0.5 text-[10px] leading-4 text-white">
@@ -260,7 +245,8 @@ export function MoleculeQuiz({ questions }: MoleculeQuizProps) {
                           {option.structure ? (
                             <span className="flex h-[4.5rem] w-full items-center justify-center md:h-[5.25rem]">
                               {/* Natural size caps small molecules; larger ones shrink to fit. */}
-                              <Image
+                              <img
+                                loading="lazy"
                                 src={withBasePath(option.structure)}
                                 alt=""
                                 width={320}
@@ -333,6 +319,6 @@ export function MoleculeQuiz({ questions }: MoleculeQuizProps) {
           </div>
         </div>
       </div>
-    </section>
+    </>
   );
 }

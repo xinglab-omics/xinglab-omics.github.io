@@ -1,10 +1,9 @@
 "use client";
 
-import Image from "next/image";
+import { SiteImage } from "@/components/SiteImage";
 import { useEffect, useState } from "react";
 import { PersonAvatar } from "@/components/PersonAvatar";
 import { formatKm, scaleKm, withDistances, type Traveler, type TravelerWithDistance } from "@/lib/hometowns";
-import { withBasePath } from "@/lib/site-paths";
 import { useInView, useWidth } from "@/lib/use-in-view";
 
 // Wide layout: Fudan on the left, a km ruler along the bottom, arcs rising above.
@@ -60,7 +59,7 @@ export function HometownFlights({ travelers }: { travelers: Traveler[] }) {
 
   return (
     <div ref={ref} className="relative" style={{ height: width > 0 ? height : wide.height }}>
-      {width > 0 ? (
+      {width > 0 && inView ? (
         <>
           <svg aria-hidden="true" width={width} height={height} className="absolute inset-0 overflow-visible">
             {/* The 0 km line through Fudan. */}
@@ -86,7 +85,7 @@ export function HometownFlights({ travelers }: { travelers: Traveler[] }) {
                         strokeDasharray: "1 6"
                       }}
                     />
-                    {inView && !reduceMotion ? (
+                    {!reduceMotion ? (
                       <circle r={3.5} className="fill-fudan">
                         {/* Travels from the hometown back to Fudan. */}
                         <animateMotion
@@ -129,7 +128,7 @@ export function HometownFlights({ travelers }: { travelers: Traveler[] }) {
             style={{ left: isNarrow ? origin.x - 24 : origin.x, top: origin.y }}
           >
             <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-white ring-2 ring-fudan">
-              <Image src={withBasePath("/images/branding/fudan-footer.png")} alt="" width={40} height={40} className="size-10" />
+              <SiteImage src="/images/branding/fudan-footer.png" sizes="40px" alt="" width={40} height={40} className="size-10" />
             </span>
             <span className={`whitespace-nowrap bg-paper px-1 text-xs font-semibold text-fudan ${isNarrow ? "" : "mt-2"}`}>
               Fudan <span lang="zh-Hans" className="font-cjk">复旦</span>

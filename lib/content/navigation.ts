@@ -9,6 +9,7 @@ export const navigation: NavigationItem[] = [
   { label: "RESEARCH", href: "/research" },
   {
     label: "OUR TEAM",
+    href: "/team",
     children: [
       { label: "ALL MEMBERS", href: "/team" },
       { label: "PROF. XING", href: "/shipei-xing" }

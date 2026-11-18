@@ -1,7 +1,6 @@
 import { ArrowRight } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
-import { withBasePath } from "@/lib/site-paths";
+import { SiteImage } from "@/components/SiteImage";
+import { staticPageHref } from "@/lib/site-paths";
 
 type ResearchIntroPanelProps = {
   intro: string;
@@ -12,12 +11,11 @@ type ResearchIntroPanelProps = {
 export function ResearchIntroPanel({ intro, question, showExploreLink = false }: ResearchIntroPanelProps) {
   return (
     <div className="relative min-h-[330px] overflow-hidden rounded-md bg-paper">
-      <Image
-        src={withBasePath("/images/research/apple-metabolism-illustration.png")}
+      <SiteImage
+        src="/images/research/apple-metabolism-illustration.png"
         alt="Scientific illustration of apple-derived molecules moving through digestion and microbial metabolism."
-        fill
         sizes="(min-width: 1280px) 1152px, 100vw"
-        className="object-contain object-right"
+        className="absolute inset-0 h-full w-full object-contain object-right"
       />
       <div
         className="absolute inset-0"
@@ -38,13 +36,13 @@ export function ResearchIntroPanel({ intro, question, showExploreLink = false }:
           <p className="mt-3 max-w-3xl text-base leading-7 text-muted">{intro}</p>
         </div>
         {showExploreLink ? (
-          <Link
-            href="/research"
+          <a
+            href={staticPageHref("/research")}
             className="inline-flex w-fit shrink-0 items-center gap-1.5 rounded-full border border-line bg-paper px-3 py-1.5 text-xs font-semibold text-ink transition hover:border-fudan hover:text-fudan focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fudan"
           >
             Explore more
             <ArrowRight aria-hidden="true" size={14} />
-          </Link>
+          </a>
         ) : null}
       </div>
     </div>

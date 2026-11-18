@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { SiteImage } from "@/components/SiteImage";
 import { PageIntro } from "@/components/PageIntro";
 import { ResearchIntroPanel } from "@/components/ResearchIntroPanel";
 import {
@@ -57,12 +57,11 @@ export default function ResearchPage() {
               id={area.slug}
               className="relative mx-auto min-h-[500px] w-full max-w-7xl scroll-mt-28 overflow-hidden rounded-lg border border-line bg-white shadow-sm"
             >
-              <Image
-                src={withBasePath(area.image)}
+              <SiteImage
+                src={area.image}
                 alt={`Scientific illustration for ${area.title}.`}
-                fill
                 sizes="(min-width: 1280px) 1152px, 100vw"
-                className="object-contain"
+                className="absolute inset-0 h-full w-full object-contain"
                 style={{ objectPosition: figureOnLeft ? "left center" : "right center" }}
               />
               <div className="absolute inset-0" style={{ background: gradient }} />

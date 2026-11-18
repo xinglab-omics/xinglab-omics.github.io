@@ -6,6 +6,8 @@ const nextConfig = {
   trailingSlash: true,
   basePath,
   assetPrefix: basePath ? `${basePath}/` : undefined,
+  // Send the small Tailwind stylesheet with the document on high-latency first visits.
+  experimental: { inlineCss: true },
   images: {
     unoptimized: true,
     formats: ["image/avif", "image/webp"]
