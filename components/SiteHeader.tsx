@@ -7,6 +7,36 @@ import { useEffect, useRef } from "react";
 import { navigation, type NavigationItem } from "@/lib/content/navigation";
 import { staticPageHref, withBasePath, withoutBasePath } from "@/lib/site-paths";
 
+// Native page links can be used while React is still downloading.
+const navigationFeedback = `{
+  const status = document.getElementById("page-navigation-status");
+  const header = status.closest("header");
+  let timeout;
+  function clear() {
+    clearTimeout(timeout);
+    status.textContent = "";
+  }
+  function show(link) {
+    clear();
+    status.textContent = "Opening " + (link.getAttribute("aria-label") || link.textContent.trim().toLowerCase()) + "…";
+    timeout = setTimeout(clear, 10000);
+  }
+  window.addEventListener("click", (event) => {
+    if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    const link = event.target.closest?.("a[href]");
+    if (!link || !header.contains(link) || link.origin !== location.origin || link.hasAttribute("download") ||
+        (link.target && link.target !== "_self") ||
+        (link.hash && link.pathname === location.pathname && link.search === location.search)) return;
+    show(link);
+  });
+  window.navigation?.addEventListener("navigate", (event) => {
+    if (status.textContent) event.signal.addEventListener("abort", clear, { once: true });
+  });
+  window.addEventListener("pagehide", clear);
+  window.addEventListener("pageshow", (event) => { if (event.persisted) clear(); });
+  window.addEventListener("keydown", (event) => { if (event.key === "Escape") clear(); });
+}`;
+
 function isActivePath(pathname: string, href?: string) {
   if (!href) return false;
   return pathname === href || (href !== "/" && pathname.startsWith(`${href}/`));
@@ -150,6 +180,13 @@ export function SiteHeader() {
           </nav>
         </details>
       </div>
+      <span
+        id="page-navigation-status"
+        role="status"
+        suppressHydrationWarning
+        className="pointer-events-none absolute right-5 top-full z-50 mt-2 rounded-md bg-fudan text-xs font-semibold text-white shadow-soft sm:right-8 [&:not(:empty)]:px-3 [&:not(:empty)]:py-2"
+      />
+      <script dangerouslySetInnerHTML={{ __html: navigationFeedback }} />
     </header>
   );
 }

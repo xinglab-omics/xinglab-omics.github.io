@@ -19,6 +19,8 @@ function formatDate(date: string) {
 }
 
 export default function NewsPage() {
+  const leadImageItem = newsItems.slice(0, 2).find((item) => item.image);
+
   return (
     <>
       <PageIntro
@@ -32,6 +34,8 @@ export default function NewsPage() {
           {newsItems.map((item) => {
             const hasSideImage = item.image && item.imageVariant === "side";
             const image = item.image;
+            const loading = item === leadImageItem ? "eager" : "lazy";
+            const fetchPriority = item === leadImageItem ? "high" : undefined;
 
             return (
               <article
@@ -46,6 +50,8 @@ export default function NewsPage() {
                     <SiteImage
                       src={image}
                       alt={item.title}
+                      loading={loading}
+                      fetchPriority={fetchPriority}
                       sizes="(min-width: 1024px) 960px, calc(100vw - 40px)"
                       className="h-auto w-full"
                     />
@@ -57,6 +63,8 @@ export default function NewsPage() {
                     <SiteImage
                       src={image}
                       alt={item.title}
+                      loading={loading}
+                      fetchPriority={fetchPriority}
                       sizes="(min-width: 768px) 220px, calc(100vw - 40px)"
                       className="h-auto w-full md:h-full md:object-contain"
                     />
