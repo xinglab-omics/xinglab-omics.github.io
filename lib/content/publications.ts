@@ -1,7 +1,19 @@
 import type { Publication } from "./types";
 
 export const publications: Publication[] = [
-    {
+  {
+    title: "plantMASST: a community-driven chemotaxonomic digitization of plants",
+    authors:
+      "Helena Mannochio-Russo, Xiaofeng Wang, Paulo Wender P. Gomes, Wilhan Donizete Gonçalves Nunes, Robin Schmid, Simone Zuffa, Luis Quiros-Guerrero, Tito Damiani, Wenjie Li, Derrick A. Ousley, Jordan A. Hungerford, Lisa S. Mydy, Clarissa Huisman, Matthew D. McConnachie, Hanyu Su, Gabrielle May, Yasin El Abiead, Andrés Mauricio Caraballo-Rodríguez, Haoqi Nina Zhao, Heejung Yang, Shipei Xing, Jehad Almaliti, Yahia Z. Tabaza, Jayden M. Roseberry, Deyvis-Dante Solis-Gozar, Harsha Gouda, Abubaker Patan, Julius Agongo, Vincent Charron-Lamoureux, Desnor Nicole Chigumba, Khadija Shafiq, Kali M. McDonough, Brian Edward Sedio, Jonathan A. Myers, Pierre-Marie Allard, Thomas V. Harwood, Giselle Tamayo-Castillo, Kyo Bin Kang, Emmanuel Defossez, Hector H. F. Koolen, Milton Nascimento da Silva, Consuelo Yumiko Yoshioka e Silva, Sergio Rasmann, Tom W. N. Walker, Gaëtan Glauser, José Miguel Chaves-Fallas, Bruno David, Hyunwoo Kim, Kyuhyeong Lee, Myeong Ji Kim, Won Jun Choi, Young-Sam Keum, Emilly J. S. P. de Lima, Lívia Soman de Medeiros, Giovana Anceski Bataglion, Emmanoel Vilaça Costa, Felipe Moura Araujo da Silva, Alice Rhelly V. Carvalho, José Diogo Evangelista Reis, Sônia das Graças Santa Rosa Pamplona, Eunah Jeong, Kyungha Lee, Geum Jin Kim, Yun-Seo Kil, Joo-Won Nam, Hyukjae Choi, Yoo Kyong Han, Si Young Park, Ki Yong Lee, Changling Hu, Yilun Dong, Shengmin Sang, Colin R. Morrison, Ricardo Moreira Borges, Andrew Magno Teixeira, Seo Yoon Lee, Bum Soo Lee, Se Yun Jeong, Ki Hyun Kim, Adriano Rutz, Arnaud Gaudry, Edouard Brülhart, Iris F. Kappers, Rumyana Karlova, Mara Meisenburg, Roland Berdaguer, J. Sebastián Tello, David Henderson, Rafael Felipe de Almeida, Anelize Bauermeister, Alan Cesar Pilon, Norberto Peporine Lopes, Luís Guilherme Pereira Feitosa, Marcelino Santos do Rosário, Kateřina Kučerová, Lúcia G. Lohmann, Vanderlan da Silva Bolzani, Paul E. Abraham, Leslie Eugenia Cayola, S. Joseph Wright, David N. Allen, Kristina J. Anderson-Teixeira, Jennifer L. Baltzer, James A. Lutz, Sean M. McMahon, Geoffrey Parker, John D. Parker, Trent R. Northen, Benjamin P. Bowen, Tomáš Pluskal, Justin J. J. van der Hooft, Jeremy J. Carver, Nuno Bandeira, Benjamin S. Pullman, Jing-Ke Weng, Jean-Luc Wolfender, Mingxun Wang, Pieter C. Dorrestein, Roland D. Kersten",
+    venue: "Nature",
+    year: 2026,
+    url: "https://doi.org/10.1038/s41586-026-11342-5",
+    coFirstAuthors: ["Helena Mannochio-Russo", "Xiaofeng Wang", "Paulo Wender P. Gomes"],
+    correspondingAuthors: ["Pieter C. Dorrestein", "Roland D. Kersten"],
+    preprint: false,
+    highlighted: false
+  },
+  {
     title: "Bridging complexity and accessibility in metabolomics with MetaboApps",
     authors:
       "Helena Mannochio-Russo, Wilhan D Gonçalves Nunes, Haoqi Nina Zhao, Kine Eide Kvitne, Shipei Xing, Harsha Gouda, Julius Agongo, Ipsita Mohanty, Vincent Charron-Lamoureux, Prajit Rajkumar, Abzer K Pakkir Shah, Axel Walter, Rithi Krishnaraj, Yasin El Abiead, Patrick C Ferreira, Simone Zuffa, Abubaker Patan, Andrés Mauricio Caraballo-Rodríguez, Wout Bittremieux, Daniel Petras, Mingxun Wang, Pieter C. Dorrestein",
@@ -268,18 +280,6 @@ export const publications: Publication[] = [
     url: "https://www.nature.com/articles/s41596-024-01046-3",
     correspondingAuthors: ["Madeleine Ernst", "Daniel Petras"],
     preprint: false,
-    highlighted: false
-  },
-  {
-    title: "plantMASST-Community-driven chemotaxonomic digitization of plants",
-    authors:
-      "Paulo Wender P. Gomes, Helena Mannochio-Russo, Robin Schmid, Simone Zuffa, Tito Damiani, Luis-Manuel Quiros-Guerrero, Andrés Mauricio Caraballo-Rodríguez, Haoqi Nina Zhao, Heejung Yang, Shipei Xing, Vincent Charron-Lamoureux, Desnor N. Chigumba, Brian E. Sedio, Jonathan A. Myers, Pierre-Marie Allard, Thomas V. Harwood, Giselle Tamayo-Castillo, Kyo Bin Kang, Emmanuel Defossez, Hector H. F. Koolen, Milton Nascimento da Silva, Consuelo Yumiko Yoshioka e Silva, Sergio Rasmann, Tom W. N. Walker, Gaëtan Glauser, José Miguel Chaves-Fallas, Bruno David, Hyunwoo Kim, Kyu Hyeong Lee, Myeong Ji Kim, Won Jun Choi, Young-Sam Keum, Emilly J. S. P. de Lima, Lívia Soman de Medeiros, Giovana A. Bataglion, Emmanoel V. Costa, Felipe M. A. da Silva, Alice Rhelly V. Carvalho, José Diogo E. Reis, Sônia Pamplona, Eunah Jeong, Kyungha Lee, Geum Jin Kim, Yun-Seo Kil, Joo-Won Nam, Hyukjae Choi, Yoo Kyong Han, Si Young Park, Ki Yong Lee, Changling Hu, Yilun Dong, Shengmin Sang, Colin R. Morrison, Ricardo Moreira Borges, Andrew Magno Teixeira, Seo Yoon Lee, Bum Soo Lee, Se Yun Jeong, Ki Hyun Kim, Adriano Rutz, Arnaud Gaudry, Edouard Bruelhart, Iris F. Kappers, Rumyana Karlova, Mara Meisenburg, Roland Berdaguer, J. Sebastián Tello, David Henderson, Leslie Cayola, S. Joseph Wright, David N. Allen, Kristina J. Anderson-Teixeira, Jennifer L. Baltzer, James A. Lutz, Sean M. McMahon, Geoffrey G. Parker, John D. Parker, Trent R. Northen, Benjamin P. Bowen, Tomáš Pluskal, Justin J. J. van der Hooft, Jeremy J. Carver, Nuno Bandeira, Benjamin S. Pullman, Jean-Luc Wolfender, Roland D. Kersten, Mingxun Wang, Pieter C. Dorrestein",
-    venue: "bioRxiv",
-    year: 2024,
-    url: "https://www.biorxiv.org/content/10.1101/2024.05.13.593988v1",
-    coFirstAuthors: ["Paulo Wender P. Gomes", "Helena Mannochio-Russo"],
-    correspondingAuthors: ["Pieter C. Dorrestein"],
-    preprint: true,
     highlighted: false
   },
   {
