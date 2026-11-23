@@ -88,10 +88,10 @@ export function ContactPageView({ content, copy }: ContactPageViewProps) {
       <section className="mx-auto grid max-w-7xl gap-8 px-5 py-10 sm:px-8 lg:grid-cols-[minmax(0,1fr)_340px] lg:items-start lg:py-12">
         <article className="rounded-lg border border-line bg-white p-6 shadow-sm sm:p-8">
           <div className="flex items-center gap-3">
-            <span className="text-sm font-semibold tabular-nums text-fudan">01</span>
+            <span className="text-xs font-semibold tabular-nums tracking-[0.08em] text-fudan">01</span>
             <span className="h-px flex-1 bg-line" />
           </div>
-          <h2 className="mt-4 text-2xl font-semibold tracking-normal text-ink">{copy.applyTitle}</h2>
+          <h2 className="mt-3.5 text-xl font-semibold tracking-[-0.015em] text-ink sm:text-2xl">{copy.applyTitle}</h2>
           <p className="mt-3 text-sm leading-7 text-muted sm:text-base sm:leading-7">
             {introBeforeEmail}
             <a href={mailtoHref} className="font-semibold text-fudan transition hover:text-ink">
@@ -102,7 +102,7 @@ export function ContactPageView({ content, copy }: ContactPageViewProps) {
 
           <div className="mt-5 rounded-md border border-line bg-paper px-4 py-3.5">
             <div className="flex flex-wrap items-center justify-between gap-2">
-              <p className="text-xs font-semibold uppercase tracking-normal text-fudan">{copy.subjectLabel}</p>
+              <p className="eyebrow">{copy.subjectLabel}</p>
               <button
                 id="copy-subject-format"
                 type="button"
@@ -132,10 +132,10 @@ export function ContactPageView({ content, copy }: ContactPageViewProps) {
 
           <div className="mt-8 border-t border-line pt-7">
             <div className="flex items-center gap-3">
-              <span className="text-sm font-semibold tabular-nums text-fudan">02</span>
+              <span className="text-xs font-semibold tabular-nums tracking-[0.08em] text-fudan">02</span>
               <span className="h-px flex-1 bg-line" />
             </div>
-            <h2 className="mt-4 text-xl font-semibold tracking-normal text-ink">{copy.roleNotesTitle}</h2>
+            <h2 className="mt-3.5 text-xl font-semibold tracking-[-0.015em] text-ink">{copy.roleNotesTitle}</h2>
             <div className="mt-5 grid gap-5 sm:grid-cols-2">
               {content.roleNotes.map((item) => (
                 <section key={item.role} className="border-l-2 border-line pl-4">
@@ -149,7 +149,7 @@ export function ContactPageView({ content, copy }: ContactPageViewProps) {
 
         <aside className="grid gap-5 lg:sticky lg:top-28">
           <section className="rounded-lg border border-line bg-white p-6 shadow-sm">
-            <p className="text-sm font-semibold uppercase tracking-normal text-fudan">{copy.contactTitle}</p>
+            <p className="eyebrow">{copy.contactTitle}</p>
             <div className="mt-5 grid gap-4 text-sm leading-6 text-muted">
               <div className="flex gap-3">
                 <Mail aria-hidden="true" className="mt-1 size-4 shrink-0 text-fudan" />
@@ -182,7 +182,7 @@ export function ContactPageView({ content, copy }: ContactPageViewProps) {
           </section>
 
           <section className="rounded-lg border border-line bg-white p-6 shadow-sm">
-            <p className="text-sm font-semibold uppercase tracking-normal text-fudan">{copy.exploreTitle}</p>
+            <p className="eyebrow">{copy.exploreTitle}</p>
             <p className="mt-2.5 text-sm leading-6 text-muted">{copy.exploreDescription}</p>
             <nav className="mt-4 divide-y divide-line border-t border-line">
               {copy.exploreLinks.map((link) => (

@@ -80,12 +80,12 @@ function renderServiceItem(item: string) {
 
   return (
     <>
-      <span className="block">{prefix.trim()}</span>
-      <span className="mt-1 block pl-4">
+      <span className="block font-semibold text-ink">{prefix.trim()}</span>
+      <span className="mt-1.5 block">
         {journals.map((journal, index) => (
           <span key={journal} className="inline-block whitespace-nowrap">
             {journal}
-            {index < journals.length - 1 ? <span className="mx-3 text-line">|</span> : null}
+            {index < journals.length - 1 ? <span className="mx-2.5 text-line">|</span> : null}
           </span>
         ))}
       </span>
@@ -100,100 +100,142 @@ export default function ShipeiXingPage() {
     content: renderServiceItem(item)
   }));
   const honors: ProfileHonor[] = piProfile.honors;
+  const hasBio = Boolean(piProfile.bio);
 
   return (
     <>
       <PageIntro
         eyebrow="Principal Investigator"
         title={piProfile.name}
+        description={piProfile.title}
       />
 
-      <section className="mx-auto grid max-w-5xl gap-6 px-5 py-10 sm:px-8 lg:py-12">
-        <section className="rounded-lg border border-line bg-white p-6 shadow-sm sm:p-8">
-          <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
+      <section className="mx-auto grid max-w-7xl gap-8 px-5 py-10 sm:px-8 lg:grid-cols-[300px_minmax(0,1fr)] lg:items-start lg:py-12">
+        <aside className="rounded-lg border border-line bg-white p-6 shadow-sm lg:sticky lg:top-28">
+          <div className="flex items-center gap-5 lg:flex-col lg:items-start lg:gap-4">
             <PersonAvatar name={piProfile.name} image={piProfile.image} size="xl" priority />
             <div className="min-w-0">
-              <h2 className="text-3xl font-semibold tracking-normal text-ink">
+              <h2 className="text-2xl font-semibold tracking-[-0.015em] text-ink">
                 {piProfile.name}
                 {piProfile.chineseName ? (
-                  <span lang="zh-Hans" className="font-cjk ml-3 text-xl font-normal text-muted">
+                  <span lang="zh-Hans" className="font-cjk ml-2.5 text-lg font-normal text-muted">
                     {piProfile.chineseName}
                   </span>
                 ) : null}
               </h2>
-              <p className="mt-2 text-sm font-medium text-muted">{piProfile.title}</p>
-              <div className="mt-4 flex flex-wrap gap-x-5 gap-y-3 text-sm">
-                <a
-                  href={`mailto:${piProfile.email}`}
-                  className="inline-flex items-center gap-2 font-semibold text-fudan transition hover:text-ink"
-                >
-                  <Mail aria-hidden="true" size={16} />
-                  {piProfile.email}
-                </a>
-                {piProfile.links.map((link) => (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    className="inline-flex items-center gap-2 font-semibold text-fudan transition hover:text-ink"
-                  >
-                    <ProfileLinkIcon label={link.label} />
-                    {link.label}
-                  </a>
-                ))}
-              </div>
+              <p className="mt-1 text-xs font-medium leading-5 text-muted">
+                Assistant Professor, Fudan University
+              </p>
             </div>
           </div>
-          {piProfile.bio ? (
-            <p className="mt-6 text-sm leading-6 text-muted">{piProfile.bio}</p>
+
+          <nav
+            aria-label="Profile links"
+            className="mt-5 grid gap-2.5 border-t border-line pt-5 text-sm"
+          >
+            <a
+              href={`mailto:${piProfile.email}`}
+              className="inline-flex items-center gap-2.5 font-semibold text-fudan transition hover:text-ink"
+            >
+              <Mail aria-hidden="true" size={16} className="shrink-0" />
+              <span className="break-all">{piProfile.email}</span>
+            </a>
+            {piProfile.links.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="inline-flex items-center gap-2.5 font-semibold text-fudan transition hover:text-ink"
+              >
+                <ProfileLinkIcon label={link.label} />
+                <span>{link.label}</span>
+              </a>
+            ))}
+          </nav>
+        </aside>
+
+        <div className="grid min-w-0 gap-6">
+          {hasBio ? (
+            <section className="rounded-lg border border-line bg-white p-6 shadow-sm sm:p-8">
+              <div className="flex items-center gap-3">
+                <span className="text-xs font-semibold tabular-nums tracking-[0.08em] text-fudan">01</span>
+                <span className="h-px flex-1 bg-line" />
+              </div>
+              <h2 className="mt-3.5 text-xl font-semibold tracking-[-0.015em] text-ink sm:text-2xl">
+                Biography
+              </h2>
+              <p className="mt-3.5 text-sm leading-7 text-muted sm:text-base sm:leading-7">{piProfile.bio}</p>
+            </section>
           ) : null}
-        </section>
 
-        <section className="rounded-lg border border-line bg-white p-6 shadow-sm sm:p-8">
-          <h2 className="text-2xl font-semibold tracking-normal text-ink">Appointments and Education</h2>
-          <div className="mt-5 grid gap-4">
-            {experienceAndEducation.map((entry) => (
-              <article key={`${entry.period}-${entry.institution}`} className="border-l-2 border-fudan pl-4">
-                <p className="text-sm font-semibold text-ink">
-                  {entry.period}
-                  <span className="mx-2 text-line">|</span>
-                  <span className="text-ink">{entry.title}</span>
-                </p>
-                <p className="mt-1 text-sm leading-6 text-muted">{renderEntryDetails(entry)}</p>
-              </article>
-            ))}
-          </div>
-        </section>
+          <section className="rounded-lg border border-line bg-white p-6 shadow-sm sm:p-8">
+            <div className="flex items-center gap-3">
+              <span className="text-xs font-semibold tabular-nums tracking-[0.08em] text-fudan">
+                {hasBio ? "02" : "01"}
+              </span>
+              <span className="h-px flex-1 bg-line" />
+            </div>
+            <h2 className="mt-3.5 text-xl font-semibold tracking-[-0.015em] text-ink sm:text-2xl">
+              Appointments & Education
+            </h2>
+            <div className="mt-5 grid gap-4">
+              {experienceAndEducation.map((entry) => (
+                <article key={`${entry.period}-${entry.institution}`} className="border-l-2 border-fudan pl-4">
+                  <p className="text-sm font-semibold text-ink">
+                    <span className="tabular-nums">{entry.period}</span>
+                    <span className="mx-2 text-line">|</span>
+                    <span className="text-ink">{entry.title}</span>
+                  </p>
+                  <p className="mt-1 text-sm leading-6 text-muted">{renderEntryDetails(entry)}</p>
+                </article>
+              ))}
+            </div>
+          </section>
 
-        <section className="rounded-lg border border-line bg-white p-6 shadow-sm sm:p-8">
-          <h2 className="text-2xl font-semibold tracking-normal text-ink">Selected Honors & Awards</h2>
-          <ul className="mt-5 grid gap-3 text-sm leading-6 text-muted">
-            {honors.map((honor) => (
-              <li key={`${honor.year}-${honor.title}`} className="grid grid-cols-[4rem_minmax(0,1fr)] gap-3">
-                <span className="font-semibold tabular-nums text-fudan">{honor.year}</span>
-                <span className={honor.highlight ? "font-semibold text-ink" : undefined}>
-                  <span className="block">{honor.title}</span>
-                  {honor.chineseTitle ? (
-                    <span lang="zh-Hans" className="font-cjk mt-1 block">
-                      {honor.chineseTitle}
-                    </span>
-                  ) : null}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </section>
+          <section className="rounded-lg border border-line bg-white p-6 shadow-sm sm:p-8">
+            <div className="flex items-center gap-3">
+              <span className="text-xs font-semibold tabular-nums tracking-[0.08em] text-fudan">
+                {hasBio ? "03" : "02"}
+              </span>
+              <span className="h-px flex-1 bg-line" />
+            </div>
+            <h2 className="mt-3.5 text-xl font-semibold tracking-[-0.015em] text-ink sm:text-2xl">
+              Selected Honors & Awards
+            </h2>
+            <ul className="mt-5 divide-y divide-line/70 text-sm leading-6 text-muted">
+              {honors.map((honor) => (
+                <li
+                  key={`${honor.year}-${honor.title}`}
+                  className="grid grid-cols-[3.5rem_minmax(0,1fr)] gap-3 py-3 first:pt-0 last:pb-0"
+                >
+                  <span className="font-semibold tabular-nums text-fudan">{honor.year}</span>
+                  <span className={honor.highlight ? "font-semibold text-ink" : undefined}>
+                    <span className="block text-ink/90">{honor.title}</span>
+                    {honor.chineseTitle ? (
+                      <span lang="zh-Hans" className="font-cjk mt-0.5 block text-muted">
+                        {honor.chineseTitle}
+                      </span>
+                    ) : null}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </section>
 
-        <section className="rounded-lg border border-line bg-white p-6 shadow-sm sm:p-8">
-          <h2 className="text-2xl font-semibold tracking-normal text-ink">Service</h2>
-          <ul className="mt-5 grid gap-3 text-sm leading-6 text-muted">
-            {serviceItems.map(({ item, content }) => (
-              <li key={item} className="flex gap-2">
-                <span className="mt-2 size-1.5 shrink-0 rounded-full bg-sage" />
-                <span>{content}</span>
-              </li>
-            ))}
-          </ul>
-        </section>
+          <section className="rounded-lg border border-line bg-white p-6 shadow-sm sm:p-8">
+            <div className="flex items-center gap-3">
+              <span className="text-xs font-semibold tabular-nums tracking-[0.08em] text-fudan">
+                {hasBio ? "04" : "03"}
+              </span>
+              <span className="h-px flex-1 bg-line" />
+            </div>
+            <h2 className="mt-3.5 text-xl font-semibold tracking-[-0.015em] text-ink sm:text-2xl">Service</h2>
+            <ul className="guide-bullets mt-5 grid gap-3 text-sm leading-6 text-muted">
+              {serviceItems.map(({ item, content }) => (
+                <li key={item}>{content}</li>
+              ))}
+            </ul>
+          </section>
+        </div>
       </section>
     </>
   );

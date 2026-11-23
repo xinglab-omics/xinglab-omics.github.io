@@ -82,35 +82,6 @@ export type PaperSpotlight = {
   image: string;
 };
 
-export type QuizOption = {
-  name: string;
-  nameZh: string;
-  structure?: string;
-};
-
-export type QuizImage = {
-  src: string;
-  alt: string;
-  credit?: { text: string; url: string };
-};
-
-export type QuizQuestion = {
-  question: string;
-  questionZh: string;
-  image: QuizImage;
-  options: QuizOption[];
-  answer: string;
-  explanation: string;
-  citation: {
-    authors: string;
-    title: string;
-    venue: string;
-    year: number;
-    url: string;
-  };
-  fromLab?: boolean;
-};
-
 export type NewsItem = {
   title: string;
   date: string;

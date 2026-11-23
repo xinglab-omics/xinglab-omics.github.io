@@ -8,9 +8,6 @@ export type {
   ProfileEntry,
   ProfileLink,
   Publication,
-  QuizImage,
-  QuizOption,
-  QuizQuestion,
   ResearchArea
 } from "./content/types";
 
@@ -20,7 +17,6 @@ export { researchAreas, researchDirectionsIntro, researchDirectionsQuestion } fr
 export { members } from "./content/team";
 export { publications } from "./content/publications";
 export { featuredPaperSpotlights } from "./content/home";
-export { quizQuestions } from "./content/quiz";
 export { newsItemId, newsItems } from "./content/news";
 export { contactInfo, contactInfoZh } from "./content/contact";
 export {

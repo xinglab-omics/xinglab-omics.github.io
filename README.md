@@ -41,7 +41,7 @@ https://xing-lab.org/
 
 The GitHub Actions workflow in `.github/workflows/pages.yml` builds and deploys the static Next.js export. Pushing to `main` will update the Pages site after the workflow finishes.
 
-The homepage uses the App Router for its interactive quiz and graphics. The informational routes in `pages/` use the Pages Router’s static export with `unstable_runtimeJS: false`. Their shared header and any page interactions use native HTML and small browser scripts. If a page needs React event handlers or effects, remove that page’s `unstable_runtimeJS: false` setting and verify it in a production build.
+The homepage uses the App Router for its interactive hero graphics and paper carousel. The informational routes in `pages/` use the Pages Router’s static export with `unstable_runtimeJS: false`. Their shared header and any page interactions use native HTML and small browser scripts. If a page needs React event handlers or effects, remove that page’s `unstable_runtimeJS: false` setting and verify it in a production build.
 
 ## Where To Edit
 

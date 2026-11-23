@@ -3,6 +3,41 @@
 @tailwind utilities;
 
 @layer components {
+  .eyebrow {
+    @apply text-[11px] font-semibold uppercase tracking-[0.14em] text-fudan;
+  }
+
+  .editorial-link {
+    @apply inline-flex items-center gap-1.5 border-b pb-1 text-xs font-semibold uppercase tracking-[0.1em] text-ink transition hover:text-fudan focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-fudan;
+    border-color: color-mix(in srgb, var(--color-ink) 28%, transparent);
+  }
+
+  .editorial-link:hover {
+    border-color: var(--color-fudan);
+  }
+
+  .nav-underline {
+    position: relative;
+  }
+
+  .nav-underline::after {
+    content: "";
+    position: absolute;
+    left: 0.75rem;
+    right: 0.75rem;
+    bottom: 0.2rem;
+    height: 1.5px;
+    background: var(--color-fudan);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 200ms ease;
+  }
+
+  .nav-underline:hover::after,
+  .nav-underline[data-active="true"]::after {
+    transform: scaleX(1);
+  }
+
   .publication-list > li {
     @apply grid grid-cols-[2.75rem_minmax(0,1fr)] gap-3 py-4 first:pt-2 last:pb-0;
   }

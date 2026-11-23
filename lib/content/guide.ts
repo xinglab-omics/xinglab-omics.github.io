@@ -95,7 +95,7 @@ export const guideContent: GuideContent = {
         "We want the lab to be a place where people can do careful, ambitious work while feeling respected, supported, and able to grow.",
       bullets: [
         "Do rigorous science with generosity: be careful with data, claims, and interpretation; document clearly; and challenge ideas in ways that strengthen the work.",
-        "Treat people with respect: excellence is not determined by background, title, language, or seniority. Everyone should feel comfortable to ask questions, raise concerns, and contribute ideas.",
+        "Treat people with respect: excellence is not determined by background, title, language, or seniority. Everyone should feel comfortable asking questions, raising concerns, and contributing ideas.",
         "Be reliable with each other: take ownership of your work, keep collaborators informed, and raise blockers before they slow the project.",
         "Stay aware of the lab's work: learn about one another's projects and look for collaboration opportunities.",
         "Keep learning: no one arrives knowing every method, instrument, coding practice, or writing convention. Asking for help is part of doing good research."
@@ -120,7 +120,7 @@ export const guideContent: GuideContent = {
         {
           title: "One-on-one meetings",
           bullets: [
-            "One-on-one meetings usually happens weekly, or every other week when appropriate.",
+            "One-on-one meetings usually happen weekly, or every other week when appropriate.",
             "Bring a short agenda, recent results, and specific questions whenever possible.",
             [
               "Do not wait for the next scheduled meeting if a blocker is slowing the project; ",
@@ -132,12 +132,12 @@ export const guideContent: GuideContent = {
         {
           title: "Lab meetings",
           body:
-            "Lab meetings are a shared space to learn science, practice presentation skills, build research judgment, and stay connected with work across the group. Everyone is expected to attend lab meetings unless they have a class, travel, illness, or other conflicts; please inform the PI in advance. Journal club and code review will rotate through this meeting rhythm rather than becoming extra standing meetings.",
+            "Lab meetings are a shared space to learn science, practice presentation skills, build research judgment, and stay connected with work across the group. Everyone is expected to attend lab meetings unless they have a class, travel, illness, or other conflicts; please inform the PI in advance. Journal club and code review rotate through this meeting rhythm rather than becoming extra standing meetings.",
           subblocks: [
             {
               title: "General weekly lab meetings",
               bullets: [
-                "Members will rotate through in-progress updates, problem-solving discussions, and occasional planning talks so the lab can give feedback while projects are still flexible.",
+                "Members rotate through in-progress updates, problem-solving discussions, and occasional planning talks so the lab can give feedback while projects are still flexible.",
                 "Research updates should briefly reestablish the project context, summarize recent progress (including any setbacks), identify current challenges, and propose next steps."
               ]
             },
@@ -281,7 +281,7 @@ export const guideContent: GuideContent = {
             ],
             "Introduction: a paragraph-level plan explaining the broad problem, the specific question, what has been done before, why this work is different or better, and the main contributions.",
             "Results: a list of key figures and tables. Draft captions early so each figure has a clear standalone message.",
-            "Discussion: interpretations, important limitations, broader conclusions that are supported by the data, future improvements.",
+            "Discussion: key interpretations, important limitations, broader conclusions supported by the data, and future directions.",
             "Methods and supporting information: experiments, controls, ablations, datasets, method details, supplementary figures, and anything needed for reproducibility but too detailed for the main text."
           ]
         },
@@ -346,7 +346,7 @@ export const guideContent: GuideContent = {
         {
           title: "Figure assembly",
           bullets: [
-            "Use a tool that supports vector editing, such as Adobe Illustrator, Inkscape or PowerPoint.",
+            "Use a tool that supports vector editing, such as Adobe Illustrator, Inkscape, or PowerPoint.",
             "Save vector formats whenever possible, such as SVG, unless the journal requires a specific format.",
             "If a vector file becomes too large or impractical (for example, with large UMAP plots), export a raster image such as PNG or JPEG at no less than 600 DPI.",
             "When assembling multipanel figures, export plots at the intended final figure or poster size to avoid awkward resizing later.",
@@ -363,7 +363,7 @@ export const guideContent: GuideContent = {
         {
           title: "Plots and reproducibility",
           bullets: [
-            "Generate quantitative plots programmatically when possible in Python or R (I personally prefer Python when possible). Programmatic plotting matters because data may update, analyses may need to be rerun, and figures often need to be reproduced during revision. Avoid making plots manually in Excel or Prism.",
+            "Generate quantitative plots programmatically in Python or R whenever possible (I personally prefer Python). Programmatic plotting matters because data may update, analyses may need to be rerun, and figures often need to be reproduced during revision. Avoid making plots manually in Excel or Prism.",
             "Keep plotting code, processed data, and exported figure files together.",
             [
               "For a practical introduction to data visualization, this is a great resource: ",
@@ -437,7 +437,7 @@ export const guideContent: GuideContent = {
         {
           title: "Context and privacy",
           bullets: [
-            "Good results require good context: provide the relevant code base, expected inputs and outputs, and clear instructions for the task.",
+            "Good results require good context: provide the relevant codebase, expected inputs and outputs, and clear instructions for the task.",
             "Do not paste sensitive data, private manuscripts, confidential code, unpublished collaborator information, credentials, or proprietary material into cloud tools without appropriate approval."
           ]
         }
@@ -602,7 +602,7 @@ export const researchPracticeGuideContent: GuideContent = {
   eyebrow: "Lab Guide",
   title: "Research Practice",
   description:
-    "Practical standards and resources for data, writing, figures, documentation, code, shared scientific references and others.",
+    "Practical standards and reusable resources for data management, manuscripts, figures, documentation, code, LLMs, peer review, and key literature.",
   tocTitle: "Research Practice Contents",
   alternateHref: "/guide/research-practice/zh",
   alternateLabel: "中文",
@@ -626,9 +626,7 @@ const translationNoticeSectionZh: GuideSection = {
   title: "翻译说明",
   paragraphs: [
     [
-      "本中文版本由",
-      { text: "ChatGPT", strong: true },
-      "辅助翻译和整理，可能有遗漏、错误或不够准确的表述。如与英文版不一致，请以英文版为准；也欢迎告诉我们需要修改的地方。"
+      "本中文版本由 AI 辅助翻译并经人工润色，若个别表述与英文版存在细微差异，请以英文版为准；也欢迎随时告诉我们需要修订的地方。"
     ]
   ]
 };
@@ -643,12 +641,12 @@ const acknowledgmentSectionZh: GuideSection = {
         label: "Coley Research Group @ MIT",
         href: "https://coley.mit.edu/"
       },
-      " 和 ",
+      " 与 ",
       {
         label: "Wang Bioinformatics Lab @ UC Riverside",
         href: "https://www.cs.ucr.edu/~mingxunw/"
       },
-      " 公开分享的实验室指南和资源。感谢这些课题组向更广泛的科研界公开分享这些材料。"
+      " 公开分享的实验室指南与资源。感谢这些课题组向科研界慷慨分享这些宝贵资料。"
     ]
   ]
 };
@@ -657,9 +655,9 @@ const labLifeOverviewSectionZh: GuideSection = {
   id: "overview",
   title: "概览",
   paragraphs: [
-    "这份指南旨在帮助大家更顺畅地适应实验室生活，介绍我们如何沟通、开会、记录工作、准备论文与图表、共享数据和代码，以及相互学习。",
-    "我们追求有影响力的科研，但任何时候绝不应以牺牲成员的健康、幸福或个人成长为代价。",
-    "遇到科研、职业或生活上的困难，都欢迎联系导师。"
+    "这份指南旨在帮助大家更顺畅地融入实验室生活，介绍我们如何日常沟通、组织会议、记录研究、撰写论文与作图、共享数据和代码，以及彼此学习。",
+    "我们追求有影响力的科研，但绝不以牺牲成员的身心健康、生活幸福或长期成长为代价。",
+    "无论在科研进展、职业发展还是生活中遇到困难，都欢迎随时与导师沟通。"
   ]
 };
 
@@ -667,13 +665,13 @@ const valuesExpectationsSectionZh: GuideSection = {
   id: "values-expectations",
   title: "价值观与期待",
   deck:
-    "我们希望实验室是一个能认真做科研，也能让人感到被尊重、被支持、能持续成长的地方。",
+    "我们希望实验室既是一个潜心钻研的地方，也是一个让每个人感到受尊重、有支持、能持续成长的集体。",
   bullets: [
-    "以严谨、友善的态度做科学：认真对待数据、论断和解释，做好清晰记录，并以有助于改进工作的方式质疑观点。",
-    "尊重每一个人：优秀不由背景、头衔、语言或资历决定。每个人都应该能自在地提问、表达担忧和贡献想法。",
-    "彼此可靠：对自己的工作负责，及时更新进展，在问题拖慢项目之前主动沟通。",
-    "主动了解组内工作：学习彼此的项目，也留意可能的合作机会。",
-    "保持学习：没有人一开始就懂所有方法、仪器、代码或写作规范。寻求帮助也是做好科研的一部分。"
+    "严谨治学、友善交流：审慎对待数据、论断与解读，做好清晰记录，以建设性的方式探讨和质疑观点。",
+    "尊重每一位成员：优秀与否不取决于背景、头衔、语言或资历。每个人都应能够安心提问、表达顾虑并贡献想法。",
+    "彼此可靠：对自己的工作负责，及时与合作者同步进展，在问题拖慢项目前主动沟通。",
+    "主动了解组内工作：关注彼此的课题，积极寻找交流与合作的机会。",
+    "保持学习：没有人一开始就掌握所有实验方法、仪器操作、编程习惯或写作规范。主动寻求帮助本身就是做好科研的一部分。"
   ]
 };
 
@@ -684,22 +682,22 @@ const communicationMeetingsSectionZh: GuideSection = {
     {
       title: "沟通",
       bullets: [
-        "正式请求、对外沟通、文件往来和有明确时限的事项，请使用电子邮件。",
+        "正式申请、对外联系、文件往来以及有明确截止时间的事项，请使用电子邮件。",
         [
-          { text: "非紧急信息不需要晚上或周末回复", strong: true },
+          { text: "非紧急消息无需在晚上或周末回复", strong: true },
           "。"
         ],
-        "紧急事项请直接写清截止时间。",
-        "如果需要推荐信，请至少提前 3 周联系导师，并提供相关材料。"
+        "如有紧急事项，请在消息中直接注明截止时间。",
+        "如需推荐信，请至少提前 3 周联系导师，并附上相关申请材料。"
       ]
     },
     {
-      title: "一对一会议",
+      title: "一对一交流",
       bullets: [
-        "一对一会议通常每周一次；也可以根据项目阶段调整为隔周。",
-        "尽量带着简短议程、近期结果和具体问题来开会。",
+        "一对一交流通常每周一次，也可根据项目阶段调整为每两周一次。",
+        "参会时尽量带上简短议程、近期结果以及需要讨论的具体问题。",
         [
-          "遇到卡点时，不要等到下一次固定会议；请",
+          "遇到拖慢项目进度的卡点时，不要等到下一次固定会议；请",
           { text: "尽快联系导师", strong: true },
           "。"
         ]
@@ -708,27 +706,27 @@ const communicationMeetingsSectionZh: GuideSection = {
     {
       title: "组会",
       body:
-        "组会为大家提供共同学习科学知识、锻炼表达能力、培养科研判断力以及了解组内各项工作的机会。除上课、出差、生病或其他时间冲突外，大家都应参加组会；如需缺席，请提前告知导师。文献讨论和代码审查将轮流纳入常规组会，不再另设固定会议。",
+        "组会是大家共同学习前沿进展、锻炼学术表达、培养科研判断力并了解组内各项工作的重要平台。除上课、出差、生病或其他日程冲突外，成员均应按时参加；如需缺席，请提前告知导师。文献讨论和代码审查轮流融入常规组会，不另设额外固定会议。",
       subblocks: [
         {
           title: "每周常规组会",
           bullets: [
-            "成员轮流汇报阶段性进展、开展问题讨论，并不定期进行规划交流，以便项目仍有调整空间时就能获得反馈。",
-            "进展汇报应简要说明项目背景、近期进展（包括不顺利的部分）、当前挑战和下一步计划。"
+            "成员轮流进行阶段性进展汇报、难题研讨及不定期的课题规划交流，以便项目仍有调整空间时就能集思广益。",
+            "进展汇报建议简明回顾课题背景，梳理近期进展（包括不顺利的尝试），指出当前难点并提出下一步计划。"
           ]
         },
         {
           title: "文献讨论",
           bullets: [
-            "报告人轮流担任，最多选择两篇论文，并提前分享给大家。",
-            "文献讨论旨在深入探讨重要论文和方法、共同培养科研判断力，而不只是收集文献链接。请带着具体问题、疑虑或讨论要点参加。"
+            "报告人轮流担任，每次选择 1–2 篇代表性论文，并提前分享给组内成员阅读。",
+            "文献讨论重在深入剖析重要成果与方法、共同培养科研判断力，而不仅是转发链接。请带着具体问题、思考或质疑参与讨论。"
           ]
         },
         {
           title: "代码审查",
           bullets: [
-            "代码审查帮助我们提高可重复性、可读性、测试和文档质量，也帮助大家负责任地使用 LLM 生成的代码。",
-            "目标是共同改进，不是挑错。请带着具体问题，或希望大家一起检查的代码/工作流来参加。"
+            "代码审查旨在提升代码的可重复性、可读性、测试覆盖与文档质量，也帮助大家更负责任地使用 LLM 辅助生成的代码。",
+            "目的是共同精进，而非挑刺。请带着具体问题、疑虑或希望同伴重点审阅的代码片段与工作流前来交流。"
           ]
         }
       ]
@@ -740,15 +738,15 @@ const timeAwayWellbeingSectionZh: GuideSection = {
   id: "time-away-wellbeing",
   title: "休假与身心健康",
   paragraphs: [
-    "学术工作有一定灵活性，我们应该用它建立健康、可持续的节奏。工作时间更长，并不自动意味着科学做得更好。",
-    "能休息、思考、恢复，也能保有实验室之外的生活，往往更有利于长期做好科研。提前计划，也能让实验室更好地支持彼此。"
+    "学术工作具备一定弹性，我们应善用这份弹性，建立健康、可持续的节奏。工作时长并不等同于科研质量。",
+    "劳逸结合、留出思考与恢复的时间，并保有实验室之外的生活，才更有利于长期做出好研究。提前做好安排，也便于团队彼此支持。"
   ],
   bullets: [
-    "每个人以及项目的不同阶段都可以有不同的工作节奏，但沟通和可靠性始终很重要。若你的时间安排会影响协作，请提前告知相关人员。",
-    "较长时间的离开请提前规划，并告知导师以及依赖你工作的相关人员。",
-    "短暂休息、病假、就医、家庭责任和个人紧急情况都是生活的一部分。请沟通必要信息，不需要透露私人细节。",
-    "尊重他人的休息时间。除非有明确截止日期或安全问题，尽量避免在晚上、周末、节假日或休假期间制造不必要的紧迫感。",
-    "有些截止日期会带来阶段性高强度工作。请清楚沟通预期，并在之后回到可持续的节奏。"
+    "不同成员、不同项目阶段的日常节奏可以有所不同，但沟通与可靠性始终重要。若你的时间安排会影响协作，请提前告知合作者。",
+    "较长时间的离校或休假请提前规划，并告知导师及依赖你工作的合作成员。",
+    "短暂休整、病假、就医、家庭事务和个人突发情况都是生活的一部分。告知团队必要安排即可，无需透露个人隐私细节。",
+    "尊重他人的休息时间。除非遇到明确的截止日期或安全问题，请避免在晚上、周末、节假日或休假期间发出不必要的催促。",
+    "临近重要截止日期时可能会出现阶段性高强度工作，请提前沟通清楚预期，并在结束后及时回归可持续的节奏。"
   ]
 };
 
@@ -756,24 +754,24 @@ const collaborationAuthorshipSectionZh: GuideSection = {
   id: "collaboration-authorship",
   title: "合作与作者署名",
   paragraphs: [
-    "合作方式和作者署名应尽早讨论，并随着贡献的变化重新确认。这样可以避免项目转化为论文、学术报告、海报或公开数据集时出现分歧。"
+    "合作分工与作者署名应尽早商议，并随着贡献的变化及时沟通确认，避免在整理论文、学术报告、海报或公开数据集时产生误解。"
   ],
   bullets: [
-    "第一作者通常负责推动项目、组织证据，并准备第一版完整论文草稿。",
+    "第一作者通常负责推进课题、整理证据链，并完成第一版完整论文初稿。",
     [
       { text: "所有", strong: true },
-      "共同作者都应有明确的智力、实验、计算、分析或写作贡献。"
+      "共同作者都应有实质性的学术思路、实验、计算、分析或写作贡献。"
     ],
     [
       { text: "所有", strong: true },
-      "共同作者都应在重大决定、投稿、公开发布或会议摘要提交前被及时告知。"
+      "共同作者在重大决策、论文投稿、数据/代码公开发布或提交会议摘要前，都应被及时知会。"
     ],
     [
-      "任何摘要、海报、论文、数据集或代码发布，在公开提交前都必须经过",
+      "任何摘要、海报、论文、数据集或代码在公开发布或提交前，均须经",
       { text: "所有", strong: true },
-      "共同作者和",
+      "共同作者及",
       { text: "导师", strong: true },
-      "的审阅与同意。"
+      "审阅并同意。"
     ]
   ]
 };
@@ -782,7 +780,7 @@ export const labLifeGuideContentZh: GuideContent = {
   eyebrow: "实验室指南",
   title: "实验室生活",
   description:
-    "关于实验室日常、沟通、会议、身心健康、合作与作者署名的共同期待。",
+    "关于实验室文化、日常沟通、组会节奏、身心健康、团队合作与作者署名的共同约定。",
   tocTitle: "实验室生活目录",
   htmlLang: "zh-CN",
   alternateHref: "/guide/lab-life",
@@ -802,61 +800,61 @@ const researchPracticeOverviewSectionZh: GuideSection = {
   id: "overview",
   title: "概览",
   paragraphs: [
-    "科研实践涵盖一系列使科研工作清晰、可复用且可信赖的习惯。本页汇总了数据管理、论文写作、科研绘图、文档与代码、负责任地使用 LLM、论文审阅和共享阅读资源等方面的规范。",
-    "核心是可重复性：未来的自己、组内同事、合作者、审稿人和读者，都应能看懂我们做了什么、为什么做，以及证据如何支持结论。"
+    "科研实践总结了帮助我们把研究做得清晰、可复用且值得信赖的日常习惯。本页汇总了数据管理、论文写作、科研绘图、文档与代码、大语言模型（LLM）规范使用、论文审阅以及核心阅读资源等方面的要求。",
+    "贯穿一切的核心原则是可重复性：未来的自己、组内同事、合作者、审稿人和读者，都应能够看清我们做了什么、为何这样做，以及证据如何支撑结论。"
   ]
 };
 
 const dataSectionZh: GuideSection = {
   id: "data",
-  title: "数据",
+  title: "数据管理",
   deck:
-    "原始数据是科研记录的一部分。无论是否用于最终论文，都应妥善保存、整理、备份并记录相关信息。",
+    "原始数据是科研记录的基石。无论最终是否出现在论文中，都应妥善保存、规范整理、及时备份并记录完整信息。",
   blocks: [
     {
       title: "保存原始数据",
       bullets: [
         [
-          "保存",
+          "完整保存",
           { text: "所有", strong: true },
-          "原始数据，包括探索性实验、失败的实验、对照、样本，以及最终论文未使用的文件。",
-          { text: "不要覆盖原始文件。", strong: true }
+          "原始数据，包括探索性测试、失败实验、对照样本以及最终论文未采用的文件。",
+          { text: "切勿覆盖原始文件。", strong: true }
         ],
-        "原始文件应与处理后的数据、清洗后的表格、导出的图表和分析结果分开保存。",
-        "如果某些数据需要排除，请记录原因，不要删除文件。"
+        "原始文件应与处理后数据、整理后的表格、导出图表及分析输出分开存放。",
+        "如某部分数据需要在分析中排除，请记录原因，不要直接删除原始文件。"
       ]
     },
     {
-      title: "组织项目数据",
+      title: "规范整理项目数据",
       bullets: [
-        "原始数据、处理后数据、元数据和分析输出应放在命名清楚的位置，并记录处理步骤、关键参数、样本信息和质控决定。",
-        "文件夹和文件名请包含清楚的日期与含义，方便之后重建项目进展。",
-        "合作者和未来的组员应能看懂重要文件在哪里，以及每个结果使用的是哪个版本。"
+        "原始数据、处理后数据、元数据与分析输出应存放在命名清晰的目录中，并同步记录处理步骤、关键参数、样本元数据及质控决策。",
+        "文件夹和文件命名请包含清晰的日期与含义，便于日后追溯研究过程。",
+        "确保合作者与后续接手的组员能迅速定位关键文件，并明确每项结果对应的数据版本。"
       ]
     },
     {
-      title: "备份",
+      title: "数据备份",
       bullets: [
         [
-          { text: "早备份，常备份。", strong: true },
-          "重要项目数据尽量保存在",
+          { text: "尽早备份、定期备份。", strong: true },
+          "重要项目数据应尽量保存在",
           { text: "两个以上位置", strong: true },
-          "，例如外置硬盘加实验室 NAS、学校认可的存储空间，或合规云存储。"
+          "，例如外置硬盘配合实验室 NAS、学校认可的存储空间或合规云存储。"
         ],
         [
-          "Mac 用户可以使用 ",
+          "macOS 用户可使用 ",
           {
             label: "Time Machine",
             href: "https://support.apple.com/guide/mac-help/mh35860/mac"
           },
-          " 配合外置硬盘或网络存储。Windows 用户可以使用 ",
+          " 配合外置硬盘或网络存储；Windows 用户可使用文件历史记录（",
           {
             label: "File History",
             href: "https://support.microsoft.com/en-us/windows/backup-and-restore-with-file-history-7bf065bf-f1ea-0a78-c1cf-7dcf51cc8bfc"
           },
-          " 备份到外置硬盘或网络位置；请确认项目文件夹也被包含在备份中。"
+          "）备份至外置硬盘或网络存储，并确认默认库之外的项目文件夹也已纳入备份。"
         ],
-        "请定期测试备份能否恢复，尤其是在清理文件、更换电脑、投稿或公开数据前。"
+        "定期检查备份是否能正常恢复，尤其是在大规模清理文件、更换电脑、论文投稿或公开数据前。"
       ]
     }
   ]
@@ -867,42 +865,42 @@ const manuscriptsSectionZh: GuideSection = {
   title: "论文写作",
   blocks: [
     {
-      title: "从故事线开始",
+      title: "先理清科学故事",
       bullets: [
-        "在润色文字之前，论文大纲应先把逻辑讲清楚：问题为何重要，空白在哪里，我们有什么证据，结果为什么值得读者关心。",
-        "围绕图和表搭建大纲。每个主要结果都应对应一张图、一张表，或一项清楚描述的分析。"
+        "在雕琢措辞之前，论文大纲应先把核心逻辑立住：问题为何重要、研究空白在哪里、我们掌握了哪些证据，以及结果为何会改变读者的认知或工作方式。",
+        "围绕图表搭建大纲，每一项主要结论都应有对应的图、表或清晰呈现的分析作为支撑。"
       ]
     },
     {
       title: "大纲组成",
       bullets: [
         [
-          "摘要：用 5-10 句概括背景、空白、方法、主要结果和意义。撰写或修改时，可参考 ",
+          "摘要：用 5–10 句话精炼概括研究背景、科学空白、研究方法、核心发现与意义。起草或修改时，可参考 ",
           {
             label: "摘要写作指南",
             href: "/resources/abstract_guide.pdf"
           },
           "。"
         ],
-        "引言：说明大问题、具体问题、已有工作、本文不同之处，以及主要贡献。",
-        "结果：列出关键图表。尽早起草图注，让每张图都有清楚的信息。",
-        "讨论：写清解释、局限、有数据支持的结论，以及未来改进方向。",
-        "方法和补充信息：包括实验、对照、消融实验、数据集、方法细节、补充图，以及对可重复性重要但不适合放入正文的内容。"
+        "引言：按段落规划，依次讲清宏观背景、具体问题、前人进展、本研究的独特之处以及核心贡献。",
+        "结果：列出关键图与表，并尽早起草图注，让每张图都能独立传达明确信息。",
+        "讨论：梳理核心解读、重要局限性、有数据充分支撑的延伸结论以及未来改进方向。",
+        "方法与补充材料：涵盖实验细节、对照与消融实验、数据集、补充图表，以及确保可重复性所需但不宜放入正文的内容。"
       ]
     },
     {
       title: "起草与修改",
       bullets: [
-        "尽早起草，让修改能改善科学内容，而不只是润色措辞。",
-        "把批注和修订当作学习过程，而不是机械接受修改。",
-        "将论文草稿发给导师时，请使用清楚的文件名，包括项目名、你的姓名缩写和日期，例如：ProjectName_SX_20260901.docx。"
+        "尽早动笔，让修改不仅停留在润色文字，更能反过来完善科学论证与实验设计。",
+        "将批注和修订视作学习与提升的过程，而非机械地逐条接受修改。",
+        "将论文草稿发送给导师时，请使用清晰的文件名，包含项目名、姓名缩写与日期，例如：ProjectName_SX_20260901.docx。"
       ]
     },
     {
-      title: "补充信息",
+      title: "补充材料",
       bullets: [
-        "补充信息通常准备为两个文件：一个 Word 文档放补充图和补充说明（如适用），一个 Excel 文件放补充表。",
-        "Nature 系列期刊通常还需要单独的 source data Excel 文件。"
+        "补充材料通常整理为两个文件：一个 Word 文档存放补充图与补充说明（如适用），一个 Excel 文件存放补充表格。",
+        "Nature 系列期刊通常还要求单独提交 Source Data Excel 文件。"
       ]
     }
   ],
@@ -913,7 +911,7 @@ const manuscriptsSectionZh: GuideSection = {
       href: "/resources/manuscript_template_SX.docx",
       actionLabel: "下载 Word 模板",
       bullets: [
-        "不同期刊格式要求不同；准备最终版本时请查看作者指南。"
+        "不同期刊的排版要求各有差异，准备终稿时请以目标期刊的作者指南为准。"
       ]
     }
   ]
@@ -924,16 +922,16 @@ const figuresSectionZh: GuideSection = {
   title: "科研绘图",
   blocks: [
     {
-      title: "每张图的最低标准",
+      title: "每张图的基本要求",
       bullets: [
-        "无论用于组会、论文草稿、海报还是最终投稿，图表都应清晰、整洁、专业。",
-        "即使是内部草稿，也应让读者不用猜就能看懂：画了什么、比较了什么、支持什么结论。",
+        "无论是组会汇报、论文初稿、学术海报还是最终投稿，图表都应保持清晰、整洁与专业。",
+        "即使是内部讨论草稿，也应让读者无需猜测就能看懂：图中画了什么、在比较什么，以及支撑什么结论。",
         [
-          "任何阶段，坐标轴都应有清楚的",
-          { text: "标签", strong: true },
-          "，需要时也要有",
+          "任何阶段，坐标轴都应标注清晰的",
+          { text: "名称", strong: true },
+          "与",
           { text: "单位", strong: true },
-          "；图例或直接标注应解释分组、颜色、符号和缩写。"
+          "（如适用）；图例或直接标注须清楚说明分组、配色、符号与缩写。"
         ]
       ]
     },
@@ -941,39 +939,39 @@ const figuresSectionZh: GuideSection = {
       title: "发表与投稿标准",
       bullets: [
         [
-          "避免不必要的边框、粗重网格线、装饰效果和难以区分的颜色。",
-          { text: "Less is more.", strong: true }
+          "避免多余的边框、厚重网格线、花哨装饰效果以及难以区分的配色。",
+          { text: "少即是多（Less is more）。", strong: true }
         ],
-        "整张图使用 Arial（或 Helvetica），包括标签、图例、注释和 panel 字母。",
-        "在最终印刷尺寸下，大多数文字应为 4-10 pt。",
-        "所有 panel 应保持字体大小、线宽、点大小、配色、panel 标注和化学结构风格一致。",
-        "图注应说明展示内容、样本量和统计方法；需要时，也请给出精确 p 值。"
+        "整张图统一使用 Arial（或 Helvetica）字体，包括坐标轴标签、图例、注释与子图编号（a, b, c…）。",
+        "在最终印刷尺寸下，大多数文字字号应控制在 4–10 pt。",
+        "同一组图中的所有子图（panel）应保持字号、线宽、点大小、配色方案、编号样式与化学结构风格一致。",
+        "图注应写明展示内容、样本量、统计检验方法，并在适用时给出精确 p 值。"
       ]
     },
     {
       title: "图表组装",
       bullets: [
-        "使用支持矢量编辑的工具，例如 Adobe Illustrator、Inkscape 或 PowerPoint。",
-        "除非期刊有特殊要求，尽量保存为 SVG 等矢量格式。",
-        "如果矢量文件过大或不实用（如大型 UMAP 图），可导出 PNG 或 JPEG，分辨率不少于 600 DPI。",
-        "组装多 panel 图时，按最终论文图或海报尺寸导出，避免后续反复缩放。",
-        "如果 panel 分别生成，请保持坐标轴大小、标签位置、字体和线宽一致。"
+        "选用支持矢量编辑的工具进行拼图与排版，如 Adobe Illustrator、Inkscape 或 PowerPoint。",
+        "除非期刊另有规定，优先保存为 SVG 等矢量格式。",
+        "若矢量文件过于庞大或不便编辑（如含大量散点的 UMAP 图），可导出不低于 600 DPI 的 PNG 或 JPEG 位图。",
+        "组装多子图大图时，尽量按最终论文或海报的实际物理尺寸导出单图，避免后期反复缩放失真。",
+        "分别生成的子图在拼接时，请保持坐标轴比例、标签位置、字体及线宽一致。"
       ]
     },
     {
       title: "化学结构",
       bullets: [
-        "化学结构通常用 ChemDraw 绘制，采用 Nature 或 ACS 风格。",
-        "macOS 上建议从 ChemDraw 导出 SVG。Windows 上复制粘贴到 PowerPoint 通常也能保留矢量质量。"
+        "化学结构通常使用 ChemDraw 绘制，推荐采用 Nature 或 ACS 风格。",
+        "macOS 上建议从 ChemDraw 导出为 SVG 文件；Windows 上直接复制粘贴到 PowerPoint 通常也可保留矢量清晰度。"
       ]
     },
     {
-      title: "绘图与可重复性",
+      title: "脚本绘图与可重复性",
       bullets: [
-        "尽量用 Python 或 R 程序化生成定量图（我个人更偏好 Python）。这样在数据更新、重新运行分析或修改论文时，图表都更容易复现。避免手动在 Excel 或 Prism 中作图。",
-        "绘图代码、处理后的数据和导出的图表文件应存放在一起。",
+        "定量图表尽量使用 Python 或 R 编写脚本绘制（个人更偏好 Python），以便在数据更新、重跑分析或审稿修改时快速复现；避免手动在 Excel 或 Prism 中作图。",
+        "请将绘图脚本、处理后的数据以及导出的图件归档在同一目录下。",
         [
-          "数据可视化入门可参考：",
+          "数据可视化选型与入门可参考：",
           {
             label: "From Data to Viz",
             href: "https://www.data-to-viz.com/"
@@ -990,7 +988,7 @@ const figuresSectionZh: GuideSection = {
       href: "/resources/figures_template.pptx",
       actionLabel: "下载 PowerPoint 模板",
       bullets: [
-        "可用这个模板作为制作整洁、风格统一的论文图表和演示图表的起点。"
+        "可以此模板为起点，快速组装风格统一、整洁规范的论文与汇报图表。"
       ]
     }
   ]
@@ -1000,24 +998,24 @@ const documentationCodeSectionZh: GuideSection = {
   id: "documentation-data-code",
   title: "文档与代码",
   deck:
-    "未来的自己、组内同事、合作者和审稿人，都应该能理解我们做了什么、为什么这样做。",
+    "未来的自己、组内同事、合作者和审稿人，都应能够看清我们做了什么，以及为什么这样做。",
   blocks: [
     {
-      title: "工作记录",
+      title: "科研记录",
       bullets: [
-        "每个人都应为实验和分析保留科研记录，可以是电子记录，也可以是手写实验记录本；记录要足够详细，方便之后理解和回顾。",
-        "记录重要选择背后的原因，不只记录做了什么。",
-        "文件、幻灯片、草稿和结果文件夹请使用清楚的日期和名称。"
+        "每位成员都应做好实验与分析记录（电子记录或纸质实验本均可），详略程度应足以在数月后完整回溯。",
+        "不仅记录做了什么，更要记下做出关键选择的原因。",
+        "文件、演示文稿、文稿草稿和结果目录请使用清晰的日期与命名规则。"
       ]
     },
     {
       title: "代码与可重复工作流",
       bullets: [
-        "代码项目尽量使用版本控制。",
-        "整理脚本和 notebook，让主要分析路径不依赖记忆也能看懂。",
-        "写 README，说明文件夹结构、主要脚本、输入输出和运行顺序。",
-        "记录软件环境、包版本、操作系统或服务器，以及重跑所需的外部工具。",
-        "公开代码前，请仔细检查是否包含私人数据、账号凭据、未发表的合作者材料或许可问题。"
+        "代码类项目尽量全程使用版本控制（如 Git）。",
+        "合理组织脚本与 notebook，使核心分析流程不依赖个人记忆也能一目了然。",
+        "编写 README，写明目录结构、核心脚本、预期输入输出以及运行顺序。",
+        "记录软件环境、关键依赖包版本、运行平台（操作系统或服务器）以及重现所需的外部工具。",
+        "公开发布代码前，请仔细排查敏感数据、账号密钥、合作者未发表材料以及开源协议问题。"
       ]
     }
   ]
@@ -1026,29 +1024,29 @@ const documentationCodeSectionZh: GuideSection = {
 const llmsSectionZh: GuideSection = {
   id: "llms",
   title: "大语言模型（LLMs）",
-  deck: "LLM 是有用的科研工具，我们可以积极使用，也要认真验证。",
+  deck: "大语言模型是有力的科研辅助工具，我们鼓励积极善用，同时坚持严格核验。",
   paragraphs: [
-    "LLM 和 AI 助手可以帮助编程、文档、文献初筛、提纲、编辑、头脑风暴、分析规划和报告准备。它们最有价值的时候，是让我们更快、更清楚、更谨慎，而不是替代理解。"
+    "大语言模型（LLM）和 AI 助手可以辅助代码编写、文档整理、文献初筛、提纲构思、文字润色、头脑风暴、分析方案设计与报告准备。它们最有价值的用法是帮我们更快、更清晰、更严谨地工作，而不是替代思考与理解。"
   ],
   blocks: [
     {
-      title: "责任与验证",
+      title: "责任与核验",
       bullets: [
         [
           {
-            text: "你有责任理解自己提交的每一行代码，也要对每一项分析和结论负责。不要在没有理解和验证的情况下接受 LLM 输出；请用测试、检查、来源核对和代码审查来确认。",
+            text: "你有责任理解自己提交的每一行代码，并对每一项分析结果与科学论断负责。切勿在未充分理解与验证的情况下直接采纳 LLM 输出；请通过测试、逐行检查、溯源核对和代码审查加以确认。",
             strong: true
           }
         ],
-        "LLM 通常更擅长常见编程和写作任务。面对专业预测、未发表事实或高度领域化的科学判断时，它们可能不可靠。",
-        "不要把科学判断或创新性外包给工具。让工具帮助执行和澄清思路，同时继续发展自己的判断力。"
+        "LLM 通常擅长通用编程与语言润色，但在高度专业化的预测、尚未发表的事实或细分的领域科学判断上仍可能出错或产生幻觉。",
+        "切勿将科学判断力与学术创新外包给工具。让工具加速执行、梳理思路，同时持续打磨自己的独立判断与专业功底。"
       ]
     },
     {
-      title: "上下文与隐私",
+      title: "上下文与数据隐私",
       bullets: [
-        "好的结果需要好的上下文：提供相关代码、预期输入输出和清楚的任务说明。",
-        "未经适当批准，不要将敏感数据、私人论文稿件、保密代码、未发表的合作者信息、账号凭据或专有材料粘贴到云端工具中。"
+        "高质量输出依赖清晰的上下文：请提供相关代码上下文、预期输入输出以及明确的任务要求。",
+        "未经适当批准，切勿将敏感数据、未发表手稿、保密代码、合作者未公开信息、账号密钥或专有资料粘贴至外部云端工具。"
       ]
     }
   ]
@@ -1056,30 +1054,30 @@ const llmsSectionZh: GuideSection = {
 
 const reviewingManuscriptsSectionZh: GuideSection = {
   id: "reviewing-manuscripts",
-  title: "审阅论文",
+  title: "论文审阅",
   bullets: [
     [
       "保持",
       { text: "善意", strong: true },
-      "。写审稿意见时，请记得对面是真实的人，也在认真对待自己的工作。"
+      "。撰写审稿意见时，请记得对方同样是潜心做研究的学者，把审稿视作帮助同行完善工作的过程。"
     ],
     [
-      "可以的话，先指出主要",
-      { text: "优点", strong: true },
-      "。这能帮助作者和编辑理解哪些内容值得保留。"
+      "在合适的情况下，先肯定文章的主要",
+      { text: "亮点与价值", strong: true },
+      "，帮助作者和编辑明确哪些内容值得保留。"
     ],
     [
       "区分",
-      { text: "技术正确性", strong: true },
-      "和",
-      { text: "新颖性或重要性", strong: true },
-      "。正确的论文可能影响有限；有潜力的论文也可能需要更强证据。"
+      { text: "技术严谨性", strong: true },
+      "与",
+      { text: "创新性或影响力", strong: true },
+      "。技术无误的工作可能影响力有限，而颇具潜力的发现也可能仍需更扎实的证据支撑。"
     ],
-    "当结论被夸大时，请指出具体结论，并说明数据支持什么、不支持什么。",
+    "若文中存在过度推断，请明确指出具体论断，并说明现有数据支持什么、不支持什么。",
     [
-      "对于每个主要问题，尽量",
-      { text: "提出解决方案", strong: true },
-      "，即使方案并不完美。这比只说哪里不对更有帮助。"
+      "针对每一项主要意见，尽量",
+      { text: "给出建设性修改建议", strong: true },
+      "（哪怕并非十全十美），这比单纯指出缺陷更有帮助。"
     ]
   ]
 };
@@ -1088,12 +1086,12 @@ const readingListSectionZh: GuideSection = {
   id: "reading-list-key-papers",
   title: "阅读清单与关键论文",
   paragraphs: [
-    "这些是组内成员应逐步熟悉的关键论文和工具。目标不是记住所有细节，而是理解每篇论文贡献了什么、每个工具适合做什么，以及它们如何连接到我们的工作。"
+    "以下核心论文与工具建议所有组员逐步熟悉。重点不在于死记硬背细节，而在于理解每项工作的核心贡献、每个工具的适用场景，以及它们如何与我们的研究方向相衔接。"
   ],
   blocks: [
     {
-      title: "关键研究论文和工具论文",
-      body: "这些研究论文和工具论文定义了实验室常用的重要概念、工作流和资源。",
+      title: "核心研究论文与工具论文",
+      body: "这些论文奠定了实验室常用的核心思路、分析工作流与公共资源基础。",
       bullets: [
         [
           { text: "关键研究论文：", strong: true },
@@ -1132,7 +1130,7 @@ const readingListSectionZh: GuideSection = {
     {
       title: "常用工具链接",
       body:
-        "请逐步熟悉这些资源的用途，以及什么时候适合从这里开始。",
+        "建议逐步熟悉以下在线资源的用途，了解何时最适合从它们入手开展分析。",
       bullets: [
         [
           { label: "GNPS library", href: "https://external.gnps2.org/gnpslibrary" },
@@ -1162,7 +1160,7 @@ export const researchPracticeGuideContentZh: GuideContent = {
   eyebrow: "实验室指南",
   title: "科研实践",
   description:
-    "关于数据管理、论文写作、科研绘图、文档与代码、LLM 使用、论文审阅和共享科研资源的实践规范。",
+    "关于数据管理、论文写作、科研绘图、文档与代码、LLM 规范使用、论文审阅与共享科研资源的实践指南。",
   tocTitle: "科研实践目录",
   htmlLang: "zh-CN",
   alternateHref: "/guide/research-practice",

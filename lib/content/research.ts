@@ -1,18 +1,19 @@
 import type { ResearchArea } from "./types";
 
-export const researchDirectionsQuestion = "When you eat an apple, which molecules become you, which fuel you, which feed your microbes, and which leave you?";
+export const researchDirectionsQuestion =
+  "When you eat an apple, which molecules become you, which fuel you, which feed your microbes, and which leave you?";
 
 export const researchDirectionsIntro =
-  "To answer this question, our lab links computational innovation, open-data mining, and experimental metabolomics to annotate and discover small molecules, with a focus on understanding xenobiotic metabolism. Together, these directions turn complex mass spectrometry data into reusable biochemical insight.";
+  "To answer this question, our lab combines computational methods, repository-scale data mining, and experimental metabolomics to annotate known metabolites, uncover uncharacterized small molecules, and map xenobiotic metabolism. Together, these directions turn complex mass spectrometry data into durable biochemical insight.";
 
 export const researchAreas: ResearchArea[] = [
   {
     slug: "mass-spectrometry-informatics",
     title: "Mass Spectrometry Informatics",
     shortDescription:
-      "We develop algorithms and workflows that make complex mass spectrometry data more interpretable, scalable, and useful for molecular discovery and downstream biochemical interpretation.",
+      "We build algorithms and workflows for MS/MS interpretation, molecular annotation, and scalable discovery across complex metabolomics datasets.",
     longDescription:
-      "Mass spectra encode rich structural information, but much of it remains difficult to translate into chemical knowledge. We build computational workflows for MS/MS interpretation, molecular discovery, and AI-assisted pattern recognition to improve annotation of known and unknown metabolites at scale.",
+      "Tandem mass spectra encode rich structural information, yet most signals in untargeted metabolomics remain unannotated. We develop algorithms and machine learning workflows for MS/MS interpretation, spectral search, and molecular formula and structure discovery—turning raw spectra into reliable chemical insight at scale.",
     relatedPublicationTitles: [
       "BUDDY: molecular formula discovery via bottom-up MS/MS interrogation",
       "Structural annotation of full-scan MS data: A unified solution for LC-MS and MS imaging analyses",
@@ -24,9 +25,9 @@ export const researchAreas: ResearchArea[] = [
     slug: "public-metabolomics-data-mining",
     title: "Repository-Scale Public Data Mining",
     shortDescription:
-      "We turn public metabolomics repositories into reusable discovery resources by reanalyzing spectra, and linking them to new biological and environmental questions.",
+      "We turn public metabolomics repositories into reusable discovery resources by reanalyzing open spectra and linking chemical patterns to biological and environmental questions.",
     longDescription:
-      "Public metabolomics repositories contain thousands of experiments, millions of data files, and billions of mass spectra that can answer questions beyond their original designs. We develop workflows for repository-scale reanalysis, spectral search, and library propagation so open MS data can reveal recurring molecular signatures, exposure patterns, and unknown chemistry.",
+      "Public metabolomics repositories hold thousands of studies, millions of LC-MS files, and billions of spectra that can answer questions far beyond their original experimental designs. We develop scalable workflows for repository-wide reanalysis, spectral search, and library propagation to uncover recurring molecular signatures, human and environmental exposure patterns, and previously unrecognized chemistry.",
     relatedPublicationTitles: [
       "Navigating the conjugated metabolome",
       "Charting the undiscovered metabolome with synthetic multiplexing implicates ibuprofen-carnitine in myotoxicity"
@@ -37,9 +38,9 @@ export const researchAreas: ResearchArea[] = [
     slug: "microbial-xenobiotic-metabolism",
     title: "Microbial Metabolism of Xenobiotics",
     shortDescription:
-      "We use metabolomics and informatics to understand how microbes transform xenobiotics and shape molecular exposures.",
+      "We integrate metabolomics and informatics to chart how microbes chemically transform dietary compounds, drugs, and environmental exposures.",
     longDescription:
-      "Microbes transform dietary compounds, drugs, pollutants, and other xenobiotics into products that can alter exposure, activity, and biological response. Yet we still know little about the full scope of xenobiotic metabolism: a single molecule can give rise to tens or hundreds of derivatized metabolites, and mapping these products is the starting point for downstream studies of mechanism, function, and health impact.",
+      "Host and microbial enzymes transform dietary compounds, pharmaceuticals, and environmental pollutants into diverse downstream products that can reshape bioactivity, toxicity, and biological response. A single parent compound can give rise to dozens or hundreds of derivatized metabolites—most still uncatalogued. Mapping this chemical landscape is our foundation for studying mechanism, function, and health impact.",
     relatedPublicationTitles: [
       "Navigating the conjugated metabolome",
       "Charting the undiscovered metabolome with synthetic multiplexing implicates ibuprofen-carnitine in myotoxicity"

@@ -138,7 +138,7 @@ function MemberProfile({ member, previews, compact = false }: { member: Member; 
           member.careerSummary?.length || compact ? "" : "lg:col-span-2"
         }`}
       >
-        <h3 className="text-2xl font-semibold tracking-normal text-ink">
+        <h3 className="text-2xl font-semibold tracking-[-0.015em] text-ink">
           {member.name}
           {member.chineseName ? (
             <span lang="zh-Hans" className="font-cjk ml-3 text-lg font-normal text-muted">
@@ -169,10 +169,10 @@ function MemberProfile({ member, previews, compact = false }: { member: Member; 
         {member.profileHref ? (
           <a
             href={staticPageHref(member.profileHref)}
-            className="mt-5 inline-flex shrink-0 items-center gap-1.5 rounded-full border border-line bg-paper px-3 py-1.5 text-xs font-semibold text-ink transition hover:border-fudan hover:text-fudan focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fudan"
+            className="editorial-link group mt-5 shrink-0"
           >
-            View full profile
-            <ArrowRight aria-hidden="true" size={15} />
+            <span>View full profile</span>
+            <ArrowRight aria-hidden="true" size={14} className="transition group-hover:translate-x-1" />
           </a>
         ) : null}
       </div>
@@ -200,8 +200,11 @@ export default function MembersPage({ previews }: { previews: MoleculePreviews }
             .filter((member) => member.group === "Principal Investigator")
             .map((member) => (
               <section key={member.name}>
-                <h2 className="text-2xl font-semibold tracking-normal text-ink">Principal Investigator</h2>
-                <div className="mx-auto mt-5 w-full max-w-5xl">
+                <div className="flex items-center gap-4">
+                  <h2 className="shrink-0 text-2xl font-semibold tracking-[-0.015em] text-ink">Principal Investigator</h2>
+                  <span className="h-px flex-1 bg-line" />
+                </div>
+                <div className="mt-6 w-full max-w-5xl">
                   <MemberProfile member={member} previews={previews} />
                 </div>
               </section>
@@ -217,8 +220,11 @@ export default function MembersPage({ previews }: { previews: MoleculePreviews }
 
             return (
               <section key={group}>
-                <h2 className="text-2xl font-semibold tracking-normal text-ink">{group}</h2>
-                <div className={`mt-5 grid gap-10 ${isStudentGroup ? "lg:grid-cols-2" : ""}`}>
+                <div className="flex items-center gap-4">
+                  <h2 className="shrink-0 text-2xl font-semibold tracking-[-0.015em] text-ink">{group}</h2>
+                  <span className="h-px flex-1 bg-line" />
+                </div>
+                <div className={`mt-6 grid gap-10 ${isStudentGroup ? "lg:grid-cols-2" : ""}`}>
                   {groupMembers.map((member, index) =>
                     member.isOpenPosition ? (
                       <OpenPosition key={`${member.group}-${member.name}-${index}`} member={member} />

@@ -12,8 +12,7 @@ const recipes = {
   profiles: { widths: [128, 256], quality: 78, avifQuality: 52, square: true },
   research: { widths: [384, 480, 704, 832, 1024, 1280], quality: 73, avifQuality: 46 },
   papers: { widths: [480, 832, 1024, 1440], quality: 86, avifQuality: 60 },
-  news: { widths: [220, 440, 704, 768, 1024, 1440], quality: 83, avifQuality: 50 },
-  "quiz/photos": { widths: [320, 640, 800], quality: 74 }
+  news: { widths: [220, 440, 704, 768, 1024, 1440], quality: 83, avifQuality: 50 }
 };
 const manifest = {};
 

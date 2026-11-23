@@ -37,6 +37,23 @@ const highlightedPublications = publications
     return (publicationOrder.get(a.title) ?? 0) - (publicationOrder.get(b.title) ?? 0);
   });
 
+const MAX_INLINE_AUTHORS = 18;
+
+const authorToggleScript = `{
+  document.addEventListener("click", (event) => {
+    const button = event.target.closest?.("[data-expand-authors], [data-collapse-authors]");
+    if (!button) return;
+    const container = button.closest("[data-authors-toggle]");
+    if (!container) return;
+    const shortEl = container.querySelector("[data-authors-short]");
+    const fullEl = container.querySelector("[data-authors-full]");
+    if (!shortEl || !fullEl) return;
+    const expanding = button.hasAttribute("data-expand-authors");
+    shortEl.hidden = expanding;
+    fullEl.hidden = !expanding;
+  });
+}`;
+
 function publicationId(publication: Publication) {
   return `publication-${publication.title
     .toLowerCase()
@@ -70,28 +87,90 @@ function renderAuthorLabels(publication: Publication, author: string) {
   return <span className="font-semibold text-fudan">{labels.join("")}</span>;
 }
 
-function renderAuthors(publication: Publication) {
-  const parts: ReactNode[] = [];
-  let plainText = "";
-  for (const [index, author] of publication.authors.split(", ").entries()) {
-    const isLabMember = labMemberNames.some((name) => author.includes(name));
-    const labels = renderAuthorLabels(publication, author);
-    if (index > 0) plainText += ", ";
+function renderAuthorSegment(publication: Publication, author: string, key: string | number) {
+  const isLabMember = labMemberNames.some((name) => author.includes(name));
+  const labels = renderAuthorLabels(publication, author);
 
-    if (!isLabMember && !labels) {
-      plainText += author;
-      continue;
-    }
-    parts.push(
-      <Fragment key={index}>
-        {plainText}
-        {isLabMember ? <span className="font-semibold text-ink">{author}</span> : author}
-        {labels}
-      </Fragment>
-    );
-    plainText = "";
+  if (!isLabMember && !labels) {
+    return author;
   }
-  return [...parts, plainText];
+
+  return (
+    <Fragment key={key}>
+      {isLabMember ? <span className="font-semibold text-ink">{author}</span> : author}
+      {labels}
+    </Fragment>
+  );
+}
+
+function renderAuthorList(publication: Publication, authorNames: string[]) {
+  return authorNames.map((author, index) => (
+    <Fragment key={`${index}-${author}`}>
+      {index > 0 ? ", " : null}
+      {renderAuthorSegment(publication, author, index)}
+    </Fragment>
+  ));
+}
+
+function renderAuthors(publication: Publication) {
+  const authorNames = publication.authors.split(", ");
+
+  if (authorNames.length <= MAX_INLINE_AUTHORS) {
+    return renderAuthorList(publication, authorNames);
+  }
+
+  const keepIndices = new Set<number>([0, 1, 2, authorNames.length - 2, authorNames.length - 1]);
+  authorNames.forEach((author, index) => {
+    const isLabMember = labMemberNames.some((name) => author.includes(name));
+    const isCoFirst = publication.coFirstAuthors?.some((name) => author.includes(name));
+    const isCorresponding = publication.correspondingAuthors?.some((name) => author.includes(name));
+    if (isLabMember || isCoFirst || isCorresponding) {
+      keepIndices.add(index);
+    }
+  });
+
+  const sortedIndices = Array.from(keepIndices).sort((a, b) => a - b);
+  const hiddenCount = authorNames.length - sortedIndices.length;
+
+  if (hiddenCount < 4) {
+    return renderAuthorList(publication, authorNames);
+  }
+
+  const condensed: ReactNode[] = [];
+  sortedIndices.forEach((authorIndex, position) => {
+    if (position > 0) {
+      const previousIndex = sortedIndices[position - 1];
+      condensed.push(authorIndex - previousIndex > 1 ? ", …, " : ", ");
+    }
+    condensed.push(renderAuthorSegment(publication, authorNames[authorIndex], `condensed-${authorIndex}`));
+  });
+
+  return (
+    <span data-authors-toggle="">
+      <span data-authors-short="">
+        {condensed}
+        <button
+          type="button"
+          data-expand-authors=""
+          aria-expanded="false"
+          className="ml-1.5 inline-flex cursor-pointer items-center rounded-full border border-line bg-paper px-2 py-0.5 text-xs font-medium text-muted transition hover:border-fudan hover:text-fudan focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fudan"
+        >
+          +{hiddenCount} more
+        </button>
+      </span>
+      <span data-authors-full="" hidden>
+        {renderAuthorList(publication, authorNames)}
+        <button
+          type="button"
+          data-collapse-authors=""
+          aria-expanded="true"
+          className="ml-1.5 inline-flex cursor-pointer items-center rounded-full border border-line bg-paper px-2 py-0.5 text-xs font-medium text-muted transition hover:border-fudan hover:text-fudan focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fudan"
+        >
+          Show fewer
+        </button>
+      </span>
+    </span>
+  );
 }
 
 function renderVenue(publication: Publication) {
@@ -128,7 +207,7 @@ export default function PublicationsPage() {
 
       <section className="mx-auto grid max-w-7xl gap-8 px-5 py-10 sm:px-8 lg:grid-cols-[120px_minmax(0,1fr)] lg:py-12">
         <aside className="min-w-0 lg:sticky lg:top-28 lg:h-fit">
-          <p className="text-xs font-semibold uppercase tracking-normal text-muted">Jump to</p>
+          <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted">Jump to</p>
           <nav className="mt-3 flex min-w-0 flex-wrap gap-2 lg:grid lg:gap-2">
             {highlightedPublications.length > 0 ? (
               <a
@@ -169,7 +248,7 @@ export default function PublicationsPage() {
               id="highlighted"
               className="mb-8 scroll-mt-28 overflow-hidden rounded-lg border border-line bg-white p-5 shadow-sm"
             >
-              <h2 className="text-xl font-semibold tracking-normal text-ink">Highlighted papers</h2>
+              <h2 className="text-xl font-semibold tracking-[-0.015em] text-ink">Highlighted papers</h2>
               <ol className="mt-4 divide-y divide-line">
                 {highlightedPublications.map((publication, index) => (
                   <li
@@ -184,7 +263,7 @@ export default function PublicationsPage() {
                       >
                         {publication.title}
                       </a>
-                      <p className="mt-1.5 break-words text-sm leading-5 text-muted">{renderAuthors(publication)}</p>
+                      <div className="mt-1.5 break-words text-sm leading-5 text-muted">{renderAuthors(publication)}</div>
                       <p className="mt-1 break-words text-sm leading-5 text-muted">{renderVenue(publication)}</p>
                     </div>
                   </li>
@@ -195,7 +274,7 @@ export default function PublicationsPage() {
 
           {publications.length > 0 ? (
             <section className="scroll-mt-28 overflow-hidden rounded-lg border border-line bg-white p-5 shadow-sm">
-              <h2 className="text-xl font-semibold tracking-normal text-ink">All publications</h2>
+              <h2 className="text-xl font-semibold tracking-[-0.015em] text-ink">All publications</h2>
               <div className="mt-4 space-y-6">
                 {publicationYears.map((year) => {
                   const yearPublications = publications.filter((publication) => publication.year === year);
@@ -223,7 +302,7 @@ export default function PublicationsPage() {
                                       </a>
                                     ) : publication.title}
                                   </h4>
-                                  <p className="mt-1.5">{renderAuthors(publication)}</p>
+                                  <div className="mt-1.5">{renderAuthors(publication)}</div>
                                   <p className="mt-1">{renderVenue(publication)}</p>
                                 </div>
                                 {publication.preprint ? (
@@ -243,7 +322,7 @@ export default function PublicationsPage() {
             </section>
           ) : (
             <div className="rounded-lg border border-line bg-white p-8 text-center shadow-sm">
-              <h2 className="text-2xl font-semibold tracking-normal text-ink">Publications coming soon</h2>
+              <h2 className="text-2xl font-semibold tracking-[-0.015em] text-ink">Publications coming soon</h2>
               <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-muted">
                 This page is ready for journal articles and preprints once the publication record is added.
               </p>
@@ -251,6 +330,11 @@ export default function PublicationsPage() {
           )}
         </div>
       </section>
+
+      <noscript>
+        <style>{`[data-authors-short]{display:none}[data-authors-full]{display:inline!important}[data-collapse-authors]{display:none}`}</style>
+      </noscript>
+      <script dangerouslySetInnerHTML={{ __html: authorToggleScript }} />
     </>
   );
 }

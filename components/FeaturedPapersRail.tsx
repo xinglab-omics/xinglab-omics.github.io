@@ -151,14 +151,14 @@ export function FeaturedPapersRail({ labMemberNames, spotlights }: FeaturedPaper
     <section className="mx-auto max-w-7xl px-5 pb-3 pt-6 sm:px-8">
       <div className="overflow-hidden rounded-lg border border-line bg-white p-5 shadow-sm sm:p-6">
         <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-sm font-semibold uppercase tracking-normal text-fudan">Featured Lab Papers</p>
+          <p className="eyebrow">Featured Lab Papers</p>
           <div className="flex items-center gap-2">
             <a
               href={staticPageHref("/publications")}
-              className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-line bg-paper px-3 py-1.5 text-xs font-semibold text-ink transition hover:border-fudan hover:text-fudan"
+              className="editorial-link group shrink-0"
             >
-              View all publications
-              <ArrowRight aria-hidden="true" size={14} />
+              <span>View all publications</span>
+              <ArrowRight aria-hidden="true" size={14} className="transition group-hover:translate-x-1" />
             </a>
           </div>
         </div>
@@ -178,7 +178,7 @@ export function FeaturedPapersRail({ labMemberNames, spotlights }: FeaturedPaper
               >
                 <div className="grid gap-7 lg:grid-cols-[minmax(0,4fr)_minmax(0,6fr)] lg:items-center">
                   <div className="flex min-w-0 flex-col justify-center">
-                    <h2 className="text-2xl font-semibold tracking-normal text-ink">{publication.title}</h2>
+                    <h2 className="text-2xl font-semibold tracking-[-0.015em] text-ink">{publication.title}</h2>
                     <p className="mt-3 text-sm text-muted">
                       <span className="font-semibold text-fudan">{publication.venue}</span>
                       <span className="font-semibold text-muted">, {publication.year}</span>
@@ -188,10 +188,14 @@ export function FeaturedPapersRail({ labMemberNames, spotlights }: FeaturedPaper
                     </p>
                     <a
                       href={withBasePath(publicationHref(publication))}
-                      className="mt-5 inline-flex w-fit items-center gap-1.5 rounded-full border border-line bg-paper px-3 py-1.5 text-xs font-semibold text-ink transition hover:border-fudan hover:text-fudan"
+                      className="editorial-link group mt-5 w-fit"
                     >
-                      Read paper
-                      <ArrowUpRight aria-hidden="true" size={14} />
+                      <span>Read paper</span>
+                      <ArrowUpRight
+                        aria-hidden="true"
+                        size={14}
+                        className="transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                      />
                     </a>
                   </div>
                   <PaperFigure spotlight={spotlight} first={index === 0} />

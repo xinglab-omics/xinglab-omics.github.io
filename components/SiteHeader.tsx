@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { SiteImage } from "@/components/SiteImage";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { navigation, type NavigationItem } from "@/lib/content/navigation";
@@ -73,68 +74,89 @@ function ChildLinks({ items, pathname, mobile = false }: {
 
 export function SiteHeader({ pathname }: { pathname: string }) {
   return (
-    <header className="sticky top-0 z-50 border-b border-line/80 bg-paper/94 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-line/90 bg-white/95 backdrop-blur">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 sm:px-8">
-        <a href={staticPageHref("/")} className="flex min-w-0 items-center gap-2 sm:gap-3" aria-label="Xing Lab home">
-          <span className="flex shrink-0 items-center gap-1 sm:gap-1.5">
+        <a href={staticPageHref("/")} className="flex min-w-0 items-center gap-2.5 sm:gap-3.5" aria-label="Xing Lab home">
+          <span className="flex shrink-0 items-center gap-1.5 sm:gap-2">
             <img
               src={labMarkSrc}
               alt="Xing Lab mark"
               width={72}
               height={62}
-              className="h-12 w-14 shrink-0 object-contain sm:h-14 sm:w-16"
+              className="h-11 w-[52px] shrink-0 object-contain sm:h-12 sm:w-14"
             />
-            <span className="text-base font-semibold tracking-normal text-ink sm:text-lg">Xing Lab</span>
+            <span className="leading-none">
+              <span className="block text-base font-semibold tracking-[-0.02em] text-ink sm:text-lg">
+                Xing Lab
+              </span>
+              <span className="mt-1 hidden text-[9px] font-semibold uppercase tracking-[0.16em] text-muted sm:block">
+                Fudan University
+              </span>
+            </span>
           </span>
-          <span aria-hidden="true" className="h-8 w-px shrink-0 bg-line" />
+          <span aria-hidden="true" className="h-7 w-px shrink-0 bg-line" />
           <SiteImage
             src="/images/branding/FDU_logo.png"
-            sizes="(min-width: 1280px) 96px, (min-width: 640px) 80px, 64px"
+            sizes="(min-width: 1280px) 92px, (min-width: 640px) 78px, 64px"
             loading="eager"
             alt="Fudan University"
             width={478}
             height={209}
-            className="h-auto w-16 shrink-0 sm:w-20 xl:w-24"
+            className="h-auto w-16 shrink-0 sm:w-[76px] xl:w-[88px]"
           />
         </a>
 
         <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary navigation">
-          {navigation.map((item) => (
-            <div
-              key={item.label}
-              className={`desktop-nav-item relative flex items-center rounded-full text-xs font-semibold tracking-normal transition ${isActiveItem(pathname, item) ? "bg-fudan text-white" : "text-muted hover:bg-white hover:text-ink"}`}
-            >
-              {item.href && (
-                <a
-                  href={staticPageHref(item.href)}
-                  aria-current={isActivePath(pathname, item.href) ? "page" : undefined}
-                  className={`rounded-full py-2 pl-3 ${item.children ? "pr-1" : "pr-3"}`}
+          {navigation.map((item, index) => {
+            const active = isActiveItem(pathname, item);
+            const isJoinItem = item.href === "/contact" || index === navigation.length - 1;
+
+            return (
+              <Fragment key={item.label}>
+                {isJoinItem ? <span aria-hidden="true" className="mx-2 h-4 w-px bg-line" /> : null}
+                <div
+                  data-active={active ? "true" : undefined}
+                  className={`desktop-nav-item nav-underline relative flex items-center text-[11px] font-semibold tracking-[0.08em] transition ${
+                    active
+                      ? "text-fudan"
+                      : isJoinItem
+                        ? "text-fudan/90 hover:text-fudan"
+                        : "text-muted hover:text-ink"
+                  }`}
                 >
-                  {item.label}
-                </a>
-              )}
-              {item.children && (
-                <details name="desktop-navigation">
-                  <summary
-                    aria-label={item.href ? `More ${item.label.toLowerCase()} links` : undefined}
-                    className={`flex cursor-pointer list-none items-center gap-1.5 rounded-full py-2 pr-3 [&::-webkit-details-marker]:hidden ${item.href ? "pl-1" : "pl-3"}`}
-                  >
-                    {!item.href && item.label}
-                    <ChevronDown aria-hidden="true" size={13} />
-                  </summary>
-                  <div className="absolute left-0 top-full z-50 min-w-max pt-2">
-                    <div className="rounded-md border border-line bg-white p-1 shadow-soft">
-                      <ChildLinks items={item.children} pathname={pathname} />
-                    </div>
-                  </div>
-                </details>
-              )}
-            </div>
-          ))}
+                  {item.href && (
+                    <a
+                      href={staticPageHref(item.href)}
+                      aria-current={isActivePath(pathname, item.href) ? "page" : undefined}
+                      className={`py-2 pl-3 ${item.children ? "pr-1" : "pr-3"}`}
+                    >
+                      {item.label}
+                    </a>
+                  )}
+                  {item.children && (
+                    <details name="desktop-navigation">
+                      <summary
+                        aria-label={item.href ? `More ${item.label.toLowerCase()} links` : undefined}
+                        className={`flex cursor-pointer list-none items-center gap-1 py-2 pr-3 [&::-webkit-details-marker]:hidden ${item.href ? "pl-0.5" : "pl-3"}`}
+                      >
+                        {!item.href && item.label}
+                        <ChevronDown aria-hidden="true" size={13} />
+                      </summary>
+                      <div className="absolute left-0 top-full z-50 min-w-max pt-2">
+                        <div className="rounded-md border border-line bg-white p-1 shadow-soft">
+                          <ChildLinks items={item.children} pathname={pathname} />
+                        </div>
+                      </div>
+                    </details>
+                  )}
+                </div>
+              </Fragment>
+            );
+          })}
         </nav>
 
         <details className="group/mobile lg:hidden">
-          <summary className="flex size-11 cursor-pointer list-none items-center justify-center rounded-full border border-line bg-white text-ink shadow-sm transition hover:border-fudan [&::-webkit-details-marker]:hidden">
+          <summary className="flex size-11 cursor-pointer list-none items-center justify-center rounded-full border border-line bg-white text-ink transition hover:border-fudan [&::-webkit-details-marker]:hidden">
             <Menu aria-hidden="true" size={20} className="group-open/mobile:hidden" />
             <X aria-hidden="true" size={20} className="hidden group-open/mobile:block" />
             <span className="sr-only group-open/mobile:hidden">Open navigation</span>

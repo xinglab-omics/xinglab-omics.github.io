@@ -24,14 +24,14 @@ export const newsItems: NewsItem[] = [
     date: "2026-11",
     dateLabel: "Nov 2026",
     summary:
-      "Shaohong Xu joins us as a PhD student, Yinjie Yu and Lujie Qu as master's students, and Ruize Tang, Kehan Zhang, and Pengyu Xing as undergraduates. Welcome to the lab! We look forward to working with all six of you.",
+      "We are delighted to welcome six new members to Xing Lab: Shaohong Xu (PhD student), Yinjie Yu and Lujie Qu (master's students), and Ruize Tang, Kehan Zhang, and Pengyu Xing (undergraduate researchers). Welcome aboard—we look forward to building the lab and doing great science together!",
     category: "Lab"
   },
   {
     title: "Openings for students and postdocs",
     date: "2026-07-24",
     summary:
-      "Prospective lab members interested in metabolomics, bioinformatics, computational chemistry, and data science are encouraged to get in touch.",
+      "We are actively recruiting postdoctoral researchers, graduate students, undergraduates, and research assistants excited about mass spectrometry, metabolomics, bioinformatics, and xenobiotic metabolism. Visit our Join Us page to learn how to apply.",
     category: "Opening",
     link: "/contact",
     image: "/images/news/20260724.png",
@@ -41,7 +41,7 @@ export const newsItems: NewsItem[] = [
     title: "Xing Lab website is officially open",
     date: "2026-04-26",
     summary:
-      "The new Xing Lab website is now live, with information about our research directions, publications, team, and opportunities to join the lab.",
+      "The Xing Lab website is now live, featuring our research directions, publications, team members, lab guide, and open positions.",
     category: "Lab",
     // link: "/",
     image: "/images/news/20260426.png",
@@ -51,7 +51,7 @@ export const newsItems: NewsItem[] = [
     title: "Preprint: Navigating the conjugated metabolome",
     date: "2026-02-06",
     summary:
-      "Our latest preprint on navigating the conjugated metabolome is now available.",
+      "Our preprint on charting conjugated small molecules across public mass spectrometry repositories is now available on bioRxiv.",
     category: "Publication",
     link: "https://www.biorxiv.org/content/10.64898/2026.02.06.704496v1",
     image: "/images/papers/2026_conjugate.png",
@@ -61,7 +61,7 @@ export const newsItems: NewsItem[] = [
     title: "Excellent Young Scientists Fund (Overseas)",
     date: "2025-11",
     summary:
-      "Shipei Xing was selected for the Excellent Young Scientists Fund (Overseas), 国家优秀青年科学基金项目（海外）.",
+      "Shipei Xing was awarded the National Natural Science Foundation of China (NSFC) Excellent Young Scientists Fund (Overseas) — 国家优秀青年科学基金项目（海外）.",
     category: "Award",
     // link: "/shipei-xing",
     // image: "/images/profiles/shipei-xing-profile.png",

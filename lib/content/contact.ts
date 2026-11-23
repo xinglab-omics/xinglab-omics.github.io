@@ -39,16 +39,16 @@ export const contactInfoZh: ContactInfo = {
   email: piProfile.email,
   subjectFormat: "XingLab Application - [Position] - [Your Name]",
   subjectExample: "XingLab Application - PhD student - Daxing Pai 派大星",
-  applyIntro: `请直接发送邮件至 ${piProfile.email}，附上简短介绍与相关材料（优先 PDF 格式）。所有岗位的申请流程均一致：`,
+  applyIntro: `请直接发送邮件至 ${piProfile.email}，附上简短自我介绍与相关支持材料（附件优先使用 PDF 格式）。所有岗位均采用相同的申请方式：`,
   sharedChecklist: [
-    "简要介绍你的教育或科研背景、意向岗位、研究兴趣如何与实验室方向契合，以及预计开始时间或可投入时间。",
+    "在邮件正文中简要介绍你的教育或科研背景、意向岗位、研究兴趣与实验室方向的契合点，以及预计开始时间或可投入时间。",
     "个人简历（优先 PDF 格式）。",
     "可选补充材料：如代表性论文、毕业论文工作、海报、代码仓库、成绩单或英语考试成绩等。"
   ],
   roleNotes: [
     {
       role: "博士后研究人员",
-      note: "请补充说明拟开展的博士后研究方向与未来职业规划，并提供 2–3 封推荐信（或推荐人信息）及最多 3 篇代表性论文或手稿。"
+      note: "请补充说明拟开展的研究方向与职业规划，并附上 2–3 封推荐信（或推荐人联系方式）及最多 3 篇代表性论文或手稿。"
     },
     {
       role: "研究生（硕士 / 博士）",

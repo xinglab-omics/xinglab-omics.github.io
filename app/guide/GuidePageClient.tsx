@@ -1,5 +1,6 @@
 import { BookOpen, FileText } from "lucide-react";
 import { LanguageToggle } from "@/components/LanguageToggle";
+import { PageIntro } from "@/components/PageIntro";
 import { guideContent, type GuideContent, type GuideSection, type GuideTextPart } from "@/lib/content/guide";
 import { withBasePath } from "@/lib/site-paths";
 
@@ -83,7 +84,7 @@ function GuideBlocks({ blocks }: { blocks?: GuideSection["blocks"] }) {
   return (
     <div className="mt-6 grid gap-4">
       {blocks.map((block) => (
-        <section key={block.title} className="rounded-md border border-line bg-white p-5">
+        <section key={block.title} className="rounded-lg border border-line bg-white p-5 shadow-sm">
           <h3 className="text-base font-semibold text-ink">{block.title}</h3>
           {block.body ? (
             <p className="mt-3 text-sm leading-7 text-muted">
@@ -123,7 +124,7 @@ function GuideResources({ resources }: { resources?: GuideSection["resources"] }
         <section
           key={resource.id}
           id={resource.id}
-          className="scroll-mt-28 rounded-md border border-line bg-white p-5"
+          className="scroll-mt-28 rounded-lg border border-line bg-white p-5 shadow-sm"
         >
           <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
             <div className="min-w-0">
@@ -167,10 +168,11 @@ function GuideSectionView({
 }) {
   return (
     <section id={section.id} className="scroll-mt-28 border-b border-line pb-10 last:border-b-0">
-      <div className="flex items-baseline gap-3">
-        <p className="text-sm font-semibold text-fudan">{numberLabel}</p>
-        <h2 className="text-2xl font-semibold tracking-normal text-ink sm:text-3xl">{section.title}</h2>
+      <div className="flex items-center gap-3">
+        <p className="text-xs font-semibold tabular-nums tracking-[0.08em] text-fudan">{numberLabel}</p>
+        <span className="h-px flex-1 bg-line" />
       </div>
+      <h2 className="mt-3 text-2xl font-semibold tracking-[-0.015em] text-ink sm:text-3xl">{section.title}</h2>
       {section.deck ? <p className="mt-3 text-base leading-7 text-muted">{section.deck}</p> : null}
       {section.paragraphs?.map((paragraph, paragraphIndex) => (
         <GuideParagraph
@@ -193,24 +195,20 @@ export function GuidePageClient({ content = guideContent }: { content?: GuideCon
 
   return (
     <div lang={htmlLang} className={isChinese ? "font-cjk" : undefined}>
-      <section className="border-b border-line bg-white">
-        <div className="mx-auto max-w-7xl px-5 py-10 sm:px-8 lg:py-12">
-          <div className="flex flex-wrap items-center justify-between gap-3">
-            <p className="text-sm font-semibold uppercase tracking-normal text-fudan">{guide.eyebrow}</p>
-            {guide.alternateHref ? (
-              <LanguageToggle isChinese={isChinese} href={guide.alternateHref} />
-            ) : null}
-          </div>
-          <h1 className="mt-3 max-w-4xl text-3xl font-semibold tracking-normal text-ink sm:text-4xl">
-            {guide.title}
-          </h1>
-          <p className="mt-4 max-w-5xl text-base leading-7 text-muted">{guide.description}</p>
-        </div>
-      </section>
+      <PageIntro
+        eyebrow={guide.eyebrow}
+        title={guide.title}
+        description={guide.description}
+        action={
+          guide.alternateHref ? (
+            <LanguageToggle isChinese={isChinese} href={guide.alternateHref} />
+          ) : undefined
+        }
+      />
 
       <section className="mx-auto grid max-w-7xl gap-8 px-5 py-10 sm:px-8 lg:grid-cols-[260px_minmax(0,1fr)] lg:py-12">
         <aside className="lg:sticky lg:top-28 lg:self-start">
-          <nav className="rounded-md border border-line bg-white p-4 shadow-sm" aria-label={guide.tocTitle}>
+          <nav className="rounded-lg border border-line bg-white p-4 shadow-sm" aria-label={guide.tocTitle}>
             <div className="mb-3 flex items-center gap-2 text-sm font-semibold text-ink">
               <BookOpen aria-hidden="true" className="size-4 text-fudan" />
               {guide.tocTitle}

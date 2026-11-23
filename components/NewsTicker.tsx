@@ -36,8 +36,8 @@ export function NewsTicker({ items }: NewsTickerProps) {
     >
       <div className="mx-auto grid min-h-[220px] max-w-7xl gap-4 overflow-hidden px-5 py-5 sm:px-8 lg:min-h-[116px] lg:grid-cols-[160px_minmax(0,1fr)_auto] lg:items-center">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-normal text-fudan">Latest News</p>
-          <p className="mt-1 text-xs text-muted">{item.dateLabel}</p>
+          <p className="eyebrow">Latest News</p>
+          <p className="mt-1 text-xs tabular-nums text-muted">{item.dateLabel}</p>
         </div>
 
         <div className="flex min-h-20 min-w-0 flex-col justify-center overflow-hidden lg:min-h-16">
@@ -65,10 +65,10 @@ export function NewsTicker({ items }: NewsTickerProps) {
           </div>
           <a
             href={staticPageHref("/news")}
-            className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-line bg-paper px-3 py-1.5 text-xs font-semibold text-ink transition hover:border-fudan hover:text-fudan"
+            className="editorial-link group shrink-0"
           >
-            View all news
-            <ArrowRight aria-hidden="true" size={14} />
+            <span>View all news</span>
+            <ArrowRight aria-hidden="true" size={14} className="transition group-hover:translate-x-1" />
           </a>
         </div>
       </div>
