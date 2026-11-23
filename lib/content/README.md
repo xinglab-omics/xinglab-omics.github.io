@@ -405,22 +405,21 @@ Main fields:
 - `institution`
 - `address`
 - `email`
-- `joinText`
-- `applicationSections`
+- `subjectFormat`
+- `subjectExample`
+- `applyIntro`
+- `sharedChecklist`
+- `roleNotes`
 
-Use `joinText` for general application instructions, including the requested email subject format.
+Use `applyIntro` and `sharedChecklist` for the common application instructions shared across all roles, and `roleNotes` for brief position-specific notes.
 Use `contactInfoZh` for the Chinese version of the same page.
 
-Each application section has:
+Each role note has:
 
 ```ts
 {
-  title: "Postdoctoral Researchers",
-  description: "Short instruction text.",
-  materials: [
-    "Required or optional material.",
-    "Another material."
-  ]
+  role: "Postdoctoral Researchers",
+  note: "Short position-specific note."
 }
 ```
 

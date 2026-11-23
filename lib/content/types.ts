@@ -122,14 +122,18 @@ export type NewsItem = {
   imageVariant?: "wide" | "side";
 };
 
+export type RoleNote = {
+  role: string;
+  note: string;
+};
+
 export type ContactInfo = {
   institution: string;
   address: string;
   email: string;
-  joinText: string;
-  applicationSections: {
-    title: string;
-    description: string;
-    materials: string[];
-  }[];
+  subjectFormat: string;
+  subjectExample: string;
+  applyIntro: string;
+  sharedChecklist: string[];
+  roleNotes: RoleNote[];
 };
