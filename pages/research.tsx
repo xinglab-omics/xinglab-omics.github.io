@@ -37,7 +37,7 @@ export default function ResearchPage() {
         description="We aim to map the small molecules in our bodies and understand how food, microbes, and the environment shape them."
       />
 
-      <section className="mx-auto max-w-7xl space-y-4 px-5 py-7 sm:px-8 lg:py-8">
+      <section className="mx-auto max-w-7xl space-y-5 px-5 py-8 sm:px-8 lg:py-10">
         <div className="overflow-hidden rounded-lg border border-line bg-white shadow-sm">
           <div className="relative overflow-hidden bg-[#fafaf4]">
             <SiteImage
@@ -63,7 +63,7 @@ export default function ResearchPage() {
                 <p className="mt-2.5 text-lg font-semibold leading-7 tracking-[-0.015em] text-ink sm:text-xl sm:leading-8">
                   {researchDirectionsQuestion}
                 </p>
-                <p className="mt-2.5 text-sm leading-6 text-muted sm:text-[15px] sm:leading-7">
+                <p className="mt-2.5 text-sm leading-6 text-muted sm:text-[15px] sm:leading-[1.65]">
                   {researchDirectionsIntro}
                 </p>
               </div>
@@ -91,7 +91,7 @@ export default function ResearchPage() {
               <a
                 key={area.slug}
                 href={`#${area.slug}`}
-                className="group flex items-center justify-between gap-3 px-5 py-2 transition hover:bg-paper/70 sm:px-6"
+                className="group flex items-center justify-between gap-3 px-5 py-3.5 transition hover:bg-paper/70 sm:px-6 sm:py-4"
               >
                 <span className="flex min-w-0 items-baseline gap-2.5">
                   <span className="shrink-0 text-xs font-semibold tabular-nums text-fudan">0{index + 1}</span>
@@ -109,7 +109,7 @@ export default function ResearchPage() {
           </nav>
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-5">
           {researchAreas.map((area, index) => {
             const papers = relatedPublications(area);
             const numberLabel = `0${index + 1}`;
@@ -160,7 +160,7 @@ export default function ResearchPage() {
                       <h3 className="text-[11px] font-semibold uppercase tracking-[0.12em] text-ink">
                         Related Papers
                       </h3>
-                      <ul className="mt-2 space-y-2 text-sm leading-5 text-muted">
+                      <ul className="mt-2.5 space-y-2.5 text-sm leading-6 text-muted">
                         {papers.map((publication) => (
                           <li key={`${area.slug}-${publication.title}`}>
                             <a

@@ -4,7 +4,7 @@ import { GuidePageClient } from "@/app/guide/GuidePageClient";
 ResearchPracticeGuidePage.metadata = {
   title: "Research Practice | Xing Lab Guide",
   description:
-    "Xing Lab research practice guide for manuscripts, figures, documentation, data, code, LLM use, reviewing, and shared resources."
+    "Xing Lab research practice guide for data, documentation, code, LLM use, collaboration and authorship, manuscripts, figures, peer review, and key literature."
 };
 
 export default function ResearchPracticeGuidePage() {

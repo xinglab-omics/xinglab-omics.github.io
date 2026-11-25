@@ -2,16 +2,27 @@ import { BookOpen, FileText } from "lucide-react";
 import { LanguageToggle } from "@/components/LanguageToggle";
 import { PageIntro } from "@/components/PageIntro";
 import { guideContent, type GuideContent, type GuideSection, type GuideTextPart } from "@/lib/content/guide";
-import { withBasePath } from "@/lib/site-paths";
+import { staticPageHref, withBasePath } from "@/lib/site-paths";
 
-function sectionNumber(index: number, sectionId: string, firstSectionId?: string) {
-  if ((sectionId === "acknowledgment" || sectionId === "translation-note") && index === 0) {
-    return "0";
+function getSectionNumbers(sections: GuideSection[]): (string | null)[] {
+  let count = 0;
+  return sections.map((section) => {
+    if (section.unnumbered || section.id === "acknowledgment" || section.id === "translation-note") {
+      return null;
+    }
+
+    count += 1;
+    return String(count).padStart(2, "0");
+  });
+}
+
+function isInternalPageHref(href: string) {
+  if (!href.startsWith("/") || href.startsWith("//")) {
+    return false;
   }
 
-  const hasZeroPreface = firstSectionId === "acknowledgment" || firstSectionId === "translation-note";
-  const offset = hasZeroPreface ? 0 : 1;
-  return String(index + offset).padStart(2, "0");
+  const path = href.split(/[?#]/)[0];
+  return !/\/[^/]+\.[^/]+$/.test(path);
 }
 
 type GuideText = string | GuideTextPart[];
@@ -30,12 +41,19 @@ function renderTextParts(parts: GuideTextPart[], keyPrefix: string) {
       );
     }
 
+    const internalPage = isInternalPageHref(part.href);
+    const resolvedHref = internalPage
+      ? staticPageHref(part.href)
+      : part.href.startsWith("/")
+        ? withBasePath(part.href)
+        : part.href;
+
     return (
       <a
-        key={`${keyPrefix}-link-${part.href}`}
-        href={part.href.startsWith("/") ? withBasePath(part.href) : part.href}
-        target="_blank"
-        rel="noreferrer"
+        key={`${keyPrefix}-link-${index}-${part.href}`}
+        href={resolvedHref}
+        target={internalPage ? undefined : "_blank"}
+        rel={internalPage ? undefined : "noreferrer"}
         className="font-semibold text-fudan transition hover:text-ink"
       >
         {part.label}
@@ -58,7 +76,7 @@ function GuideList({ items }: { items?: GuideText[] }) {
   }
 
   return (
-    <ul className="guide-bullets mt-5 grid gap-3 text-sm leading-7 text-muted">
+    <ul className="guide-bullets mt-3.5 grid gap-2 text-sm leading-6 text-muted">
       {items.map((item, index) => (
         <li key={index}>
           <GuideTextInline value={item} keyPrefix={`guide-list-${index}`} />
@@ -70,10 +88,14 @@ function GuideList({ items }: { items?: GuideText[] }) {
 
 function GuideParagraph({ paragraph }: { paragraph: GuideText }) {
   if (typeof paragraph === "string") {
-    return <p className="mt-4 text-base leading-8 text-muted">{paragraph}</p>;
+    return <p className="mt-3 text-sm leading-6 text-muted sm:text-[15px] sm:leading-[1.65]">{paragraph}</p>;
   }
 
-  return <p className="mt-4 text-base leading-8 text-muted">{renderTextParts(paragraph, "paragraph")}</p>;
+  return (
+    <p className="mt-3 text-sm leading-6 text-muted sm:text-[15px] sm:leading-[1.65]">
+      {renderTextParts(paragraph, "paragraph")}
+    </p>
+  );
 }
 
 function GuideBlocks({ blocks }: { blocks?: GuideSection["blocks"] }) {
@@ -82,23 +104,23 @@ function GuideBlocks({ blocks }: { blocks?: GuideSection["blocks"] }) {
   }
 
   return (
-    <div className="mt-6 grid gap-4">
+    <div className="mt-4 grid gap-3.5">
       {blocks.map((block) => (
-        <section key={block.title} className="rounded-lg border border-line bg-white p-5 shadow-sm">
+        <section key={block.title} className="rounded-lg border border-line bg-white p-4 shadow-sm sm:p-5">
           <h3 className="text-base font-semibold text-ink">{block.title}</h3>
           {block.body ? (
-            <p className="mt-3 text-sm leading-7 text-muted">
+            <p className="mt-2 text-sm leading-6 text-muted">
               <GuideTextInline value={block.body} keyPrefix={`${block.title}-body`} />
             </p>
           ) : null}
           <GuideList items={block.bullets} />
           {block.subblocks?.length ? (
-            <div className="mt-5 grid gap-5 border-t border-line pt-5">
+            <div className="mt-4 grid gap-4 border-t border-line pt-4">
               {block.subblocks.map((subblock) => (
                 <div key={subblock.title}>
                   <h4 className="text-sm font-semibold text-ink">{subblock.title}</h4>
                   {subblock.body ? (
-                    <p className="mt-3 text-sm leading-7 text-muted">
+                    <p className="mt-2 text-sm leading-6 text-muted">
                       <GuideTextInline value={subblock.body} keyPrefix={`${subblock.title}-body`} />
                     </p>
                   ) : null}
@@ -119,12 +141,12 @@ function GuideResources({ resources }: { resources?: GuideSection["resources"] }
   }
 
   return (
-    <div className="mt-6 grid gap-4">
+    <div className="mt-4 grid gap-3.5">
       {resources.map((resource) => (
         <section
           key={resource.id}
           id={resource.id}
-          className="scroll-mt-28 rounded-lg border border-line bg-white p-5 shadow-sm"
+          className="scroll-mt-28 rounded-lg border border-line bg-white p-4 shadow-sm sm:p-5"
         >
           <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
             <div className="min-w-0">
@@ -133,7 +155,7 @@ function GuideResources({ resources }: { resources?: GuideSection["resources"] }
                 {resource.title}
               </h3>
               {resource.body ? (
-                <p className="mt-3 text-sm leading-7 text-muted">
+                <p className="mt-2 text-sm leading-6 text-muted">
                   <GuideTextInline value={resource.body} keyPrefix={`${resource.title}-body`} />
                 </p>
               ) : null}
@@ -164,16 +186,24 @@ function GuideSectionView({
   numberLabel
 }: {
   section: GuideSection;
-  numberLabel: string;
+  numberLabel: string | null;
 }) {
   return (
-    <section id={section.id} className="scroll-mt-28 border-b border-line pb-10 last:border-b-0">
-      <div className="flex items-center gap-3">
-        <p className="text-xs font-semibold tabular-nums tracking-[0.08em] text-fudan">{numberLabel}</p>
-        <span className="h-px flex-1 bg-line" />
-      </div>
-      <h2 className="mt-3 text-2xl font-semibold tracking-[-0.015em] text-ink sm:text-3xl">{section.title}</h2>
-      {section.deck ? <p className="mt-3 text-base leading-7 text-muted">{section.deck}</p> : null}
+    <section id={section.id} className="scroll-mt-28">
+      {numberLabel ? (
+        <div className="flex items-center gap-3">
+          <p className="text-xs font-semibold tabular-nums tracking-[0.08em] text-fudan">{numberLabel}</p>
+          <span className="h-px flex-1 bg-line" />
+        </div>
+      ) : null}
+      <h2
+        className={`${numberLabel ? "mt-2.5" : ""} text-2xl font-semibold tracking-[-0.015em] text-ink sm:text-[26px]`}
+      >
+        {section.title}
+      </h2>
+      {section.deck ? (
+        <p className="mt-2.5 text-sm leading-6 text-muted sm:text-[15px] sm:leading-[1.65]">{section.deck}</p>
+      ) : null}
       {section.paragraphs?.map((paragraph, paragraphIndex) => (
         <GuideParagraph
           key={typeof paragraph === "string" ? paragraph : `${section.id}-${paragraphIndex}`}
@@ -189,7 +219,7 @@ function GuideSectionView({
 
 export function GuidePageClient({ content = guideContent }: { content?: GuideContent }) {
   const guide = content;
-  const firstSectionId = guide.sections[0]?.id;
+  const sectionNumbers = getSectionNumbers(guide.sections);
   const htmlLang = guide.htmlLang ?? "en";
   const isChinese = htmlLang.startsWith("zh");
 
@@ -213,31 +243,41 @@ export function GuidePageClient({ content = guideContent }: { content?: GuideCon
               <BookOpen aria-hidden="true" className="size-4 text-fudan" />
               {guide.tocTitle}
             </div>
-            <ol className="grid gap-1">
-              {guide.sections.map((section, index) => (
-                <li key={section.id}>
-                  <a
-                    href={`#${section.id}`}
-                    className="flex gap-2 rounded-md px-2 py-2 text-sm leading-5 text-muted transition hover:bg-paper hover:text-ink"
+            <ol className="grid gap-0.5">
+              {guide.sections.map((section, index) => {
+                const numberLabel = sectionNumbers[index];
+                const isFirstUnnumberedAfterNumbered =
+                  !numberLabel && index > 0 && sectionNumbers[index - 1] !== null;
+
+                return (
+                  <li
+                    key={section.id}
+                    className={isFirstUnnumberedAfterNumbered ? "mt-1.5 border-t border-line pt-1.5" : undefined}
                   >
-                    <span className="font-semibold text-fudan">
-                      {sectionNumber(index, section.id, firstSectionId)}
-                    </span>
-                    <span>{section.title}</span>
-                  </a>
-                </li>
-              ))}
+                    <a
+                      href={`#${section.id}`}
+                      className="flex gap-2 rounded-md px-2 py-1.5 text-sm leading-5 text-muted transition hover:bg-paper hover:text-ink"
+                    >
+                      {numberLabel ? (
+                        <span className="w-5 shrink-0 font-semibold tabular-nums text-fudan">{numberLabel}</span>
+                      ) : null}
+                      <span>{section.title}</span>
+                    </a>
+                  </li>
+                );
+              })}
             </ol>
           </nav>
         </aside>
 
-        <article className="grid gap-10">
+        <article className="grid gap-8">
+          {guide.notice ? (
+            <aside className="rounded-lg border border-line bg-paper px-4 py-3 text-sm leading-6 text-muted">
+              <GuideTextInline value={guide.notice} keyPrefix="guide-notice" />
+            </aside>
+          ) : null}
           {guide.sections.map((section, index) => (
-            <GuideSectionView
-              key={section.id}
-              section={section}
-              numberLabel={sectionNumber(index, section.id, firstSectionId)}
-            />
+            <GuideSectionView key={section.id} section={section} numberLabel={sectionNumbers[index]} />
           ))}
         </article>
       </section>

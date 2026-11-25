@@ -28,6 +28,7 @@ type GuideResource = GuideBlock & {
 export type GuideSection = {
   id: string;
   title: string;
+  unnumbered?: boolean;
   deck?: string;
   paragraphs?: GuideText[];
   bullets?: GuideText[];
@@ -40,6 +41,7 @@ export type GuideContent = {
   title: string;
   description: string;
   tocTitle: string;
+  notice?: GuideText;
   htmlLang?: string;
   alternateHref?: string;
   alternateLabel?: string;
@@ -61,31 +63,19 @@ export const guideContent: GuideContent = {
   tocTitle: "Contents",
   sections: [
     {
-      id: "acknowledgment",
-      title: "Acknowledgment",
-      paragraphs: [
-        [
-          "This guide is inspired in part by publicly shared lab guide and resource documents from the ",
-          {
-            label: "Coley Research Group @ MIT",
-            href: "https://coley.mit.edu/"
-          },
-          " and the ",
-          {
-            label: "Wang Bioinformatics Lab @ UC Riverside",
-            href: "https://www.cs.ucr.edu/~mingxunw/"
-          },
-          ". We thank these groups for making their materials available to the broader research community."
-        ]
-      ]
-    },
-    {
       id: "overview",
       title: "Overview",
       paragraphs: [
-        "This guide is meant to make lab life easier to navigate. It describes how we communicate, meet, document work, prepare manuscripts and figures, share data and code, and learn from one another.",
+        "This guide is meant to make lab life easier to navigate. It describes our shared values, how we communicate and run meetings, how we protect time away and well-being, and how we support mentoring and career growth.",
         "We want to do impactful, ambitious research, but never at the expense of the well-being, happiness, or long-term growth of the people doing the work.",
-        "If you need help with research, career development, or something affecting your life in or outside the lab, you are always welcome to reach out to the PI."
+        [
+          "If you need help with research, career development, or something affecting your life in or outside the lab, you are always welcome to reach out to the PI. For standards on data, documentation, code, LLMs, collaboration and authorship, manuscripts, figures, peer review, and key literature, see the ",
+          {
+            label: "Research Practice",
+            href: "/guide/research-practice"
+          },
+          " guide."
+        ]
       ]
     },
     {
@@ -95,6 +85,7 @@ export const guideContent: GuideContent = {
         "We want the lab to be a place where people can do careful, ambitious work while feeling respected, supported, and able to grow.",
       bullets: [
         "Do rigorous science with generosity: be careful with data, claims, and interpretation; document clearly; and challenge ideas in ways that strengthen the work.",
+        "Be honest about mistakes and negative results: failed experiments, unexpected controls, and honest errors are a normal part of science. Bring them up early so we can learn and troubleshoot together; hiding or massaging data is never acceptable.",
         "Treat people with respect: excellence is not determined by background, title, language, or seniority. Everyone should feel comfortable asking questions, raising concerns, and contributing ideas.",
         "Be reliable with each other: take ownership of your work, keep collaborators informed, and raise blockers before they slow the project.",
         "Stay aware of the lab's work: learn about one another's projects and look for collaboration opportunities.",
@@ -108,13 +99,13 @@ export const guideContent: GuideContent = {
         {
           title: "Communication",
           bullets: [
-            "Use email for formal requests, external communication, documents, and deadline-sensitive items.",
+            "Use our lab chat tool for quick questions and day-to-day coordination; use email for formal requests, external communication, documents, and deadline-sensitive items.",
             [
               { text: "Evening or weekend responses are not expected", strong: true },
-              " for non-urgent messages."
+              " for non-urgent messages. If the PI or a colleague sends a message outside working hours, you are not expected to reply until the next working day."
             ],
             "If something is urgent, state the deadline clearly.",
-            "If you need a recommendation letter, contact the PI at least 3 weeks before the deadline and share the relevant materials."
+            "If you need a recommendation letter, contact the PI at least 3 weeks before the deadline and share your CV, the list of programs and deadlines, and a brief summary of key accomplishments or points you would like highlighted."
           ]
         },
         {
@@ -144,15 +135,15 @@ export const guideContent: GuideContent = {
             {
               title: "Journal club",
               bullets: [
-                "Presenters should rotate. The presenter should choose up to two papers and share them with the lab in advance.",
-                "Journal club is for deeper discussion of important papers and methods. The goal is to build shared scientific judgment, not just collect links. Bring specific questions, concerns, or discussion points to the meeting.",
+                "Presenters should rotate. The presenter should choose 1–2 papers and share them with the lab at least 2–3 days in advance so everyone has time to read.",
+                "Journal club is for deeper discussion of important papers and methods. The goal is to build shared scientific judgment, not just collect links. Bring specific questions, concerns, or discussion points to the meeting."
               ]
             },
             {
               title: "Code review",
               bullets: [
                 "We use code review to improve reproducibility, readability, testing, documentation, and responsible use of LLM-generated code.",
-                "The goal is collaborative improvement, not fault-finding. Come with a focused question, concern, or part of the workflow you want others to inspect."
+                "The goal is collaborative improvement, not fault-finding. Briefly frame the scientific question before walking through the code so members from both experimental and computational backgrounds can engage, and bring a focused question or part of the workflow you want others to inspect."
               ]
             }
           ]
@@ -175,59 +166,43 @@ export const guideContent: GuideContent = {
       ]
     },
     {
-      id: "collaboration-authorship",
-      title: "Collaboration & Authorship",
+      id: "mentoring-career",
+      title: "Mentoring & Career Development",
       paragraphs: [
-        "Authorship and collaboration expectations should be discussed early and revisited as contributions evolve. This avoids surprises when a project becomes a manuscript, talk, poster, or public dataset."
+        "Good training goes beyond finishing the current project. We want every lab member to leave with stronger scientific judgment, independent skills, and a clear next step—whether in academia, industry, or another path."
       ],
       bullets: [
-        "The lead author is usually responsible for driving the project, organizing the evidence, and preparing the first complete manuscript draft.",
-        [
-          { text: "ALL", strong: true },
-          " coauthors should make clear intellectual, experimental, computational, analytical, or writing contributions."
-        ],
-        [
-          { text: "ALL", strong: true },
-          " coauthors should be kept informed before major decisions, submissions, public releases, or conference abstracts."
-        ],
-        [
-          "No abstract, poster, manuscript, dataset, or code release should be submitted publicly without review and approval from ",
-          { text: "ALL", strong: true },
-          " coauthors and the ",
-          { text: "PI", strong: true },
-          "."
-        ]
+        "In addition to regular project meetings, we hold periodic big-picture check-ins to discuss research progress, thesis or training milestones, skill development, and long-term career plans.",
+        "Lab members are encouraged to apply for fellowships, scholarships, and awards, and to present their work at conferences and seminars.",
+        "Think ahead about your career goals and tell the PI what kinds of training, writing, mentoring, or networking opportunities would help you grow.",
+        "Mentoring also happens across the group: senior members are encouraged to support newer students thoughtfully, and newer members should never hesitate to ask questions."
       ]
     },
     {
       id: "data",
       title: "Data",
       deck:
-        "Raw data are part of the scientific record. They should be preserved, organized, backed up, and documented even when they do not appear in a final paper.",
+        "Raw data are part of the scientific record. They should be preserved, organized, backed up, documented, and shared openly when published.",
       blocks: [
         {
           title: "Preserve raw data",
           bullets: [
             [
               "Preserve ",
-              { text: "ALL", strong: true },
+              { text: "all", strong: true },
               " raw data, including exploratory runs, failed experiments, controls, samples, and files that are not used in the final publication. ",
               { text: "Do not overwrite original files.", strong: true }
             ],
-            [
-              "Keep the original files separate from processed data, cleaned tables, exported figures, and analysis outputs."
-            ],
+            "Keep original vendor raw files (for example, .raw, .d, or .wiff) untouched and separate from converted open formats (such as .mzML), processed data, cleaned tables, exported figures, and analysis outputs. Record the conversion tool and version (for example, MSConvert) used.",
             "If data need to be excluded from an analysis, document the reason instead of deleting the files."
           ]
         },
         {
           title: "Organize project data",
           bullets: [
-            [
-              "Keep raw data, processed data, metadata, and analysis outputs in clearly named locations, with processing steps, key parameters, sample metadata, and quality-control decisions documented."
-            ],
-            "Use clear dates and names for folders and files so that progress can be reconstructed later.",
-            "Make sure collaborators and future lab members can understand where the important files are and which version was used for each result."
+            "Keep raw data, processed data, sample metadata, and analysis outputs in clearly named directories, with processing steps, key parameters, and quality-control decisions documented.",
+            "Use descriptive, dated names for files and folders so that versions and progress can be reconstructed later.",
+            "Make sure collaborators and future lab members can quickly locate key files and tell which version was used for each result."
           ]
         },
         {
@@ -254,7 +229,101 @@ export const guideContent: GuideContent = {
             ],
             "Periodically confirm that backups can actually be restored, especially before major cleanups, computer changes, manuscript submission, or public data release."
           ]
+        },
+        {
+          title: "Public data & spectral sharing",
+          bullets: [
+            "Upon publication (or preprint release when appropriate), deposit raw LC-MS/MS datasets in public metabolomics repositories such as MassIVE/GNPS, MetaboLights, or Metabolomics Workbench, and include accession IDs in the manuscript.",
+            "Curate complete, standardized sample metadata (for example, in ReDU-compatible format) so public datasets can be meaningfully reused by the broader community.",
+            "Deposit newly verified reference MS/MS spectra to public libraries (such as GNPS) and record Universal Spectrum Identifiers (USIs) for key spectra when applicable."
+          ]
         }
+      ]
+    },
+    {
+      id: "documentation-data-code",
+      title: "Documentation & Code",
+      deck: "Future you, future lab members, collaborators, and reviewers should be able to understand what was done and why.",
+      blocks: [
+        {
+          title: "Working records",
+          bullets: [
+            "Everyone is expected to keep research notes for experiments and analyses, either electronically or in a handwritten notebook, with enough detail that the work can be understood and revisited months later.",
+            "Record why important choices were made (such as parameter settings, filtering thresholds, or experimental adjustments), not only what was done.",
+            "Link notes clearly to the corresponding raw data folders, scripts, slides, or manuscript drafts so decisions and outputs stay connected."
+          ]
+        },
+        {
+          title: "Code and reproducible workflows",
+          bullets: [
+            "Use version control (such as Git) for code-based projects whenever possible.",
+            "Organize scripts and notebooks so the main analysis path is understandable without relying on memory. Keep notebooks runnable top-to-bottom, and move reusable logic into standalone scripts or modules.",
+            "Include a README with the folder structure, main scripts, expected inputs and outputs, and the order in which scripts should be run.",
+            "Document the software environment, package versions (for example, conda environment.yml, pyproject.toml/requirements.txt, or renv), operating system or server, and external tools needed to rerun the work.",
+            "Before making code public, check carefully for private data, credentials, hardcoded machine-specific paths, unpublished collaborator materials, and licensing issues."
+          ]
+        }
+      ]
+    },
+    {
+      id: "llms",
+      title: "Large Language Models (LLMs)",
+      deck: "LLMs are useful research tools, and we should embrace them thoughtfully.",
+      paragraphs: [
+        "LLMs and AI-powered assistants can help with coding, documentation, literature triage, outlining, editing, brainstorming, data-analysis planning, presentation preparation, and learning unfamiliar tools or concepts. They are most useful when they make us faster, clearer, and more careful, not when they replace our understanding."
+      ],
+      blocks: [
+        {
+          title: "Responsibility and verification",
+          bullets: [
+            [
+              {
+                text: "It is your responsibility to understand every line of code that you commit. You are also responsible for every analysis and claim that you submit. Never accept LLM output without understanding it and verifying it with tests, inspection, source checks, and code review. We will use code review to help ensure this standard is met.",
+                strong: true
+              }
+            ],
+            "LLMs are usually strongest on common programming and writing tasks. They can be unreliable for specialized predictions, unpublished facts, or highly domain-specific scientific claims.",
+            "Do not outsource scientific judgment or novelty. Use these tools to accelerate execution and clarify thinking, while developing your own ideas and expertise.",
+            "Never use LLMs to fabricate data, analysis results, figures, or references. Verify every citation directly against the original source, and follow target journals' policies on disclosing AI-assisted writing or coding."
+          ]
+        },
+        {
+          title: "Context and privacy",
+          bullets: [
+            "Good results require good context: provide the relevant codebase, expected inputs and outputs, and clear instructions for the task.",
+            [
+              "Never upload ",
+              { text: "manuscripts under confidential peer review", strong: true },
+              " to external or cloud LLM tools. Likewise, do not paste sensitive data, private manuscripts, confidential code, unpublished collaborator information, credentials, or proprietary material into cloud tools without appropriate approval."
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      id: "collaboration-authorship",
+      title: "Collaboration & Authorship",
+      paragraphs: [
+        "Authorship and collaboration expectations should be discussed early and revisited as contributions evolve. This avoids surprises when a project becomes a manuscript, talk, poster, or public dataset."
+      ],
+      bullets: [
+        "The lead author (typically the first author) is usually responsible for driving the project, organizing the evidence, and preparing the first complete manuscript draft.",
+        [
+          { text: "All", strong: true },
+          " coauthors should make clear intellectual, experimental, computational, analytical, or writing contributions. Authorship order—including shared first authorship when contributions are genuinely equal—reflects substantive scientific contribution; routine technical help or standard reagent/instrument support without intellectual contribution belongs in Acknowledgments."
+        ],
+        "If a member graduates or leaves the lab before a project is completed and another member takes over to finish the work, authorship and author order will be revisited fairly based on total contribution.",
+        [
+          { text: "All", strong: true },
+          " coauthors should be kept informed before major decisions, submissions, public releases, or conference abstracts."
+        ],
+        [
+          "No abstract, poster, manuscript, dataset, or code release should be submitted publicly without review and approval from ",
+          { text: "all", strong: true },
+          " coauthors and the ",
+          { text: "PI", strong: true },
+          "."
+        ]
       ]
     },
     {
@@ -271,14 +340,7 @@ export const guideContent: GuideContent = {
         {
           title: "Outline components",
           bullets: [
-            [
-              "Abstract: a concise 5-10 sentence summary of the whole paper, including context, gap, approach, main result, and significance. See the ",
-              {
-                label: "Abstract Guide",
-                href: "/resources/abstract_guide.pdf"
-              },
-              " when drafting or revising the abstract and paper narrative."
-            ],
+            "Abstract: a concise 5-10 sentence summary of the whole paper, including context, gap, approach, main result, and significance.",
             "Introduction: a paragraph-level plan explaining the broad problem, the specific question, what has been done before, why this work is different or better, and the main contributions.",
             "Results: a list of key figures and tables. Draft captions early so each figure has a clear standalone message.",
             "Discussion: key interpretations, important limitations, broader conclusions supported by the data, and future directions.",
@@ -289,6 +351,8 @@ export const guideContent: GuideContent = {
           title: "Drafting and revision",
           bullets: [
             "Draft early enough that revisions can improve the science, not only the wording.",
+            "Calibrate claims carefully: always distinguish experimentally confirmed identifications (for example, authentic standards / MSI Level 1) from putative spectral library matches, molecular networking analogs, or computational predictions.",
+            "Use a reference manager (such as Zotero) from the first draft rather than formatting citations manually.",
             "Use comments and tracked changes as a learning process rather than a checklist to accept mechanically.",
             "When sending a manuscript draft to the PI, use a clear file name with the project name, your name initials, and date, for example: ProjectName_SX_20260901.docx."
           ]
@@ -327,28 +391,29 @@ export const guideContent: GuideContent = {
               { text: "labels", strong: true },
               " and ",
               { text: "units", strong: true },
-              " when applicable; legends or direct labels must explain groups, colors, symbols, and abbreviations."]
+              " when applicable; legends or direct labels must explain groups, colors, symbols, and abbreviations."
+            ]
           ]
         },
         {
           title: "Publication and submission standards",
           bullets: [
             [
-              "Avoid unnecessary chart borders, heavy gridlines, decorative effects, or color choices that are hard to distinguish. ",
+              "Avoid unnecessary chart borders, heavy gridlines, decorative effects, or hard-to-distinguish color combinations; use colorblind-friendly palettes (for example, avoid red–green contrasts). ",
               { text: "Less is more.", strong: true }
             ],
-            "Use Arial (or Helvetica) throughout the figure, including labels, legends, annotations, and panel letters.",
+            "Use Arial (or Helvetica) throughout the figure, including labels, legends, annotations, and panel letters (a, b, c...).",
             "At the final printed size, most text should be 4-10 pt.",
             "Use consistent font size, line width, marker size, color palette, panel labels, and chemical structure style across all panels.",
-            "Captions should state what is shown, the sample size, the statistical test, and exact p-values if applicable."
+            "Captions should state what is shown, the sample size, how summary statistics and error bars are defined (for example, mean ± s.d. or median and IQR), the statistical test, and exact p-values if applicable."
           ]
         },
         {
           title: "Figure assembly",
           bullets: [
             "Use a tool that supports vector editing, such as Adobe Illustrator, Inkscape, or PowerPoint.",
-            "Save vector formats whenever possible, such as SVG, unless the journal requires a specific format.",
-            "If a vector file becomes too large or impractical (for example, with large UMAP plots), export a raster image such as PNG or JPEG at no less than 600 DPI.",
+            "Save vector formats whenever possible, such as SVG or PDF, unless the journal requires a specific format.",
+            "If a vector file becomes too large or impractical (for example, with large UMAP plots), export a lossless raster image such as PNG or TIFF at no less than 600 DPI rather than lossy JPEG.",
             "When assembling multipanel figures, export plots at the intended final figure or poster size to avoid awkward resizing later.",
             "If panels are generated separately, keep axis sizes, label positions, fonts, and line widths consistent across panels."
           ]
@@ -357,13 +422,13 @@ export const guideContent: GuideContent = {
           title: "Chemical structures",
           bullets: [
             "Chemical structures should usually be drawn in ChemDraw, using Nature or ACS style.",
-            "On macOS, export ChemDraw structures as SVG files. On Windows, copying and pasting into PowerPoint should preserve vector quality.",
+            "On macOS, export ChemDraw structures as SVG files. On Windows, copying and pasting into PowerPoint should preserve vector quality."
           ]
         },
         {
           title: "Plots and reproducibility",
           bullets: [
-            "Generate quantitative plots programmatically in Python or R whenever possible (I personally prefer Python). Programmatic plotting matters because data may update, analyses may need to be rerun, and figures often need to be reproduced during revision. Avoid making plots manually in Excel or Prism.",
+            "Generate quantitative plots programmatically in Python or R whenever possible (we generally prefer Python). Programmatic plotting matters because data may update, analyses may need to be rerun, and figures often need to be reproduced during revision. Avoid making plots manually in Excel or Prism.",
             "Keep plotting code, processed data, and exported figure files together.",
             [
               "For a practical introduction to data visualization, this is a great resource: ",
@@ -389,64 +454,14 @@ export const guideContent: GuideContent = {
       ]
     },
     {
-      id: "documentation-data-code",
-      title: "Documentation & Code",
-      deck: "Future you, future lab members, collaborators, and reviewers should be able to understand what was done and why.",
-      blocks: [
-        {
-          title: "Working records",
-          bullets: [
-            "Everyone is expected to keep research notes for experiments and analyses, either electronically or in a handwritten notebook, with enough detail that the work can be understood and revisited later.",
-            "Record why important choices were made, not only what was done.",
-            "Use clear dates and names for files, slides, drafts, and result folders so that progress can be reconstructed later."
-          ]
-        },
-        {
-          title: "Code and reproducible workflows",
-          bullets: [
-            "Use version control for code-based projects whenever possible.",
-            "Organize scripts and notebooks so the main analysis path is understandable without relying on memory.",
-            "Include a README with the folder structure, main scripts, expected inputs and outputs, and the order in which scripts should be run.",
-            "Document the software environment, package versions, operating system or server, and external tools needed to rerun the work.",
-            "Before making code public, check carefully for private data, credentials, unpublished collaborator materials, and licensing issues."
-          ]
-        }
-      ]
-    },
-    {
-      id: "llms",
-      title: "Large Language Models (LLMs)",
-      deck: "LLMs are useful research tools, and we should embrace them thoughtfully.",
-      paragraphs: [
-        "LLMs and AI-powered assistants can help with coding, documentation, literature triage, outlining, editing, brainstorming, data-analysis planning, presentation preparation, and learning unfamiliar tools or concepts. They are most useful when they make us faster, clearer, and more careful, not when they replace our understanding."
-      ],
-      blocks: [
-        {
-          title: "Responsibility and verification",
-          bullets: [
-            [
-              {
-                text: "It is your responsibility to understand every line of code that you commit. You are also responsible for every analysis and claim that you submit. Never accept LLM output without understanding it and verifying it with tests, inspection, source checks, and code review. We will use code review to help ensure this standard is met.",
-                strong: true
-              }
-            ],
-            "LLMs are usually strongest on common programming and writing tasks. They can be unreliable for specialized predictions, unpublished facts, or highly domain-specific scientific claims.",
-            "Do not outsource scientific judgment or novelty. Use these tools to accelerate execution and clarify thinking, while developing your own ideas and expertise."
-          ]
-        },
-        {
-          title: "Context and privacy",
-          bullets: [
-            "Good results require good context: provide the relevant codebase, expected inputs and outputs, and clear instructions for the task.",
-            "Do not paste sensitive data, private manuscripts, confidential code, unpublished collaborator information, credentials, or proprietary material into cloud tools without appropriate approval."
-          ]
-        }
-      ]
-    },
-    {
       id: "reviewing-manuscripts",
       title: "Reviewing Manuscripts",
       bullets: [
+        [
+          "Use a clear ",
+          { text: "structure", strong: true },
+          ": (1) a brief summary paragraph in your own words, (2) major points that affect conclusions or rigor, and (3) minor points such as clarity, formatting, or typos."
+        ],
         [
           "Be ",
           { text: "kind", strong: true },
@@ -469,7 +484,13 @@ export const guideContent: GuideContent = {
           "For each major concern, try to ",
           { text: "propose a solution", strong: true },
           ", even if it is not perfect. This is more helpful than only saying that something is wrong or missing."
-        ]
+        ],
+        [
+          "Treat manuscripts under review as ",
+          { text: "strictly confidential", strong: true },
+          ": do not share them outside authorized co-reviewers, and never upload them to external or cloud LLM tools."
+        ],
+        "Flag potential conflicts of interest early, respect review deadlines, and ensure any co-reviewing with the PI is disclosed to the editor in line with journal policy."
       ]
     },
     {
@@ -480,71 +501,162 @@ export const guideContent: GuideContent = {
       ],
       blocks: [
         {
-          title: "Key Research and Tool Papers",
-          body: "Core research papers and method/tool papers that define important ideas, workflows, and resources for the lab.",
+          title: "Xing Lab Core Papers",
+          body: "Foundational methods and studies from our group covering MS/MS interpretation, spectral search, and repository-scale metabolite discovery.",
           bullets: [
             [
-              { text: "Key research papers:", strong: true },
-              " ",
-              { label: "Bile acid paper", href: "https://www.cell.com/cell/fulltext/S0092-8674(24)00185-5" },
-              "  |  ",
-              { label: "N-acyl lipid paper", href: "https://www.cell.com/cell/fulltext/S0092-8674(25)00565-3" },
-              "  |  ",
-              { label: "Reverse metabolomics", href: "https://www.nature.com/articles/s41586-023-06906-8" },
-              "  |  ",
-              { label: "LLM-assisted metabolite discovery", href: "https://www.nature.com/articles/s41586-025-09969-x" }
+              { label: "BUDDY", href: "https://www.nature.com/articles/s41592-023-01850-x" },
+              " — bottom-up MS/MS interrogation for molecular formula discovery."
             ],
             [
-              { text: "Tool papers:", strong: true },
-              " ",
-              { label: "MZmine", href: "https://www.nature.com/articles/s41587-023-01690-2" },
-              "  |  ",
-              { label: "USI", href: "https://www.biorxiv.org/content/10.1101/2020.05.09.086066v2" },
-              "  |  ",
-              { label: "FBMN", href: "https://www.nature.com/articles/s41592-020-0933-6" },
-              "  |  ",
-              { label: "ReDU", href: "https://www.nature.com/articles/s41592-020-0916-7" },
-              "  |  ",
-              { label: "Pan-ReDU", href: "https://www.nature.com/articles/s41467-025-60067-y" },
-              "  |  ",
-              { label: "MassQL", href: "https://www.nature.com/articles/s41592-025-02660-z" },
-              "  |  ",
-              { label: "MASST", href: "https://www.nature.com/articles/s41587-019-0375-9" },
-              "  |  ",
-              { label: "microbeMASST", href: "https://www.nature.com/articles/s41564-023-01575-9" },
-              "  |  ",
-              { label: "StructureMASST", href: "https://www.nature.com/articles/s41587-026-03082-8" }
+              { label: "Reverse spectral search", href: "https://doi.org/10.1021/acs.analchem.5c02047" },
+              " — reimagined reverse spectral search for annotating chimeric MS/MS spectra."
+            ],
+            [
+              {
+                label: "Navigating the conjugated metabolome",
+                href: "https://www.biorxiv.org/content/10.64898/2026.02.06.704496v1"
+              },
+              " — repository-scale exploration of conjugated metabolites across public LC-MS/MS datasets."
             ]
+          ]
+        },
+        {
+          title: "Key Research and Tool Papers",
+          body: "Core research papers and method/tool papers that define important ideas, workflows, and resources for the lab.",
+          subblocks: [
+            {
+              title: "Key research papers",
+              bullets: [
+                [
+                  { label: "Bile acid paper", href: "https://www.cell.com/cell/fulltext/S0092-8674(24)00185-5" },
+                  " — uncovers the underappreciated diversity of microbial bile acid modifications."
+                ],
+                [
+                  { label: "N-acyl lipid paper", href: "https://www.cell.com/cell/fulltext/S0092-8674(25)00565-3" },
+                  " — charts microbial N-acyl lipids and their biological distributions across metabolomics datasets."
+                ],
+                [
+                  { label: "Reverse metabolomics", href: "https://www.nature.com/articles/s41586-023-06906-8" },
+                  " — synthesizes candidate molecules and searches public MS/MS repositories to reveal biological associations."
+                ],
+                [
+                  {
+                    label: "LLM-assisted metabolite discovery",
+                    href: "https://www.nature.com/articles/s41586-025-09969-x"
+                  },
+                  " — illustrates how language models can support literature-grounded metabolite discovery."
+                ]
+              ]
+            },
+            {
+              title: "Tool papers",
+              bullets: [
+                [
+                  { label: "MZmine", href: "https://www.nature.com/articles/s41587-023-01690-2" },
+                  " — modular platform for LC-MS feature detection, alignment, and preprocessing."
+                ],
+                [
+                  { label: "USI", href: "https://www.biorxiv.org/content/10.1101/2020.05.09.086066v2" },
+                  " — Universal Spectrum Identifier standard for referencing and resolving individual metabolomics spectra."
+                ],
+                [
+                  { label: "FBMN", href: "https://www.nature.com/articles/s41592-020-0933-6" },
+                  " — Feature-Based Molecular Networking linking quantitative LC-MS feature tables with MS/MS spectral networks."
+                ],
+                [
+                  { label: "ReDU", href: "https://www.nature.com/articles/s41592-020-0916-7" },
+                  " — standardized sample metadata framework enabling repository-scale reanalysis of public metabolomics data."
+                ],
+                [
+                  { label: "Pan-ReDU", href: "https://www.nature.com/articles/s41467-025-60067-y" },
+                  " — extends standardized metadata reanalysis across multiple major public metabolomics repositories."
+                ],
+                [
+                  { label: "MassQL", href: "https://www.nature.com/articles/s41592-025-02660-z" },
+                  " — mass spectrometry query language for searching spectra by fragments, neutral losses, and chromatographic patterns."
+                ],
+                [
+                  { label: "MASST", href: "https://www.nature.com/articles/s41587-019-0375-9" },
+                  " — Mass Spectrometry Search Tool for querying a single MS/MS spectrum against public repositories."
+                ],
+                [
+                  { label: "microbeMASST", href: "https://www.nature.com/articles/s41564-023-01575-9" },
+                  " — taxonomically informed MS/MS spectral search across cultured microbial isolates."
+                ],
+                [
+                  { label: "StructureMASST", href: "https://www.nature.com/articles/s41587-026-03082-8" },
+                  " — structure-centric searching to map chemical structures across the public metabolome."
+                ]
+              ]
+            }
           ]
         },
         {
           title: "Commonly Used Tool Links",
           body:
-            "Lab members should know what these resources are used for and when they are the right place to start.",
+            "Lab members should know what these online resources are used for and when they are the right place to start.",
           bullets: [
             [
               { label: "GNPS library", href: "https://external.gnps2.org/gnpslibrary" },
-              "  |  ",
+              " — browse and query community-curated public MS/MS reference spectral libraries."
+            ],
+            [
               { label: "Pan-ReDU", href: "https://redu.gnps2.org/" },
-              "  |  ",
+              " — filter and co-analyze public metabolomics files by standardized sample metadata."
+            ],
+            [
               { label: "USI resolver", href: "https://metabolomics-usi.gnps2.org/" },
-              "  |  ",
+              " — inspect, visualize, and generate mirror plots for MS/MS spectra directly from USIs."
+            ],
+            [
               { label: "Fast MASST", href: "https://fasst.gnps2.org/fastsearch/" },
-              "  |  ",
+              " — rapid MS/MS spectral search across public metabolomics repositories."
+            ],
+            [
               { label: "microbeMASST", href: "https://masst.gnps2.org/microbemasst/" },
-              "  |  ",
+              " — map MS/MS spectra onto microbial taxonomy across cultured isolates."
+            ],
+            [
               { label: "microbiomeMASST", href: "https://masst.gnps2.org/microbiomemasst/" },
-              "  |  ",
+              " — search MS/MS spectra across microbiome-associated public datasets."
+            ],
+            [
               { label: "plantMASST", href: "https://masst.gnps2.org/plantmasst/" },
-              "  |  ",
+              " — explore plant chemotaxonomic distributions of MS/MS spectra."
+            ],
+            [
               { label: "StructureMASST", href: "https://structure-masst.gnps2.org/" },
-              "  |  ",
-              { label: "GNPS dashboard", href: "https://dashboard.gnps2.org/" }
+              " — query public metabolomics repositories starting from a chemical structure."
+            ],
+            [
+              { label: "GNPS dashboard", href: "https://dashboard.gnps2.org/" },
+              " — interactive browser for inspecting raw LC-MS chromatograms and spectra online."
             ]
           ]
         }
       ]
     },
+    {
+      id: "acknowledgment",
+      title: "Acknowledgment",
+      unnumbered: true,
+      paragraphs: [
+        [
+          "This guide is inspired in part by publicly shared lab guides and resource documents from the ",
+          {
+            label: "Coley Research Group @ MIT",
+            href: "https://coley.mit.edu/"
+          },
+          " and the ",
+          {
+            label: "Wang Bioinformatics Lab @ UC Riverside",
+            href: "https://www.cs.ucr.edu/~mingxunw/"
+          },
+          ". We thank these groups for making their materials available to the broader research community."
+        ]
+      ]
+    }
   ]
 };
 
@@ -559,14 +671,14 @@ export const guidePages: GuidePageSummary[] = [
     label: "LAB LIFE",
     title: "Lab Life",
     description:
-      "Expectations, communication norms, meeting routines, well-being, collaboration, and authorship.",
+      "Values, communication norms, meeting routines, time away and well-being, and mentoring.",
     href: "/guide/lab-life"
   },
   {
     label: "RESEARCH PRACTICE",
     title: "Research Practice",
     description:
-      "Data, manuscripts, figures, documentation, code, LLM use, reviewing, reading lists, and shared resources.",
+      "Data, documentation, code, LLM use, collaboration and authorship, manuscripts, figures, reviewing, and key literature.",
     href: "/guide/research-practice"
   }
 ];
@@ -580,12 +692,12 @@ export const labLifeGuideContent: GuideContent = {
   alternateHref: "/guide/lab-life/zh",
   alternateLabel: "中文",
   sections: getGuideSections([
-    "acknowledgment",
     "overview",
     "values-expectations",
     "communication-meetings",
     "time-away-wellbeing",
-    "collaboration-authorship"
+    "mentoring-career",
+    "acknowledgment"
   ])
 };
 
@@ -593,47 +705,51 @@ const researchPracticeOverviewSection: GuideSection = {
   id: "overview",
   title: "Overview",
   paragraphs: [
-    "Research practice covers the habits that make our scientific work clear, reusable, and trustworthy. This page gathers expectations for data, manuscripts, figures, documentation, code, responsible use of LLMs, reviewing, and shared reading resources.",
-    "The common thread is reproducibility: future you, lab members, collaborators, reviewers, and readers should be able to understand what was done, why it was done, and how conclusions were supported."
-  ],
+    "Research practice covers the habits that make our scientific work clear, reusable, and trustworthy. This page gathers expectations for data, documentation, code, responsible use of LLMs, collaboration and authorship, manuscripts, figures, peer review, and key literature.",
+    [
+      "The common thread is reproducibility: future you, lab members, collaborators, reviewers, and readers should be able to understand what was done, why it was done, and how conclusions were supported. For lab culture, communication norms, meetings, well-being, and mentoring, see the ",
+      {
+        label: "Lab Life",
+        href: "/guide/lab-life"
+      },
+      " guide."
+    ]
+  ]
 };
 
 export const researchPracticeGuideContent: GuideContent = {
   eyebrow: "Lab Guide",
   title: "Research Practice",
   description:
-    "Practical standards and reusable resources for data management, manuscripts, figures, documentation, code, LLMs, peer review, and key literature.",
+    "Practical standards and reusable resources for data management, documentation, code, LLMs, collaboration and authorship, manuscripts, figures, peer review, and key literature.",
   tocTitle: "Research Practice Contents",
   alternateHref: "/guide/research-practice/zh",
   alternateLabel: "中文",
   sections: [
-    ...getGuideSections(["acknowledgment"]),
     researchPracticeOverviewSection,
     ...getGuideSections([
       "data",
-      "manuscripts",
-      "figures",
       "documentation-data-code",
       "llms",
+      "collaboration-authorship",
+      "manuscripts",
+      "figures",
       "reviewing-manuscripts",
-      "reading-list-key-papers"
+      "reading-list-key-papers",
+      "acknowledgment"
     ])
   ]
 };
 
-const translationNoticeSectionZh: GuideSection = {
-  id: "translation-note",
-  title: "翻译说明",
-  paragraphs: [
-    [
-      "本中文版本由 AI 辅助翻译并经人工润色，若个别表述与英文版存在细微差异，请以英文版为准；也欢迎随时告诉我们需要修订的地方。"
-    ]
-  ]
-};
+const translationNoticeZh: GuideText = [
+  { text: "翻译说明：", strong: true },
+  "本中文版本由 AI 辅助翻译并经人工润色，若个别表述与英文版存在细微差异，请以英文版为准；也欢迎随时告诉我们需要修订的地方。"
+];
 
 const acknowledgmentSectionZh: GuideSection = {
   id: "acknowledgment",
   title: "致谢",
+  unnumbered: true,
   paragraphs: [
     [
       "本指南部分参考了 ",
@@ -655,9 +771,16 @@ const labLifeOverviewSectionZh: GuideSection = {
   id: "overview",
   title: "概览",
   paragraphs: [
-    "这份指南旨在帮助大家更顺畅地融入实验室生活，介绍我们如何日常沟通、组织会议、记录研究、撰写论文与作图、共享数据和代码，以及彼此学习。",
+    "这份指南旨在帮助大家更顺畅地融入实验室生活，介绍我们的核心价值观、日常沟通与组会方式、休假与身心健康原则，以及学术指导与职业发展支持。",
     "我们追求有影响力的科研，但绝不以牺牲成员的身心健康、生活幸福或长期成长为代价。",
-    "无论在科研进展、职业发展还是生活中遇到困难，都欢迎随时与导师沟通。"
+    [
+      "无论在科研进展、职业发展还是生活中遇到困难，都欢迎随时与导师沟通。关于数据管理、文档与代码、LLM 规范使用、合作与作者署名、论文写作、科研绘图、论文审阅及核心阅读资源，请查阅",
+      {
+        label: "科研实践",
+        href: "/guide/research-practice/zh"
+      },
+      "指南。"
+    ]
   ]
 };
 
@@ -668,6 +791,7 @@ const valuesExpectationsSectionZh: GuideSection = {
     "我们希望实验室既是一个潜心钻研的地方，也是一个让每个人感到受尊重、有支持、能持续成长的集体。",
   bullets: [
     "严谨治学、友善交流：审慎对待数据、论断与解读，做好清晰记录，以建设性的方式探讨和质疑观点。",
+    "坦诚面对失误与阴性结果：实验失败、异常对照与无心之失都是科研的常态，请尽早沟通以便共同排查和改进；隐瞒或刻意修饰数据是绝对不可接受的。",
     "尊重每一位成员：优秀与否不取决于背景、头衔、语言或资历。每个人都应能够安心提问、表达顾虑并贡献想法。",
     "彼此可靠：对自己的工作负责，及时与合作者同步进展，在问题拖慢项目前主动沟通。",
     "主动了解组内工作：关注彼此的课题，积极寻找交流与合作的机会。",
@@ -682,13 +806,13 @@ const communicationMeetingsSectionZh: GuideSection = {
     {
       title: "沟通",
       bullets: [
-        "正式申请、对外联系、文件往来以及有明确截止时间的事项，请使用电子邮件。",
+        "日常快速沟通与事务协调请使用实验室即时通讯群；正式申请、对外联系、文件往来以及有明确截止时间的事项，请使用电子邮件。",
         [
           { text: "非紧急消息无需在晚上或周末回复", strong: true },
-          "。"
+          "。即使导师或同事在工作时间之外发送了消息，也无需立即回复，等到下一个工作日处理即可。"
         ],
         "如有紧急事项，请在消息中直接注明截止时间。",
-        "如需推荐信，请至少提前 3 周联系导师，并附上相关申请材料。"
+        "如需推荐信，请至少提前 3 周联系导师，并附上最新简历、申请项目与截止日期清单，以及希望重点突出的成果或经历简介。"
       ]
     },
     {
@@ -718,7 +842,7 @@ const communicationMeetingsSectionZh: GuideSection = {
         {
           title: "文献讨论",
           bullets: [
-            "报告人轮流担任，每次选择 1–2 篇代表性论文，并提前分享给组内成员阅读。",
+            "报告人轮流担任，每次选择 1–2 篇代表性论文，并至少提前 2–3 天分享给组内成员，方便大家提前阅读。",
             "文献讨论重在深入剖析重要成果与方法、共同培养科研判断力，而不仅是转发链接。请带着具体问题、思考或质疑参与讨论。"
           ]
         },
@@ -726,7 +850,7 @@ const communicationMeetingsSectionZh: GuideSection = {
           title: "代码审查",
           bullets: [
             "代码审查旨在提升代码的可重复性、可读性、测试覆盖与文档质量，也帮助大家更负责任地使用 LLM 辅助生成的代码。",
-            "目的是共同精进，而非挑刺。请带着具体问题、疑虑或希望同伴重点审阅的代码片段与工作流前来交流。"
+            "目的是共同精进，而非挑刺。展示代码前请先简要交代科学问题与分析背景，方便实验与计算背景的成员共同参与，并带着具体问题或希望重点审阅的代码片段前来交流。"
           ]
         }
       ]
@@ -750,29 +874,17 @@ const timeAwayWellbeingSectionZh: GuideSection = {
   ]
 };
 
-const collaborationAuthorshipSectionZh: GuideSection = {
-  id: "collaboration-authorship",
-  title: "合作与作者署名",
+const mentoringCareerSectionZh: GuideSection = {
+  id: "mentoring-career",
+  title: "指导与职业发展",
   paragraphs: [
-    "合作分工与作者署名应尽早商议，并随着贡献的变化及时沟通确认，避免在整理论文、学术报告、海报或公开数据集时产生误解。"
+    "良好的科研训练不只是完成眼前的课题。无论你未来计划走向学术界、产业界还是其他方向，我们都希望每位成员离开实验室时，都具备更扎实的科学判断力、独立研究能力和清晰的下一步规划。"
   ],
   bullets: [
-    "第一作者通常负责推进课题、整理证据链，并完成第一版完整论文初稿。",
-    [
-      { text: "所有", strong: true },
-      "共同作者都应有实质性的学术思路、实验、计算、分析或写作贡献。"
-    ],
-    [
-      { text: "所有", strong: true },
-      "共同作者在重大决策、论文投稿、数据/代码公开发布或提交会议摘要前，都应被及时知会。"
-    ],
-    [
-      "任何摘要、海报、论文、数据集或代码在公开发布或提交前，均须经",
-      { text: "所有", strong: true },
-      "共同作者及",
-      { text: "导师", strong: true },
-      "审阅并同意。"
-    ]
+    "除日常课题讨论外，我们还会定期进行阶段性回顾，专门交流研究进展、学位或培养节点、能力拓展与长期职业规划。",
+    "鼓励组员积极申请各类奖学金、基金与学术奖项，并在学术会议和研讨会上展示自己的工作。",
+    "欢迎提前思考个人发展目标，主动告诉导师你希望获得哪些科研训练、写作指导、带教经验或学术交流机会。",
+    "学术指导同样发生在团队成员之间：鼓励高年级成员友善地帮助新成员上手，新成员也无需顾虑，随时提问。"
   ]
 };
 
@@ -780,19 +892,19 @@ export const labLifeGuideContentZh: GuideContent = {
   eyebrow: "实验室指南",
   title: "实验室生活",
   description:
-    "关于实验室文化、日常沟通、组会节奏、身心健康、团队合作与作者署名的共同约定。",
+    "关于实验室文化、日常沟通、组会节奏、身心健康与职业成长的共同约定。",
   tocTitle: "实验室生活目录",
+  notice: translationNoticeZh,
   htmlLang: "zh-CN",
   alternateHref: "/guide/lab-life",
   alternateLabel: "English",
   sections: [
-    translationNoticeSectionZh,
-    acknowledgmentSectionZh,
     labLifeOverviewSectionZh,
     valuesExpectationsSectionZh,
     communicationMeetingsSectionZh,
     timeAwayWellbeingSectionZh,
-    collaborationAuthorshipSectionZh
+    mentoringCareerSectionZh,
+    acknowledgmentSectionZh
   ]
 };
 
@@ -800,8 +912,15 @@ const researchPracticeOverviewSectionZh: GuideSection = {
   id: "overview",
   title: "概览",
   paragraphs: [
-    "科研实践总结了帮助我们把研究做得清晰、可复用且值得信赖的日常习惯。本页汇总了数据管理、论文写作、科研绘图、文档与代码、大语言模型（LLM）规范使用、论文审阅以及核心阅读资源等方面的要求。",
-    "贯穿一切的核心原则是可重复性：未来的自己、组内同事、合作者、审稿人和读者，都应能够看清我们做了什么、为何这样做，以及证据如何支撑结论。"
+    "科研实践总结了帮助我们把研究做得清晰、可复用且值得信赖的日常习惯。本页汇总了数据管理、文档与代码、大语言模型（LLM）规范使用、合作与作者署名、论文写作、科研绘图、论文审阅以及核心阅读资源等方面的要求。",
+    [
+      "贯穿一切的核心原则是可重复性：未来的自己、组内同事、合作者、审稿人和读者，都应能够看清我们做了什么、为何这样做，以及证据如何支撑结论。关于实验室文化、沟通与组会、休假与身心健康以及职业发展，请查阅",
+      {
+        label: "实验室生活",
+        href: "/guide/lab-life/zh"
+      },
+      "指南。"
+    ]
   ]
 };
 
@@ -809,7 +928,7 @@ const dataSectionZh: GuideSection = {
   id: "data",
   title: "数据管理",
   deck:
-    "原始数据是科研记录的基石。无论最终是否出现在论文中，都应妥善保存、规范整理、及时备份并记录完整信息。",
+    "原始数据是科研记录的基石。无论最终是否出现在论文中，都应妥善保存、规范整理、及时备份、完整记录，并在发表时规范共享。",
   blocks: [
     {
       title: "保存原始数据",
@@ -820,15 +939,15 @@ const dataSectionZh: GuideSection = {
           "原始数据，包括探索性测试、失败实验、对照样本以及最终论文未采用的文件。",
           { text: "切勿覆盖原始文件。", strong: true }
         ],
-        "原始文件应与处理后数据、整理后的表格、导出图表及分析输出分开存放。",
+        "将仪器原始格式文件（如 .raw、.d、.wiff）原样保留，并与转换后的开放格式（如 .mzML）、处理后数据、整理表格、导出图表及分析输出分开存放，同时记录转换工具与版本号（如 MSConvert）。",
         "如某部分数据需要在分析中排除，请记录原因，不要直接删除原始文件。"
       ]
     },
     {
       title: "规范整理项目数据",
       bullets: [
-        "原始数据、处理后数据、元数据与分析输出应存放在命名清晰的目录中，并同步记录处理步骤、关键参数、样本元数据及质控决策。",
-        "文件夹和文件命名请包含清晰的日期与含义，便于日后追溯研究过程。",
+        "原始数据、处理后数据、样本元数据与分析输出应存放在命名清晰的目录中，并同步记录处理步骤、关键参数及质控决策。",
+        "文件和文件夹命名请包含清晰的日期与含义，便于日后追溯版本与研究过程。",
         "确保合作者与后续接手的组员能迅速定位关键文件，并明确每项结果对应的数据版本。"
       ]
     },
@@ -856,7 +975,105 @@ const dataSectionZh: GuideSection = {
         ],
         "定期检查备份是否能正常恢复，尤其是在大规模清理文件、更换电脑、论文投稿或公开数据前。"
       ]
+    },
+    {
+      title: "公开数据与谱图共享",
+      bullets: [
+        "论文发表时（或在条件合适发布预印本时），应将原始 LC-MS/MS 数据集上传至 MassIVE/GNPS、MetaboLights 或 Metabolomics Workbench 等公共代谢组学数据库，并在论文中注明数据编号。",
+        "整理完整、规范的样本元数据（例如采用兼容 ReDU 的标准格式），让公开数据能够真正被学术界复用。",
+        "将新验证的参考二级质谱图（MS/MS）上传至公共谱库（如 GNPS），并在适用时为关键谱图记录通用谱图标识符（USI）。"
+      ]
     }
+  ]
+};
+
+const documentationCodeSectionZh: GuideSection = {
+  id: "documentation-data-code",
+  title: "文档与代码",
+  deck:
+    "未来的自己、组内同事、合作者和审稿人，都应能够看清我们做了什么，以及为什么这样做。",
+  blocks: [
+    {
+      title: "科研记录",
+      bullets: [
+        "每位成员都应做好实验与分析记录（电子记录或纸质实验本均可），详略程度应足以在数月后完整回溯。",
+        "不仅记录做了什么，更要记下做出关键选择的原因（如参数设置、过滤阈值或实验调整依据）。",
+        "将实验与分析记录同对应的原始数据目录、脚本、汇报材料和论文草稿清晰关联，确保决策与产出可相互追溯。"
+      ]
+    },
+    {
+      title: "代码与可重复工作流",
+      bullets: [
+        "代码类项目尽量全程使用版本控制（如 Git）。",
+        "合理组织脚本与 notebook，使核心分析流程不依赖个人记忆也能一目了然；确保 notebook 可从头到尾顺序运行，并将可复用逻辑整理为独立脚本或模块。",
+        "编写 README，写明目录结构、核心脚本、预期输入输出以及运行顺序。",
+        "记录软件环境、关键依赖包版本（如 conda 的 environment.yml、pyproject.toml/requirements.txt 或 renv）、运行平台（操作系统或服务器）以及重现所需的外部工具。",
+        "公开发布代码前，请仔细排查敏感数据、账号密钥、硬编码的本机路径、合作者未发表材料以及开源协议问题。"
+      ]
+    }
+  ]
+};
+
+const llmsSectionZh: GuideSection = {
+  id: "llms",
+  title: "大语言模型（LLMs）",
+  deck: "大语言模型是有力的科研辅助工具，我们鼓励积极善用，同时坚持严格核验。",
+  paragraphs: [
+    "大语言模型（LLM）和 AI 助手可以辅助代码编写、文档整理、文献初筛、提纲构思、文字润色、头脑风暴、分析方案设计、报告准备以及学习新工具或陌生概念。它们最有价值的用法是帮我们更快、更清晰、更严谨地工作，而不是替代思考与理解。"
+  ],
+  blocks: [
+    {
+      title: "责任与核验",
+      bullets: [
+        [
+          {
+            text: "你有责任理解自己提交的每一行代码，并对每一项分析结果与科学论断负责。切勿在未充分理解与验证的情况下直接采纳 LLM 输出；请通过测试、逐行检查、溯源核对和代码审查加以确认。",
+            strong: true
+          }
+        ],
+        "LLM 通常擅长通用编程与语言润色，但在高度专业化的预测、尚未发表的事实或细分的领域科学判断上仍可能出错或产生幻觉。",
+        "切勿将科学判断力与学术创新外包给工具。让工具加速执行、梳理思路，同时持续打磨自己的独立判断与专业功底。",
+        "严禁使用 LLM 编造数据、分析结果、图表或参考文献。所有引用文献均须核对原始出处，并遵循目标期刊关于 AI 辅助写作或编程的披露规定。"
+      ]
+    },
+    {
+      title: "上下文与数据隐私",
+      bullets: [
+        "高质量输出依赖清晰的上下文：请提供相关代码上下文、预期输入输出以及明确的任务要求。",
+        [
+          "严禁将",
+          { text: "处于保密同行评议阶段的审稿手稿", strong: true },
+          "上传至外部或云端 LLM 工具。同样，未经适当批准，切勿将敏感数据、未发表手稿、保密代码、合作者未公开信息、账号密钥或专有资料粘贴至外部云端工具。"
+        ]
+      ]
+    }
+  ]
+};
+
+const collaborationAuthorshipSectionZh: GuideSection = {
+  id: "collaboration-authorship",
+  title: "合作与作者署名",
+  paragraphs: [
+    "合作分工与作者署名应尽早商议，并随着贡献的变化及时沟通确认，避免在整理论文、学术报告、海报或公开数据集时产生误解。"
+  ],
+  bullets: [
+    "主要负责作者（通常为第一作者）负责推进课题、整理证据链，并完成第一版完整论文初稿。",
+    [
+      { text: "所有", strong: true },
+      "共同作者都应有实质性的学术思路、实验、计算、分析或写作贡献。作者排序（包括贡献相当时的共同第一作者）应客观反映实质性科学贡献；不含学术或分析贡献的常规技术协助、试剂提供或仪器维护应在致谢（Acknowledgments）中体现。"
+    ],
+    "如某位成员在课题完成前毕业或离开实验室，由其他成员接手推进并完成后续工作，作者名单与署名排序将根据最终总贡献公平重新评估。",
+    [
+      { text: "所有", strong: true },
+      "共同作者在重大决策、论文投稿、数据/代码公开发布或提交会议摘要前，都应被及时知会。"
+    ],
+    [
+      "任何摘要、海报、论文、数据集或代码在公开发布或提交前，均须经",
+      { text: "所有", strong: true },
+      "共同作者及",
+      { text: "导师", strong: true },
+      "审阅并同意。"
+    ]
   ]
 };
 
@@ -874,14 +1091,7 @@ const manuscriptsSectionZh: GuideSection = {
     {
       title: "大纲组成",
       bullets: [
-        [
-          "摘要：用 5–10 句话精炼概括研究背景、科学空白、研究方法、核心发现与意义。起草或修改时，可参考 ",
-          {
-            label: "摘要写作指南",
-            href: "/resources/abstract_guide.pdf"
-          },
-          "。"
-        ],
+        "摘要：用 5–10 句话精炼概括研究背景、科学空白、研究方法、核心发现与意义。",
         "引言：按段落规划，依次讲清宏观背景、具体问题、前人进展、本研究的独特之处以及核心贡献。",
         "结果：列出关键图与表，并尽早起草图注，让每张图都能独立传达明确信息。",
         "讨论：梳理核心解读、重要局限性、有数据充分支撑的延伸结论以及未来改进方向。",
@@ -892,6 +1102,8 @@ const manuscriptsSectionZh: GuideSection = {
       title: "起草与修改",
       bullets: [
         "尽早动笔，让修改不仅停留在润色文字，更能反过来完善科学论证与实验设计。",
+        "审慎把握论断边界：始终清晰区分经标准品实验确证的鉴定结果（如 MSI Level 1）与基于谱库匹配、分子网络推演或计算预测的推测性注释。",
+        "从初稿阶段即使用文献管理软件（如 Zotero），避免手动编排参考文献。",
         "将批注和修订视作学习与提升的过程，而非机械地逐条接受修改。",
         "将论文草稿发送给导师时，请使用清晰的文件名，包含项目名、姓名缩写与日期，例如：ProjectName_SX_20260901.docx。"
       ]
@@ -939,21 +1151,21 @@ const figuresSectionZh: GuideSection = {
       title: "发表与投稿标准",
       bullets: [
         [
-          "避免多余的边框、厚重网格线、花哨装饰效果以及难以区分的配色。",
+          "避免多余的边框、厚重网格线、花哨装饰效果及难以区分的配色，优先选用色盲友好配色方案（如避免红绿对比）。",
           { text: "少即是多（Less is more）。", strong: true }
         ],
         "整张图统一使用 Arial（或 Helvetica）字体，包括坐标轴标签、图例、注释与子图编号（a, b, c…）。",
         "在最终印刷尺寸下，大多数文字字号应控制在 4–10 pt。",
         "同一组图中的所有子图（panel）应保持字号、线宽、点大小、配色方案、编号样式与化学结构风格一致。",
-        "图注应写明展示内容、样本量、统计检验方法，并在适用时给出精确 p 值。"
+        "图注应写明展示内容、样本量、统计汇总量与误差棒定义（如均值 ± 标准差或中位数与四分位距）、统计检验方法，并在适用时给出精确 p 值。"
       ]
     },
     {
       title: "图表组装",
       bullets: [
         "选用支持矢量编辑的工具进行拼图与排版，如 Adobe Illustrator、Inkscape 或 PowerPoint。",
-        "除非期刊另有规定，优先保存为 SVG 等矢量格式。",
-        "若矢量文件过于庞大或不便编辑（如含大量散点的 UMAP 图），可导出不低于 600 DPI 的 PNG 或 JPEG 位图。",
+        "除非期刊另有规定，优先保存为 SVG 或 PDF 等矢量格式。",
+        "若矢量文件过于庞大或不便编辑（如含大量散点的 UMAP 图），请导出不低于 600 DPI 的 PNG 或 TIFF 无损位图，避免使用有损压缩的 JPEG。",
         "组装多子图大图时，尽量按最终论文或海报的实际物理尺寸导出单图，避免后期反复缩放失真。",
         "分别生成的子图在拼接时，请保持坐标轴比例、标签位置、字体及线宽一致。"
       ]
@@ -968,7 +1180,7 @@ const figuresSectionZh: GuideSection = {
     {
       title: "脚本绘图与可重复性",
       bullets: [
-        "定量图表尽量使用 Python 或 R 编写脚本绘制（个人更偏好 Python），以便在数据更新、重跑分析或审稿修改时快速复现；避免手动在 Excel 或 Prism 中作图。",
+        "定量图表尽量使用 Python 或 R 编写脚本绘制（实验室默认推荐 Python），以便在数据更新、重跑分析或审稿修改时快速复现；避免手动在 Excel 或 Prism 中作图。",
         "请将绘图脚本、处理后的数据以及导出的图件归档在同一目录下。",
         [
           "数据可视化选型与入门可参考：",
@@ -994,68 +1206,15 @@ const figuresSectionZh: GuideSection = {
   ]
 };
 
-const documentationCodeSectionZh: GuideSection = {
-  id: "documentation-data-code",
-  title: "文档与代码",
-  deck:
-    "未来的自己、组内同事、合作者和审稿人，都应能够看清我们做了什么，以及为什么这样做。",
-  blocks: [
-    {
-      title: "科研记录",
-      bullets: [
-        "每位成员都应做好实验与分析记录（电子记录或纸质实验本均可），详略程度应足以在数月后完整回溯。",
-        "不仅记录做了什么，更要记下做出关键选择的原因。",
-        "文件、演示文稿、文稿草稿和结果目录请使用清晰的日期与命名规则。"
-      ]
-    },
-    {
-      title: "代码与可重复工作流",
-      bullets: [
-        "代码类项目尽量全程使用版本控制（如 Git）。",
-        "合理组织脚本与 notebook，使核心分析流程不依赖个人记忆也能一目了然。",
-        "编写 README，写明目录结构、核心脚本、预期输入输出以及运行顺序。",
-        "记录软件环境、关键依赖包版本、运行平台（操作系统或服务器）以及重现所需的外部工具。",
-        "公开发布代码前，请仔细排查敏感数据、账号密钥、合作者未发表材料以及开源协议问题。"
-      ]
-    }
-  ]
-};
-
-const llmsSectionZh: GuideSection = {
-  id: "llms",
-  title: "大语言模型（LLMs）",
-  deck: "大语言模型是有力的科研辅助工具，我们鼓励积极善用，同时坚持严格核验。",
-  paragraphs: [
-    "大语言模型（LLM）和 AI 助手可以辅助代码编写、文档整理、文献初筛、提纲构思、文字润色、头脑风暴、分析方案设计与报告准备。它们最有价值的用法是帮我们更快、更清晰、更严谨地工作，而不是替代思考与理解。"
-  ],
-  blocks: [
-    {
-      title: "责任与核验",
-      bullets: [
-        [
-          {
-            text: "你有责任理解自己提交的每一行代码，并对每一项分析结果与科学论断负责。切勿在未充分理解与验证的情况下直接采纳 LLM 输出；请通过测试、逐行检查、溯源核对和代码审查加以确认。",
-            strong: true
-          }
-        ],
-        "LLM 通常擅长通用编程与语言润色，但在高度专业化的预测、尚未发表的事实或细分的领域科学判断上仍可能出错或产生幻觉。",
-        "切勿将科学判断力与学术创新外包给工具。让工具加速执行、梳理思路，同时持续打磨自己的独立判断与专业功底。"
-      ]
-    },
-    {
-      title: "上下文与数据隐私",
-      bullets: [
-        "高质量输出依赖清晰的上下文：请提供相关代码上下文、预期输入输出以及明确的任务要求。",
-        "未经适当批准，切勿将敏感数据、未发表手稿、保密代码、合作者未公开信息、账号密钥或专有资料粘贴至外部云端工具。"
-      ]
-    }
-  ]
-};
-
 const reviewingManuscriptsSectionZh: GuideSection = {
   id: "reviewing-manuscripts",
   title: "论文审阅",
   bullets: [
+    [
+      "采用清晰的",
+      { text: "审稿结构", strong: true },
+      "：（1）用自己的话简述文章核心内容的总结段；（2）影响结论或严谨性的主要意见（major points）；（3）涉及表述清晰度、图表规范或笔误的次要意见（minor points）。"
+    ],
     [
       "保持",
       { text: "善意", strong: true },
@@ -1078,7 +1237,13 @@ const reviewingManuscriptsSectionZh: GuideSection = {
       "针对每一项主要意见，尽量",
       { text: "给出建设性修改建议", strong: true },
       "（哪怕并非十全十美），这比单纯指出缺陷更有帮助。"
-    ]
+    ],
+    [
+      "严格恪守",
+      { text: "审稿保密原则", strong: true },
+      "：不得向未获授权的人员转发审稿手稿，严禁将手稿上传至外部或云端 LLM 工具。"
+    ],
+    "如存在潜在利益冲突请尽早声明，按时提交审稿意见；若与导师联合审稿，须按期刊政策向编辑如实披露。"
   ]
 };
 
@@ -1090,41 +1255,95 @@ const readingListSectionZh: GuideSection = {
   ],
   blocks: [
     {
-      title: "核心研究论文与工具论文",
-      body: "这些论文奠定了实验室常用的核心思路、分析工作流与公共资源基础。",
+      title: "实验室核心论文",
+      body: "课题组在 MS/MS 谱图解析、谱库检索及公共代谢组大数据挖掘方面的代表性方法与研究工作。",
       bullets: [
         [
-          { text: "关键研究论文：", strong: true },
-          " ",
-          { label: "Bile acid paper", href: "https://www.cell.com/cell/fulltext/S0092-8674(24)00185-5" },
-          "  |  ",
-          { label: "N-acyl lipid paper", href: "https://www.cell.com/cell/fulltext/S0092-8674(25)00565-3" },
-          "  |  ",
-          { label: "Reverse metabolomics", href: "https://www.nature.com/articles/s41586-023-06906-8" },
-          "  |  ",
-          { label: "LLM-assisted metabolite discovery", href: "https://www.nature.com/articles/s41586-025-09969-x" }
+          { label: "BUDDY", href: "https://www.nature.com/articles/s41592-023-01850-x" },
+          " — 基于自下而上 MS/MS 碎片解析的分子式发现方法。"
         ],
         [
-          { text: "工具论文：", strong: true },
-          " ",
-          { label: "MZmine", href: "https://www.nature.com/articles/s41587-023-01690-2" },
-          "  |  ",
-          { label: "USI", href: "https://www.biorxiv.org/content/10.1101/2020.05.09.086066v2" },
-          "  |  ",
-          { label: "FBMN", href: "https://www.nature.com/articles/s41592-020-0933-6" },
-          "  |  ",
-          { label: "ReDU", href: "https://www.nature.com/articles/s41592-020-0916-7" },
-          "  |  ",
-          { label: "Pan-ReDU", href: "https://www.nature.com/articles/s41467-025-60067-y" },
-          "  |  ",
-          { label: "MassQL", href: "https://www.nature.com/articles/s41592-025-02660-z" },
-          "  |  ",
-          { label: "MASST", href: "https://www.nature.com/articles/s41587-019-0375-9" },
-          "  |  ",
-          { label: "microbeMASST", href: "https://www.nature.com/articles/s41564-023-01575-9" },
-          "  |  ",
-          { label: "StructureMASST", href: "https://www.nature.com/articles/s41587-026-03082-8" }
+          { label: "Reverse spectral search", href: "https://doi.org/10.1021/acs.analchem.5c02047" },
+          " — 重新审视反向谱图检索，用于嵌合（chimeric）MS/MS 谱图注释。"
+        ],
+        [
+          {
+            label: "Navigating the conjugated metabolome",
+            href: "https://www.biorxiv.org/content/10.64898/2026.02.06.704496v1"
+          },
+          " — 在公共 LC-MS/MS 数据库尺度上系统探索结合态代谢组。"
         ]
+      ]
+    },
+    {
+      title: "核心研究论文与工具论文",
+      body: "这些论文奠定了实验室常用的核心思路、分析工作流与公共资源基础。",
+      subblocks: [
+        {
+          title: "关键研究论文",
+          bullets: [
+            [
+              { label: "Bile acid paper", href: "https://www.cell.com/cell/fulltext/S0092-8674(24)00185-5" },
+              " — 揭示微生物胆汁酸修饰的广泛化学多样性。"
+            ],
+            [
+              { label: "N-acyl lipid paper", href: "https://www.cell.com/cell/fulltext/S0092-8674(25)00565-3" },
+              " — 系统描绘微生物 N-酰基脂质在人体与环境代谢组中的分布规律。"
+            ],
+            [
+              { label: "Reverse metabolomics", href: "https://www.nature.com/articles/s41586-023-06906-8" },
+              " — 通过合成候选分子并检索公共 MS/MS 仓库来发现新的生物学关联。"
+            ],
+            [
+              {
+                label: "LLM-assisted metabolite discovery",
+                href: "https://www.nature.com/articles/s41586-025-09969-x"
+              },
+              " — 展示大语言模型结合文献知识辅助代谢物发现的研究范式。"
+            ]
+          ]
+        },
+        {
+          title: "工具论文",
+          bullets: [
+            [
+              { label: "MZmine", href: "https://www.nature.com/articles/s41587-023-01690-2" },
+              " — 模块化的 LC-MS 特征峰提取、对齐与数据预处理平台。"
+            ],
+            [
+              { label: "USI", href: "https://www.biorxiv.org/content/10.1101/2020.05.09.086066v2" },
+              " — 通用谱图标识符（Universal Spectrum Identifier）标准，用于精准引用与定位单张代谢组谱图。"
+            ],
+            [
+              { label: "FBMN", href: "https://www.nature.com/articles/s41592-020-0933-6" },
+              " — 基于特征峰的分子网络（Feature-Based Molecular Networking），将定量特征表与 MS/MS 分子网络相结合。"
+            ],
+            [
+              { label: "ReDU", href: "https://www.nature.com/articles/s41592-020-0916-7" },
+              " — 标准化样本元数据框架，支持公共代谢组数据的仓库级再分析。"
+            ],
+            [
+              { label: "Pan-ReDU", href: "https://www.nature.com/articles/s41467-025-60067-y" },
+              " — 将标准化元数据扩展至多个主流公共代谢组仓库，实现跨库联合挖掘。"
+            ],
+            [
+              { label: "MassQL", href: "https://www.nature.com/articles/s41592-025-02660-z" },
+              " — 质谱查询语言，可按特征碎片、中性丢失与色谱特征检索质谱数据。"
+            ],
+            [
+              { label: "MASST", href: "https://www.nature.com/articles/s41587-019-0375-9" },
+              " — 质谱搜索引擎，用于将单张 MS/MS 谱图在公共数据库中快速检索比对。"
+            ],
+            [
+              { label: "microbeMASST", href: "https://www.nature.com/articles/s41564-023-01575-9" },
+              " — 面向纯培养微生物谱库的分类学关联 MS/MS 检索工具。"
+            ],
+            [
+              { label: "StructureMASST", href: "https://www.nature.com/articles/s41587-026-03082-8" },
+              " — 以化学结构为起点，在公共代谢组数据库中全局检索相关谱图。"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -1134,22 +1353,39 @@ const readingListSectionZh: GuideSection = {
       bullets: [
         [
           { label: "GNPS library", href: "https://external.gnps2.org/gnpslibrary" },
-          "  |  ",
+          " — 浏览和检索社区维护的公共 MS/MS 参考谱图库。"
+        ],
+        [
           { label: "Pan-ReDU", href: "https://redu.gnps2.org/" },
-          "  |  ",
+          " — 按标准化样本元数据筛选并联合分析公共代谢组文件。"
+        ],
+        [
           { label: "USI resolver", href: "https://metabolomics-usi.gnps2.org/" },
-          "  |  ",
+          " — 通过 USI 直接查看、可视化并绘制 MS/MS 镜像对比图。"
+        ],
+        [
           { label: "Fast MASST", href: "https://fasst.gnps2.org/fastsearch/" },
-          "  |  ",
+          " — 在公共代谢组数据库中高速检索相似 MS/MS 谱图。"
+        ],
+        [
           { label: "microbeMASST", href: "https://masst.gnps2.org/microbemasst/" },
-          "  |  ",
+          " — 将 MS/MS 谱图映射至纯培养微生物系统发育树。"
+        ],
+        [
           { label: "microbiomeMASST", href: "https://masst.gnps2.org/microbiomemasst/" },
-          "  |  ",
+          " — 在微生物组相关公共数据集中检索目标 MS/MS 谱图。"
+        ],
+        [
           { label: "plantMASST", href: "https://masst.gnps2.org/plantmasst/" },
-          "  |  ",
+          " — 探索 MS/MS 谱图在植物化学分类学中的分布。"
+        ],
+        [
           { label: "StructureMASST", href: "https://structure-masst.gnps2.org/" },
-          "  |  ",
-          { label: "GNPS dashboard", href: "https://dashboard.gnps2.org/" }
+          " — 从化学结构出发检索公共代谢组数据库。"
+        ],
+        [
+          { label: "GNPS dashboard", href: "https://dashboard.gnps2.org/" },
+          " — 在线交互式浏览原始 LC-MS 色谱图与质谱图。"
         ]
       ]
     }
@@ -1160,21 +1396,22 @@ export const researchPracticeGuideContentZh: GuideContent = {
   eyebrow: "实验室指南",
   title: "科研实践",
   description:
-    "关于数据管理、论文写作、科研绘图、文档与代码、LLM 规范使用、论文审阅与共享科研资源的实践指南。",
+    "关于数据管理、文档与代码、LLM 规范使用、合作与作者署名、论文写作、科研绘图、论文审阅与核心阅读资源的实践指南。",
   tocTitle: "科研实践目录",
+  notice: translationNoticeZh,
   htmlLang: "zh-CN",
   alternateHref: "/guide/research-practice",
   alternateLabel: "English",
   sections: [
-    translationNoticeSectionZh,
-    acknowledgmentSectionZh,
     researchPracticeOverviewSectionZh,
     dataSectionZh,
-    manuscriptsSectionZh,
-    figuresSectionZh,
     documentationCodeSectionZh,
     llmsSectionZh,
+    collaborationAuthorshipSectionZh,
+    manuscriptsSectionZh,
+    figuresSectionZh,
     reviewingManuscriptsSectionZh,
-    readingListSectionZh
+    readingListSectionZh,
+    acknowledgmentSectionZh
   ]
 };

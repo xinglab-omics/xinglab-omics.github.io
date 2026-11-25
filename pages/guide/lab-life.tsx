@@ -4,7 +4,7 @@ import { GuidePageClient } from "@/app/guide/GuidePageClient";
 LabLifeGuidePage.metadata = {
   title: "Lab Life | Xing Lab Guide",
   description:
-    "Xing Lab expectations, communication norms, meeting routines, well-being, collaboration, and authorship."
+    "Xing Lab values, communication norms, meeting routines, time away and well-being, and mentoring."
 };
 
 export default function LabLifeGuidePage() {
