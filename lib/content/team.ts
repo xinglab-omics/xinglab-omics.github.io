@@ -118,6 +118,17 @@ export const members: Member[] = [
     hometown: { city: "Wenzhou", cityZh: "温州", lat: 27.994, lon: 120.699 }
   },
   {
+    name: "Lanxi Yin",
+    chineseName: "尹蓝希",
+    group: "Undergraduate Students",
+    bio:
+      "Lanxi Yin is an undergraduate student in the Department of Environmental Science and Engineering at Fudan University (2026 cohort).",
+    email: "26300740051@m.fudan.edu.cn",
+    image: "/images/profiles/Lanxi_Yin.jpg",
+    joinedDate: "November 2026",
+    favoriteMolecule: { name: "Oxybenzone", structure: structure("oxybenzone") }
+  },
+  {
     name: "Pengyu Xing",
     chineseName: "邢蓬宇",
     group: "Undergraduate Students",
@@ -128,16 +139,5 @@ export const members: Member[] = [
     joinedDate: "October 2026",
     favoriteMolecule: { name: "Dopamine", structure: structure("dopamine") },
     hometown: { city: "Shanghai", cityZh: "上海", lat: 31.23, lon: 121.474 }
-  },
-  {
-    name: "Lanxi Yin",
-    chineseName: "尹蓝希",
-    group: "Undergraduate Students",
-    bio:
-      "Lanxi Yin is an undergraduate student in the Department of Environmental Science and Engineering at Fudan University (2026 cohort).",
-    email: "26300740051@m.fudan.edu.cn",
-    image: "/images/profiles/Lanxi_Yin.jpg",
-    joinedDate: "November 2026",
-    favoriteMolecule: { name: "Oxybenzone", structure: structure("oxybenzone") }
   }
 ];

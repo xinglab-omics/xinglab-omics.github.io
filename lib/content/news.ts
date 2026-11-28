@@ -24,7 +24,7 @@ export const newsItems: NewsItem[] = [
     date: "2026-11",
     dateLabel: "Nov 2026",
     summary:
-      "We are delighted to welcome seven new members to Xing Lab: Shaohong Xu (PhD student), Yinjie Yu and Lujie Qu (master's students), and Ruize Tang, Kehan Zhang, Pengyu Xing, and Lanxi Yin (undergraduate researchers). Welcome aboard—we look forward to building the lab and doing great science together!",
+      "We are delighted to welcome seven new members to Xing Lab: Shaohong Xu (PhD student), Yinjie Yu and Lujie Qu (master's students), and Ruize Tang, Kehan Zhang, Lanxi Yin, and Pengyu Xing (undergraduate researchers). Welcome aboard—we look forward to building the lab and doing great science together!",
     category: "Lab"
   },
   {
