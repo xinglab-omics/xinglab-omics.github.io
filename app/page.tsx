@@ -33,45 +33,28 @@ export default function HomePage() {
   return (
     <>
       <section
-        className="relative isolate min-h-[60svh] overflow-hidden border-b border-line lg:min-h-[62svh]"
+        className="relative isolate min-h-[60svh] overflow-hidden border-b border-line bg-paper lg:min-h-[62svh]"
         data-hero-scroll
       >
         <HeroScrollAnimation />
-        {/* Pure-CSS concentric geometric arcs inspired by Swiss editorial science sites (0 JS / 0 KB assets) */}
+        {/* Seamless laboratory dot-grid texture across the full hero width */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute -right-24 top-1/2 hidden size-[560px] -translate-y-1/2 rounded-full lg:block"
-          style={{
-            boxShadow:
-              "0 0 0 1px color-mix(in srgb, var(--color-sage) 13%, transparent), 0 0 0 96px color-mix(in srgb, var(--color-sage) 3%, transparent), 0 0 0 97px color-mix(in srgb, var(--color-sage) 9%, transparent), 0 0 0 210px color-mix(in srgb, var(--color-sage) 6%, transparent)"
-          }}
-        />
-        <div
-          className="absolute inset-0 origin-center will-change-transform"
-          style={{
-            filter: "blur(var(--hero-art-blur, 0px))",
-            opacity: "var(--hero-art-opacity, 1)",
-            transform:
-              "translate3d(var(--hero-art-x, 0px), var(--hero-art-y, 0px), 0) scale(var(--hero-art-scale, 1)) rotate(var(--hero-art-rotate, 0deg))"
-          }}
-        >
-          <HeroVisual />
-        </div>
-        <div
           className="pointer-events-none absolute inset-0"
           style={{
-            background:
-              "linear-gradient(90deg, color-mix(in srgb, var(--color-paper) 95%, transparent) 0%, color-mix(in srgb, var(--color-paper) 86%, transparent) 36%, color-mix(in srgb, var(--color-paper) 30%, transparent) 72%)"
+            backgroundImage: "radial-gradient(var(--color-line) 1px, transparent 1px)",
+            backgroundSize: "34px 34px"
           }}
         />
-        <div
-          className="pointer-events-none relative mx-auto flex min-h-[60svh] max-w-7xl items-center px-5 pb-12 pt-10 will-change-transform sm:px-8 lg:min-h-[62svh]"
-          style={{
-            opacity: "var(--hero-copy-opacity, 1)",
-            transform: "translate3d(0, var(--hero-copy-y, 0px), 0)"
-          }}
-        >
-          <div className="max-w-3xl">
+        {/* Both left copy and right scientific SVG sit inside the exact same max-w-7xl bounds for symmetrical edges */}
+        <div className="relative mx-auto grid min-h-[60svh] max-w-7xl items-center gap-8 px-5 py-10 sm:px-8 lg:min-h-[64svh] lg:grid-cols-[minmax(0,1fr)_minmax(0,520px)] lg:gap-10 lg:py-8 xl:grid-cols-[minmax(0,1fr)_minmax(0,560px)]">
+          <div
+            className="min-w-0 will-change-transform"
+            style={{
+              opacity: "var(--hero-copy-opacity, 1)",
+              transform: "translate3d(0, var(--hero-copy-y, 0px), 0)"
+            }}
+          >
             <h1 className="space-y-2.5 text-3xl font-semibold tracking-[-0.03em] text-ink sm:text-4xl lg:text-5xl">
               <span className="block whitespace-nowrap">Metabolomics &amp;</span>
               <span className="block whitespace-nowrap">Xenobiotic Metabolism</span>
@@ -93,6 +76,17 @@ export default function HomePage() {
                 </span>
               ))}
             </p>
+          </div>
+
+          <div
+            className="hidden origin-center will-change-transform lg:block"
+            style={{
+              opacity: "var(--hero-art-opacity, 1)",
+              transform:
+                "translate3d(var(--hero-art-x, 0px), var(--hero-art-y, 0px), 0) scale(var(--hero-art-scale, 1))"
+            }}
+          >
+            <HeroVisual />
           </div>
         </div>
       </section>
