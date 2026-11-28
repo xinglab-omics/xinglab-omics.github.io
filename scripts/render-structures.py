@@ -49,6 +49,7 @@ MOLECULES = {
     "nad": "C1=CC(=C[N+](=C1)[C@H]2[C@@H]([C@@H]([C@H](O2)COP(=O)([O-])OP(=O)(O)OC[C@@H]3[C@H]([C@H]([C@@H](O3)N4C=NC5=C(N=CN=C54)N)O)O)O)O)C(=O)N",
     "phenethyl-alcohol": "C1=CC=C(C=C1)CCO",
     "dopamine": "C1=CC(=C(C=C1CCN)O)O",
+    "oxybenzone": "COC1=CC(=C(C=C1)C(=O)C2=CC=CC=C2)O",
 }
 
 # A 2D drawing of C60 from SMILES is unreadable, so it is drawn as a cage instead.

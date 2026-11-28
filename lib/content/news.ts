@@ -20,11 +20,11 @@ export function newsItemId(item: Pick<NewsItem, "date" | "title">) {
 
 export const newsItems: NewsItem[] = [
   {
-    title: "Six new students join Xing Lab",
+    title: "Seven new students join Xing Lab",
     date: "2026-11",
     dateLabel: "Nov 2026",
     summary:
-      "We are delighted to welcome six new members to Xing Lab: Shaohong Xu (PhD student), Yinjie Yu and Lujie Qu (master's students), and Ruize Tang, Kehan Zhang, and Pengyu Xing (undergraduate researchers). Welcome aboard—we look forward to building the lab and doing great science together!",
+      "We are delighted to welcome seven new members to Xing Lab: Shaohong Xu (PhD student), Yinjie Yu and Lujie Qu (master's students), and Ruize Tang, Kehan Zhang, Pengyu Xing, and Lanxi Yin (undergraduate researchers). Welcome aboard—we look forward to building the lab and doing great science together!",
     category: "Lab"
   },
   {
